@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MENOCLONE | Digital Thrifting</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* MENOCLONE palette (matched to your logo) */
+      --bg: #111112;
+      --cream: #F7EBD0;
+      --cream2:#BCB5A3;
+      --muted: #898579;
+
+      --panel: rgba(247,235,208,0.06);
+      --panel2: rgba(247,235,208,0.10);
+      --stroke: rgba(247,235,208,0.18);
+
+      --shadow: 0 12px 40px rgba(0,0,0,.6);
+      --radius: 18px;
+
+      --up: #7CFFD1;
+      --down: #FF4D6D;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color: var(--cream);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(247,235,208,0.08), transparent 60%),
+        radial-gradient(900px 500px at 80% 30%, rgba(188,181,163,0.10), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    button{ font-family:inherit; }
+
+    .wrap{ width:min(1100px, 100% - 32px); margin:0 auto; }
+
+    /* ===== Stock Ticker Bar ===== */
+    .tickerBar{
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(17,17,18,0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(247,235,208,0.12);
+      height: 38px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+    }
+    .tickerInner{
+      width: 100%;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .tickerLabel{
+      flex: 0 0 auto;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 0 12px;
+      border-right: 1px solid rgba(247,235,208,0.14);
+      color: rgba(247,235,208,0.88);
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing: 1px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    .tickerTrack{
+      position: relative;
+      flex: 1 1 auto;
+      overflow:hidden;
+    }
+    .tickerStream{
+      display:inline-flex;
+      align-items:center;
+      gap:18px;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: tickerScroll 28s linear infinite;
+    }
+    .tickerItem{
+      display:inline-flex;
+      align-items:baseline;
+      gap:8px;
+      font-size: 12px;
+      color: rgba(247,235,208,0.90);
+    }
+    .sym{
+      font-weight: 900;
+      letter-spacing: .4px;
+      color: var(--cream);
+    }
+    .px{
+      color: rgba(247,235,208,0.80);
+      font-variant-numeric: tabular-nums;
+    }
+    .chg{
+      font-variant-numeric: tabular-nums;
+      font-weight: 800;
+      font-size: 11px;
+    }
+    .chg.up{ color: var(--up); }
+    .chg.down{ color: var(--down); }
+    @keyframes tickerScroll{
+      from{ transform: translateX(0); }
+      to{ transform: translateX(-100%); }
+    }
+
+    /* ===== Buttons ===== */
+    .btn{
+      width:100%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:13px 14px;
+      border-radius:14px;
+      border:1px solid rgba(247,235,208,0.22);
+      background: rgba(247,235,208,0.06);
+      color: var(--cream);
+      font-weight:900;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(247,235,208,0.10);
+      border-color: rgba(247,235,208,0.32);
+    }
+    .btn:active{ transform: translateY(0px) scale(0.99); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(247,235,208,0.20), rgba(188,181,163,0.16));
+      border-color: rgba(247,235,208,0.35);
+    }
+    .btn.ghost{ background: rgba(247,235,208,0.04); }
+    .btn.small{
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:900;
+    }
+    .btn:disabled{
+      cursor:not-allowed;
+      opacity:.45;
+      transform:none !important;
+    }
+
+    /* ===== Cards ===== */
+    .card{
+      border:1px solid rgba(247,235,208,0.16);
+      background: linear-gradient(180deg, rgba(247,235,208,0.07), rgba(247,235,208,0.035));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(12px);
+    }
+    .pad{ padding:16px; }
+
+    /* ===== Landing ===== */
+    .landing{
+      min-height: calc(100svh - 38px);
+      display:grid;
+      place-items:center;
+      padding: 28px 0;
+    }
+    .landingInner{
+      width:min(720px, 100% - 32px);
+      text-align:center;
+    }
+    .logo{
+      width:min(230px, 70vw);
+      margin: 6px auto 12px;
+      display:block;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.65));
+      border-radius: 10px;
+    }
+    .title{
+      font-family: Orbitron, Inter, system-ui;
+      letter-spacing:2px;
+      margin:10px 0 6px;
+      font-size:20px;
+      color: var(--cream);
+    }
+    .sub{
+      margin:0 0 14px;
+      color: rgba(247,235,208,0.72);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .videoFrame{
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(247,235,208,0.04);
+      box-shadow: var(--shadow);
+    }
+    .videoFrame video{
+      width:100%;
+      aspect-ratio:16/9;
+      display:block;
+      background:#000;
+    }
+    .actions{
+      margin-top:14px;
+      display:grid;
+      gap:10px;
+    }
+
+    /* ===== Shop Header (below ticker) ===== */
+    header{
+      position:sticky;
+      top: 38px; /* under ticker */
+      z-index:80;
+      background: rgba(17,17,18,0.70);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(247,235,208,0.10);
+      display:none;
+    }
+    .bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      min-width: 180px;
+    }
+    .mark{
+      width:34px; height:34px;
+      border-radius:10px;
+      border:1px solid rgba(247,235,208,0.20);
+      background: rgba(247,235,208,0.05);
+      display:grid; place-items:center;
+      font-family: Orbitron, Inter;
+      font-weight:900;
+      letter-spacing:1px;
+      color: var(--cream);
+    }
+    .brand b{
+      font-family: Orbitron, Inter;
+      letter-spacing:1.1px;
+      font-size:14px;
+      color: var(--cream);
+    }
+    .subBrand{
+      color: rgba(247,235,208,0.65);
+      font-size:12px;
+    }
+    .rightBtns{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .iconBtn{
+      width:42px; height:42px;
+      border-radius:14px;
+      border:1px solid rgba(247,235,208,0.18);
+      background: rgba(247,235,208,0.05);
+      display:grid; place-items:center;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+      color: rgba(247,235,208,0.9);
+    }
+    .iconBtn:hover{ transform: translateY(-1px); background: rgba(247,235,208,0.08); }
+
+    /* ===== Shop ===== */
+    main{ display:none; padding:16px 0 72px; }
+
+    /* NEW: top-of-page brand + lookbook area (under ticker) */
+    .masthead{
+      margin-top: 12px;
+      display:grid;
+      gap:14px;
+    }
+    .logoPlaceholder{
+      display:grid;
+      place-items:center;
+      padding: 18px 14px;
+      text-align:center;
+    }
+    .logoBox{
+      width:min(340px, 100%);
+      border-radius: 16px;
+      border: 1px  rgba(247,235,208,0.28);
+      background: rgba(247,235,208,0.04);
+      padding: 18px 14px;
+    }
+    .logoBox .big{
+      font-family: Orbitron, Inter;
+      letter-spacing: 2px;
+      font-weight: 900;
+      font-size: 18px;
+      color: rgba(247,235,208,0.92);
+    }
+    .logoBox .small{
+      margin-top: 6px;
+      font-size: 12px;
+      color: rgba(247,235,208,0.60);
+      line-height: 1.4;
+    }
+
+    /* Lookbook carousel */
+    .lookbookHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .lookbookTitle{
+      margin:0;
+      font-family: Orbitron, Inter;
+      letter-spacing: 1px;
+      font-size: 16px;
+      color: rgba(247,235,208,0.95);
+    }
+    .lookbookSub{
+      margin:6px 0 0;
+      color: rgba(247,235,208,0.68);
+      font-size: 12px;
+      line-height: 1.5;
+      max-width: 58ch;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(247,235,208,0.18);
+      background: rgba(247,235,208,0.05);
+      padding: 9px 12px;
+      border-radius: 999px;
+      color: rgba(247,235,208,0.78);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .carousel{
+      position:relative;
+      overflow:hidden;
+      border-radius: var(--radius);
+      border:1px solid rgba(247,235,208,0.16);
+      background: rgba(247,235,208,0.03);
+    }
+    .carouselViewport{
+      display:flex;
+      overflow:auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 12px;
+      padding: 12px;
+    }
+    .carouselViewport::-webkit-scrollbar{ height: 8px; }
+    .carouselViewport::-webkit-scrollbar-thumb{ background: rgba(247,235,208,0.18); border-radius: 999px; }
+    .slide{
+      flex: 0 0 84%;
+      scroll-snap-align: center;
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(247,235,208,0.14);
+      background: rgba(0,0,0,0.35);
+      position:relative;
+      min-height: 240px;
+      cursor: zoom-in;
+    }
+    .slide img{
+      width:100%;
+      height: 260px;
+      object-fit: cover;
+      display:block;
+      filter: contrast(1.03) saturate(1.02);
+    }
+    .slideOverlay{
+      position:absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(247,235,208,0.14);
+      background: rgba(17,17,18,0.62);
+      backdrop-filter: blur(10px);
+    }
+    .slideTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .ootd{
+      font-weight: 900;
+      letter-spacing: .4px;
+      color: rgba(247,235,208,0.95);
+      font-size: 13px;
+    }
+    .client{
+      color: rgba(247,235,208,0.70);
+      font-size: 12px;
+    }
+    .worn{
+      margin-top: 6px;
+      color: rgba(247,235,208,0.72);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .carouselBtns{
+      display:flex;
+      gap:10px;
+      margin-top: 10px;
+    }
+
+    /* Products grid */
+    .hero{
+      display:grid;
+      gap:14px;
+      margin-top:16px;
+    }
+    .hero h1{
+      margin:0;
+      font-family: Orbitron, Inter;
+      letter-spacing:1px;
+      font-size:20px;
+      color: var(--cream);
+    }
+    .hero p{ margin:8px 0 0; color: rgba(247,235,208,0.70); line-height:1.6; font-size:13px; }
+    .products{
+      margin-top:14px;
+      display:grid;
+      gap:14px;
+      grid-template-columns: 1fr;
+    }
+    .productCard{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap:12px;
+      padding:12px;
+      align-items:start;
+    }
+    .productImg{
+      width:110px; height:110px;
+      border-radius: 14px;
+      border:1px solid rgba(247,235,208,0.18);
+      background:
+        radial-gradient(120px 120px at 30% 20%, rgba(247,235,208,0.10), transparent 55%),
+        radial-gradient(120px 120px at 80% 60%, rgba(188,181,163,0.12), transparent 55%),
+        rgba(247,235,208,0.04);
+      overflow:hidden;
+      cursor: zoom-in;
+      position:relative;
+      display:grid;
+      place-items:center;
+    }
+    .productImg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .zoomHint{
+      position:absolute;
+      left:8px; bottom:8px;
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid rgba(247,235,208,0.16);
+      background: rgba(0,0,0,0.35);
+      color: rgba(247,235,208,0.78);
+      backdrop-filter: blur(10px);
+    }
+    .pTitle{ margin:0; font-weight:900; font-size:14px; color: var(--cream); }
+    .pDesc{ margin:6px 0 10px; color: rgba(247,235,208,0.70); font-size:12px; line-height:1.5; }
+    .priceRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .price{ font-weight:900; letter-spacing:.2px; color: var(--cream); }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    /* Modal (image enlarge) */
+    .modal{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,0.72);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index: 120;
+    }
+    .modal.open{ display:flex; }
+    .modalCard{
+      width:min(980px, 100%);
+      border-radius: 20px;
+      overflow:hidden;
+      border:1px solid rgba(247,235,208,0.18);
+      background: rgba(17,17,18,0.78);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+    .modalTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(247,235,208,0.10);
+    }
+    .modalTitle{
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:0.2px;
+      color: rgba(247,235,208,0.90);
+    }
+    .closeBtn{
+      width:40px; height:40px;
+      border-radius:14px;
+      border:1px solid rgba(247,235,208,0.18);
+      background: rgba(247,235,208,0.06);
+      color: rgba(247,235,208,0.92);
+      cursor:pointer;
+    }
+    .modalBody{ background:#000; }
+    .modalBody img{
+      width:100%;
+      height:auto;
+      display:block;
+      max-height: 76vh;
+      object-fit:contain;
+    }
+
+    /* Desktop */
+    @media (min-width: 900px){
+      .landingInner{ width:min(980px, 100% - 80px); }
+      .landingGrid{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:22px;
+        align-items:center;
+        text-align:left;
+      }
+      .logo{ margin:0 0 12px; width: 250px; }
+      .title{ font-size:28px; }
+      .actions{ grid-template-columns: 1fr 1fr; }
+
+      .masthead{
+        grid-template-columns: 0.45fr 0.55fr;
+        align-items:stretch;
+      }
+      .logoPlaceholder{ height:100%; }
+      .slide{ flex-basis: 62%; }
+      .slide img{ height: 320px; }
+
+      .hero{
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items:stretch;
+      }
+      .products{ grid-template-columns: repeat(2, 1fr); }
+      .productCard{ grid-template-columns: 160px 1fr; }
+      .productImg{ width:160px; height:160px; }
+    }
+
+    .fadeIn{ animation: fadeIn .35s ease both; }
+    @keyframes fadeIn{
+      from{ opacity:0; transform: translateY(6px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .tickerStream{ animation: none; padding-left: 0; }
+      .fadeIn{ animation: none; }
+      .carouselViewport{ scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- STOCK TICKER (TOP) -->
+  <div class="tickerBar" aria-label="Market ticker">
+    <div class="tickerInner">
+      <div class="tickerLabel">MARKET • LIVE FEEL</div>
+      <div class="tickerTrack">
+        <div class="tickerStream" id="tickerStream"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANDING -->
+  <section class="landing" id="landing">
+    <div class="landingInner fadeIn">
+      <div class="landingGrid">
+        <div>
+          <img class="logo" src="mnc.png" alt="MENOCLONE logo"
+               onerror="this.style.display='none'; document.getElementById('fallbackLogo').style.display='block';" />
+          <img id="fallbackLogo" class="logo" style="display:none;" src="assets/logo-fallback.png" alt="MENOCLONE" />
+
+          <div class="title">MENOCLONE THRIFT</div>
+          <p class="sub">
+            A Digitial Thrift Store that advocates embracing your fashion style. Don't follow trends, but se
+          </p>
+
+          <div class="actions">
+            <button class="btn primary" id="enterShopBtn" type="button">Enter Shop</button>
+
+            <!-- Replace with your Spatial.io space link -->
+            <a class="btn ghost" id="vrBtn" href="https://spatial.io/" target="_blank" rel="noopener">
+              Enter VR Shop (Spatial)
+            </a>
+          </div>
+
+          
+        </div>
+
+        <div class="videoFrame">
+          <video autoplay muted loop playsinline>
+            <source src="assets/menoclone-trailer.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP HEADER -->
+  <header id="topbar">
+    <div class="wrap">
+      <div class="bar">
+        <a class="brand" href="#" id="homeLink" aria-label="Back to shop top">
+          <div class="mark">MC</div>
+          <div>
+            <b>MENOCLONE</b><br />
+            <span class="subBrand">Thrift Shop</span>
+          </div>
+        </a>
+
+        <div class="rightBtns">
+          <a class="iconBtn" id="vrIconBtn" href="https://spatial.io/" target="_blank" rel="noopener" aria-label="Open VR shop">VR</a>
+          <button class="iconBtn" id="backToLandingBtn" type="button" aria-label="Back to landing">↩</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SHOP SCREEN -->
+  <main id="shop">
+    <div class="wrap">
+
+      <!-- NEW: under ticker, top of main page -->
+      <section class="masthead">
+
+        <!-- Centered logo placeholder -->
+        <div class="card logoPlaceholder">
+          <div class="logoBox">
+            <div class="small">
+              <img src="mnc.png" width="300" height="auto" alt="">
+            </div>
+          </div>
+        </div>
+
+        <!-- Lookbook carousel -->
+        <div class="card pad">
+          <div class="lookbookHead">
+            <div>
+              <h2 class="lookbookTitle">MENOCLONE Lookbook • OOTD</h2>
+              <p class="lookbookSub">
+                Outfit Of The Day — prior clients wearing pieces purchased from MENOCLONE.
+                Tap any photo to enlarge.
+              </p>
+            </div>
+            <span class="pill">📸 Client Fits</span>
+          </div>
+
+          <div class="carousel" aria-label="Lookbook carousel">
+            <div class="carouselViewport" id="lookbookViewport">
+              <!-- Slides injected by JS -->
+            </div>
+          </div>
+
+          <div class="carouselBtns">
+            <button class="btn small" type="button" id="prevSlideBtn">◀ Prev</button>
+            <button class="btn small" type="button" id="nextSlideBtn">Next ▶</button>
+          </div>
+
+
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section class="hero" style="margin-top:14px;">
+        <div class="card pad">
+          <h1>Shop (4 Items)</h1>
+          <p>
+            Each product shows <b>name</b>, <b>price</b>, and <b>description</b>.
+            Tap the image to enlarge. “Try On” is included but currently disabled.
+          </p>
+        </div>
+
+        <div class="card pad">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <div style="font-weight:900; font-size:14px; color:rgba(247,235,208,0.92);">VR Showroom</div>
+              <div style="color:rgba(247,235,208,0.65); font-size:12px; line-height:1.5; margin-top:6px;">
+                Step into our VR space to preview the vibe. (Coming Soon)
+              </div>
+            </div>
+            
+          </div>
+
+          <div style="margin-top:12px;">
+            <a class="btn primary" href="https://spatial.io/" target="_blank" rel="noopener" id="vrLaunchBtn">
+              Launch VR Shop
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-top:14px;">
+        <div class="products" id="productsGrid"></div>
+      </section>
+
+      <footer style="margin-top:22px; color:rgba(247,235,208,0.55); font-size:12px; text-align:center;">
+        © <span id="year"></span> MENOCLONE — Digital Thrifting Experience
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- IMAGE ENLARGE MODAL (used for products + lookbook) -->
+  <div class="modal" id="imgModal" aria-hidden="true">
+    <div class="modalCard">
+      <div class="modalTop">
+        <div class="modalTitle" id="modalTitle">Preview</div>
+        <button class="closeBtn" id="closeModalBtn" type="button" aria-label="Close preview">✕</button>
+      </div>
+      <div class="modalBody">
+        <img id="modalImg" alt="Enlarged image" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Replace with your Spatial "space" link
+    const SPATIAL_LINK = "https://spatial.io/";
+
+    // Exactly 4 products
+    const PRODUCTS = [
+      { id: 1, name: "Robots Smoke Too Tee", price: 40,  img: "aliensmoke.png" },
+      { id: 2, name: "Inspector Eyeball Tee", price: 40,  img: "InspectTheEye.png" },
+      { id: 3, name: "Parts Of Bots Tee", price: 40,  img: "partsOfRobot.png" },
+      { id: 4, name: "Gold Talk Hoodie", price: 80, img: "goldgirl.png" }
+    ];
+
+    // Lookbook carousel (OOTD) — replace images + captions
+    const LOOKBOOK = [
+      { id: "ootd1", title: "OOTD #001", client: "Client Fit — Queens", worn: "MENOCLONE Crewneck", img: "josh.png" },
+      { id: "ootd2", title: "OOTD #002", client: "Client Fit — Brooklyn", worn: "Snowball Sammy Hoodie", img: "frank.png" },
+      { id: "ootd3", title: "OOTD #003", client: "Client Fit — Manhattan", worn: "MENOCLONE Crewneck", img: "jan.png" }
+    ];
+
+    // Ticker symbols (edit these)
+    const TICKER = [
+      { sym: "SPY", px: 512.24, chg: +0.36 },
+      { sym: "QQQ", px: 448.19, chg: -0.22 },
+      { sym: "AAPL", px: 193.52, chg: +0.14 },
+      { sym: "TSLA", px: 204.11, chg: -1.08 },
+      { sym: "BTC", px: 52110.00, chg: +0.85 },
+      { sym: "ETH", px: 2810.55, chg: -0.41 },
+      { sym: "MENO", px: 1.00, chg: +9.99 } // fun/fake symbol
+    ];
+
+    // Elements
+    const landing = document.getElementById("landing");
+    const shop = document.getElementById("shop");
+    const topbar = document.getElementById("topbar");
+    const enterShopBtn = document.getElementById("enterShopBtn");
+
+    const vrBtn = document.getElementById("vrBtn");
+    const vrIconBtn = document.getElementById("vrIconBtn");
+    const vrLaunchBtn = document.getElementById("vrLaunchBtn");
+
+    const productsGrid = document.getElementById("productsGrid");
+    const backToLandingBtn = document.getElementById("backToLandingBtn");
+
+    const tickerStream = document.getElementById("tickerStream");
+
+    const lookbookViewport = document.getElementById("lookbookViewport");
+    const prevSlideBtn = document.getElementById("prevSlideBtn");
+    const nextSlideBtn = document.getElementById("nextSlideBtn");
+
+    const imgModal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    // Set Spatial links
+    [vrBtn, vrIconBtn, vrLaunchBtn].forEach(a => a.href = SPATIAL_LINK);
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function money(n){ return `$${Number(n).toFixed(2)}`; }
+
+    /* ===== Modal ===== */
+    function openModal(src, title){
+      modalImg.src = src;
+      modalTitle.textContent = title || "Preview";
+      imgModal.classList.add("open");
+      imgModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(){
+      imgModal.classList.remove("open");
+      imgModal.setAttribute("aria-hidden", "true");
+      modalImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    /* ===== Products ===== */
+    function renderProducts(){
+      productsGrid.innerHTML = "";
+      PRODUCTS.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "card productCard fadeIn";
+        card.innerHTML = `
+          <div class="productImg" role="button" tabindex="0" aria-label="Enlarge ${p.name}">
+            <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'; this.parentElement.style.cursor='default'; this.parentElement.textContent='Image';" />
+            <div class="zoomHint">Tap to zoom</div>
+          </div>
+
+          <div>
+            <p class="pTitle">${p.name}</p>
+            <p class="pDesc">${p.description}</p>
+
+            <div class="priceRow">
+              <div class="price">${money(p.price)}</div>
+
+              <div class="ctaRow">
+                <button class="btn small primary" type="button">Buy</button>
+                <button class="btn small" type="button" disabled title="Try-on feature coming soon">
+                  Try On (Soon)
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        const imgBox = card.querySelector(".productImg");
+        imgBox.addEventListener("click", () => openModal(p.img, p.name));
+        imgBox.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" || e.key === " ") openModal(p.img, p.name);
+        });
+
+        card.querySelector(".btn.primary").addEventListener("click", () => {
+          alert(`Added to checkout (demo):\n\n${p.name}\n${money(p.price)}\n\nNext step: connect Stripe/Shopify.`);
+        });
+
+        productsGrid.appendChild(card);
+      });
+    }
+
+    /* ===== Lookbook ===== */
+    function renderLookbook(){
+      lookbookViewport.innerHTML = "";
+      LOOKBOOK.forEach(item => {
+        const slide = document.createElement("div");
+        slide.className = "slide";
+        slide.setAttribute("role", "button");
+        slide.setAttribute("tabindex", "0");
+        slide.setAttribute("aria-label", `Enlarge ${item.title}`);
+        slide.innerHTML = `
+          <img src="${item.img}" alt="${item.title}" onerror="this.style.display='none'; this.parentElement.style.cursor='default'; this.parentElement.style.minHeight='240px'; this.parentElement.style.display='grid'; this.parentElement.style.placeItems='center'; this.parentElement.textContent='Lookbook Image';" />
+          <div class="slideOverlay">
+            <div class="slideTop">
+              <div class="ootd">${item.title}</div>
+              <div class="client">${item.client}</div>
+            </div>
+            <div class="worn"><b>Wearing:</b> ${item.worn}</div>
+          </div>
+        `;
+
+        slide.addEventListener("click", () => openModal(item.img, item.title));
+        slide.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" || e.key === " ") openModal(item.img, item.title);
+        });
+
+        lookbookViewport.appendChild(slide);
+      });
+    }
+
+    function scrollLookbook(dir){
+      const amount = Math.max(280, lookbookViewport.clientWidth * 0.8);
+      lookbookViewport.scrollBy({ left: dir * amount, behavior: "smooth" });
+    }
+
+    prevSlideBtn.addEventListener("click", () => scrollLookbook(-1));
+    nextSlideBtn.addEventListener("click", () => scrollLookbook(1));
+
+    /* ===== Ticker ===== */
+    function fmtPx(px){ return `$${px.toFixed(2)}`; }
+    function fmtChg(chg){
+      const sign = chg >= 0 ? "+" : "";
+      return `${sign}${chg.toFixed(2)}%`;
+    }
+    function renderTicker(){
+      const items = TICKER.map(t => {
+        const cls = t.chg >= 0 ? "up" : "down";
+        return `
+          <span class="tickerItem">
+            <span class="sym">${t.sym}</span>
+            <span class="px">${fmtPx(t.px)}</span>
+            <span class="chg ${cls}">${fmtChg(t.chg)}</span>
+          </span>
+        `;
+      }).join("");
+      tickerStream.innerHTML = items + items; // doubled for seamless scroll
+    }
+    function nudgeTicker(){
+      TICKER.forEach(t => {
+        const drift = (Math.random() - 0.5) * 0.6; // +/- 0.30
+        t.chg = Math.max(-9.99, Math.min(9.99, t.chg + drift));
+        const pxDrift = (Math.random() * 0.12) * (t.chg >= 0 ? 1 : -1);
+        t.px = Math.max(0.01, t.px + pxDrift);
+      });
+      renderTicker();
+    }
+
+    /* ===== Navigation ===== */
+    function enterShop(){
+      landing.style.display = "none";
+      topbar.style.display = "block";
+      shop.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "instant" });
+
+      renderLookbook();
+      renderProducts();
+    }
+    function backToLanding(){
+      closeModal();
+      shop.style.display = "none";
+      topbar.style.display = "none";
+      landing.style.display = "grid";
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    // Events
+    enterShopBtn.addEventListener("click", enterShop);
+    backToLandingBtn.addEventListener("click", backToLanding);
+
+    closeModalBtn.addEventListener("click", closeModal);
+    imgModal.addEventListener("click", (e) => { if(e.target === imgModal) closeModal(); });
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && imgModal.classList.contains("open")) closeModal();
+    });
+
+    // Init ticker
+    renderTicker();
+    setInterval(nudgeTicker, 4500);
+  </script>
+</body>
+</html>
