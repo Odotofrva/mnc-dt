@@ -630,8 +630,8 @@
             <button class="btn primary" id="enterShopBtn" type="button">Enter Shop</button>
 
             <!-- Replace with your Spatial.io space link -->
-            <a class="btn ghost" id="vrBtn" href="https://spatial.io/" target="_blank" rel="noopener">
-              Enter VR Shop (Spatial)
+            <a class="btn ghost" id="vrBtn" href="https://www.spatial.io/s/MENOCLONE-68d6a0c931014a2e50a0f9e3" target="_blank" rel="noopener">
+              Enter VR Shop
             </a>
           </div>
 
@@ -651,8 +651,7 @@
   <header id="topbar">
     <div class="wrap">
       <div class="bar">
-        <a class="brand" href="#" id="homeLink" aria-label="Back to shop top">
-          <div class="mark">MC</div>
+        <a class="brand" href="index.html" id="homeLink" aria-label="Back to shop top">
           <div>
             <b>MENOCLONE</b><br />
             <span class="subBrand">Thrift Shop</span>
@@ -766,7 +765,7 @@
 
   <script>
     // Replace with your Spatial "space" link
-    const SPATIAL_LINK = "https://spatial.io/";
+    const SPATIAL_LINK = "https://www.spatial.io/s/MENOCLONE-68d6a0c931014a2e50a0f9e3";
 
     // Exactly 4 products
     const PRODUCTS = [
@@ -877,7 +876,7 @@
         });
 
         card.querySelector(".btn.primary").addEventListener("click", () => {
-          alert(`Added to checkout (demo):\n\n${p.name}\n${money(p.price)}\n\nNext step: connect Stripe/Shopify.`);
+          alert(`Added to checkout (demo):\n\n${p.name}\n${money(p.price)}\n\nQuality Takes Time, Stay Tuned`);
         });
 
         productsGrid.appendChild(card);
