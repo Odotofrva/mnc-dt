@@ -2,24 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
   <title>MENOCLONE — A Digital Thrifting Experience</title>
-  <meta name="description" content="Minimal street-luxury thrift starter with splash screen, product grid, cart UI, and AR try-on entry point." />
+  <meta
+    name="description"
+    content="Minimal street-luxury thrift starter with splash screen, product grid, cart UI, and AR try-on entry point."
+  />
   <style>
     :root {
       --bg: #0a0a0a;
       --panel: #111111;
       --panel-2: #151515;
       --soft: #1d1d1d;
-      --line: rgba(255,255,255,0.12);
-      --line-strong: rgba(255,255,255,0.24);
+      --line: rgba(255, 255, 255, 0.12);
+      --line-strong: rgba(255, 255, 255, 0.24);
       --text: #f5f3ef;
       --muted: #b7b1a8;
       --gold: #c7a86b;
       --gold-soft: #9d8151;
       --danger: #d75b5b;
       --success: #7ac28a;
-      --shadow: 0 18px 60px rgba(0,0,0,0.45);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
       --radius-xl: 28px;
       --radius-lg: 20px;
       --radius-md: 14px;
@@ -29,11 +35,12 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(199,168,107,0.10), transparent 24%),
+        radial-gradient(circle at top, rgba(199, 168, 107, 0.10), transparent 24%),
         linear-gradient(180deg, #070707 0%, #0b0b0b 40%, #050505 100%);
       color: var(--text);
       min-height: 100vh;
@@ -46,9 +53,11 @@
     button, input, select { font: inherit; }
     img { max-width: 100%; display: block; }
 
-    .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
 
-    /* Splash */
     .splash {
       position: fixed;
       inset: 0;
@@ -56,15 +65,17 @@
       display: grid;
       place-items: center;
       background:
-        radial-gradient(circle at center, rgba(199,168,107,0.12), transparent 35%),
+        radial-gradient(circle at center, rgba(199, 168, 107, 0.12), transparent 35%),
         linear-gradient(180deg, #060606 0%, #000 100%);
       transition: opacity .7s ease, visibility .7s ease;
     }
+
     .splash.hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
+
     .splash-inner {
       width: min(90vw, 420px);
       text-align: center;
@@ -72,6 +83,7 @@
       gap: 18px;
       justify-items: center;
     }
+
     .logo-mark {
       width: 160px;
       height: 160px;
@@ -89,12 +101,14 @@
       overflow: hidden;
       position: relative;
     }
+
     .logo-mark img {
       width: 80%;
       height: 80%;
       object-fit: contain;
       filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
     }
+
     .logo-fallback {
       font-size: 30px;
       font-weight: 700;
@@ -102,6 +116,7 @@
       text-indent: 0.35em;
       color: var(--text);
     }
+
     .splash-title {
       margin: 0;
       font-size: clamp(28px, 6vw, 48px);
@@ -109,6 +124,7 @@
       text-indent: 0.35em;
       font-weight: 700;
     }
+
     .splash-sub {
       margin: 0;
       color: var(--muted);
@@ -116,6 +132,7 @@
       letter-spacing: 0.28em;
       font-size: 11px;
     }
+
     .loader-track {
       width: min(82vw, 280px);
       height: 6px;
@@ -124,6 +141,7 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.05);
     }
+
     .loader-bar {
       height: 100%;
       width: 0;
@@ -131,9 +149,12 @@
       border-radius: inherit;
       animation: loadBar 3s ease forwards;
     }
-    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
 
-    /* Header */
+    @keyframes loadBar {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
     .site-header {
       position: sticky;
       top: 0;
@@ -142,6 +163,7 @@
       background: rgba(5,5,5,0.72);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+
     .nav {
       min-height: var(--header-h);
       display: flex;
@@ -149,12 +171,14 @@
       justify-content: space-between;
       gap: 20px;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
       min-width: 0;
     }
+
     .brand-badge {
       width: 42px;
       height: 42px;
@@ -166,7 +190,13 @@
       overflow: hidden;
       flex-shrink: 0;
     }
-    .brand-badge img { width: 78%; height: 78%; object-fit: contain; }
+
+    .brand-badge img {
+      width: 78%;
+      height: 78%;
+      object-fit: contain;
+    }
+
     .brand-name {
       font-size: 13px;
       text-transform: uppercase;
@@ -175,6 +205,7 @@
       font-weight: 700;
       white-space: nowrap;
     }
+
     .brand-sub {
       display: block;
       margin-top: 3px;
@@ -183,6 +214,7 @@
       color: var(--muted);
       font-weight: 400;
     }
+
     .nav-links {
       display: flex;
       align-items: center;
@@ -190,6 +222,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .nav-links a {
       font-size: 12px;
       letter-spacing: 0.18em;
@@ -197,8 +230,12 @@
       color: var(--muted);
       transition: color .2s ease;
     }
+
     .nav-links a:hover,
-    .nav-links a:focus-visible { color: var(--text); }
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
     .nav-actions {
       display: flex;
       align-items: center;
@@ -215,22 +252,30 @@
       cursor: pointer;
       transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
+
     .btn:hover,
     .btn:focus-visible {
       transform: translateY(-1px);
       border-color: var(--line-strong);
     }
+
     .btn-primary {
       background: linear-gradient(145deg, rgba(199,168,107,0.18), rgba(199,168,107,0.08));
       border-color: rgba(199,168,107,0.34);
       color: #f9f5ec;
     }
-    .btn-sm { padding: 10px 14px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
 
-    /* Hero */
+    .btn-sm {
+      padding: 10px 14px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
     .hero {
       padding: 34px 0 20px;
     }
+
     .hero-card {
       position: relative;
       overflow: hidden;
@@ -244,6 +289,7 @@
       display: grid;
       align-items: end;
     }
+
     .hero-media {
       position: absolute;
       inset: 0;
@@ -252,12 +298,14 @@
         url('odotredblkjersey.jpg') center/cover;
       transform: scale(1.02);
     }
+
     .hero-media::after {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58));
     }
+
     .hero-content {
       position: relative;
       z-index: 1;
@@ -266,6 +314,7 @@
       gap: 22px;
       max-width: 760px;
     }
+
     .eyebrow {
       display: inline-flex;
       width: fit-content;
@@ -280,6 +329,7 @@
       letter-spacing: 0.24em;
       color: #ede4d2;
     }
+
     .hero h1 {
       margin: 0;
       font-size: clamp(42px, 8vw, 94px);
@@ -287,6 +337,7 @@
       letter-spacing: -0.05em;
       font-weight: 700;
     }
+
     .hero p {
       margin: 0;
       max-width: 60ch;
@@ -294,40 +345,15 @@
       font-size: clamp(15px, 2vw, 18px);
       line-height: 1.75;
     }
+
     .hero-actions {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
     }
-    .hero-notes {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 8px;
-    }
-    .note {
-      padding: 16px 16px 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-    }
-    .note strong {
-      display: block;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #f3ebdc;
-      margin-bottom: 6px;
-    }
-    .note span {
-      color: #cfc7bc;
-      font-size: 14px;
-      line-height: 1.5;
-    }
 
-    /* Section framing */
     section { padding: 28px 0; }
+
     .section-head {
       display: flex;
       align-items: end;
@@ -335,6 +361,7 @@
       gap: 16px;
       margin-bottom: 18px;
     }
+
     .section-kicker {
       text-transform: uppercase;
       letter-spacing: 0.26em;
@@ -342,12 +369,14 @@
       color: var(--gold);
       margin-bottom: 10px;
     }
+
     .section-head h2 {
       margin: 0;
       font-size: clamp(28px, 4vw, 48px);
       letter-spacing: -0.04em;
       line-height: 1;
     }
+
     .section-head p {
       margin: 10px 0 0;
       max-width: 58ch;
@@ -356,13 +385,13 @@
       font-size: 15px;
     }
 
-    /* Filters */
     .toolbar {
       display: grid;
       grid-template-columns: 1.1fr .8fr .8fr auto;
       gap: 12px;
       margin-bottom: 20px;
     }
+
     .field {
       display: flex;
       align-items: center;
@@ -373,6 +402,7 @@
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
     }
+
     .field input,
     .field select {
       width: 100%;
@@ -381,15 +411,16 @@
       color: var(--text);
       outline: none;
     }
+
     .field input::placeholder { color: #8f8a82; }
     .field-icon { color: var(--gold); font-size: 14px; }
 
-    /* Product grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
     }
+
     .card {
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.09);
@@ -398,24 +429,29 @@
       transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
       box-shadow: 0 8px 30px rgba(0,0,0,0.25);
     }
+
     .card:hover {
       transform: translateY(-4px);
       border-color: rgba(199,168,107,0.32);
       box-shadow: 0 18px 44px rgba(0,0,0,0.35);
     }
+
     .thumb {
       position: relative;
       aspect-ratio: 4 / 5;
       overflow: hidden;
       background: #141414;
     }
+
     .thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .4s ease;
     }
+
     .card:hover .thumb img { transform: scale(1.035); }
+
     .tag-row {
       position: absolute;
       top: 12px;
@@ -426,6 +462,7 @@
       gap: 8px;
       pointer-events: none;
     }
+
     .tag {
       padding: 8px 10px;
       border-radius: 999px;
@@ -437,39 +474,46 @@
       color: #f0e9de;
       backdrop-filter: blur(8px);
     }
+
     .card-body {
       padding: 16px;
       display: grid;
       gap: 14px;
     }
+
     .meta-top {
       display: flex;
       align-items: start;
       justify-content: space-between;
       gap: 14px;
     }
+
     .meta-top h3 {
       margin: 0 0 6px;
       font-size: 18px;
       line-height: 1.12;
     }
+
     .tiny {
       color: var(--muted);
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+
     .price {
       color: var(--text);
       font-size: 18px;
       font-weight: 700;
       white-space: nowrap;
     }
+
     .specs {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
+
     .pill {
       padding: 8px 10px;
       border-radius: 999px;
@@ -480,18 +524,19 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
+
     .card-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
 
-    /* Story / support */
     .split {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
       gap: 18px;
     }
+
     .panel {
       border-radius: 28px;
       padding: 24px;
@@ -499,27 +544,7 @@
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: var(--shadow);
     }
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .story-box {
-      padding: 18px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-    .story-box strong {
-      display: block;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 11px;
-      color: var(--gold);
-    }
-    .story-box p,
+
     .story-copy p,
     .ar-copy p {
       margin: 0;
@@ -530,23 +555,16 @@
 
     .ar-preview {
       position: relative;
-      min-height: 500px;
+      min-height: 320px;
       overflow: hidden;
       border-radius: 26px;
       background:
         linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.38)),
-        url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80') center/cover;
+        radial-gradient(circle at 20% 10%, rgba(199,168,107,0.10), transparent 35%),
+        linear-gradient(135deg, #111 0%, #0a0a0a 100%);
       border: 1px solid rgba(255,255,255,0.08);
     }
-    .ar-overlay-demo {
-      position: absolute;
-      left: 50%;
-      top: 46%;
-      transform: translate(-50%, -50%);
-      width: min(74%, 280px);
-      opacity: 0.85;
-      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.42));
-    }
+
     .ar-ui-note {
       position: absolute;
       left: 16px;
@@ -559,17 +577,10 @@
       backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 16px;
     }
-    .ar-ui-note span {
-      color: #e3ddd3;
-      font-size: 13px;
-      line-height: 1.5;
-      max-width: 38ch;
-    }
 
-    /* Cart drawer */
     .drawer {
       position: fixed;
       top: 0;
@@ -586,12 +597,15 @@
       grid-template-rows: auto 1fr auto;
       box-shadow: -20px 0 60px rgba(0,0,0,0.35);
     }
+
     .drawer.open { transform: translateX(0); }
+
     .drawer-head,
     .drawer-foot {
       padding: 18px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+
     .drawer-foot {
       border-bottom: 0;
       border-top: 1px solid rgba(255,255,255,0.08);
@@ -599,16 +613,19 @@
       gap: 14px;
       background: rgba(255,255,255,0.02);
     }
+
     .drawer-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
+
     .drawer-title {
       margin: 0;
       font-size: 22px;
     }
+
     .drawer-body {
       overflow: auto;
       padding: 18px;
@@ -616,6 +633,7 @@
       gap: 12px;
       align-content: start;
     }
+
     .cart-item {
       display: grid;
       grid-template-columns: 84px 1fr;
@@ -625,21 +643,25 @@
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
     }
+
     .cart-item img {
       width: 84px;
       height: 104px;
       object-fit: cover;
       border-radius: 16px;
     }
+
     .cart-item h4 {
       margin: 0 0 6px;
       font-size: 16px;
     }
+
     .cart-meta {
       color: var(--muted);
       font-size: 12px;
       line-height: 1.6;
     }
+
     .cart-actions {
       margin-top: 10px;
       display: flex;
@@ -647,6 +669,7 @@
       justify-content: space-between;
       gap: 8px;
     }
+
     .qty {
       display: inline-flex;
       align-items: center;
@@ -656,6 +679,7 @@
       padding: 6px 10px;
       background: rgba(255,255,255,0.02);
     }
+
     .qty button {
       border: 0;
       background: transparent;
@@ -664,6 +688,7 @@
       font-size: 18px;
       line-height: 1;
     }
+
     .empty {
       border: 1px dashed rgba(255,255,255,0.12);
       color: var(--muted);
@@ -681,12 +706,12 @@
       transition: opacity .3s ease, visibility .3s ease;
       z-index: 1500;
     }
+
     .overlay.show {
       opacity: 1;
       visibility: visible;
     }
 
-    /* AR modal */
     .modal {
       position: fixed;
       inset: 0;
@@ -698,10 +723,12 @@
       visibility: hidden;
       transition: opacity .3s ease, visibility .3s ease;
     }
+
     .modal.open {
       opacity: 1;
       visibility: visible;
     }
+
     .modal-card {
       width: min(1120px, 100%);
       max-height: min(92dvh, 1000px);
@@ -713,13 +740,16 @@
       display: grid;
       grid-template-columns: 1.2fr .8fr;
     }
+
     .camera-shell {
       position: relative;
       background: #000;
       min-height: 600px;
       overflow: hidden;
     }
-    .camera-video, .camera-canvas {
+
+    .camera-video,
+    .camera-canvas {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -727,7 +757,9 @@
       object-fit: cover;
       background: #0f0f0f;
     }
+
     .camera-canvas { pointer-events: none; }
+
     .camera-frame {
       position: absolute;
       inset: 18px;
@@ -736,6 +768,7 @@
       box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
       pointer-events: none;
     }
+
     .camera-guide {
       position: absolute;
       left: 50%;
@@ -747,6 +780,7 @@
       border-radius: 30px;
       pointer-events: none;
     }
+
     .camera-status {
       position: absolute;
       left: 16px;
@@ -757,6 +791,7 @@
       justify-content: space-between;
       gap: 12px;
     }
+
     .status-pill {
       padding: 9px 12px;
       border-radius: 999px;
@@ -768,6 +803,7 @@
       letter-spacing: 0.18em;
       backdrop-filter: blur(8px);
     }
+
     .modal-side {
       display: grid;
       grid-template-rows: auto auto 1fr auto;
@@ -775,21 +811,25 @@
       padding: 22px;
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
     }
+
     .modal-side h3 {
       margin: 0;
       font-size: 28px;
       line-height: 1.05;
     }
+
     .modal-side p {
       margin: 0;
       color: var(--muted);
       line-height: 1.7;
       font-size: 14px;
     }
+
     .detail-stack {
       display: grid;
       gap: 10px;
     }
+
     .detail-row {
       display: flex;
       align-items: center;
@@ -802,11 +842,14 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
+
     .detail-row span:last-child { color: var(--muted); }
+
     .modal-actions {
       display: grid;
       gap: 10px;
     }
+
     .ar-tip {
       padding: 14px 16px;
       border-radius: 18px;
@@ -817,11 +860,11 @@
       line-height: 1.6;
     }
 
-    /* Footer */
     footer {
       padding: 50px 0 70px;
       color: var(--muted);
     }
+
     .footer-card {
       padding: 26px;
       border-radius: 26px;
@@ -833,6 +876,7 @@
       gap: 16px;
       flex-wrap: wrap;
     }
+
     .footer-card strong {
       color: var(--text);
       letter-spacing: 0.22em;
@@ -853,6 +897,7 @@
 
     @media (max-width: 780px) {
       .nav { flex-wrap: wrap; padding: 14px 0; }
+
       .nav-links {
         order: 3;
         width: 100%;
@@ -860,13 +905,17 @@
         overflow-x: auto;
         padding-bottom: 4px;
       }
+
       .hero-card { min-height: 680px; }
-      .hero-notes,
-      .story-grid,
+
       .toolbar,
-      .grid { grid-template-columns: 1fr; }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
       .section-head,
       .footer-card { align-items: start; }
+
       .card-actions { grid-template-columns: 1fr; }
       .hide-mobile { display: none; }
       .modal-side { padding: 18px; }
@@ -877,13 +926,20 @@
   <div class="splash" id="splash" aria-hidden="true">
     <div class="splash-inner">
       <div class="logo-mark">
-        <img id="splashLogo" src="mnc.png   " alt="MENOCLONE logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <img
+          id="splashLogo"
+          src="mnc.png"
+          alt="MENOCLONE logo"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        />
         <div class="logo-fallback" style="display:none;">M</div>
       </div>
+
       <div>
         <h1 class="splash-title">MENOCLONE</h1>
-        <p class="splash-sub">A Digital Thrifing Experience</p>
+        <p class="splash-sub">A Digital Thrifting Experience</p>
       </div>
+
       <div class="loader-track" aria-label="Loading">
         <div class="loader-bar"></div>
       </div>
@@ -896,10 +952,17 @@
     <div class="wrap nav">
       <a href="#top" class="brand" aria-label="MENOCLONE home">
         <div class="brand-badge">
-          <img src="mnc.png" alt="MENOCLONE mark" onerror="this.style.display='none'; this.parentNode.textContent='M'; this.parentNode.style.fontWeight='700'; this.parentNode.style.letterSpacing='.15em';" />
+          <img
+            src="mnc.png"
+            alt="MENOCLONE mark"
+            onerror="this.style.display='none'; this.parentNode.textContent='M'; this.parentNode.style.fontWeight='700'; this.parentNode.style.letterSpacing='.15em';"
+          />
         </div>
         <div>
-          <div class="brand-name">MENOCLONE <span class="brand-sub">A Digital Thrifiting Experience</span></div>
+          <div class="brand-name">
+            MENOCLONE
+            <span class="brand-sub">A Digital Thrifting Experience</span>
+          </div>
         </div>
       </a>
 
@@ -912,7 +975,9 @@
 
       <div class="nav-actions">
         <button class="btn btn-sm hide-mobile" id="openARHero">AR Fitting</button>
-        <button class="btn btn-primary btn-sm" id="openCartBtn">Cart <span id="cartCount">(0)</span></button>
+        <button class="btn btn-primary btn-sm" id="openCartBtn">
+          Cart <span id="cartCount">(0)</span>
+        </button>
       </div>
     </div>
   </header>
@@ -921,17 +986,20 @@
     <section class="hero wrap">
       <div class="hero-card">
         <div class="hero-media"></div>
+
         <div class="hero-content">
           <span class="eyebrow">A Digital Thrifting Experience</span>
-          <h1>Minimal thrift,<br/>luxury mood.</h1>
+          <h1>Minimal thrift,<br />luxury mood.</h1>
           <p>
-            MENOCLONE is a digital thrifting experience where street luxury meets immersive technology.Built for the future of fashion, MENOCLONE blends thrift culture, VR exploration, and modern street style.
+            MENOCLONE is a digital thrifting experience where street luxury
+            meets immersive technology. Built for the future of fashion,
+            MENOCLONE blends thrift culture, digital retail, and modern street style.
           </p>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="#shop">Shop the archive</a>
-            <button class="btn" id="heroTryOn">Launch AR try on</button>
+            <button class="btn" id="heroTryOn">Launch AR try-on</button>
           </div>
-          
         </div>
       </div>
     </section>
@@ -941,17 +1009,19 @@
         <div>
           <div class="section-kicker">Collection</div>
           <h2>Shop the pieces</h2>
-          <!--
-          <p>Starter layout for curated thrift inventory. Each product can open an AR try-on entry point before it gets added to cart.</p>
-          -->
         </div>
       </div>
 
       <div class="toolbar">
         <label class="field">
           <span class="field-icon">⌕</span>
-          <input id="searchInput" type="text" placeholder="Search jackets, tees, archive pieces" />
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search jackets, tees, archive pieces"
+          />
         </label>
+
         <label class="field">
           <select id="categoryFilter">
             <option value="all">All categories</option>
@@ -960,6 +1030,7 @@
             <option value="knitwear">Knitwear</option>
           </select>
         </label>
+
         <label class="field">
           <select id="sizeFilter">
             <option value="all">All sizes</option>
@@ -969,6 +1040,7 @@
             <option value="XL">XL</option>
           </select>
         </label>
+
         <button class="btn btn-primary" id="clearFilters">Reset</button>
       </div>
 
@@ -979,32 +1051,36 @@
       <div class="split">
         <div class="panel story-copy">
           <div class="section-kicker">Brand feel</div>
-          <h2 style="margin:0 0 14px; font-size: clamp(28px, 4vw, 52px); line-height:1; letter-spacing:-0.05em;">A Digital Thrifiting Experience.</h2>
-
-          <!-- 
+          <h2
+            style="margin:0 0 14px; font-size: clamp(28px, 4vw, 52px); line-height:1; letter-spacing:-0.05em;"
+          >
+            A Digital Thrifting Experience.
+          </h2>
           <p>
-            This starter is designed like a fashion-forward landing page rather than a plain storefront. The layout is intentionally restrained,
-            with strong typography, dark surfaces, polished cards, and gold highlights that nod to luxury fashion presentation.
+            MENOCLONE is designed like a fashion-forward destination rather than a
+            plain storefront. The experience leans into dark luxury surfaces,
+            restrained typography, elevated product presentation, and immersive
+            try-on moments that make digital thrifting feel more premium.
           </p>
-          -->
-
-
-        
-
+        </div>
 
         <div class="panel" id="ar-entry">
-          <div class="section-kicker">AR-OdotNYC </div>
-          <h2 style="margin:0 0 14px; font-size: clamp(28px, 4vw, 46px); line-height:1; letter-spacing:-0.05em;">Try On Now</h2>
+          <div class="section-kicker">AR Fitting</div>
+          <h2
+            style="margin:0 0 14px; font-size: clamp(28px, 4vw, 46px); line-height:1; letter-spacing:-0.05em;"
+          >
+            Try On Now
+          </h2>
+
           <div class="ar-copy" style="margin-bottom: 16px;">
-           <!--  <p>
-              The modal below opens the user camera and places a garment overlay placeholder above the live feed.
-              For production, this can be upgraded using MediaPipe pose landmarks so tops align more naturally to shoulders and torso.
-            </p> -->
+            <p>
+              Open the live fitting room to preview a garment over your camera feed
+              before adding it to cart.
+            </p>
           </div>
+
           <div class="ar-preview">
-            
             <div class="ar-ui-note">
-              <!--<span>Starter behavior: open the live try-on modal, show the selected item, and let the customer add to cart from inside the fitting view.</span> -->
               <button class="btn btn-primary" id="openARDemo">Open live try-on</button>
             </div>
           </div>
@@ -1017,9 +1093,13 @@
     <div class="footer-card">
       <div>
         <strong>MENOCLONE</strong>
-        <div style="margin-top:10px; line-height:1.8;">A Digital Thrifiting Experience.</div>
+        <div style="margin-top:10px; line-height:1.8;">
+          A Digital Thrifting Experience.
+        </div>
       </div>
-      <div style="text-transform:uppercase; letter-spacing:.18em; font-size:12px;">2026 MENOCLONE / All Rights Reserved</div>
+      <div style="text-transform:uppercase; letter-spacing:.18em; font-size:12px;">
+        2026 MENOCLONE / All Rights Reserved
+      </div>
     </div>
   </footer>
 
@@ -1028,10 +1108,14 @@
       <h3 class="drawer-title">Your cart</h3>
       <button class="btn btn-sm" id="closeCartBtn">Close</button>
     </div>
+
     <div class="drawer-body" id="cartItems"></div>
+
     <div class="drawer-foot">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:14px; font-size:15px;">
-        <span style="color:var(--muted); text-transform:uppercase; letter-spacing:.14em; font-size:12px;">Subtotal</span>
+        <span style="color:var(--muted); text-transform:uppercase; letter-spacing:.14em; font-size:12px;">
+          Subtotal
+        </span>
         <strong id="cartSubtotal" style="font-size:22px;">$0.00</strong>
       </div>
       <button class="btn btn-primary">Proceed to checkout</button>
@@ -1045,18 +1129,22 @@
         <canvas id="cameraCanvas" class="camera-canvas"></canvas>
         <div class="camera-frame"></div>
         <div class="camera-guide"></div>
+
         <div class="camera-status">
           <span class="status-pill" id="cameraStatus">Camera standby</span>
           <button class="btn btn-sm" id="closeARModal">Close</button>
         </div>
       </div>
+
       <div class="modal-side">
         <div>
           <div class="section-kicker">AR fitting room</div>
           <h3 id="arTitle">Loading garment</h3>
         </div>
 
-        <p id="arDescription">Open the live camera and preview the garment before adding it to cart.</p>
+        <p id="arDescription">
+          Open the live camera and preview the garment before adding it to cart.
+        </p>
 
         <div>
           <div class="detail-stack">
@@ -1065,13 +1153,13 @@
             <div class="detail-row"><span>Condition</span><span id="arCondition">—</span></div>
             <div class="detail-row"><span>Price</span><span id="arPrice">—</span></div>
           </div>
-         <!--
+
           <div class="ar-tip" style="margin-top:16px;">
-            Starter version: the canvas draws a luxe frame and a soft garment guide over the video feed. In the next build, replace this overlay with pose-based fitting using landmark tracking.
+            Starter mode uses a live camera with a product overlay guide. For a true
+            body-following try-on, connect this next to MediaPipe pose tracking.
           </div>
         </div>
 
-        -->
         <div class="modal-actions">
           <button class="btn btn-primary" id="startCameraBtn">Start camera</button>
           <button class="btn" id="addFromARBtn">Add to cart</button>
@@ -1089,7 +1177,8 @@
         size: 'L',
         condition: 'Excellent',
         price: 188,
-        image: 'https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?auto=format&fit=crop&w=900&q=80',
+        image: 'archive-leather-jacket.jpg',
+        overlay: 'archive-leather-jacket-overlay.png',
         note: 'Italian finish / structured silhouette'
       },
       {
@@ -1099,7 +1188,8 @@
         size: 'M',
         condition: 'Very Good',
         price: 124,
-        image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80',
+        image: 'monogram-wool-knit.jpg',
+        overlay: 'monogram-wool-knit-overlay.png',
         note: 'Soft hand / luxe layering piece'
       },
       {
@@ -1109,7 +1199,8 @@
         size: 'XL',
         condition: 'Excellent',
         price: 74,
-        image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=80',
+        image: 'heavyweight-logo-tee.jpg',
+        overlay: 'heavyweight-logo-tee-overlay.png',
         note: 'Box cut / premium cotton'
       },
       {
@@ -1119,7 +1210,8 @@
         size: 'M',
         condition: 'Good',
         price: 162,
-        image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+        image: 'runway-zip-bomber.jpg',
+        overlay: 'runway-zip-bomber-overlay.png',
         note: 'Minimal sheen / street formal'
       },
       {
@@ -1129,7 +1221,8 @@
         size: 'S',
         condition: 'Excellent',
         price: 86,
-        image: 'https://images.unsplash.com/photo-1503341338985-b07ae9f1c3f7?auto=format&fit=crop&w=900&q=80',
+        image: 'paris-club-sweatshirt.jpg',
+        overlay: 'paris-club-sweatshirt-overlay.png',
         note: 'Relaxed fit / boutique wash'
       },
       {
@@ -1139,7 +1232,8 @@
         size: 'L',
         condition: 'Very Good',
         price: 148,
-        image: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80',
+        image: 'studio-cashmere-layer.jpg',
+        overlay: 'studio-cashmere-layer-overlay.png',
         note: 'Neutral palette / quiet luxury'
       }
     ];
@@ -1147,7 +1241,9 @@
     const state = {
       cart: [],
       selectedProduct: products[0],
-      stream: null
+      stream: null,
+      animationId: null,
+      overlayImage: null
     };
 
     const splash = document.getElementById('splash');
@@ -1169,14 +1265,25 @@
     const arPrice = document.getElementById('arPrice');
 
     function money(v) {
-      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(v);
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      }).format(v);
+    }
+
+    function safeImage(src, fallbackText = 'Image') {
+      return src && src.trim() ? src : `https://placehold.co/800x1000/111111/F5F3EF?text=${encodeURIComponent(fallbackText)}`;
     }
 
     function renderProducts(items) {
       productGrid.innerHTML = items.map(product => `
         <article class="card">
           <div class="thumb">
-            <img src="${product.image}" alt="${product.name}" />
+            <img
+              src="${safeImage(product.image, product.name)}"
+              alt="${product.name}"
+              onerror="this.src='https://placehold.co/800x1000/111111/F5F3EF?text=${encodeURIComponent(product.name)}';"
+            />
             <div class="tag-row">
               <span class="tag">${product.category}</span>
               <span class="tag">${product.condition}</span>
@@ -1206,12 +1313,14 @@
 
     function addToCart(productId) {
       const existing = state.cart.find(item => item.id === productId);
+
       if (existing) {
         existing.qty += 1;
       } else {
         const product = products.find(p => p.id === productId);
-        state.cart.push({ ...product, qty: 1 });
+        if (product) state.cart.push({ ...product, qty: 1 });
       }
+
       renderCart();
       openCart();
     }
@@ -1219,27 +1328,39 @@
     function updateQty(productId, change) {
       const item = state.cart.find(p => p.id === productId);
       if (!item) return;
+
       item.qty += change;
+
       if (item.qty <= 0) {
         state.cart = state.cart.filter(p => p.id !== productId);
       }
+
       renderCart();
     }
 
     function renderCart() {
       const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
       const subtotal = state.cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+
       cartCount.textContent = `(${count})`;
       cartSubtotal.textContent = money(subtotal);
 
       if (!state.cart.length) {
-        cartItems.innerHTML = `<div class="empty">Your cart is empty. Add a piece or open the AR fitting room first.</div>`;
+        cartItems.innerHTML = `
+          <div class="empty">
+            Your cart is empty. Add a piece or open the AR fitting room first.
+          </div>
+        `;
         return;
       }
 
       cartItems.innerHTML = state.cart.map(item => `
         <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}" />
+          <img
+            src="${safeImage(item.image, item.name)}"
+            alt="${item.name}"
+            onerror="this.src='https://placehold.co/400x500/111111/F5F3EF?text=${encodeURIComponent(item.name)}';"
+          />
           <div>
             <h4>${item.name}</h4>
             <div class="cart-meta">${item.category} / Size ${item.size} / ${item.condition}</div>
@@ -1264,6 +1385,7 @@
 
     function closeCart() {
       cartDrawer.classList.remove('open');
+
       if (!arModal.classList.contains('open')) {
         overlay.classList.remove('show');
         document.body.classList.remove('no-scroll');
@@ -1278,6 +1400,17 @@
       arSize.textContent = product.size;
       arCondition.textContent = product.condition;
       arPrice.textContent = money(product.price);
+
+      const img = new Image();
+      img.onload = () => {
+        state.overlayImage = img;
+        drawARFrame();
+      };
+      img.onerror = () => {
+        state.overlayImage = null;
+        drawARFrame();
+      };
+      img.src = product.overlay || '';
     }
 
     function openAR(productId = products[0].id) {
@@ -1286,7 +1419,7 @@
       arModal.classList.add('open');
       overlay.classList.add('show');
       document.body.classList.add('no-scroll');
-      drawOverlayFrame();
+      drawARFrame();
     }
 
     async function startCamera() {
@@ -1295,15 +1428,41 @@
         return;
       }
 
+      const isSecure =
+        location.protocol === 'https:' ||
+        location.hostname === 'localhost' ||
+        location.hostname === '127.0.0.1';
+
+      if (!isSecure) {
+        cameraStatus.textContent = 'Use HTTPS or localhost for camera access';
+        return;
+      }
+
+      stopCamera();
+
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } },
+          video: {
+            facingMode: 'user',
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+          },
           audio: false
         });
+
         state.stream = stream;
         cameraVideo.srcObject = stream;
-        cameraStatus.textContent = 'Camera live';
-        cameraVideo.onloadedmetadata = () => drawOverlayFrame();
+
+        cameraVideo.onloadedmetadata = async () => {
+          try {
+            await cameraVideo.play();
+          } catch (err) {
+            console.warn('Video play warning:', err);
+          }
+
+          cameraStatus.textContent = 'Camera live';
+          startARRenderLoop();
+        };
       } catch (error) {
         console.error(error);
         cameraStatus.textContent = 'Camera access denied';
@@ -1311,75 +1470,102 @@
     }
 
     function stopCamera() {
+      if (state.animationId) {
+        cancelAnimationFrame(state.animationId);
+        state.animationId = null;
+      }
+
       if (state.stream) {
         state.stream.getTracks().forEach(track => track.stop());
         state.stream = null;
       }
+
       cameraVideo.srcObject = null;
       cameraStatus.textContent = 'Camera standby';
-      drawOverlayFrame();
+      drawARFrame();
     }
 
     function closeAR() {
       arModal.classList.remove('open');
       stopCamera();
+
       if (!cartDrawer.classList.contains('open')) {
         overlay.classList.remove('show');
         document.body.classList.remove('no-scroll');
       }
     }
 
-    function drawOverlayFrame() {
+    function startARRenderLoop() {
+      if (state.animationId) {
+        cancelAnimationFrame(state.animationId);
+      }
+
+      const render = () => {
+        drawARFrame();
+        state.animationId = requestAnimationFrame(render);
+      };
+
+      render();
+    }
+
+    function drawARFrame() {
       const ctx = cameraCanvas.getContext('2d');
       const rect = cameraCanvas.getBoundingClientRect();
       const ratio = window.devicePixelRatio || 1;
+
+      if (!rect.width || !rect.height) return;
+
       cameraCanvas.width = Math.max(1, Math.floor(rect.width * ratio));
       cameraCanvas.height = Math.max(1, Math.floor(rect.height * ratio));
+
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      // top UI haze
       const gradient = ctx.createLinearGradient(0, 0, 0, rect.height);
-      gradient.addColorStop(0, 'rgba(0,0,0,0.22)');
-      gradient.addColorStop(1, 'rgba(0,0,0,0.02)');
+      gradient.addColorStop(0, 'rgba(0,0,0,0.24)');
+      gradient.addColorStop(1, 'rgba(0,0,0,0.04)');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, rect.width, rect.height);
 
-      // Garment guide placeholder
-      const boxW = Math.min(rect.width * 0.42, 260);
-      const boxH = boxW * 1.18;
-      const x = (rect.width - boxW) / 2;
-      const y = rect.height * 0.21;
+      const garmentW = Math.min(rect.width * 0.44, 300);
+      const garmentH = garmentW * 1.25;
+      const garmentX = (rect.width - garmentW) / 2;
+      const garmentY = rect.height * 0.18;
+
+      if (state.overlayImage && state.overlayImage.complete && state.overlayImage.naturalWidth > 0) {
+        ctx.drawImage(state.overlayImage, garmentX, garmentY, garmentW, garmentH);
+      } else {
+        ctx.save();
+        ctx.strokeStyle = 'rgba(199,168,107,0.9)';
+        ctx.lineWidth = 1.2;
+        roundRect(ctx, garmentX, garmentY, garmentW, garmentH, 26);
+        ctx.stroke();
+
+        const fill = ctx.createLinearGradient(garmentX, garmentY, garmentX, garmentY + garmentH);
+        fill.addColorStop(0, 'rgba(199,168,107,0.18)');
+        fill.addColorStop(1, 'rgba(255,255,255,0.04)');
+        ctx.fillStyle = fill;
+        roundRect(ctx, garmentX, garmentY, garmentW, garmentH, 26);
+        ctx.fill();
+
+        ctx.fillStyle = 'rgba(245,243,239,0.95)';
+        ctx.font = '700 14px Arial';
+        ctx.fillText('GARMENT PREVIEW', garmentX + 18, garmentY + 28);
+
+        ctx.fillStyle = 'rgba(183,177,168,0.95)';
+        ctx.font = '12px Arial';
+        ctx.fillText('Add transparent PNG overlay image', garmentX + 18, garmentY + 48);
+        ctx.restore();
+      }
 
       ctx.save();
-      ctx.strokeStyle = 'rgba(199,168,107,0.85)';
-      ctx.lineWidth = 1.2;
-      roundRect(ctx, x, y, boxW, boxH, 28);
-      ctx.stroke();
-
-      const fill = ctx.createLinearGradient(x, y, x, y + boxH);
-      fill.addColorStop(0, 'rgba(199,168,107,0.16)');
-      fill.addColorStop(1, 'rgba(255,255,255,0.03)');
-      ctx.fillStyle = fill;
-      roundRect(ctx, x, y, boxW, boxH, 28);
-      ctx.fill();
-
-      ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+      ctx.strokeStyle = 'rgba(255,255,255,0.16)';
       ctx.setLineDash([8, 6]);
       ctx.beginPath();
-      ctx.moveTo(rect.width / 2, y - 20);
-      ctx.lineTo(rect.width / 2, y + boxH + 20);
+      ctx.moveTo(rect.width / 2, garmentY - 20);
+      ctx.lineTo(rect.width / 2, garmentY + garmentH + 20);
       ctx.stroke();
       ctx.setLineDash([]);
-
-      ctx.fillStyle = 'rgba(245,243,239,0.92)';
-      ctx.font = '700 14px Arial';
-      ctx.letterSpacing = '1px';
-      ctx.fillText('GARMENT PREVIEW', x + 18, y + 28);
-
-      ctx.fillStyle = 'rgba(183,177,168,0.92)';
-      ctx.font = '12px Arial';
-      ctx.fillText('Pose tracking placeholder for AR fit', x + 18, y + 48);
       ctx.restore();
     }
 
@@ -1403,9 +1589,13 @@
       const size = document.getElementById('sizeFilter').value;
 
       const filtered = products.filter(product => {
-        const matchesSearch = !search || `${product.name} ${product.note} ${product.category}`.toLowerCase().includes(search);
+        const matchesSearch =
+          !search ||
+          `${product.name} ${product.note} ${product.category}`.toLowerCase().includes(search);
+
         const matchesCategory = category === 'all' || product.category === category;
         const matchesSize = size === 'all' || product.size === size;
+
         return matchesSearch && matchesCategory && matchesSize;
       });
 
@@ -1420,6 +1610,7 @@
     document.getElementById('closeARModal').addEventListener('click', closeAR);
     document.getElementById('startCameraBtn').addEventListener('click', startCamera);
     document.getElementById('addFromARBtn').addEventListener('click', () => addToCart(state.selectedProduct.id));
+
     overlay.addEventListener('click', () => {
       closeCart();
       closeAR();
@@ -1428,6 +1619,7 @@
     document.getElementById('searchInput').addEventListener('input', applyFilters);
     document.getElementById('categoryFilter').addEventListener('change', applyFilters);
     document.getElementById('sizeFilter').addEventListener('change', applyFilters);
+
     document.getElementById('clearFilters').addEventListener('click', () => {
       document.getElementById('searchInput').value = '';
       document.getElementById('categoryFilter').value = 'all';
@@ -1435,11 +1627,13 @@
       applyFilters();
     });
 
-    window.addEventListener('resize', drawOverlayFrame);
+    window.addEventListener('resize', drawARFrame);
+
     window.addEventListener('load', () => {
       renderProducts(products);
       renderCart();
-      drawOverlayFrame();
+      setARProduct(products[0]);
+      drawARFrame();
 
       setTimeout(() => {
         splash.classList.add('hidden');
@@ -1447,7 +1641,6 @@
       }, 3000);
     });
 
-    // expose for inline button handlers
     window.openAR = openAR;
     window.addToCart = addToCart;
     window.updateQty = updateQty;
