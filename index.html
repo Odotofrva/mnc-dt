@@ -974,10 +974,11 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#shop">Shop Now</a>
-        <button class="btn" id="heroTryOn">Launch AR try-on</button>
-        <a class="btn" href="digicloset.html">Enter DigiCloset</a>
+      <div class="nav-actions">
+        <button class="btn btn-sm hide-mobile" id="openARHero">AR Fitting</button>
+        <button class="btn btn-primary btn-sm" id="openCartBtn">
+          Cart <span id="cartCount">(0)</span>
+        </button>
       </div>
     </div>
   </header>
@@ -999,6 +1000,7 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="#shop">Shop the archive</a>
             <button class="btn" id="heroTryOn">Launch AR try-on</button>
+            <a class="btn" href="digicloset.html">Enter DigiCloset</a>
           </div>
         </div>
       </div>
@@ -1629,17 +1631,26 @@
 
     window.addEventListener('resize', drawARFrame);
 
-    window.addEventListener('load', () => {
+    let splashHidden = false;
+
+    function hideSplash() {
+      if (splashHidden) return;
+      splashHidden = true;
+      splash.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
       renderProducts(products);
       renderCart();
       setARProduct(products[0]);
       drawARFrame();
 
-      setTimeout(() => {
-        splash.classList.add('hidden');
-        document.body.classList.remove('no-scroll');
-      }, 3000);
+      setTimeout(hideSplash, 3000);
     });
+
+    window.addEventListener('load', hideSplash);
+    window.addEventListener('error', hideSplash);
 
     window.openAR = openAR;
     window.addToCart = addToCart;
