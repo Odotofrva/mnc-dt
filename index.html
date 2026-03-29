@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MENOCLONE </title>
+  <title>MENOCLONE - Digital Thrifiting Experience</title>
   <meta name="description" content="MENOCLONE seasonal preview with a stripped-back product grid inspired by fashion preview layouts." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,6 +61,16 @@
       text-transform: uppercase;
       white-space: nowrap;
     }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
+
 
     .nav {
       display: flex;
@@ -127,6 +137,14 @@
       left: -60px;
     }
 
+    .hero-image-fill {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+    }
+
     .hero-copy {
       padding: 32px;
       display: flex;
@@ -159,7 +177,7 @@
 
     .hero-meta {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
@@ -491,7 +509,7 @@
 
     .views {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       border-top: 1px solid var(--soft-line);
       margin-top: 12px;
     }
@@ -729,17 +747,19 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 110px;
-      height: 110px;
-      border: 1px solid rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      animation: pulseMark 1.8s ease-in-out infinite;
+      width: min(440px, 72vw);
+      margin: 0 auto 26px;
+      overflow: visible;
+      animation: splashLogoBounce 2.2s ease-in-out infinite;
+      transform-origin: center center;
+    }
+
+    .splash-mark img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 10px 26px rgba(0,0,0,0.28));
     }
 
     .splash-title {
@@ -757,6 +777,15 @@
       font-size: 0.96rem;
     }
 
+    .unlock-note {
+      margin: 0 auto 12px;
+      min-height: 1.2em;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+    }
+
     .splash-actions {
       display: flex;
       justify-content: center;
@@ -767,14 +796,26 @@
 
     .enter-btn {
       position: relative;
-      min-width: 170px;
-      min-height: 50px;
+      min-width: 190px;
+      min-height: 52px;
       border: 1px solid rgba(255,255,255,0.42);
       background: rgba(255,255,255,0.12);
       color: #ffffff;
       backdrop-filter: blur(8px);
       overflow: hidden;
-      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, opacity 0.28s ease, filter 0.28s ease;
+    }
+
+    .enter-btn.is-locked {
+      opacity: 0.42;
+      filter: grayscale(0.35);
+      pointer-events: none;
+      cursor: not-allowed;
+      transform: translateY(6px) scale(0.985);
+    }
+
+    .enter-btn.is-unlocked {
+      animation: enterUnlock 0.75s cubic-bezier(.22,1,.36,1);
     }
 
     .enter-btn::before,
@@ -1376,16 +1417,14 @@
 </head>
 <body class="no-scroll">
   <div class="splash-screen" id="splash-screen" aria-hidden="true">
-    <video class="splash-video" autoplay muted loop playsinline>
-      <source src="your-splash-video.mp4" type="video/mp4">
-    </video>
+    <img class="splash-video" src="#" alt="MENOCLONE campaign background">
     <div class="splash-overlay"></div>
     <div class="splash-inner">
-      <div class="splash-mark"><img src="mnc.png"/></div>
-      <h1 class="splash-title">MENOCLONE</h1>
+      <div class="splash-mark image-mark"><img src="mnc.png" alt="MENOCLONE logo"></div>
       <p class="splash-copy">Originality Has Origins</p>
+      <div class="unlock-note" id="unlock-note">Initializing entry...</div>
       <div class="splash-actions">
-        <button class="btn enter-btn" type="button" id="enter-site-btn">Enter</button>
+        <button class="btn enter-btn is-locked" type="button" id="enter-site-btn" disabled aria-disabled="true">Enter</button>
       </div>
     </div>
   </div>
@@ -1394,7 +1433,7 @@
 
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a href="#" class="brand">MENOCLONE</a>
+      <a href="#" class="brand brand-logo">MENOCLONE</a>
       <nav class="nav">
         <a href="#" class="active">Preview</a>
         <a href="#lookbook">Lookbook</a>
@@ -1433,11 +1472,7 @@
       <div class="wrap">
         <div class="hero-shell reveal-in">
           <div class="hero-media">
-            <div class="placeholder-block" style="width:min(78%,520px); aspect-ratio: 4 / 5; background:rgba(255,255,255,0.22);">
-              <div>
-                <span><img src="rtlogo.png" alt=""></span>
-              </div>
-            </div>
+            <img src="mnc2.jpg" alt="MENOCLONE hero image" class="hero-image-fill">
           </div>
           <div class="hero-copy">
             <div>
@@ -1515,8 +1550,7 @@
               <p>Structured seasonal piece with elevated thrift energy and a standout silhouette.</p>
               <div class="views">
                 <div class="view">Front View</div>
-                <div class="view">Side View</div>
-                <div class="view">Detail View</div>
+                <div class="view">Back View</div>
               </div>
               <button class="btn dark add-cart-btn" type="button" data-name="Clone Varsity Jacket" data-price="84" data-type="Outerwear">Add to Cart</button>
             </div>
@@ -1541,8 +1575,7 @@
               <p>Vintage-washed denim with a clean product-first layout and editorial tone.</p>
               <div class="views">
                 <div class="view">Front View</div>
-                <div class="view">Side View</div>
-                <div class="view">Back Detail</div>
+                <div class="view">Back View</div>
               </div>
               <button class="btn dark add-cart-btn" type="button" data-name="Archive Wash Denim" data-price="68" data-type="Bottoms">Add to Cart</button>
             </div>
@@ -1567,8 +1600,7 @@
               <p>Minimal staple piece designed to feel premium without losing the streetwear edge.</p>
               <div class="views">
                 <div class="view">Front View</div>
-                <div class="view">Side View</div>
-                <div class="view">Graphic Detail</div>
+                <div class="view">Back View</div>
               </div>
               <button class="btn dark add-cart-btn" type="button" data-name="Monochrome Logo Tee" data-price="42" data-type="Tops">Add to Cart</button>
             </div>
@@ -1593,8 +1625,7 @@
               <p>Accessory tile with the same stripped-back visual system as the clothing pieces.</p>
               <div class="views">
                 <div class="view">Front View</div>
-                <div class="view">Side View</div>
-                <div class="view">Hardware Detail</div>
+                <div class="view">Back View</div>
               </div>
               <button class="btn dark add-cart-btn" type="button" data-name="Street Luxe Carry Bag" data-price="36" data-type="Accessories">Add to Cart</button>
             </div>
@@ -1619,8 +1650,7 @@
               <p>Soft neutral piece with a seasonal preview energy and a more direct shop flow.</p>
               <div class="views">
                 <div class="view">Front View</div>
-                <div class="view">Side View</div>
-                <div class="view">Stitch Detail</div>
+                <div class="view">Back View</div>
               </div>
               <button class="btn dark add-cart-btn" type="button" data-name="Dust Tone Zip Hoodie" data-price="74" data-type="Outerwear">Add to Cart</button>
             </div>
@@ -1645,8 +1675,7 @@
               <p>A compact accessories tile to help the preview page feel more like a full seasonal drop.</p>
               <div class="views">
                 <div class="view">Front View</div>
-                <div class="view">Side View</div>
-                <div class="view">Logo Detail</div>
+                <div class="view">Back View</div>
               </div>
               <button class="btn dark add-cart-btn" type="button" data-name="Archive Panel Cap" data-price="28" data-type="Accessories">Add to Cart</button>
             </div>
@@ -1756,11 +1785,26 @@
     const cartFloat = document.querySelector('.cart-float');
     const splashScreen = document.getElementById('splash-screen');
     const enterSiteBtn = document.getElementById('enter-site-btn');
+    const unlockNote = document.getElementById('unlock-note');
     const cart = [];
     const STRIPE_ENDPOINT = '/api/create-payment-link';
     let dragActive = false;
     let dragOffsetX = 0;
     let dragOffsetY = 0;
+
+    function unlockEnterButton() {
+      if (!enterSiteBtn) return;
+      enterSiteBtn.disabled = false;
+      enterSiteBtn.setAttribute('aria-disabled', 'false');
+      enterSiteBtn.classList.remove('is-locked');
+      enterSiteBtn.classList.add('is-unlocked');
+      if (unlockNote) unlockNote.textContent = 'Entry unlocked';
+    }
+
+    window.addEventListener('load', () => {
+      if (unlockNote) unlockNote.textContent = 'Initializing entry...';
+      window.setTimeout(unlockEnterButton, 1800);
+    });
 
     function hideSplash() {
       if (splashScreen) {
