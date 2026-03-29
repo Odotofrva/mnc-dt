@@ -1622,7 +1622,7 @@
                 <div class="view">Front View</div>
                 <div class="view">Back View</div>
               </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Clone Varsity Jacket" data-price="50" data-type="Outerwear">Add to Cart</button>
+              <button class="btn dark add-cart-btn" type="button" data-name="Chicago Cubs Pinstripe Jersey" data-price="50" data-display-price="$50" data-type="Tops">Add to Cart</button>
             </div>
           </article>
 
@@ -1649,7 +1649,7 @@ The back features “Altuve 27”, honoring one of the most iconic players of hi
                 <div class="view">Front View</div>
                 <div class="view">Back View</div>
               </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Archive Wash Denim" data-price="30" data-type="Bottoms">Add to Cart</button>
+              <button class="btn dark add-cart-btn" type="button" data-name="Houston Astros “Altuve 27” Jersey" data-price="30" data-display-price="$30" data-type="Tops">Add to Cart</button>
             </div>
           </article>
 
@@ -1676,7 +1676,7 @@ The monochrome white lettering against the blue base gives it a clean, almost dr
                 <div class="view">Front View</div>
                 <div class="view">Back View</div>
               </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Monochrome Logo Tee" data-price="45" data-type="Tops">Add to Cart</button>
+              <button class="btn dark add-cart-btn" type="button" data-name="Sunrise &quot;816&quot; Mesh Jersey" data-price="45" data-display-price="$45" data-type="Tops">Add to Cart</button>
             </div>
           </article>
 
@@ -1703,7 +1703,7 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
                 <div class="view">Front View</div>
                 <div class="view">Back View</div>
               </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Dust Tone Zip Hoodie" data-price="50" data-type="Outerwear">Add to Cart</button>
+              <button class="btn dark add-cart-btn" type="button" data-name="Adobe Pinstripe &quot;Mandel&quot; Jersey" data-price="50" data-display-price="$50" data-type="Tops">Add to Cart</button>
             </div>
           </article>
 
@@ -1736,7 +1736,7 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
                 <div class="view">Front View</div>
                 <div class="view">Back View</div>
               </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Archive Panel Cap" data-price="X" data-type="Accessories">Add to Cart</button>
+              <button class="btn dark add-cart-btn" type="button" data-name="Style Syndrome Vol. 1" data-price="0" data-display-price="TBA" data-type="Tickets">Add to Cart</button>
             </div>
           </article>
         </div>
@@ -1879,7 +1879,7 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
 
 
     function getCartSubtotal() {
-      return cart.reduce((sum, item) => sum + item.price, 0);
+      return cart.reduce((sum, item) => sum + (Number.isFinite(item.price) ? item.price : 0), 0);
     }
 
     function setCheckoutStatus(message = '', type = '') {
@@ -1905,7 +1905,7 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
               <div class="checkout-item-title">${item.name}</div>
               <div class="checkout-item-meta">${item.type} • Curated preview selection</div>
             </div>
-            <strong class="checkout-price">${formatMoney(item.price)}</strong>
+            <strong class="checkout-price">${item.displayPrice || formatMoney(item.price)}</strong>
           `;
           checkoutListEl.appendChild(row);
         });
@@ -1978,7 +1978,7 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
           <div class="cart-thumb">${item.type}</div>
           <div>
             <div class="cart-item-title">${item.name}</div>
-            <div class="cart-item-meta">${item.type} • ${formatMoney(item.price)}</div>
+            <div class="cart-item-meta">${item.type} • ${item.displayPrice || formatMoney(item.price)}</div>
           </div>
           <button class="cart-remove" type="button" data-index="${index}" aria-label="Remove item">×</button>
         `;
@@ -2003,6 +2003,7 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
         cart.push({
           name: btn.dataset.name,
           price: Number(btn.dataset.price),
+          displayPrice: btn.dataset.displayPrice || formatMoney(Number(btn.dataset.price)),
           type: btn.dataset.type
         });
         renderCart();
