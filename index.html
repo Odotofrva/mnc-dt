@@ -911,6 +911,196 @@
 
 
 
+    .nav-closet-btn {
+      min-height: 38px;
+      padding: 0 14px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .closet-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .closet-modal.open {
+      display: flex;
+    }
+
+    .closet-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0.66);
+      backdrop-filter: blur(10px);
+    }
+
+    .closet-panel {
+      position: relative;
+      z-index: 2;
+      width: min(680px, 100%);
+      padding: 28px;
+      background: rgba(17,17,17,0.95);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.38);
+      overflow: hidden;
+      transform: translateY(14px) scale(0.98);
+      opacity: 0;
+      transition: transform 0.28s ease, opacity 0.28s ease;
+    }
+
+    .closet-modal.open .closet-panel {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .closet-panel::before,
+    .closet-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .closet-panel::before {
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.08) 75%, transparent 100%);
+      transform: translateX(-120%);
+    }
+
+    .closet-panel::after {
+      background: repeating-linear-gradient(180deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 5px);
+      mix-blend-mode: screen;
+    }
+
+    .closet-modal.glitching .closet-panel,
+    .closet-modal.glitching .closet-panel::before,
+    .closet-modal.glitching .closet-panel::after {
+      opacity: 1;
+      animation: closetGlitch 0.55s steps(2, end) forwards;
+    }
+
+    .closet-modal.glitching .closet-panel::before {
+      animation: closetSweep 0.55s linear forwards;
+    }
+
+    .closet-modal.glitching .closet-panel::after {
+      animation: closetStatic 0.55s steps(3, end) forwards;
+    }
+
+    .closet-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .closet-head h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.5rem, 4vw, 2.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .closet-head p {
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      max-width: 42ch;
+      font-size: 0.95rem;
+    }
+
+    .closet-close {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: transparent;
+      color: #ffffff;
+      min-width: 40px;
+      min-height: 40px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .closet-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .closet-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      padding: 16px;
+    }
+
+    .closet-card strong {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .closet-card p {
+      margin: 0;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.7;
+      font-size: 0.92rem;
+    }
+
+    .closet-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .closet-actions .btn {
+      cursor: pointer;
+    }
+
+    .closet-status {
+      min-height: 1.2em;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes closetGlitch {
+      0% { transform: translate(0, 0) scale(1); filter: none; }
+      20% { transform: translate(-10px, 4px) skewX(2deg); filter: hue-rotate(18deg); }
+      40% { transform: translate(12px, -4px) skewX(-3deg); filter: contrast(1.2); }
+      60% { transform: translate(-6px, 2px) scale(0.995); filter: brightness(1.15); }
+      100% { transform: scale(0.96); opacity: 0; filter: blur(2px); }
+    }
+
+    @keyframes closetSweep {
+      0% { opacity: 0.15; transform: translateX(-120%); }
+      100% { opacity: 0.72; transform: translateX(120%); }
+    }
+
+    @keyframes closetStatic {
+      0% { opacity: 0.05; }
+      30% { opacity: 0.28; }
+      100% { opacity: 0; }
+    }
+
     .checkout-modal {
       position: fixed;
       inset: 0;
@@ -1509,6 +1699,7 @@
         <a href="#lookbook">Lookbook</a>
         <a href="#">About</a>
         <a href="#">Cart</a>
+        <button class="btn dark nav-closet-btn" type="button" id="open-closet-modal">Digital Closet</button>
       </nav>
     </div>
   </header>
@@ -1775,6 +1966,26 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
     </section>
   
 
+  <div class="closet-modal" id="closet-modal" aria-hidden="true">
+    <div class="closet-backdrop" data-close-closet="true"></div>
+    <div class="closet-panel" role="dialog" aria-modal="true" aria-labelledby="closet-title">
+      <div class="closet-head">
+        <div>
+          <h2 id="closet-title">Enter the Digital Closet</h2>
+          <p>Step from the MENOCLONE preview into the curated DigiCloset experience. Your transition opens with a glitch-styled portal before redirecting into the collection space.</p>
+        </div>
+        <button class="closet-close" type="button" id="closet-close-btn" aria-label="Close digital closet modal">×</button>
+      </div>
+      
+      
+      <div class="closet-actions">
+        <button class="btn" type="button" id="closet-cancel-btn">Stay Here</button>
+        <button class="btn dark" type="button" id="closet-enter-btn">Enter Closet</button>
+      </div>
+      
+    </div>
+  </div>
+
   <div class="checkout-modal" id="checkout-modal" aria-hidden="true">
     <div class="checkout-backdrop" data-close-checkout="true"></div>
     <div class="checkout-panel" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
@@ -1845,6 +2056,13 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
     const splashScreen = document.getElementById('splash-screen');
     const enterSiteBtn = document.getElementById('enter-site-btn');
     const unlockNote = document.getElementById('unlock-note');
+    const closetModal = document.getElementById('closet-modal');
+    const openClosetModalBtn = document.getElementById('open-closet-modal');
+    const closetCloseBtn = document.getElementById('closet-close-btn');
+    const closetCancelBtn = document.getElementById('closet-cancel-btn');
+    const closetEnterBtn = document.getElementById('closet-enter-btn');
+    const closetStatus = document.getElementById('closet-status');
+    const closetUrl = 'https://odotofrva.github.io/mnc-digicloset/';
     const cart = [];
     const STRIPE_ENDPOINT = '/api/create-payment-link';
     let dragActive = false;
@@ -1870,6 +2088,41 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
         splashScreen.classList.add('hidden');
         document.body.classList.remove('no-scroll');
       }
+    }
+
+    function setClosetStatus(message) {
+      if (closetStatus) closetStatus.textContent = message;
+    }
+
+    function openClosetModal() {
+      if (!closetModal) return;
+      closetModal.classList.remove('glitching');
+      closetModal.classList.add('open');
+      closetModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      setClosetStatus('Portal standing by.');
+    }
+
+    function closeClosetModal() {
+      if (!closetModal) return;
+      closetModal.classList.remove('open', 'glitching');
+      closetModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = checkoutModal && checkoutModal.classList.contains('open') ? 'hidden' : '';
+      setClosetStatus('Portal standing by.');
+    }
+
+    function triggerClosetTransition() {
+      if (!closetModal) return;
+      setClosetStatus('Glitch sequence active...');
+      closetModal.classList.add('glitching');
+      closetEnterBtn.disabled = true;
+      closetCancelBtn.disabled = true;
+      window.setTimeout(() => {
+        window.open(closetUrl, '_blank', 'noopener');
+        closetEnterBtn.disabled = false;
+        closetCancelBtn.disabled = false;
+        closeClosetModal();
+      }, 560);
     }
 
     function formatMoney(value) {
@@ -2108,8 +2361,37 @@ Crisp vertical stripes give it that timeless field aesthetic, while the back car
       });
     }
 
+    if (openClosetModalBtn) {
+      openClosetModalBtn.addEventListener('click', openClosetModal);
+    }
+
+    if (closetCloseBtn) {
+      closetCloseBtn.addEventListener('click', closeClosetModal);
+    }
+
+    if (closetCancelBtn) {
+      closetCancelBtn.addEventListener('click', closeClosetModal);
+    }
+
+    if (closetEnterBtn) {
+      closetEnterBtn.addEventListener('click', triggerClosetTransition);
+    }
+
+    if (closetModal) {
+      closetModal.addEventListener('click', (event) => {
+        if (event.target.matches('[data-close-closet="true"]')) {
+          closeClosetModal();
+        }
+      });
+    }
+
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && checkoutModal && checkoutModal.classList.contains('open')) {
+      if (event.key !== 'Escape') return;
+      if (closetModal && closetModal.classList.contains('open')) {
+        closeClosetModal();
+        return;
+      }
+      if (checkoutModal && checkoutModal.classList.contains('open')) {
         closeCheckout();
       }
     });
