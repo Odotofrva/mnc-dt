@@ -3,2474 +3,1105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MENOCLONE - Digital Thrifiting Experience</title>
-  <meta name="description" content="MENOCLONE seasonal preview with a stripped-back product grid inspired by fashion preview layouts." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>MENOCLONE Digital Closet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    :root {
-      --bg: #f7f4ee;
-      --paper: #fbf8f3;
-      --text: #111111;
-      --muted: #6d685f;
-      --line: rgba(17,17,17,0.12);
-      --soft-line: rgba(17,17,17,0.06);
-      --accent: #111111;
-      --max: 1400px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-
-    .wrap {
-      width: min(calc(100% - 28px), var(--max));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      border-bottom: 1px solid var(--line);
-      background: rgba(247,244,238,0.92);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 40;
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      min-height: 64px;
-    }
-
-    .brand {
-      font-size: 0.95rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .brand-logo {
-      display: inline-flex;
-      align-items: center;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav a {
-      font-size: 0.84rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .nav a:hover,
-    .nav a.active {
-      color: var(--text);
-    }
-
-    .hero-top {
-      padding: 14px 0 8px;
-    }
-
-    .hero-shell {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      min-height: 520px;
-      isolation: isolate;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      overflow: hidden;
-    }
-
-    .hero-media {
-      position: relative;
-      display: grid;
-      place-items: center;
-      min-height: 520px;
-      background: linear-gradient(135deg, #ece2d3 0%, #f7f2ea 45%, #e8ddcf 100%);
-      border-right: 1px solid var(--line);
-      overflow: hidden;
-    }
-
-    .hero-media::before,
-    .hero-media::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(17,17,17,0.04);
-    }
-
-    .hero-media::before {
-      width: 420px;
-      height: 420px;
-      top: -110px;
-      right: -80px;
-    }
-
-    .hero-media::after {
-      width: 260px;
-      height: 260px;
-      bottom: -70px;
-      left: -60px;
-    }
-
-    .hero-image-fill {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-copy {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 22px;
-    }
-
-    .hero-copy h1 {
-      margin: 0;
-      font-size: clamp(2.5rem, 5vw, 4.8rem);
-      line-height: 0.92;
-      letter-spacing: -0.05em;
-    }
-
-    .hero-copy p {
-      margin: 14px 0 0;
-      color: #44403a;
-      line-height: 1.8;
-      font-size: 0.98rem;
-      max-width: 42ch;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .hero-meta-box {
-      border: 1px solid var(--line);
-      padding: 14px;
-    }
-
-    .hero-meta-box strong {
-      display: block;
-      font-size: 0.76rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .hero-meta-box span {
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.5;
-    }
-
-    .intro {
-      padding: 18px 0 14px;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: end;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 18px;
-    }
-
-    .season {
-      font-size: clamp(1.6rem, 3vw, 2.5rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin: 0;
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 0.92rem;
-      white-space: nowrap;
-    }
-
-    .subnav {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-      padding: 14px 0 22px;
-      border-bottom: 1px solid var(--soft-line);
-    }
-
-    .subnav-left,
-    .subnav-right {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .subnav a,
-    .subnav span {
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .subnav a:hover,
-    .subnav a.active {
-      color: var(--text);
-    }
-
-    .feature {
-      padding: 18px 0 12px;
-    }
-
-    .feature-panel {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 0;
-      background: var(--paper);
-      border: 1px solid var(--line);
-    }
-
-    .feature-image {
-      min-height: 520px;
-      border-right: 1px solid var(--line);
+      font-family: 'Inter', sans-serif;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05)),
-        linear-gradient(135deg, #efe7da, #f9f6f1 55%, #ede3d6);
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
+        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 30%),
+        linear-gradient(135deg, #050505 0%, #111111 45%, #1a1a1a 100%);
+      min-height: 100vh;
     }
 
-    .feature-image::before,
-    .feature-image::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(17,17,17,0.04);
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.05em;
     }
 
-    .feature-image::before {
-      width: 380px;
-      height: 380px;
-      top: -120px;
-      right: -80px;
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
     }
 
-    .feature-image::after {
-      width: 240px;
-      height: 240px;
-      bottom: -80px;
-      left: -60px;
+    .item-card:hover .item-image,
+    .category-card:hover .category-icon-wrap {
+      transform: scale(1.05);
     }
 
-    .placeholder-block {
-      width: min(76%, 480px);
-      aspect-ratio: 4 / 5;
-      border: 1px dashed rgba(17,17,17,0.2);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 24px;
-      background: rgba(255,255,255,0.28);
-      position: relative;
-      z-index: 2;
-    }
-
-    .placeholder-block strong,
-    .mini-placeholder strong {
-      display: block;
-      font-size: 0.9rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .placeholder-block span,
-    .mini-placeholder span {
-      color: var(--muted);
-      font-size: 0.85rem;
-      line-height: 1.6;
-    }
-
-    .feature-copy {
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .eyebrow {
-      font-size: 0.76rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .feature-copy h1 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 3.7rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
-
-    .feature-copy p {
-      margin: 14px 0 0;
-      color: #44403a;
-      line-height: 1.8;
-      font-size: 0.98rem;
-      max-width: 48ch;
-    }
-
-    .specs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .spec {
-      border: 1px solid var(--line);
-      padding: 14px;
-    }
-
-    .spec strong {
-      display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .spec span {
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.5;
-    }
-
-    .button-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0 16px;
-      border: 1px solid var(--line);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: transparent;
-    }
-
-    .btn.dark {
-      background: #111111;
-      color: #ffffff;
-    }
-
-    .section {
-      padding: 20px 0 8px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      font-size: 1.1rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 60ch;
-      line-height: 1.7;
-      font-size: 0.92rem;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
-    }
-
-    .product-card {
-      background: var(--paper);
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      min-width: 0;
-    }
-
-    .product-image {
-      aspect-ratio: 4 / 5;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(180deg, #f4ede3, #fbf8f3);
-      border-bottom: 1px solid var(--line);
-      padding: 18px;
-    }
-
-    .mini-placeholder {
-      width: 100%;
-      height: 100%;
-      border: 1px dashed rgba(17,17,17,0.18);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .product-info {
-      padding: 14px 14px 16px;
-    }
-
-    .product-topline {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .product-type,
-    .product-price {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .product-info h3 {
-      margin: 0 0 6px;
-      font-size: 1rem;
-      line-height: 1.3;
-    }
-
-    .product-info p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
-    .views {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      border-top: 1px solid var(--soft-line);
-      margin-top: 12px;
-    }
-
-    .view {
-      padding-top: 10px;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .view + .view {
-      border-left: 1px solid var(--soft-line);
-      padding-left: 8px;
-    }
-
-    .cart-float {
-      position: fixed;
-      right: 14px;
-      top: 96px;
-      width: 260px;
-      max-height: calc(100vh - 140px);
-      z-index: 60;
-      background: rgba(251,248,243,0.94);
-      border: 1px solid var(--line);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-      display: none;
-      flex-direction: column;
-      cursor: grab;
-      user-select: none;
-      touch-action: none;
-      transition: opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
-      opacity: 0;
-      transform: translateY(8px);
-    }
-
-    .cart-float.visible {
-      display: flex;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .cart-float.dragging {
-      cursor: grabbing;
-      box-shadow: 0 22px 46px rgba(0,0,0,0.14);
-    }
-
-    .cart-head {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      background: rgba(255,255,255,0.72);
-    }
-
-    .cart-head strong {
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .cart-count {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .cart-items {
-      padding: 8px;
-      overflow: auto;
-      display: grid;
-      gap: 8px;
-    }
-
-    .cart-empty {
-      padding: 16px 8px 6px;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.55;
-    }
-
-    .cart-item {
-      border: 1px solid var(--line);
-      background: #fff;
-      padding: 8px;
-      display: grid;
-      grid-template-columns: 46px 1fr auto;
-      gap: 8px;
-      align-items: center;
-      animation: cartIn 0.22s ease;
-    }
-
-    .cart-thumb {
-      width: 46px;
-      height: 56px;
-      border: 1px dashed rgba(17,17,17,0.18);
-      display: grid;
-      place-items: center;
-      font-size: 0.52rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: center;
-      padding: 4px;
-      background: linear-gradient(180deg, #f4ede3, #fbf8f3);
-    }
-
-    .cart-item-title {
-      font-size: 0.78rem;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .cart-item-meta {
-      color: var(--muted);
-      font-size: 0.7rem;
-      line-height: 1.35;
-    }
-
-    .cart-remove {
-      border: 1px solid var(--line);
-      background: transparent;
-      min-width: 28px;
-      min-height: 28px;
-      cursor: pointer;
-      transition: transform 0.18s ease, background 0.18s ease;
-    }
-
-    .cart-remove:hover {
-      background: rgba(17,17,17,0.05);
-    }
-
-    .cart-remove:active {
-      transform: scale(0.95);
-    }
-
-    .cart-summary {
-      margin-top: auto;
-      border-top: 1px solid var(--line);
-      padding: 10px 12px 12px;
-      background: rgba(255,255,255,0.76);
-      display: grid;
-      gap: 8px;
-    }
-
-    .cart-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 0.74rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .cart-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .add-cart-btn {
-      margin-top: 12px;
-      width: 100%;
-    }
-
-    @keyframes cartIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .splash-screen {
-      position: fixed;
-      inset: 0;
-      z-index: 120;
-      background: #111111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.75s ease, visibility 0.75s ease;
-      overflow: hidden;
-    }
-
-    .splash-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .no-scroll {
-      overflow: hidden;
-    }
-
-    .splash-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.58;
-      filter: blur(7px) saturate(0.88);
-      transform: scale(1.04);
-      transition: filter 0.45s ease, transform 0.45s ease, opacity 0.45s ease;
-    }
-
-    .splash-screen:hover .splash-video,
-    .splash-screen:focus-within .splash-video {
-      filter: blur(2px) saturate(1.02);
-      transform: scale(1.01);
-      opacity: 0.7;
-    }
-
-    .splash-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.66), rgba(0,0,0,0.34));
-    }
-
-    .splash-inner {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 24px;
-      max-width: 640px;
-      color: #ffffff;
-    }
-
-    .splash-mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: min(440px, 72vw);
-      margin: 0 auto 26px;
-      overflow: visible;
-      animation: splashLogoBounce 2.2s ease-in-out infinite;
-      transform-origin: center center;
-    }
-
-    .splash-mark img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      filter: drop-shadow(0 10px 26px rgba(0,0,0,0.28));
-    }
-
-    .splash-title {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 4rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-    }
-
-    .splash-copy {
-      margin: 14px auto 18px;
-      max-width: 42ch;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.8;
-      font-size: 0.96rem;
-    }
-
-    .unlock-note {
-      margin: 0 auto 12px;
-      min-height: 1.2em;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.62);
-    }
-
-    .splash-actions {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .enter-btn {
-      position: relative;
-      min-width: 190px;
-      min-height: 52px;
-      border: 1px solid rgba(255,255,255,0.42);
+    .scrollbar-thin::-webkit-scrollbar { width: 8px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb {
       background: rgba(255,255,255,0.12);
-      color: #ffffff;
-      backdrop-filter: blur(8px);
-      overflow: hidden;
-      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, opacity 0.28s ease, filter 0.28s ease;
-    }
-
-    .enter-btn.is-locked {
-      opacity: 0.42;
-      filter: grayscale(0.35);
-      pointer-events: none;
-      cursor: not-allowed;
-      transform: translateY(6px) scale(0.985);
-    }
-
-    .enter-btn.is-unlocked {
-      animation: enterUnlock 0.75s cubic-bezier(.22,1,.36,1);
-    }
-
-    .enter-btn::before,
-    .enter-btn::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.18s ease;
-    }
-
-    .enter-btn::before {
-      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 18%, rgba(255,255,255,0.48) 50%, rgba(255,255,255,0.08) 82%, transparent 100%);
-      transform: translateX(-120%);
-    }
-
-    .enter-btn::after {
-      background: repeating-linear-gradient(180deg, rgba(255,255,255,0.18) 0 2px, transparent 2px 4px);
-      mix-blend-mode: screen;
-    }
-
-    .enter-btn:hover,
-    .enter-btn:focus-visible {
-      background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.72);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 0 22px rgba(255,255,255,0.15);
-      transform: translateY(-1px);
-      animation: glitchButton 0.35s steps(2, end) 2;
-    }
-
-    .enter-btn:hover::before,
-    .enter-btn:focus-visible::before {
-      opacity: 1;
-      animation: glitchSweep 0.5s linear forwards;
-    }
-
-    .enter-btn:hover::after,
-    .enter-btn:focus-visible::after {
-      opacity: 0.38;
-    }
-
-    .vertical-ticker {
-      position: fixed;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 30;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(17,17,17,0.5);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .vertical-ticker span {
-      display: inline-block;
-      padding: 8px 4px;
-      border-left: 1px solid rgba(17,17,17,0.14);
-      border-right: 1px solid rgba(17,17,17,0.08);
-      background: rgba(251,248,243,0.52);
-      backdrop-filter: blur(8px);
-      animation: tickerFloat 3.2s ease-in-out infinite;
-    }
-
-    @keyframes glitchButton {
-      0% { transform: translate(0, 0); }
-      20% { transform: translate(-2px, 1px); }
-      40% { transform: translate(2px, -1px); }
-      60% { transform: translate(-1px, 0); }
-      80% { transform: translate(1px, 1px); }
-      100% { transform: translateY(-1px); }
-    }
-
-    @keyframes glitchSweep {
-      0% { transform: translateX(-120%); }
-      100% { transform: translateX(120%); }
-    }
-
-    @keyframes tickerFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    @keyframes pulseMark {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-    }
-
-
-
-    .nav-closet-btn {
-      min-height: 38px;
-      padding: 0 14px;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .closet-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 150;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .closet-modal.open {
-      display: flex;
-    }
-
-    .closet-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(10,10,10,0.66);
-      backdrop-filter: blur(10px);
-    }
-
-    .closet-panel {
-      position: relative;
-      z-index: 2;
-      width: min(680px, 100%);
-      padding: 28px;
-      background: rgba(17,17,17,0.95);
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 28px 80px rgba(0,0,0,0.38);
-      overflow: hidden;
-      transform: translateY(14px) scale(0.98);
-      opacity: 0;
-      transition: transform 0.28s ease, opacity 0.28s ease;
-    }
-
-    .closet-modal.open .closet-panel {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-
-    .closet-panel::before,
-    .closet-panel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-    }
-
-    .closet-panel::before {
-      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.08) 75%, transparent 100%);
-      transform: translateX(-120%);
-    }
-
-    .closet-panel::after {
-      background: repeating-linear-gradient(180deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 5px);
-      mix-blend-mode: screen;
-    }
-
-    .closet-modal.glitching .closet-panel,
-    .closet-modal.glitching .closet-panel::before,
-    .closet-modal.glitching .closet-panel::after {
-      opacity: 1;
-      animation: closetGlitch 0.55s steps(2, end) forwards;
-    }
-
-    .closet-modal.glitching .closet-panel::before {
-      animation: closetSweep 0.55s linear forwards;
-    }
-
-    .closet-modal.glitching .closet-panel::after {
-      animation: closetStatic 0.55s steps(3, end) forwards;
-    }
-
-    .closet-head {
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .closet-head h2 {
-      margin: 0 0 8px;
-      font-size: clamp(1.5rem, 4vw, 2.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-    }
-
-    .closet-head p {
-      margin: 0;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.8;
-      max-width: 42ch;
-      font-size: 0.95rem;
-    }
-
-    .closet-close {
-      border: 1px solid rgba(255,255,255,0.18);
-      background: transparent;
-      color: #ffffff;
-      min-width: 40px;
-      min-height: 40px;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-
-    .closet-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .closet-card {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      padding: 16px;
-    }
-
-    .closet-card strong {
-      display: block;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      color: rgba(255,255,255,0.72);
-    }
-
-    .closet-card p {
-      margin: 0;
-      color: rgba(255,255,255,0.92);
-      line-height: 1.7;
-      font-size: 0.92rem;
-    }
-
-    .closet-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .closet-actions .btn {
-      cursor: pointer;
-    }
-
-    .closet-status {
-      min-height: 1.2em;
-      margin-top: 10px;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.62);
-      position: relative;
-      z-index: 2;
-    }
-
-    @keyframes closetGlitch {
-      0% { transform: translate(0, 0) scale(1); filter: none; }
-      20% { transform: translate(-10px, 4px) skewX(2deg); filter: hue-rotate(18deg); }
-      40% { transform: translate(12px, -4px) skewX(-3deg); filter: contrast(1.2); }
-      60% { transform: translate(-6px, 2px) scale(0.995); filter: brightness(1.15); }
-      100% { transform: scale(0.96); opacity: 0; filter: blur(2px); }
-    }
-
-    @keyframes closetSweep {
-      0% { opacity: 0.15; transform: translateX(-120%); }
-      100% { opacity: 0.72; transform: translateX(120%); }
-    }
-
-    @keyframes closetStatic {
-      0% { opacity: 0.05; }
-      30% { opacity: 0.28; }
-      100% { opacity: 0; }
-    }
-
-    .checkout-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 140;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .checkout-modal.open {
-      display: flex;
-    }
-
-    .checkout-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(17,17,17,0.48);
-      backdrop-filter: blur(8px);
-    }
-
-    .checkout-panel {
-      position: relative;
-      z-index: 2;
-      width: min(720px, 100%);
-      max-height: min(88vh, 900px);
-      overflow: auto;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
-    }
-
-    .checkout-head {
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .checkout-head h2 {
-      margin: 0 0 6px;
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .checkout-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
-      max-width: 46ch;
-    }
-
-    .checkout-close {
-      border: 1px solid var(--line);
-      background: transparent;
-      min-width: 38px;
-      min-height: 38px;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-
-    .checkout-body {
-      padding: 18px 20px 22px;
-      display: grid;
-      gap: 18px;
-    }
-
-    .checkout-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .checkout-item {
-      display: grid;
-      grid-template-columns: 64px 1fr auto;
-      gap: 12px;
-      align-items: center;
-      padding: 10px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.72);
-    }
-
-    .checkout-thumb {
-      width: 64px;
-      height: 78px;
-      display: grid;
-      place-items: center;
-      border: 1px dashed rgba(17,17,17,0.18);
-      background: linear-gradient(180deg, #f4ede3, #fbf8f3);
-      color: var(--muted);
-      font-size: 0.58rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 6px;
-    }
-
-    .checkout-item-title {
-      font-weight: 700;
-      margin-bottom: 4px;
-      font-size: 0.92rem;
-    }
-
-    .checkout-item-meta {
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.45;
-    }
-
-    .checkout-price {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .checkout-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 16px;
-    }
-
-    .checkout-card {
-      border: 1px solid var(--line);
-      padding: 14px;
-      background: rgba(255,255,255,0.72);
-    }
-
-    .checkout-card h3 {
-      margin: 0 0 10px;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .checkout-field {
-      display: grid;
-      gap: 8px;
-    }
-
-    .checkout-field label {
-      font-size: 0.74rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .checkout-field input {
-      width: 100%;
-      min-height: 46px;
-      border: 1px solid var(--line);
-      background: #fff;
-      padding: 0 14px;
-      font: inherit;
-      color: var(--text);
-    }
-
-    .checkout-totals {
-      display: grid;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .checkout-total-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .checkout-warning {
-      margin: 0;
-      padding: 12px 14px;
-      border: 1px solid rgba(177, 17, 17, 0.18);
-      background: rgba(177, 17, 17, 0.06);
-      color: #b11111;
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      line-height: 1.5;
-    }
-
-    .checkout-note {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.7;
-    }
-
-    .checkout-status {
-      min-height: 24px;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.5;
-    }
-
-    .checkout-status.success {
-      color: #0f6b33;
-    }
-
-    .checkout-status.error {
-      color: #b11111;
-    }
-
-    .checkout-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .video-section {
-      padding: 22px 0 40px;
-    }
-
-    .video-shell {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      border: 1px solid var(--line);
-      background: var(--paper);
-    }
-
-    .video-frame {
-      min-height: 420px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #efe6d8, #faf7f2 58%, #ece1d3);
-      border-right: 1px solid var(--line);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .play {
-      width: 90px;
-      height: 90px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.82);
-      display: grid;
-      place-items: center;
     }
 
-    .play::before {
-      content: "";
-      width: 0;
-      height: 0;
-      border-left: 20px solid #111111;
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-      margin-left: 5px;
-    }
-
-    .video-copy {
-      padding: 28px;
+    .carousel-track {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 20px;
+      width: max-content;
+      animation: marquee 32s linear infinite;
     }
 
-    .video-copy h2 {
-      margin: 0;
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-    }
+    .carousel-track:hover { animation-play-state: paused; }
 
-    .video-copy p {
-      margin: 12px 0 0;
-      color: #44403a;
-      line-height: 1.8;
-      font-size: 0.95rem;
-      max-width: 45ch;
-    }
+    .carousel-slide { animation: luxuryFade 4.8s ease-in-out infinite; }
+    .carousel-slide:nth-child(2n) { animation-delay: 0.8s; }
+    .carousel-slide:nth-child(3n) { animation-delay: 1.6s; }
+    .carousel-slide:nth-child(4n) { animation-delay: 2.4s; }
 
-    .video-list {
-      display: grid;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    footer {
-      padding: 0 0 28px;
-    }
-
-    .footer-line {
-      border-top: 1px solid var(--line);
-      padding-top: 14px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 1280px) {
-      .cart-float {
-        width: 280px;
-      }
-    }
-
-    @media (max-width: 1100px) {
-      .hero-shell,
-      .hero-meta,
-      .feature-panel,
-      .video-shell,
-      .product-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-media {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .cart-float {
-        position: static;
-        width: 100%;
-        max-height: none;
-        margin: 0 auto 18px;
-      }
-
-      body.has-cart-inline .wrap.cart-wrap {
-        width: min(calc(100% - 28px), var(--max));
-        margin: 0 auto;
-      }
-
-      .product-card:last-child {
-        grid-column: span 2;
-      }
-    }
-
-
-    @media (max-width: 860px) {
-      .hero-shell {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-
-      .hero-media {
-        min-height: 0;
-        aspect-ratio: 4 / 5;
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .hero-image-fill {
-        object-position: center 22%;
-      }
-
-      .hero-copy {
-        padding: 22px 18px 20px;
-      }
-
-      .hero-copy h1 {
-        font-size: clamp(2rem, 10vw, 3.2rem);
-        line-height: 0.95;
-      }
-
-      .hero-copy p {
-        max-width: 100%;
-        font-size: 0.94rem;
-        line-height: 1.7;
-      }
-
-      .hero-meta {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-meta-box {
-        padding: 12px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .hero-top {
-        padding: 8px 0 6px;
-      }
-
-      .hero-media {
-        aspect-ratio: 4 / 5;
-      }
-
-      .hero-image-fill {
-        object-position: center 18%;
-      }
-
-      .hero-copy {
-        padding: 18px 14px 18px;
-        gap: 18px;
-      }
-
-      .hero-actions {
-        gap: 8px;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 860px) {
-      .checkout-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-panel,
-      .video-shell,
-      .product-grid,
-      .specs {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-image,
-      .video-frame {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .product-card:last-child {
-        grid-column: auto;
-      }
-
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .wrap {
-        width: min(calc(100% - 18px), var(--max));
-      }
-
-      .topbar-inner {
-        min-height: auto;
-        padding: 14px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .subnav {
-        padding-bottom: 16px;
-      }
-    }
-    /* MICRO INTERACTIONS */
-
-    .btn,
-    .product-card,
-    .nav a {
-      transition: all 0.2s ease;
-    }
-
-    .btn:active {
-      transform: scale(0.96);
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
-    }
-
-    .btn.dark:active {
-      background: #000;
-    }
-
-    .product-card {
-      cursor: pointer;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-3px);
-      background: #ffffff;
-    }
-
-    .product-card.reveal-in {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-
-    .product-card.reveal-in.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .hero-shell.reveal-in,
-    .video-shell.reveal-in,
-    .intro-grid.reveal-in,
-    .subnav.reveal-in {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .hero-shell.reveal-in.is-visible,
-    .video-shell.reveal-in.is-visible,
-    .intro-grid.reveal-in.is-visible,
-    .subnav.reveal-in.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-
-    .product-card:active {
-      transform: scale(0.98);
-    }
-
-    .product-card::after {
-      content: "View Item";
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0;
-      transition: 0.2s ease;
-    }
-
-    .product-card:hover::after {
-      opacity: 1;
-    }
-
-    .nav a {
-      position: relative;
-    }
-
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0%;
-      height: 1px;
-      background: #111;
-      transition: width 0.2s ease;
-    }
-
-    .nav a:hover::after {
-      width: 100%;
-    }
-
-    .mini-placeholder {
-      transition: transform 0.25s ease;
-    }
-
-    .product-card:hover .mini-placeholder {
-      transform: scale(1.04);
-    }
-
-    /* CLICK FEEDBACK FLASH */
-
-    .click-flash {
+    .noise-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.05);
-      opacity: 0;
       pointer-events: none;
-      transition: opacity 0.2s ease;
+      opacity: 0.08;
+      mix-blend-mode: soft-light;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.16) 0.6px, transparent 0.8px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.12) 0.6px, transparent 0.8px),
+        radial-gradient(circle at 40% 70%, rgba(255,255,255,0.14) 0.7px, transparent 0.9px),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.1) 0.6px, transparent 0.8px);
+      background-size: 120px 120px, 140px 140px, 160px 160px, 180px 180px;
     }
 
-    .product-card:active .click-flash {
-      opacity: 1;
+    .icon-glow {
+      filter: drop-shadow(0 0 12px rgba(255,255,255,0.18)) drop-shadow(0 0 28px rgba(255,255,255,0.1));
+      animation: pulseGlow 2.8s ease-in-out infinite;
     }
 
+    .icon-shell {
+      background: radial-gradient(circle at center, rgba(255,255,255,0.1), rgba(255,255,255,0.02) 55%, transparent 70%);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    @keyframes luxuryFade {
+      0%, 100% { opacity: 0.72; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.015); }
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
   </style>
 </head>
-<body class="no-scroll">
-  <div class="splash-screen" id="splash-screen" aria-hidden="true">
-    <img class="splash-video" src="#" alt="MENOCLONE campaign background">
-    <div class="splash-overlay"></div>
-    <div class="splash-inner">
-      <div class="splash-mark image-mark"><img src="mnc.png" alt="MENOCLONE logo"></div>
-      <p class="splash-copy">Originality Has Origins</p>
-      <div class="unlock-note" id="unlock-note">Initializing entry...</div>
-      <div class="splash-actions">
-        <button class="btn enter-btn is-locked" type="button" id="enter-site-btn" disabled aria-disabled="true">Enter</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="vertical-ticker"><span>Originality Has Origins — MENOCLONE</span></div>
-
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a href="#" class="brand brand-logo">MENOCLONE</a>
-      <nav class="nav">
-        <a href="#" class="active">Preview</a>
-        <a href="#lookbook">Lookbook</a>
-        <a href="#">About</a>
-        <a href="#">Cart</a>
-        <button class="btn dark nav-closet-btn" type="button" id="open-closet-modal">Digital Closet</button>
-      </nav>
-    </div>
-  </header>
-
-  <div class="wrap cart-wrap">
-    <aside class="cart-float" aria-label="Shopping cart summary">
-      <div class="cart-head">
-        <div>
-          <strong>Cart Summary</strong>
-          <span class="cart-count" id="cart-count">0 Items</span>
-        </div>
-      </div>
-      <div class="cart-items" id="cart-items">
-        <div class="cart-empty" id="cart-empty">No items added yet. Tap any product button and your selected pieces will float here while you browse.</div>
-      </div>
-      <div class="cart-summary">
-        <div class="cart-row">
-          <span>Subtotal</span>
-          <strong id="cart-subtotal">$0</strong>
-        </div>
-        <div class="cart-actions">
-          <button class="btn" type="button" id="clear-cart-btn">Clear</button>
-          <button class="btn dark" type="button" id="open-checkout-btn">Checkout</button>
-        </div>
-      </div>
-    </aside>
-  </div>
-
-  <main>
-    <section class="hero-top">
-      <div class="wrap">
-        <div class="hero-shell reveal-in">
-          <div class="hero-media">
-            <img src="mnc2.jpg" alt="MENOCLONE hero image" class="hero-image-fill">
-          </div>
-          <div class="hero-copy">
-            <div>
-              <span class="eyebrow">MENOCLONE seasonal drop</span>
-              <h1>Quality pieces. timeless experessions. Streetwear presence.</h1>
-              <p>
-                MENOCLONE is a digital thrifting experience where identity is reimagined through technology. Each piece exists beyond fabric — replicated, reinterpreted, and reborn in a new dimension.
-              </p>
-              <div class="hero-actions">
-                <a class="btn dark" href="#products">Shop Preview</a>
-                <a class="btn" href="#lookbook">Watch Lookbook</a>
+<body class="text-white antialiased">
+  <div id="app">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      <section class="mb-6 overflow-hidden rounded-[2rem] border border-white/10 bg-black/60 shadow-[0_0_60px_rgba(255,255,255,0.05)] relative">
+        <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_60%)]"></div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none z-10"></div>
+          <div class="noise-overlay z-10"></div>
+          <div class="carousel-track py-6">
+            <div class="flex gap-4 px-4">
+              <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=80" alt="Streetwear editorial" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">Streetwear</p>
+                  <h3 class="mt-2 text-2xl font-semibold tracking-tight">Layered Essentials</h3>
+                </div>
               </div>
-            </div>
-            <div class="hero-meta">
-              <div class="hero-meta-box">
-                <strong>Orgins</strong>
-                <span>MENOCLONE was created at the intersection of fashion, technology, and identity — a space where style is no longer limited to the physical.</span>
+              <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80" alt="Luxury casual styling" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">Luxury Casual</p>
+                  <h3 class="mt-2 text-2xl font-semibold tracking-tight">Refined Daily Fits</h3>
+                </div>
               </div>
-              <div class="hero-meta-box">
-                <strong>Philosphy</strong>
-                <span>MENOCLONE challenges the idea of duplication by turning it into evolution. Each piece is a reflection of influence, culture, and transformation.</span>
+              <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80" alt="Editorial fashion look" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">Editorial</p>
+                  <h3 class="mt-2 text-2xl font-semibold tracking-tight">Statement Pieces</h3>
+                </div>
               </div>
-              <div class="hero-meta-box">
-                <strong>Innovation</strong>
-                <span>Through features like DigiCloset and AR try-on (Beta), users can experience pieces before committing, bridging the gap between imagination and reality.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="intro">
-      <div class="wrap">
-        <div class="intro-grid reveal-in">
-          <h1 class="season">Products</h1>
-          <div class="meta">Season 01</div>
-        </div>
-
-        <div class="subnav reveal-in">
-          <div class="subnav-left">
-            <a href="#" class="active">View All</a>
-            <a href="#">Outerwear</a>
-            <a href="#">Tops</a>
-            <a href="#">Bottoms</a>
-            <a href="#">Accessories</a>
-          </div>
-          <div class="subnav-right">
-            <span>Quality Thrift</span>
-            <span>Streetwear | Culture</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="products">
-      <div class="wrap">
-        <div class="product-grid">
-          <article class="product-card reveal-in">
-            <div class="product-image">
-              <div class="mini-placeholder">
-                <div>
-                  <strong>Cubs Pinstripe Jersey</strong>
-                  <span>Front View</span>
+              <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80" alt="Street style portrait" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">City Style</p>
+                  <h3 class="mt-2 text-2xl font-semibold tracking-tight">Street Motion</h3>
                 </div>
               </div>
             </div>
-            <div class="click-flash"></div>
-            <div class="product-info">
-              <div class="product-topline">
-                <span class="product-type">Tops</span>
-                <span class="product-price">$50</span>
+            <div class="flex gap-4 px-4" aria-hidden="true">
+              <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=80" alt="" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
               </div>
-              <h3>Chicago Cubs Pinstripe Jersey</h3>
-              <p>Step into timeless baseball heritage with this authentic Chicago Cubs pinstripe jersey. Featuring crisp vertical blue stripes on a clean white base, this piece carries the iconic Cubs emblem stitched boldly on the chest — a symbol of legacy, loyalty, and street-sport crossover style.</p>
-              <div class="views">
-                <div class="view">Front View</div>
-                <div class="view">Back View</div>
+              <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80" alt="" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
               </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Chicago Cubs Pinstripe Jersey" data-price="50" data-display-price="$50" data-type="Tops">Add to Cart</button>
-            </div>
-          </article>
-
-          <article class="product-card reveal-in">
-            <div class="product-image">
-              <div class="mini-placeholder">
-                <div>
-                  <strong>Houston Astros “Altuve 27” Jersey</strong>
-                  <span>Front View</span>
-                </div>
+              <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80" alt="" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
               </div>
-            </div>
-            <div class="click-flash"></div>
-            <div class="product-info">
-              <div class="product-topline">
-                <span class="product-type">Tops</span>
-                <span class="product-price">$30</span>
+              <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80" alt="" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
               </div>
-              <h3>Houston Astros “Altuve 27” Jersey</h3>
-              <p>Turn heads in a piece that refuses to blend in. This Houston Astros jersey comes in a bold, high-energy orange — finished with clean navy piping and classic ASTROS lettering across the chest.
-
-The back features “Altuve 27”, honoring one of the most iconic players of his era. Whether you’re stepping out or building a fit around color, this jersey brings instant presence.</p>
-              <div class="views">
-                <div class="view">Front View</div>
-                <div class="view">Back View</div>
-              </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Houston Astros “Altuve 27” Jersey" data-price="30" data-display-price="$30" data-type="Tops">Add to Cart</button>
-            </div>
-          </article>
-
-          <article class="product-card reveal-in">
-            <div class="product-image">
-              <div class="mini-placeholder">
-                <div>
-                  <strong>Sunrise "816" Mesh Jersey</strong>
-                  <span>Front View</span>
-                </div>
-              </div>
-            </div>
-            <div class="click-flash"></div>
-            <div class="product-info">
-              <div class="product-topline">
-                <span class="product-type">Tops</span>
-                <span class="product-price">$45</span>
-              </div>
-              <h3>Sunrise "816” Mesh Jersey</h3>
-              <p>Soft tones, strong presence. This sky-blue mesh jersey features flowing “Sunrise” script across the chest with 816 detailing, creating a look that feels both athletic and elevated.
-
-The monochrome white lettering against the blue base gives it a clean, almost dreamlike aesthetic — subtle but powerful. The back carries “Sunrise 816” in bold block lettering, completing the full visual story.</p>
-              <div class="views">
-                <div class="view">Front View</div>
-                <div class="view">Back View</div>
-              </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Sunrise &quot;816&quot; Mesh Jersey" data-price="45" data-display-price="$45" data-type="Tops">Add to Cart</button>
-            </div>
-          </article>
-
-          <article class="product-card reveal-in">
-            <div class="product-image">
-              <div class="mini-placeholder">
-                <div>
-                  <strong>Adobe Pinstripe "Mandel" Jersey</strong>
-                  <span>Front View</span>
-                </div>
-              </div>
-            </div>
-            <div class="click-flash"></div>
-            <div class="product-info">
-              <div class="product-topline">
-                <span class="product-type">Tops</span>
-                <span class="product-price">$50</span>
-              </div>
-              <h3>Adobe Pinstripe "Mandel" Jersey</h3>
-              <p>Where tech meets sport. This white pinstripe jersey flips the classic baseball silhouette with a clean, modern twist — featuring the iconic Adobe logo embroidered on the chest.
-
-Crisp vertical stripes give it that timeless field aesthetic, while the back carries “Mandel” in bold red lettering — adding a personalized, almost team-issued feel.</p>
-              <div class="views">
-                <div class="view">Front View</div>
-                <div class="view">Back View</div>
-              </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Adobe Pinstripe &quot;Mandel&quot; Jersey" data-price="50" data-display-price="$50" data-type="Tops">Add to Cart</button>
-            </div>
-          </article>
-
-          <article class="product-card reveal-in">
-            <div class="product-image">
-              <div class="mini-placeholder">
-                <div>
-                  <strong>Style Syndrome Vol.1</strong>
-                  <span>Event</span>
-                </div>
-              </div>
-            </div>
-            <div class="click-flash"></div>
-            <div class="product-info">
-              <div class="product-topline">
-                <span class="product-type">Tickets</span>
-                <span class="product-price">$TBA</span>
-              </div>
-              <h3>Style Syndrome Vol. 1</h3>
-              <p>Art. Tech. Fashion. One space.</p>
-
-              <p>Good music. Good energy. BYOB.</p>
-          
-              
-              <p>Stay tuned for full details… this one different.</p>
-              
-              <p>Powered by MENOCLONE & RoboTechi Co.</p>
-              <p>Hosted by OdotNYC</p>
-              <div class="views">
-                <div class="view">Front View</div>
-                <div class="view">Back View</div>
-              </div>
-              <button class="btn dark add-cart-btn" type="button" data-name="Style Syndrome Vol. 1" data-price="0" data-display-price="TBA" data-type="Tickets">Add to Cart</button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="video-section" id="lookbook">
-      <div class="wrap">
-        <div class="video-shell reveal-in">
-          <div class="video-frame">
-            <div class="placeholder-block" style="width:min(72%,420px); aspect-ratio:16/9; background:rgba(255,255,255,0.22);">
-              <div>
-                <strong>Commercial / Lookbook </strong>
-               <!-- <span>Replace with your campaign film, behind-the-scenes clip, or brand commercial embed.</span> -->
-              </div>
-            </div>
-            <div class="play" aria-hidden="true" style="position:absolute;"></div>
-          </div>
-
-          <div class="video-copy">
-            <div>
-              <span class="eyebrow">Lookbook / Film</span>
-              <h2>Visual Identity Through Motion.</h2>
-              <p>
-                The Lookbook showcases curated moments where style is no longer worn — it’s embodied. Every image reflects a version of self, captured in its most expressive state.
-              </p>
-            </div>
-
-            <div class="button-row">
-              <a class="btn dark" href="#">Play Video</a>
-              <a class="btn" href="#products">Back to Preview</a>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  
+      </section>
 
-  <div class="closet-modal" id="closet-modal" aria-hidden="true">
-    <div class="closet-backdrop" data-close-closet="true"></div>
-    <div class="closet-panel" role="dialog" aria-modal="true" aria-labelledby="closet-title">
-      <div class="closet-head">
-        <div>
-          <h2 id="closet-title">Enter the Digital Closet</h2>
-          <p>MENOCLONE Digital Closet is your personal archive of style—where every piece you own becomes part of a curated system. Track, organize, and evolve your wardrobe with intention.</p>
-        </div>
-        <button class="closet-close" type="button" id="closet-close-btn" aria-label="Close digital closet modal">×</button>
-      </div>
-      
-      
-      <div class="closet-actions">
-        <button class="btn" type="button" id="closet-cancel-btn">Stay Here</button>
-        <button class="btn dark" type="button" id="closet-enter-btn">Enter Closet</button>
-      </div>
-      
-    </div>
-  </div>
-
-  <div class="checkout-modal" id="checkout-modal" aria-hidden="true">
-    <div class="checkout-backdrop" data-close-checkout="true"></div>
-    <div class="checkout-panel" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
-      <div class="checkout-head">
-        <div>
-          <h2 id="checkout-title">Order recap</h2>
-          <!-- <p>Review the pieces in your cart, enter the customer email, and confirm to generate a Stripe payment link workflow for checkout.</p> -->
-        </div>
-        <button class="checkout-close" type="button" id="checkout-close-btn" aria-label="Close checkout">×</button>
-      </div>
-      <div class="checkout-body">
-        <div class="checkout-list" id="checkout-list"></div>
-
-        <div class="checkout-grid">
-          <div class="checkout-card">
-            <h3>Customer</h3>
-            <div class="checkout-field">
-              <label for="checkout-email">Email address</label>
-              <input id="checkout-email" name="checkout-email" type="email" placeholder="customer@email.com" autocomplete="email" />
-            </div>
-           <!-- <p class="checkout-note">After confirmation, your Stripe workflow can email the payment link directly to this address.</p> -->
+      <header class="glass rounded-[2rem] p-6 sm:p-8 shadow-2xl shadow-black/30 overflow-hidden relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 pointer-events-none"></div>
+        <div class="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div class="absolute top-0 right-0 z-30 flex flex-col gap-3">
+            <button id="loginBtn" class="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.25em] text-zinc-200 transition hover:bg-white hover:text-black">
+              Login
+            </button>
+            <button id="logoutBtn" class="rounded-full border border-red-500 bg-red-600 px-5 py-2 text-xs uppercase tracking-[0.25em] text-white transition hover:bg-red-500 hidden">
+              Logout
+            </button>
           </div>
-
-          <div class="checkout-card">
-            <h3>Summary</h3>
-            <div class="checkout-totals">
-              <div class="checkout-total-row"><span>Items</span><strong id="checkout-count">0</strong></div>
-              <div class="checkout-total-row"><span>Subtotal</span><strong id="checkout-subtotal">$0</strong></div>
-            </div>
-          </div>
-        </div>
-
-        <p class="checkout-warning">No Refunds after purchase is made.</p>
-        <div class="checkout-status" id="checkout-status"></div>
-        <div class="checkout-actions">
-          <button class="btn" type="button" id="checkout-cancel-btn">Cancel</button>
-          <button class="btn dark" type="button" id="checkout-confirm-btn">Confirm &amp; Send Stripe Link</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  </main>
-
-  <footer>
-    <div class="wrap footer-line">
-      <span>&copy; 2026 MENOCLONE | All Rights Reserved.</span>
-    </div>
-  </footer>
-  <script>
-    const cartItemsEl = document.getElementById('cart-items');
-    const cartEmptyEl = document.getElementById('cart-empty');
-    const cartCountEl = document.getElementById('cart-count');
-    const cartSubtotalEl = document.getElementById('cart-subtotal');
-    const addButtons = document.querySelectorAll('.add-cart-btn');
-    const clearCartBtn = document.getElementById('clear-cart-btn');
-    const openCheckoutBtn = document.getElementById('open-checkout-btn');
-    const checkoutModal = document.getElementById('checkout-modal');
-    const checkoutCloseBtn = document.getElementById('checkout-close-btn');
-    const checkoutCancelBtn = document.getElementById('checkout-cancel-btn');
-    const checkoutConfirmBtn = document.getElementById('checkout-confirm-btn');
-    const checkoutListEl = document.getElementById('checkout-list');
-    const checkoutEmailEl = document.getElementById('checkout-email');
-    const checkoutCountEl = document.getElementById('checkout-count');
-    const checkoutSubtotalEl = document.getElementById('checkout-subtotal');
-    const checkoutStatusEl = document.getElementById('checkout-status');
-    const cartFloat = document.querySelector('.cart-float');
-    const splashScreen = document.getElementById('splash-screen');
-    const enterSiteBtn = document.getElementById('enter-site-btn');
-    const unlockNote = document.getElementById('unlock-note');
-    const closetModal = document.getElementById('closet-modal');
-    const openClosetModalBtn = document.getElementById('open-closet-modal');
-    const closetCloseBtn = document.getElementById('closet-close-btn');
-    const closetCancelBtn = document.getElementById('closet-cancel-btn');
-    const closetEnterBtn = document.getElementById('closet-enter-btn');
-    const closetStatus = document.getElementById('closet-status');
-    const closetUrl = 'https://odotofrva.github.io/mnc-digicloset/';
-    const cart = [];
-    const STRIPE_ENDPOINT = '/api/create-payment-link';
-    let dragActive = false;
-    let dragOffsetX = 0;
-    let dragOffsetY = 0;
-
-    function unlockEnterButton() {
-      if (!enterSiteBtn) return;
-      enterSiteBtn.disabled = false;
-      enterSiteBtn.setAttribute('aria-disabled', 'false');
-      enterSiteBtn.classList.remove('is-locked');
-      enterSiteBtn.classList.add('is-unlocked');
-      if (unlockNote) unlockNote.textContent = 'Entry unlocked';
-    }
-
-    window.addEventListener('load', () => {
-      if (unlockNote) unlockNote.textContent = 'Initializing entry...';
-      window.setTimeout(unlockEnterButton, 1800);
-    });
-
-    function hideSplash() {
-      if (splashScreen) {
-        splashScreen.classList.add('hidden');
-        document.body.classList.remove('no-scroll');
-      }
-    }
-
-    function setClosetStatus(message) {
-      if (closetStatus) closetStatus.textContent = message;
-    }
-
-    function openClosetModal() {
-      if (!closetModal) return;
-      closetModal.classList.remove('glitching');
-      closetModal.classList.add('open');
-      closetModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      setClosetStatus('Portal standing by.');
-    }
-
-    function closeClosetModal() {
-      if (!closetModal) return;
-      closetModal.classList.remove('open', 'glitching');
-      closetModal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = checkoutModal && checkoutModal.classList.contains('open') ? 'hidden' : '';
-      setClosetStatus('Portal standing by.');
-    }
-
-    function triggerClosetTransition() {
-      if (!closetModal) return;
-      setClosetStatus('Glitch sequence active...');
-      closetModal.classList.add('glitching');
-      closetEnterBtn.disabled = true;
-      closetCancelBtn.disabled = true;
-      window.setTimeout(() => {
-        window.open(closetUrl, '_blank', 'noopener');
-        closetEnterBtn.disabled = false;
-        closetCancelBtn.disabled = false;
-        closeClosetModal();
-      }, 560);
-    }
-
-    function formatMoney(value) {
-      return `$${value}`;
-    }
-
-
-
-    function getCartSubtotal() {
-      return cart.reduce((sum, item) => sum + (Number.isFinite(item.price) ? item.price : 0), 0);
-    }
-
-    function setCheckoutStatus(message = '', type = '') {
-      if (!checkoutStatusEl) return;
-      checkoutStatusEl.textContent = message;
-      checkoutStatusEl.className = 'checkout-status';
-      if (type) checkoutStatusEl.classList.add(type);
-    }
-
-    function renderCheckoutModal() {
-      if (!checkoutListEl || !checkoutCountEl || !checkoutSubtotalEl) return;
-      checkoutListEl.innerHTML = '';
-
-      if (cart.length === 0) {
-        checkoutListEl.innerHTML = '<div class="checkout-card"><p class="checkout-note">Your cart is empty. Add pieces before opening checkout.</p></div>';
-      } else {
-        cart.forEach((item) => {
-          const row = document.createElement('div');
-          row.className = 'checkout-item';
-          row.innerHTML = `
-            <div class="checkout-thumb">${item.type}</div>
-            <div>
-              <div class="checkout-item-title">${item.name}</div>
-              <div class="checkout-item-meta">${item.type} • Curated preview selection</div>
-            </div>
-            <strong class="checkout-price">${item.displayPrice || formatMoney(item.price)}</strong>
-          `;
-          checkoutListEl.appendChild(row);
-        });
-      }
-
-      checkoutCountEl.textContent = String(cart.length);
-      checkoutSubtotalEl.textContent = formatMoney(getCartSubtotal());
-    }
-
-    function openCheckout() {
-      if (!checkoutModal || cart.length === 0) return;
-      renderCheckoutModal();
-      setCheckoutStatus('');
-      checkoutModal.classList.add('open');
-      checkoutModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      if (checkoutEmailEl) checkoutEmailEl.focus();
-    }
-
-    function closeCheckout() {
-      if (!checkoutModal) return;
-      checkoutModal.classList.remove('open');
-      checkoutModal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      setCheckoutStatus('');
-    }
-
-    async function requestStripePaymentLink(email, items) {
-      const payload = {
-        email,
-        items,
-        subtotal: getCartSubtotal(),
-        source: 'menoclone-preview'
-      };
-
-      const response = await fetch(STRIPE_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-
-      if (!response.ok) {
-        throw new Error('Unable to generate Stripe link right now.');
-      }
-
-      return response.json();
-    }
-
-    function renderCart() {
-      if (!cartItemsEl || !cartCountEl || !cartSubtotalEl || !cartFloat) return;
-
-      const itemsOnly = cartItemsEl.querySelectorAll('.cart-item');
-      itemsOnly.forEach(item => item.remove());
-
-      if (cart.length === 0) {
-        if (cartEmptyEl) cartEmptyEl.style.display = 'block';
-        cartFloat.classList.remove('visible');
-      } else {
-        if (cartEmptyEl) cartEmptyEl.style.display = 'none';
-        cartFloat.classList.add('visible');
-      }
-
-      const subtotal = getCartSubtotal();
-      cart.forEach((item, index) => {
-        const row = document.createElement('div');
-        row.className = 'cart-item';
-        row.innerHTML = `
-          <div class="cart-thumb">${item.type}</div>
           <div>
-            <div class="cart-item-title">${item.name}</div>
-            <div class="cart-item-meta">${item.type} • ${item.displayPrice || formatMoney(item.price)}</div>
+            <img src="mnc.png" alt="MENOCLONE Logo" class="w-48 sm:w-64 mb-4 mx-auto lg:mx-0" />
+            <p class="uppercase tracking-[0.35em] text-xs text-zinc-400 mb-3">MENOCLONE</p>
+            <h1 class="text-3xl sm:text-5xl font-semibold tracking-tight">Digital Closet</h1>
+            <p class="mt-4 max-w-2xl text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
+              Archive your presence. Curate your identity. The MENOCLONE Digital Closet is a living system of your style — where every piece holds memory, intention, and evolution.
+            </p>
           </div>
-          <button class="cart-remove" type="button" data-index="${index}" aria-label="Remove item">×</button>
-        `;
-        cartItemsEl.appendChild(row);
-      });
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto lg:pr-32" id="stats"></div>
+        </div>
+      </header>
 
-      cartCountEl.textContent = `${cart.length} ${cart.length === 1 ? 'Item' : 'Items'}`;
-      cartSubtotalEl.textContent = formatMoney(subtotal);
+      <section class="mt-6">
+        <div class="flex items-center justify-between gap-4 mb-5">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold">Category Menu</h2>
+            <p class="text-sm text-zinc-400 mt-1">Start with the section that matches your fit.</p>
+          </div>
+        </div>
+        <div id="categoryGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5"></div>
+      </section>
 
-      document.querySelectorAll('.cart-remove').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const idx = Number(btn.dataset.index);
-          cart.splice(idx, 1);
-          renderCart();
+      <section class="grid grid-cols-1 xl:grid-cols-[320px,1fr] gap-6 mt-8">
+        <aside class="glass rounded-[2rem] p-5 sm:p-6 h-fit xl:sticky xl:top-6">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h2 class="text-xl font-semibold">Closet Controls</h2>
+              <p class="text-sm text-zinc-400 mt-1">Filter and manage your wardrobe.</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm text-zinc-300 mb-2">Search</label>
+              <input id="searchInput" type="text" placeholder="Search pieces, notes, brands..." class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-4">
+              <div>
+                <label class="block text-sm text-zinc-300 mb-2">Category</label>
+                <select id="categoryFilter" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none focus:border-white/30">
+                  <option value="All">All</option>
+                  <option value="Tops">Tops</option>
+                  <option value="Bottoms">Bottoms</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Shoes">Shoes</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-300 mb-2">Color</label>
+                <select id="colorFilter" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none focus:border-white/30">
+                  <option value="All">All</option>
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Grey">Grey</option>
+                  <option value="Cream">Cream</option>
+                  <option value="Brown">Brown</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Green">Green</option>
+                  <option value="Red">Red</option>
+                  <option value="Silver">Silver</option>
+                  <option value="Gold">Gold</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-300 mb-2">Size</label>
+                <select id="sizeFilter" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none focus:border-white/30">
+                  <option value="All">All</option>
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                  <option value="28">28</option>
+                  <option value="30">30</option>
+                  <option value="32">32</option>
+                  <option value="34">34</option>
+                  <option value="36">36</option>
+                  <option value="38">38</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="One Size">One Size</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-300 mb-2">Sort</label>
+                <select id="sortFilter" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none focus:border-white/30">
+                  <option value="newest">Newest</option>
+                  <option value="az">A–Z</option>
+                  <option value="category">Category</option>
+                  <option value="color">Color</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="addItemWrap" class="pt-2 border-t border-white/10 hidden">
+              <button id="openModalBtn" class="w-full rounded-2xl bg-white text-black font-medium px-4 py-3 transition hover:bg-zinc-200">Add New Clothing Item</button>
+            </div>
+
+            <div id="loginPromptWrap" class="pt-2 border-t border-white/10">
+              <p class="text-sm text-zinc-400 mb-3">Log in to unlock your private closet tools and start adding pieces.</p>
+              <button id="loginPromptBtn" class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white transition hover:bg-white/10">Log In to Add Items</button>
+            </div>
+
+            <div id="savedOutfitsWrap" class="pt-2 border-t border-white/10 hidden">
+              <button id="openOutfitModalBtn" class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white transition hover:bg-white/10">Save New Outfit</button>
+            </div>
+          </div>
+        </aside>
+
+        <main class="space-y-6">
+          <section id="profileSection" class="glass rounded-[2rem] p-5 sm:p-6 hidden">
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <div>
+                <h2 class="text-xl sm:text-2xl font-semibold">User Profile</h2>
+                <p class="text-sm text-zinc-400 mt-1">Your public identity inside the Digital Closet.</p>
+              </div>
+            </div>
+
+            <form id="profileForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-zinc-300 mb-2">Display Name</label>
+                <input id="profileDisplayName" type="text" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30" />
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-300 mb-2">Instagram</label>
+                <input id="profileInstagram" type="text" placeholder="@menoclone" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm text-zinc-300 mb-2">Bio</label>
+                <textarea id="profileBio" rows="3" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30"></textarea>
+              </div>
+              <div class="md:col-span-2">
+                <button type="submit" class="rounded-2xl bg-white text-black font-medium px-5 py-3 hover:bg-zinc-200 transition">Save Profile</button>
+              </div>
+            </form>
+          </section>
+
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl sm:text-2xl font-semibold">Your Collection</h2>
+              <p class="text-sm text-zinc-400 mt-1">Tops, bottoms, accessories, shoes, and more.</p>
+            </div>
+            <div class="text-sm text-zinc-400" id="resultsLabel">0 items</div>
+          </div>
+
+          <div id="emptyState" class="hidden glass rounded-[2rem] p-10 text-center">
+            <h3 class="text-2xl font-semibold">No items found</h3>
+            <p class="text-zinc-400 mt-3 max-w-md mx-auto">Try adjusting your filters or add a new piece to begin building your MENOCLONE digital closet.</p>
+          </div>
+
+          <div id="itemsGrid" class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5"></div>
+
+          <section id="savedOutfitsSection" class="glass rounded-[2rem] p-5 sm:p-6 hidden">
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <div>
+                <h2 class="text-xl sm:text-2xl font-semibold">Saved Outfits</h2>
+                <p class="text-sm text-zinc-400 mt-1">Store full looks and come back to them anytime.</p>
+              </div>
+              <div class="text-sm text-zinc-400" id="outfitCountLabel">0 outfits</div>
+            </div>
+            <div id="savedOutfitsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+          </section>
+        </main>
+      </section>
+    </div>
+  </div>
+
+  <div id="itemModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4 py-8">
+    <div class="absolute inset-0" id="modalBackdrop"></div>
+    <div class="relative w-full max-w-3xl glass rounded-[2rem] p-5 sm:p-7 shadow-2xl shadow-black/40 max-h-[92vh] overflow-y-auto scrollbar-thin">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <p class="uppercase tracking-[0.28em] text-xs text-zinc-400 mb-2">Upload Piece</p>
+          <h3 class="text-2xl font-semibold">Add a New Closet Item</h3>
+          <p class="text-sm text-zinc-400 mt-2">Add your clothing piece, assign the details, and keep your collection organized.</p>
+        </div>
+        <button id="closeModalBtn" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10">Close</button>
+      </div>
+
+      <form id="itemForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="md:col-span-2">
+          <label class="block text-sm text-zinc-300 mb-2">Item Name</label>
+          <input name="name" required type="text" placeholder="Black Structured Blazer" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Category</label>
+          <select name="category" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none focus:border-white/30">
+            <option>Tops</option>
+            <option>Bottoms</option>
+            <option>Accessories</option>
+            <option>Shoes</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Brand</label>
+          <input name="brand" type="text" placeholder="MENOCLONE" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Color</label>
+          <input name="color" type="text" placeholder="Black" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Size</label>
+          <input name="size" type="text" placeholder="L / 34 / 11 / One Size" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Season</label>
+          <input name="season" type="text" placeholder="All Season" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Notes</label>
+          <input name="notes" type="text" placeholder="Luxury staple with clean silhouette" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm text-zinc-300 mb-2">Image URL</label>
+          <input name="image_url" type="url" placeholder="https://..." class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+          <p class="text-xs text-zinc-500 mt-2">For Supabase, this version uses image URLs. You can connect Supabase Storage next.</p>
+        </div>
+        <div class="md:col-span-2">
+          <button type="submit" class="rounded-2xl bg-white text-black font-medium px-5 py-3 hover:bg-zinc-200 transition">Save Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="outfitModal" class="fixed inset-0 z-[55] hidden items-center justify-center bg-black/70 px-4 py-8">
+    <div class="absolute inset-0" id="outfitBackdrop"></div>
+    <div class="relative w-full max-w-2xl glass rounded-[2rem] p-5 sm:p-7 shadow-2xl shadow-black/40 max-h-[92vh] overflow-y-auto scrollbar-thin">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <p class="uppercase tracking-[0.28em] text-xs text-zinc-400 mb-2">Save Look</p>
+          <h3 class="text-2xl font-semibold">Create a Saved Outfit</h3>
+          <p class="text-sm text-zinc-400 mt-2">Choose pieces from your closet and save the full look.</p>
+        </div>
+        <button id="closeOutfitModalBtn" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10">Close</button>
+      </div>
+
+      <form id="outfitForm" class="space-y-4">
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Outfit Name</label>
+          <input id="outfitName" type="text" required placeholder="Night Shift Look" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Mood / Notes</label>
+          <textarea id="outfitNotes" rows="3" placeholder="Clean monochrome layers for evening movement." class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-3">Choose Pieces</label>
+          <div id="outfitItemsPicker" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+        </div>
+        <div>
+          <button type="submit" class="rounded-2xl bg-white text-black font-medium px-5 py-3 hover:bg-zinc-200 transition">Save Outfit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="loginModal" class="fixed inset-0 z-[65] hidden items-center justify-center bg-black/70 px-4">
+    <div class="absolute inset-0" id="loginBackdrop"></div>
+    <div class="relative w-full max-w-md rounded-[2rem] border border-white/10 bg-black/80 p-6 sm:p-8 shadow-2xl shadow-black/50 backdrop-blur-xl">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.35em] text-zinc-500">User Access</p>
+          <h3 class="mt-3 text-2xl font-semibold text-white">Login or create account</h3>
+          <p class="mt-2 text-sm text-zinc-300">Your closet, profile, and saved outfits live under your user account.</p>
+        </div>
+        <button id="closeLoginBtn" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10">Close</button>
+      </div>
+
+      <div class="flex gap-2 mb-5">
+        <button id="showLoginTabBtn" class="flex-1 rounded-2xl bg-white text-black px-4 py-3 text-sm font-medium">Login</button>
+        <button id="showSignupTabBtn" class="flex-1 rounded-2xl bg-white/5 text-white px-4 py-3 text-sm font-medium border border-white/10">Sign Up</button>
+      </div>
+
+      <div id="loginMessage" class="hidden mb-4 rounded-2xl border px-4 py-3 text-sm"></div>
+
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Email</label>
+          <input id="loginEmail" type="email" required placeholder="you@example.com" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Password</label>
+          <input id="loginPassword" type="password" required placeholder="Enter password" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <button type="submit" class="w-full rounded-2xl bg-white text-black font-medium px-4 py-3 hover:bg-zinc-200 transition">Login</button>
+      </form>
+
+      <form id="signupForm" class="space-y-4 hidden">
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Email</label>
+          <input id="signupEmail" type="email" required placeholder="you@example.com" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Password</label>
+          <input id="signupPassword" type="password" required placeholder="Create password" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
+        <button type="submit" class="w-full rounded-2xl bg-white text-black font-medium px-4 py-3 hover:bg-zinc-200 transition">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="instagramModal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/70 px-4">
+    <div class="absolute inset-0" id="instagramBackdrop"></div>
+    <div class="relative w-full max-w-lg rounded-[2rem] border border-white/10 bg-black/80 p-6 sm:p-8 shadow-2xl shadow-black/50 backdrop-blur-xl">
+      <p class="text-xs uppercase tracking-[0.35em] text-zinc-500">MENOCLONE Social</p>
+      <h3 class="mt-4 text-2xl sm:text-3xl font-semibold text-white">Are you following @menoclone on Instagram?</h3>
+      <p class="mt-4 text-sm leading-relaxed text-zinc-300">
+        Stay connected to new drops, styling inspiration, and the evolving world of MENOCLONE. Follow now or skip for the moment.
+      </p>
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+        <a id="followInstagramBtn" href="https://instagram.com/menoclone" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-white px-5 py-3 text-center text-sm font-medium text-black transition hover:bg-zinc-200">Follow @menoclone</a>
+        <button id="skipInstagramBtn" class="rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm text-white transition hover:bg-white/10">Skip for now</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://ouscwouyxzvybunhwtls.supabaseClient.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im91c2N3b3V5eHp2eWJ1bmh3dGxzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjA3MzUsImV4cCI6MjA5MTQzNjczNX0.4fnMcIHJjH9P9cziGV6F9Mmmo21fiGuQtTwh3ZZzw-w"; // paste your anon public key here
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const APP_KEYS = {
+      promptSeen: "menoclone-instagram-prompt-seen"
+    };
+
+    const categoryCards = [
+      { name: 'Tops', description: 'Tees, jackets, sweaters, and statement layers.', icon: 'top' },
+      { name: 'Bottoms', description: 'Trousers, denim, cargos, and tailored essentials.', icon: 'bottom' },
+      { name: 'Accessories', description: 'Chains, bags, eyewear, hats, and finishing pieces.', icon: 'accessory' },
+      { name: 'Shoes', description: 'Sneakers, boots, loafers, and everyday rotation pairs.', icon: 'shoe' }
+    ];
+
+    const state = {
+      user: null,
+      profile: null,
+      items: [],
+      outfits: [],
+      filters: { search: '', category: 'All', color: 'All', size: 'All', sort: 'newest' }
+    };
+
+    const categoryGrid = document.getElementById('categoryGrid');
+    const itemsGrid = document.getElementById('itemsGrid');
+    const resultsLabel = document.getElementById('resultsLabel');
+    const emptyState = document.getElementById('emptyState');
+    const stats = document.getElementById('stats');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const colorFilter = document.getElementById('colorFilter');
+    const sizeFilter = document.getElementById('sizeFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const addItemWrap = document.getElementById('addItemWrap');
+    const loginPromptWrap = document.getElementById('loginPromptWrap');
+    const loginPromptBtn = document.getElementById('loginPromptBtn');
+    const savedOutfitsWrap = document.getElementById('savedOutfitsWrap');
+    const profileSection = document.getElementById('profileSection');
+    const savedOutfitsSection = document.getElementById('savedOutfitsSection');
+    const savedOutfitsGrid = document.getElementById('savedOutfitsGrid');
+    const outfitCountLabel = document.getElementById('outfitCountLabel');
+
+    const profileForm = document.getElementById('profileForm');
+    const profileDisplayName = document.getElementById('profileDisplayName');
+    const profileInstagram = document.getElementById('profileInstagram');
+    const profileBio = document.getElementById('profileBio');
+
+    const itemModal = document.getElementById('itemModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const itemForm = document.getElementById('itemForm');
+
+    const outfitModal = document.getElementById('outfitModal');
+    const openOutfitModalBtn = document.getElementById('openOutfitModalBtn');
+    const closeOutfitModalBtn = document.getElementById('closeOutfitModalBtn');
+    const outfitBackdrop = document.getElementById('outfitBackdrop');
+    const outfitForm = document.getElementById('outfitForm');
+    const outfitName = document.getElementById('outfitName');
+    const outfitNotes = document.getElementById('outfitNotes');
+    const outfitItemsPicker = document.getElementById('outfitItemsPicker');
+
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loginModal = document.getElementById('loginModal');
+    const loginBackdrop = document.getElementById('loginBackdrop');
+    const closeLoginBtn = document.getElementById('closeLoginBtn');
+    const loginMessage = document.getElementById('loginMessage');
+    const showLoginTabBtn = document.getElementById('showLoginTabBtn');
+    const showSignupTabBtn = document.getElementById('showSignupTabBtn');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const loginEmail = document.getElementById('loginEmail');
+    const loginPassword = document.getElementById('loginPassword');
+    const signupEmail = document.getElementById('signupEmail');
+    const signupPassword = document.getElementById('signupPassword');
+
+    const instagramModal = document.getElementById('instagramModal');
+    const instagramBackdrop = document.getElementById('instagramBackdrop');
+    const skipInstagramBtn = document.getElementById('skipInstagramBtn');
+    const followInstagramBtn = document.getElementById('followInstagramBtn');
+
+    function getCategoryIcon(iconType) {
+      const icons = {
+        top: `
+          <svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M40 28L52 20H68L80 28L95 35L88 50L78 45V92H42V45L32 50L25 35L40 28Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+          </svg>
+        `,
+        bottom: `
+          <svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M38 20H82L76 54L68 96H54L50 64L46 96H32L44 54L38 20Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+          </svg>
+        `,
+        accessory: `
+          <svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="32" y="42" width="56" height="42" rx="8" stroke="currentColor" stroke-width="4.5"/>
+            <path d="M45 42C45 33.7157 51.7157 27 60 27C68.2843 27 75 33.7157 75 42" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+        `,
+        shoe: `
+          <svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M25 72H45L58 60L68 72H85C93 72 99 78 99 86V92H25V72Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
+            <path d="M70 72L78 78M58 72L66 78" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+        `
+      };
+      return icons[iconType] || icons.top;
+    }
+
+    function showMessage(message, isError = false) {
+      loginMessage.textContent = message;
+      loginMessage.classList.remove('hidden', 'border-emerald-400/20', 'bg-emerald-400/10', 'text-emerald-200', 'border-rose-400/20', 'bg-rose-400/10', 'text-rose-200');
+      if (isError) loginMessage.classList.add('border-rose-400/20', 'bg-rose-400/10', 'text-rose-200');
+      else loginMessage.classList.add('border-emerald-400/20', 'bg-emerald-400/10', 'text-emerald-200');
+    }
+
+    function setAuthTab(tab) {
+      if (tab === 'signup') {
+        signupForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        showSignupTabBtn.className = 'flex-1 rounded-2xl bg-white text-black px-4 py-3 text-sm font-medium';
+        showLoginTabBtn.className = 'flex-1 rounded-2xl bg-white/5 text-white px-4 py-3 text-sm font-medium border border-white/10';
+      } else {
+        loginForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+        showLoginTabBtn.className = 'flex-1 rounded-2xl bg-white text-black px-4 py-3 text-sm font-medium';
+        showSignupTabBtn.className = 'flex-1 rounded-2xl bg-white/5 text-white px-4 py-3 text-sm font-medium border border-white/10';
+      }
+      loginMessage.classList.add('hidden');
+    }
+
+    function openLoginModal() {
+      if (!loginModal) return;
+      loginModal.classList.remove('hidden');
+      loginModal.classList.add('flex');
+      loginModal.style.display = 'flex';
+    }
+
+    function closeLoginModal() {
+      if (!loginModal) return;
+      loginModal.classList.add('hidden');
+      loginModal.classList.remove('flex');
+      loginModal.style.display = 'none';
+      if (loginForm) loginForm.reset();
+      if (signupForm) signupForm.reset();
+      if (loginMessage) loginMessage.classList.add('hidden');
+    }
+
+    function openItemModal() {
+      itemModal.classList.remove('hidden');
+      itemModal.classList.add('flex');
+    }
+
+    function closeItemModal() {
+      itemModal.classList.add('hidden');
+      itemModal.classList.remove('flex');
+      itemForm.reset();
+    }
+
+    function openOutfitModal() {
+      renderOutfitPicker();
+      outfitModal.classList.remove('hidden');
+      outfitModal.classList.add('flex');
+    }
+
+    function closeOutfitModal() {
+      outfitModal.classList.add('hidden');
+      outfitModal.classList.remove('flex');
+      outfitForm.reset();
+      outfitItemsPicker.innerHTML = '';
+    }
+
+    function openInstagramModal() {
+      instagramModal.classList.remove('hidden');
+      instagramModal.classList.add('flex');
+    }
+
+    function closeInstagramModal() {
+      instagramModal.classList.add('hidden');
+      instagramModal.classList.remove('flex');
+      localStorage.setItem(APP_KEYS.promptSeen, 'true');
+    }
+
+    function renderLoginState() {
+      if (state.user) {
+        loginBtn.textContent = 'Logged In';
+        loginBtn.classList.add('bg-white', 'text-black');
+        loginBtn.classList.remove('bg-white/5', 'text-zinc-200');
+        logoutBtn.classList.remove('hidden');
+        addItemWrap.classList.remove('hidden');
+        savedOutfitsWrap.classList.remove('hidden');
+        loginPromptWrap.classList.add('hidden');
+        profileSection.classList.remove('hidden');
+        savedOutfitsSection.classList.remove('hidden');
+      } else {
+        loginBtn.textContent = 'Login';
+        loginBtn.classList.remove('bg-white', 'text-black');
+        loginBtn.classList.add('bg-white/5', 'text-zinc-200');
+        logoutBtn.classList.add('hidden');
+        addItemWrap.classList.add('hidden');
+        savedOutfitsWrap.classList.add('hidden');
+        loginPromptWrap.classList.remove('hidden');
+        profileSection.classList.add('hidden');
+        savedOutfitsSection.classList.add('hidden');
+      }
+    }
+
+    function renderCategories() {
+      categoryGrid.innerHTML = categoryCards.map(card => `
+        <button data-category="${card.name}" class="category-button category-card glass rounded-[2rem] overflow-hidden text-left shadow-2xl shadow-black/20 border border-white/5 hover:border-white/15 transition min-h-[360px]">
+          <div class="relative flex h-full flex-col justify-between overflow-hidden bg-black/30 p-6 sm:p-7">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/[0.03] via-transparent to-transparent"></div>
+            <div class="absolute inset-0 icon-shell"></div>
+            <div class="relative z-10 flex flex-1 items-center justify-center">
+              <div class="category-icon-wrap icon-glow flex h-44 w-44 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
+                ${getCategoryIcon(card.icon)}
+              </div>
+            </div>
+            <div class="relative z-10 text-center">
+              <p class="uppercase tracking-[0.25em] text-[11px] text-zinc-400 mb-2">Category</p>
+              <h3 class="text-2xl font-semibold">${card.name}</h3>
+              <p class="text-sm text-zinc-300 mt-2 leading-relaxed max-w-xs mx-auto">${card.description}</p>
+            </div>
+          </div>
+        </button>
+      `).join('');
+
+      document.querySelectorAll('.category-button').forEach(button => {
+        button.addEventListener('click', () => {
+          const category = button.dataset.category;
+          categoryFilter.value = category;
+          state.filters.category = category;
+          renderItems();
+          window.scrollTo({ top: document.querySelector('main').offsetTop - 20, behavior: 'smooth' });
         });
       });
     }
 
-    addButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const original = btn.textContent;
-        cart.push({
-          name: btn.dataset.name,
-          price: Number(btn.dataset.price),
-          displayPrice: btn.dataset.displayPrice || formatMoney(Number(btn.dataset.price)),
-          type: btn.dataset.type
+    function getFilteredItems() {
+      const search = state.filters.search.toLowerCase().trim();
+      let filtered = state.items.filter(item => {
+        const matchesSearch = [item.name, item.brand || '', item.notes || '', item.category, item.color || ''].join(' ').toLowerCase().includes(search);
+        const matchesCategory = state.filters.category === 'All' || item.category === state.filters.category;
+        const matchesColor = state.filters.color === 'All' || (item.color || '').toLowerCase() === state.filters.color.toLowerCase();
+        const matchesSize = state.filters.size === 'All' || (item.size || '').toLowerCase() === state.filters.size.toLowerCase();
+        return matchesSearch && matchesCategory && matchesColor && matchesSize;
+      });
+
+      if (state.filters.sort === 'az') filtered.sort((a, b) => a.name.localeCompare(b.name));
+      else if (state.filters.sort === 'category') filtered.sort((a, b) => a.category.localeCompare(b.category));
+      else if (state.filters.sort === 'color') filtered.sort((a, b) => (a.color || '').localeCompare(b.color || ''));
+      else filtered.sort((a, b) => new Date(b.created_at || b.createdAt || 0) - new Date(a.created_at || a.createdAt || 0));
+
+      return filtered;
+    }
+
+    function renderStats() {
+      const total = state.items.length;
+      const tops = state.items.filter(item => item.category === 'Tops').length;
+      const bottoms = state.items.filter(item => item.category === 'Bottoms').length;
+      const accessoriesShoes = state.items.filter(item => item.category === 'Accessories' || item.category === 'Shoes').length;
+      stats.innerHTML = `
+        <div class="rounded-3xl border border-white/10 bg-white/5 px-4 py-4"><p class="text-[11px] uppercase tracking-[0.25em] text-zinc-500">Total</p><p class="text-2xl font-semibold mt-2">${total}</p></div>
+        <div class="rounded-3xl border border-white/10 bg-white/5 px-4 py-4"><p class="text-[11px] uppercase tracking-[0.25em] text-zinc-500">Tops</p><p class="text-2xl font-semibold mt-2">${tops}</p></div>
+        <div class="rounded-3xl border border-white/10 bg-white/5 px-4 py-4"><p class="text-[11px] uppercase tracking-[0.25em] text-zinc-500">Bottoms</p><p class="text-2xl font-semibold mt-2">${bottoms}</p></div>
+        <div class="rounded-3xl border border-white/10 bg-white/5 px-4 py-4"><p class="text-[11px] uppercase tracking-[0.25em] text-zinc-500">Style Vault</p><p class="text-2xl font-semibold mt-2">${accessoriesShoes}</p></div>`;
+    }
+
+    function renderItems() {
+      const filtered = getFilteredItems();
+      resultsLabel.textContent = `${filtered.length} item${filtered.length === 1 ? '' : 's'}`;
+      if (!filtered.length) {
+        itemsGrid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      itemsGrid.innerHTML = filtered.map(item => `
+        <article class="item-card glass rounded-[2rem] overflow-hidden shadow-2xl shadow-black/20 border border-white/5">
+          <div class="relative aspect-[4/5] overflow-hidden bg-black/30">
+            <img src="${item.image_url || item.image || 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80'}" alt="${item.name}" class="item-image w-full h-full object-cover transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+            <div class="absolute top-4 left-4"><span class="inline-flex rounded-full bg-white text-black px-3 py-1 text-xs font-medium">${item.category}</span></div>
+            <button data-id="${item.id}" class="delete-btn absolute top-4 right-4 rounded-full bg-black/70 px-3 py-2 text-xs border border-white/10 hover:bg-black ${state.user ? '' : 'hidden'}">Remove</button>
+          </div>
+          <div class="p-5">
+            <div><h3 class="text-lg font-semibold leading-tight">${item.name}</h3><p class="text-sm text-zinc-400 mt-1">${item.brand || 'Unbranded'}</p></div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-200">${item.color || 'N/A'}</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-200">Size ${item.size || 'N/A'}</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-200">${item.season || 'All Season'}</span>
+            </div>
+            <p class="text-sm text-zinc-400 mt-4 leading-relaxed">${item.notes || 'No notes added yet.'}</p>
+          </div>
+        </article>
+      `).join('');
+
+      document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+          const id = button.dataset.id;
+          const { error } = await supabaseClient.from('closet_items').delete().eq('id', id);
+          if (error) return alert(error.message);
+          await loadClosetItems();
         });
-        renderCart();
-        btn.textContent = 'Added';
-        btn.style.transform = 'scale(0.97)';
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.style.transform = '';
-        }, 700);
-      });
-    });
-
-    if (clearCartBtn) {
-      clearCartBtn.addEventListener('click', () => {
-        cart.length = 0;
-        renderCart();
       });
     }
 
-    function clampCartPosition(left, top) {
-      if (!cartFloat) return { left: 14, top: 96 };
-      const maxLeft = window.innerWidth - cartFloat.offsetWidth - 10;
-      const maxTop = window.innerHeight - cartFloat.offsetHeight - 10;
-      const nextLeft = Math.min(Math.max(10, left), Math.max(10, maxLeft));
-      const nextTop = Math.min(Math.max(10, top), Math.max(10, maxTop));
-      return { left: nextLeft, top: nextTop };
+    function renderOutfitPicker() {
+      outfitItemsPicker.innerHTML = state.items.map(item => `
+        <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 cursor-pointer">
+          <input type="checkbox" value="${item.id}" class="rounded border-white/20 bg-black/30 text-white" />
+          <span class="text-sm text-zinc-200">${item.name}</span>
+        </label>
+      `).join('');
     }
 
-    function placeCart(left, top) {
-      if (!cartFloat || window.innerWidth <= 1100) return;
-      const pos = clampCartPosition(left, top);
-      cartFloat.style.left = `${pos.left}px`;
-      cartFloat.style.top = `${pos.top}px`;
-      cartFloat.style.right = 'auto';
-      cartFloat.style.bottom = 'auto';
+    function renderOutfits() {
+      outfitCountLabel.textContent = `${state.outfits.length} outfit${state.outfits.length === 1 ? '' : 's'}`;
+      if (!state.outfits.length) {
+        savedOutfitsGrid.innerHTML = `<div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 text-sm text-zinc-400">No outfits saved yet.</div>`;
+        return;
+      }
+
+      savedOutfitsGrid.innerHTML = state.outfits.map(outfit => `
+        <article class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+          <h3 class="text-lg font-semibold">${outfit.name}</h3>
+          <p class="mt-2 text-sm text-zinc-400">${outfit.notes || 'No outfit notes yet.'}</p>
+          <p class="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500">${(outfit.outfit_items || []).length} pieces</p>
+        </article>
+      `).join('');
     }
 
-    if (cartFloat) {
-      cartFloat.addEventListener('pointerdown', (event) => {
-        if (window.innerWidth <= 1100) return;
-        if (event.target.closest('button')) return;
-        dragActive = true;
-        cartFloat.classList.add('dragging');
-        const rect = cartFloat.getBoundingClientRect();
-        dragOffsetX = event.clientX - rect.left;
-        dragOffsetY = event.clientY - rect.top;
-        try {
-          cartFloat.setPointerCapture(event.pointerId);
-        } catch (e) {}
-      });
+    function hydrateProfileForm() {
+      profileDisplayName.value = state.profile?.display_name || '';
+      profileInstagram.value = state.profile?.instagram || '';
+      profileBio.value = state.profile?.bio || '';
+    }
 
-      cartFloat.addEventListener('pointermove', (event) => {
-        if (!dragActive || window.innerWidth <= 1100) return;
-        placeCart(event.clientX - dragOffsetX, event.clientY - dragOffsetY);
-      });
+    async function ensureProfile(user) {
+      const { data: existing, error: selectError } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .maybeSingle();
 
-      const stopDrag = (event) => {
-        if (!dragActive) return;
-        dragActive = false;
-        cartFloat.classList.remove('dragging');
-        try {
-          cartFloat.releasePointerCapture(event.pointerId);
-        } catch (e) {}
+      if (selectError) throw selectError;
+
+      if (existing) {
+        state.profile = existing;
+        hydrateProfileForm();
+        return;
+      }
+
+      const seedProfile = {
+        id: user.id,
+        email: user.email,
+        display_name: user.email.split('@')[0]
       };
 
-      cartFloat.addEventListener('pointerup', stopDrag);
-      cartFloat.addEventListener('pointercancel', stopDrag);
+      const { data: inserted, error: insertError } = await supabase
+        .from('profiles')
+        .insert(seedProfile)
+        .select()
+        .single();
+
+      if (insertError) throw insertError;
+      state.profile = inserted;
+      hydrateProfileForm();
     }
 
-    window.addEventListener('resize', () => {
-      if (!cartFloat) return;
-      if (window.innerWidth <= 1100) {
-        cartFloat.style.left = '';
-        cartFloat.style.top = '';
-        cartFloat.style.right = '';
-        cartFloat.style.bottom = '';
+    async function loadClosetItems() {
+      if (!state.user) {
+        state.items = [];
+        renderStats();
+        renderItems();
         return;
       }
-      const rect = cartFloat.getBoundingClientRect();
-      placeCart(rect.left, rect.top);
+
+      const { data, error } = await supabase
+        .from('closet_items')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) return alert(error.message);
+      state.items = data || [];
+      renderStats();
+      renderItems();
+    }
+
+    async function loadSavedOutfits() {
+      if (!state.user) {
+        state.outfits = [];
+        renderOutfits();
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('saved_outfits')
+        .select('id, name, notes, created_at, outfit_items(id, closet_item_id)')
+        .order('created_at', { ascending: false });
+
+      if (error) return alert(error.message);
+      state.outfits = data || [];
+      renderOutfits();
+    }
+
+    async function bootstrapSession() {
+      const { data, error } = await supabaseClient.auth.getSession();
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      state.user = data.session?.user || null;
+      renderLoginState();
+
+      if (state.user) {
+        await ensureProfile(state.user);
+        await loadClosetItems();
+        await loadSavedOutfits();
+      } else {
+        state.profile = null;
+        state.items = [];
+        state.outfits = [];
+        renderStats();
+        renderItems();
+        renderOutfits();
+      }
+    }
+
+    searchInput.addEventListener('input', e => { state.filters.search = e.target.value; renderItems(); });
+    categoryFilter.addEventListener('change', e => { state.filters.category = e.target.value; renderItems(); });
+    colorFilter.addEventListener('change', e => { state.filters.color = e.target.value; renderItems(); });
+    sizeFilter.addEventListener('change', e => { state.filters.size = e.target.value; renderItems(); });
+    sortFilter.addEventListener('change', e => { state.filters.sort = e.target.value; renderItems(); });
+
+    loginBtn.addEventListener('click', openLoginModal);
+    logoutBtn.addEventListener('click', async () => {
+      await supabaseClient.auth.signOut();
+      state.user = null;
+      state.profile = null;
+      state.items = [];
+      state.outfits = [];
+      renderLoginState();
+      renderStats();
+      renderItems();
+      renderOutfits();
     });
 
+    openModalBtn.addEventListener('click', openItemModal);
+    closeModalBtn.addEventListener('click', closeItemModal);
+    modalBackdrop.addEventListener('click', closeItemModal);
 
+    openOutfitModalBtn.addEventListener('click', openOutfitModal);
+    closeOutfitModalBtn.addEventListener('click', closeOutfitModal);
+    outfitBackdrop.addEventListener('click', closeOutfitModal);
 
-    if (openCheckoutBtn) {
-      openCheckoutBtn.addEventListener('click', openCheckout);
-    }
+    loginPromptBtn.addEventListener('click', openLoginModal);
+    loginBackdrop.addEventListener('click', closeLoginModal);
+    closeLoginBtn.addEventListener('click', closeLoginModal);
+    showLoginTabBtn.addEventListener('click', () => setAuthTab('login'));
+    showSignupTabBtn.addEventListener('click', () => setAuthTab('signup'));
 
-    if (checkoutCloseBtn) {
-      checkoutCloseBtn.addEventListener('click', closeCheckout);
-    }
+    skipInstagramBtn.addEventListener('click', closeInstagramModal);
+    instagramBackdrop.addEventListener('click', closeInstagramModal);
+    followInstagramBtn.addEventListener('click', () => localStorage.setItem(APP_KEYS.promptSeen, 'true'));
 
-    if (checkoutCancelBtn) {
-      checkoutCancelBtn.addEventListener('click', closeCheckout);
-    }
-
-    if (checkoutModal) {
-      checkoutModal.addEventListener('click', (event) => {
-        if (event.target.matches('[data-close-checkout="true"]')) {
-          closeCheckout();
-        }
+    loginForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const { error } = await supabaseClient.auth.signInWithPassword({
+        email: loginEmail.value.trim(),
+        password: loginPassword.value.trim()
       });
-    }
+      if (error) return showMessage(error.message, true);
+      showMessage('Login successful.');
+      await bootstrapSession();
+      setTimeout(closeLoginModal, 600);
+    });
 
-    if (openClosetModalBtn) {
-      openClosetModalBtn.addEventListener('click', openClosetModal);
-    }
+    signupForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = signupEmail.value.trim();
+      const password = signupPassword.value.trim();
 
-    if (closetCloseBtn) {
-      closetCloseBtn.addEventListener('click', closeClosetModal);
-    }
-
-    if (closetCancelBtn) {
-      closetCancelBtn.addEventListener('click', closeClosetModal);
-    }
-
-    if (closetEnterBtn) {
-      closetEnterBtn.addEventListener('click', triggerClosetTransition);
-    }
-
-    if (closetModal) {
-      closetModal.addEventListener('click', (event) => {
-        if (event.target.matches('[data-close-closet="true"]')) {
-          closeClosetModal();
-        }
+      const { data, error } = await supabaseClient.auth.signUp({
+        email,
+        password
       });
-    }
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape') return;
-      if (closetModal && closetModal.classList.contains('open')) {
-        closeClosetModal();
-        return;
-      }
-      if (checkoutModal && checkoutModal.classList.contains('open')) {
-        closeCheckout();
+      if (error) return showMessage(error.message, true);
+
+      if (data.user) {
+        showMessage('Account created. Check your email if confirmation is enabled.');
+      } else {
+        showMessage('Signup submitted.');
       }
     });
 
-    if (checkoutConfirmBtn) {
-      checkoutConfirmBtn.addEventListener('click', async () => {
-        const email = checkoutEmailEl ? checkoutEmailEl.value.trim() : '';
+    profileForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!state.user) return;
 
-        if (cart.length === 0) {
-          setCheckoutStatus('Add at least one product before checkout.', 'error');
-          return;
-        }
+      const payload = {
+        id: state.user.id,
+        email: state.user.email,
+        display_name: profileDisplayName.value.trim(),
+        instagram: profileInstagram.value.trim(),
+        bio: profileBio.value.trim()
+      };
 
-        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-          setCheckoutStatus('Enter a valid email address to send the payment link.', 'error');
-          if (checkoutEmailEl) checkoutEmailEl.focus();
-          return;
-        }
+      const { data, error } = await supabase
+        .from('profiles')
+        .upsert(payload)
+        .select()
+        .single();
 
-        checkoutConfirmBtn.disabled = true;
-        setCheckoutStatus('Creating Stripe payment link and preparing email delivery…');
+      if (error) return alert(error.message);
+      state.profile = data;
+      hydrateProfileForm();
+    });
 
-        try {
-          const result = await requestStripePaymentLink(email, cart);
-          const paymentLink = result.paymentLink || result.url || '';
-          const emailSent = result.emailSent;
-          setCheckoutStatus(
-            emailSent
-              ? `Payment link sent to ${email}.`
-              : paymentLink
-                ? `Stripe link created for ${email}. Connect your backend email send step to deliver it automatically.`
-                : `Checkout request completed for ${email}.`,
-            'success'
-          );
+    itemForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!state.user) return;
 
-          if (paymentLink) {
-            window.open(paymentLink, '_blank', 'noopener');
-          }
+      const formData = new FormData(itemForm);
+      const payload = {
+        user_id: state.user.id,
+        name: formData.get('name').trim(),
+        category: formData.get('category').trim(),
+        brand: formData.get('brand').trim(),
+        color: formData.get('color').trim(),
+        size: formData.get('size').trim(),
+        season: formData.get('season').trim(),
+        notes: formData.get('notes').trim(),
+        image_url: formData.get('image_url').trim()
+      };
 
-          cart.length = 0;
-          renderCart();
-          renderCheckoutModal();
-          setTimeout(closeCheckout, 1800);
-        } catch (error) {
-          setCheckoutStatus(error.message + ' Add your Stripe backend endpoint at ' + STRIPE_ENDPOINT + '.', 'error');
-        } finally {
-          checkoutConfirmBtn.disabled = false;
-        }
-      });
-    }
+      const { error } = await supabaseClient.from('closet_items').insert(payload);
+      if (error) return alert(error.message);
 
-    function setupRevealAnimations() {
-      const revealEls = document.querySelectorAll('.reveal-in');
-      if (!('IntersectionObserver' in window)) {
-        revealEls.forEach(el => el.classList.add('is-visible'));
-        return;
+      closeItemModal();
+      await loadClosetItems();
+    });
+
+    outfitForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!state.user) return;
+
+      const selectedIds = [...outfitItemsPicker.querySelectorAll('input[type="checkbox"]:checked')].map(input => input.value);
+      if (!selectedIds.length) return alert('Select at least one closet item.');
+
+      const { data: outfit, error: outfitError } = await supabase
+        .from('saved_outfits')
+        .insert({
+          user_id: state.user.id,
+          name: outfitName.value.trim(),
+          notes: outfitNotes.value.trim()
+        })
+        .select()
+        .single();
+
+      if (outfitError) return alert(outfitError.message);
+
+      const rows = selectedIds.map(id => ({
+        outfit_id: outfit.id,
+        closet_item_id: id
+      }));
+
+      const { error: itemsError } = await supabaseClient.from('outfit_items').insert(rows);
+      if (itemsError) return alert(itemsError.message);
+
+      closeOutfitModal();
+      await loadSavedOutfits();
+    });
+
+    supabaseClient.auth.onAuthStateChange(async (_event, session) => {
+      state.user = session?.user || null;
+      renderLoginState();
+      if (state.user) {
+        await ensureProfile(state.user);
+        await loadClosetItems();
+        await loadSavedOutfits();
+      } else {
+        state.profile = null;
+        state.items = [];
+        state.outfits = [];
+        renderStats();
+        renderItems();
+        renderOutfits();
       }
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
-
-      revealEls.forEach((el, index) => {
-        el.style.transitionDelay = `${Math.min(index * 45, 220)}ms`;
-        observer.observe(el);
-      });
-    }
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderCart();
-      setupRevealAnimations();
+      if (loginBtn) loginBtn.addEventListener('click', openLoginModal);
+      if (loginPromptBtn) loginPromptBtn.addEventListener('click', openLoginModal);
+      if (closeLoginBtn) closeLoginBtn.addEventListener('click', closeLoginModal);
+      if (loginBackdrop) loginBackdrop.addEventListener('click', closeLoginModal);
     });
 
-    if (enterSiteBtn) {
-      enterSiteBtn.addEventListener('click', hideSplash);
+    renderCategories();
+    renderStats();
+    renderItems();
+    renderOutfits();
+    renderLoginState();
+    setAuthTab('login');
+    bootstrapSession();
+
+    if (!localStorage.getItem(APP_KEYS.promptSeen)) {
+      setTimeout(openInstagramModal, 700);
     }
   </script>
 </body>
