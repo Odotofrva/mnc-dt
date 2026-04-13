@@ -5,53 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MENOCLONE Digital Closet</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 30%),
-        linear-gradient(135deg, #050505 0%, #111111 45%, #1a1a1a 100%);
+        radial-gradient(circle at top, rgba(214,184,115,0.14), transparent 28%),
+        radial-gradient(circle at bottom, rgba(255,255,255,0.04), transparent 24%),
+        linear-gradient(180deg, #060606 0%, #0d0c0a 35%, #15120d 100%);
       min-height: 100vh;
     }
-
     h1, h2, h3 {
       font-family: 'Orbitron', sans-serif;
       letter-spacing: 0.05em;
     }
-
     .glass {
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(214,184,115,0.16);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.34);
     }
-
+    .lux-border { border: 1px solid rgba(214,184,115,0.22); }
+    .gold-text { color: #d6b873; }
+    .soft-gold { color: #c9b07a; }
+    .lux-panel {
+      background: linear-gradient(180deg, rgba(21,18,13,0.95), rgba(10,10,10,0.88));
+      border: 1px solid rgba(214,184,115,0.16);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.4);
+    }
+    .hero-shell {
+      background: radial-gradient(circle at top, rgba(214,184,115,0.10), transparent 38%), linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    }
     .item-card:hover .item-image,
-    .category-card:hover .category-icon-wrap {
+    .category-card:hover .category-image {
       transform: scale(1.05);
     }
-
     .scrollbar-thin::-webkit-scrollbar { width: 8px; }
     .scrollbar-thin::-webkit-scrollbar-thumb {
       background: rgba(255,255,255,0.12);
       border-radius: 999px;
     }
-
     .carousel-track {
       display: flex;
       width: max-content;
       animation: marquee 32s linear infinite;
     }
-
     .carousel-track:hover { animation-play-state: paused; }
-
     .carousel-slide { animation: luxuryFade 4.8s ease-in-out infinite; }
     .carousel-slide:nth-child(2n) { animation-delay: 0.8s; }
     .carousel-slide:nth-child(3n) { animation-delay: 1.6s; }
     .carousel-slide:nth-child(4n) { animation-delay: 2.4s; }
-
     .noise-overlay {
       position: absolute;
       inset: 0;
@@ -65,36 +70,36 @@
         radial-gradient(circle at 70% 80%, rgba(255,255,255,0.1) 0.6px, transparent 0.8px);
       background-size: 120px 120px, 140px 140px, 160px 160px, 180px 180px;
     }
-
-    .icon-glow {
-      filter: drop-shadow(0 0 12px rgba(255,255,255,0.18)) drop-shadow(0 0 28px rgba(255,255,255,0.1));
-      animation: pulseGlow 2.8s ease-in-out infinite;
-    }
-
-    .icon-shell {
-      background: radial-gradient(circle at center, rgba(255,255,255,0.1), rgba(255,255,255,0.02) 55%, transparent 70%);
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.05); opacity: 1; }
-    }
-
     @keyframes luxuryFade {
       0%, 100% { opacity: 0.72; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.015); }
     }
-
     @keyframes marquee {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
+    }
+    .icon-glow {
+      filter: drop-shadow(0 0 12px rgba(255,255,255,0.18)) drop-shadow(0 0 28px rgba(255,255,255,0.1));
+      animation: pulseGlow 2.8s ease-in-out infinite;
+    }
+    .icon-shell {
+      background: radial-gradient(circle at center, rgba(255,255,255,0.1), rgba(255,255,255,0.02) 55%, transparent 70%);
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; }
     }
   </style>
 </head>
 <body class="text-white antialiased">
   <div id="app">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-      <section class="mb-6 overflow-hidden rounded-[2rem] border border-white/10 bg-black/60 shadow-[0_0_60px_rgba(255,255,255,0.05)] relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      <div class="flex flex-col items-center justify-center mb-10 text-center">
+        <img src="mnc.png" alt="MENOCLONE Logo" class="w-44 sm:w-56 lg:w-64 mx-auto" />
+        <p class="mt-4 text-xs uppercase tracking-[0.5em] soft-gold">MENOCLONE Digital Closet</p>
+      </div>
+
+      <section class="mb-8 overflow-hidden rounded-[2.25rem] lux-panel relative">
         <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_60%)]"></div>
         <div class="relative">
           <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none z-10"></div>
@@ -102,7 +107,7 @@
           <div class="carousel-track py-6">
             <div class="flex gap-4 px-4">
               <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=80" alt="Streetwear editorial" class="h-full w-full object-cover" />
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=80" alt="Streetwear fashion editorial" class="h-full w-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 p-5">
                   <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">Streetwear</p>
@@ -110,7 +115,7 @@
                 </div>
               </div>
               <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
-                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80" alt="Luxury casual styling" class="h-full w-full object-cover" />
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80" alt="Modern fashion styling" class="h-full w-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 p-5">
                   <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">Luxury Casual</p>
@@ -126,7 +131,7 @@
                 </div>
               </div>
               <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
-                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80" alt="Street style portrait" class="h-full w-full object-cover" />
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80" alt="Street fashion portrait" class="h-full w-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 p-5">
                   <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">City Style</p>
@@ -138,59 +143,71 @@
               <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
                 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=80" alt="" class="h-full w-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">Streetwear</p>
+                  <h3 class="mt-2 text-2xl font-semibold tracking-tight">Layered Essentials</h3>
+                </div>
               </div>
               <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
                 <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80" alt="" class="h-full w-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">Luxury Casual</p>
+                  <h3 class="mt-2 text-2xl font-semibold tracking-tight">Refined Daily Fits</h3>
+                </div>
               </div>
               <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
                 <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80" alt="" class="h-full w-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">Editorial</p>
+                  <h3 class="mt-2 text-2xl font-semibold tracking-tight">Statement Pieces</h3>
+                </div>
               </div>
               <div class="carousel-slide relative h-52 w-[320px] sm:h-64 sm:w-[420px] overflow-hidden rounded-[1.75rem] border border-white/10">
                 <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=80" alt="" class="h-full w-full object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-5">
+                  <p class="text-xs uppercase tracking-[0.35em] text-zinc-400">City Style</p>
+                  <h3 class="mt-2 text-2xl font-semibold tracking-tight">Street Motion</h3>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <header class="glass rounded-[2rem] p-6 sm:p-8 shadow-2xl shadow-black/30 overflow-hidden relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 pointer-events-none"></div>
-        <div class="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div class="absolute top-0 right-0 z-30 flex flex-col gap-3">
-            <button id="loginBtn" class="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.25em] text-zinc-200 transition hover:bg-white hover:text-black">
-              Login
+      <header class="glass hero-shell rounded-[2.25rem] p-6 sm:p-10 overflow-hidden relative text-center">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(214,184,115,0.12),transparent_42%)] pointer-events-none"></div>
+        <div class="relative mx-auto max-w-4xl">
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <button id="authBtn" class="rounded-full lux-border bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.28em] text-zinc-100 transition hover:bg-white hover:text-black">
+              Login / Sign Up
             </button>
-            <button id="logoutBtn" class="rounded-full border border-red-500 bg-red-600 px-5 py-2 text-xs uppercase tracking-[0.25em] text-white transition hover:bg-red-500 hidden">
+            <button id="logoutBtn" class="hidden rounded-full border border-red-400/20 bg-red-500/10 px-5 py-2 text-xs uppercase tracking-[0.25em] text-red-200 transition hover:bg-red-500/20">
               Logout
             </button>
           </div>
-          <div>
-            <img src="mnc.png" alt="MENOCLONE Logo" class="w-48 sm:w-64 mb-4 mx-auto lg:mx-0" />
-            <p class="uppercase tracking-[0.35em] text-xs text-zinc-400 mb-3">MENOCLONE</p>
-            <h1 class="text-3xl sm:text-5xl font-semibold tracking-tight">Digital Closet</h1>
-            <p class="mt-4 max-w-2xl text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
-              Archive your presence. Curate your identity. The MENOCLONE Digital Closet is a living system of your style — where every piece holds memory, intention, and evolution.
-            </p>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto lg:pr-32" id="stats"></div>
+          <p class="mt-8 uppercase tracking-[0.42em] text-[11px] soft-gold">MENOCLONE</p>
+          <h1 class="mt-4 text-4xl sm:text-6xl font-semibold tracking-tight">Digital Closet</h1>
+          <p class="mt-5 mx-auto max-w-2xl text-zinc-300 text-sm sm:text-base leading-relaxed font-light">
+           Our Digital Closet is a private luxury wardrobe system designed to organize your style with intention. Upload and categorize your pieces, curate complete looks, and keep every essential
+          </p>
+          <p id="userWelcome" class="mt-4 text-sm text-zinc-400">Log in to manage your personal style vault.</p>
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-3xl mx-auto" id="stats"></div>
         </div>
       </header>
 
-      <section class="mt-6">
-        <div class="flex items-center justify-between gap-4 mb-5">
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-semibold">Category Menu</h2>
-            <p class="text-sm text-zinc-400 mt-1">Start with the section that matches your fit.</p>
-          </div>
+      <section class="mt-8 text-center">
+        <div class="mb-5">
+          <h2 class="text-2xl sm:text-3xl font-semibold">Category Menu</h2>
+          <p class="text-sm text-zinc-400 mt-2">Start with the section that matches your fit.</p>
         </div>
         <div id="categoryGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5"></div>
       </section>
 
-      <section class="grid grid-cols-1 xl:grid-cols-[320px,1fr] gap-6 mt-8">
-        <aside class="glass rounded-[2rem] p-5 sm:p-6 h-fit xl:sticky xl:top-6">
+      <section class="grid grid-cols-1 xl:grid-cols-[340px,1fr] gap-6 mt-10 items-start">
+        <aside class="glass rounded-[2.25rem] p-5 sm:p-6 h-fit xl:sticky xl:top-6">
           <div class="flex items-center justify-between mb-5">
             <div>
               <h2 class="text-xl font-semibold">Closet Controls</h2>
@@ -266,74 +283,27 @@
               </div>
             </div>
 
-            <div id="addItemWrap" class="pt-2 border-t border-white/10 hidden">
-              <button id="openModalBtn" class="w-full rounded-2xl bg-white text-black font-medium px-4 py-3 transition hover:bg-zinc-200">Add New Clothing Item</button>
-            </div>
-
-            <div id="loginPromptWrap" class="pt-2 border-t border-white/10">
-              <p class="text-sm text-zinc-400 mb-3">Log in to unlock your private closet tools and start adding pieces.</p>
-              <button id="loginPromptBtn" class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white transition hover:bg-white/10">Log In to Add Items</button>
-            </div>
-
-            <div id="savedOutfitsWrap" class="pt-2 border-t border-white/10 hidden">
-              <button id="openOutfitModalBtn" class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white transition hover:bg-white/10">Save New Outfit</button>
+            <div class="pt-2 border-t border-white/10">
+              <button id="openModalBtn" class="w-full rounded-2xl bg-[#d6b873] text-black font-medium px-4 py-3 transition hover:brightness-110">Add New Clothing Item</button>
             </div>
           </div>
         </aside>
 
         <main class="space-y-6">
-          <section id="profileSection" class="glass rounded-[2rem] p-5 sm:p-6 hidden">
-            <div class="flex items-center justify-between gap-4 mb-5">
-              <div>
-                <h2 class="text-xl sm:text-2xl font-semibold">User Profile</h2>
-                <p class="text-sm text-zinc-400 mt-1">Your public identity inside the Digital Closet.</p>
-              </div>
-            </div>
-
-            <form id="profileForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm text-zinc-300 mb-2">Display Name</label>
-                <input id="profileDisplayName" type="text" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30" />
-              </div>
-              <div>
-                <label class="block text-sm text-zinc-300 mb-2">Instagram</label>
-                <input id="profileInstagram" type="text" placeholder="@menoclone" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30" />
-              </div>
-              <div class="md:col-span-2">
-                <label class="block text-sm text-zinc-300 mb-2">Bio</label>
-                <textarea id="profileBio" rows="3" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30"></textarea>
-              </div>
-              <div class="md:col-span-2">
-                <button type="submit" class="rounded-2xl bg-white text-black font-medium px-5 py-3 hover:bg-zinc-200 transition">Save Profile</button>
-              </div>
-            </form>
-          </section>
-
-          <div class="flex items-center justify-between gap-4">
-            <div>
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <div class="w-full">
               <h2 class="text-xl sm:text-2xl font-semibold">Your Collection</h2>
               <p class="text-sm text-zinc-400 mt-1">Tops, bottoms, accessories, shoes, and more.</p>
             </div>
-            <div class="text-sm text-zinc-400" id="resultsLabel">0 items</div>
+            <div class="text-sm soft-gold whitespace-nowrap" id="resultsLabel">0 items</div>
           </div>
 
-          <div id="emptyState" class="hidden glass rounded-[2rem] p-10 text-center">
+          <div id="emptyState" class="hidden glass rounded-[2.25rem] p-10 text-center">
             <h3 class="text-2xl font-semibold">No items found</h3>
-            <p class="text-zinc-400 mt-3 max-w-md mx-auto">Try adjusting your filters or add a new piece to begin building your MENOCLONE digital closet.</p>
+            <p class="text-zinc-400 mt-3 max-w-md mx-auto">Log in and start adding pieces to begin building your MENOCLONE digital closet.</p>
           </div>
 
           <div id="itemsGrid" class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5"></div>
-
-          <section id="savedOutfitsSection" class="glass rounded-[2rem] p-5 sm:p-6 hidden">
-            <div class="flex items-center justify-between gap-4 mb-5">
-              <div>
-                <h2 class="text-xl sm:text-2xl font-semibold">Saved Outfits</h2>
-                <p class="text-sm text-zinc-400 mt-1">Store full looks and come back to them anytime.</p>
-              </div>
-              <div class="text-sm text-zinc-400" id="outfitCountLabel">0 outfits</div>
-            </div>
-            <div id="savedOutfitsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
-          </section>
         </main>
       </section>
     </div>
@@ -382,94 +352,73 @@
           <input name="season" type="text" placeholder="All Season" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
         </div>
         <div>
-          <label class="block text-sm text-zinc-300 mb-2">Notes</label>
+          <label class="block text-sm text-zinc-300 mb-2">Purchase / Notes</label>
           <input name="notes" type="text" placeholder="Luxury staple with clean silhouette" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
         </div>
         <div class="md:col-span-2">
-          <label class="block text-sm text-zinc-300 mb-2">Image URL</label>
-          <input name="image_url" type="url" placeholder="https://..." class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
-          <p class="text-xs text-zinc-500 mt-2">For Supabase, this version uses image URLs. You can connect Supabase Storage next.</p>
+          <label class="block text-sm text-zinc-300 mb-2">Item Image</label>
+          <input id="imageUpload" name="imageFile" type="file" accept="image/*" class="w-full rounded-2xl border border-dashed border-white/15 bg-black/20 px-4 py-3 text-sm text-zinc-300 file:mr-4 file:rounded-full file:border-0 file:bg-white file:px-4 file:py-2 file:text-sm file:font-medium file:text-black hover:file:bg-zinc-200" />
+          <p class="text-xs text-zinc-500 mt-2">Upload an image from your device. The file will be saved to Supabase Storage.</p>
         </div>
-        <div class="md:col-span-2">
+        <div class="md:col-span-2 hidden" id="previewWrap">
+          <div class="rounded-[1.5rem] overflow-hidden border border-white/10 bg-black/20 max-w-sm">
+            <img id="previewImage" src="" alt="Preview" class="w-full h-80 object-cover" />
+          </div>
+        </div>
+        <div class="md:col-span-2 flex flex-col sm:flex-row gap-3 pt-2">
           <button type="submit" class="rounded-2xl bg-white text-black font-medium px-5 py-3 hover:bg-zinc-200 transition">Save Item</button>
+          <button type="button" id="cancelModalBtn" class="rounded-2xl border border-white/10 bg-white/5 px-5 py-3 hover:bg-white/10 transition">Cancel</button>
         </div>
       </form>
     </div>
   </div>
 
-  <div id="outfitModal" class="fixed inset-0 z-[55] hidden items-center justify-center bg-black/70 px-4 py-8">
-    <div class="absolute inset-0" id="outfitBackdrop"></div>
-    <div class="relative w-full max-w-2xl glass rounded-[2rem] p-5 sm:p-7 shadow-2xl shadow-black/40 max-h-[92vh] overflow-y-auto scrollbar-thin">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <p class="uppercase tracking-[0.28em] text-xs text-zinc-400 mb-2">Save Look</p>
-          <h3 class="text-2xl font-semibold">Create a Saved Outfit</h3>
-          <p class="text-sm text-zinc-400 mt-2">Choose pieces from your closet and save the full look.</p>
-        </div>
-        <button id="closeOutfitModalBtn" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10">Close</button>
-      </div>
-
-      <form id="outfitForm" class="space-y-4">
-        <div>
-          <label class="block text-sm text-zinc-300 mb-2">Outfit Name</label>
-          <input id="outfitName" type="text" required placeholder="Night Shift Look" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30" />
-        </div>
-        <div>
-          <label class="block text-sm text-zinc-300 mb-2">Mood / Notes</label>
-          <textarea id="outfitNotes" rows="3" placeholder="Clean monochrome layers for evening movement." class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-white/30"></textarea>
-        </div>
-        <div>
-          <label class="block text-sm text-zinc-300 mb-3">Choose Pieces</label>
-          <div id="outfitItemsPicker" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-        </div>
-        <div>
-          <button type="submit" class="rounded-2xl bg-white text-black font-medium px-5 py-3 hover:bg-zinc-200 transition">Save Outfit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div id="loginModal" class="fixed inset-0 z-[65] hidden items-center justify-center bg-black/70 px-4">
-    <div class="absolute inset-0" id="loginBackdrop"></div>
-    <div class="relative w-full max-w-md rounded-[2rem] border border-white/10 bg-black/80 p-6 sm:p-8 shadow-2xl shadow-black/50 backdrop-blur-xl">
+  <div id="authModal" class="fixed inset-0 z-[65] hidden items-center justify-center bg-black/70 px-4">
+    <div class="absolute inset-0" id="authBackdrop"></div>
+    <div class="relative w-full max-w-xl rounded-[2rem] border border-white/10 bg-black/80 p-6 sm:p-8 shadow-2xl shadow-black/50 backdrop-blur-xl">
       <div class="flex items-start justify-between gap-4 mb-6">
         <div>
           <p class="text-xs uppercase tracking-[0.35em] text-zinc-500">User Access</p>
-          <h3 class="mt-3 text-2xl font-semibold text-white">Login or create account</h3>
-          <p class="mt-2 text-sm text-zinc-300">Your closet, profile, and saved outfits live under your user account.</p>
+          <h3 class="mt-3 text-2xl font-semibold text-white">Login or create your closet account</h3>
+          <p class="mt-2 text-sm text-zinc-300">Approved users can log in and save items to their own categories.</p>
         </div>
-        <button id="closeLoginBtn" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10">Close</button>
+        <button id="closeAuthBtn" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm hover:bg-white/10">Close</button>
       </div>
 
-      <div class="flex gap-2 mb-5">
-        <button id="showLoginTabBtn" class="flex-1 rounded-2xl bg-white text-black px-4 py-3 text-sm font-medium">Login</button>
-        <button id="showSignupTabBtn" class="flex-1 rounded-2xl bg-white/5 text-white px-4 py-3 text-sm font-medium border border-white/10">Sign Up</button>
+      <div class="mb-5 grid grid-cols-2 gap-3">
+        <button id="showLoginTab" class="rounded-2xl border border-white/10 bg-white text-black px-4 py-3 text-sm font-medium">Login</button>
+        <button id="showSignupTab" class="rounded-2xl border border-white/10 bg-white/5 text-white px-4 py-3 text-sm font-medium">Sign Up</button>
       </div>
 
-      <div id="loginMessage" class="hidden mb-4 rounded-2xl border px-4 py-3 text-sm"></div>
+      <div id="authMessage" class="hidden mb-4 rounded-2xl border px-4 py-3 text-sm"></div>
 
       <form id="loginForm" class="space-y-4">
         <div>
           <label class="block text-sm text-zinc-300 mb-2">Email</label>
-          <input id="loginEmail" type="email" required placeholder="you@example.com" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+          <input id="loginEmail" type="email" required placeholder="Registered Email Address" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
         </div>
         <div>
           <label class="block text-sm text-zinc-300 mb-2">Password</label>
           <input id="loginPassword" type="password" required placeholder="Enter password" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
         </div>
-        <button type="submit" class="w-full rounded-2xl bg-white text-black font-medium px-4 py-3 hover:bg-zinc-200 transition">Login</button>
+        <button type="submit" class="w-full rounded-2xl bg-[#d6b873] text-black font-medium px-4 py-3 hover:brightness-110 transition">Login</button>
       </form>
 
-      <form id="signupForm" class="space-y-4 hidden">
+      <form id="signupForm" class="hidden space-y-4">
+        <div>
+          <label class="block text-sm text-zinc-300 mb-2">Username</label>
+          <input id="signupUsername" type="text" required placeholder="Choose a username" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+        </div>
         <div>
           <label class="block text-sm text-zinc-300 mb-2">Email</label>
           <input id="signupEmail" type="email" required placeholder="you@example.com" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
         </div>
         <div>
           <label class="block text-sm text-zinc-300 mb-2">Password</label>
-          <input id="signupPassword" type="password" required placeholder="Create password" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
+          <input id="signupPassword" type="password" required minlength="6" placeholder="At least 6 characters" class="w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-white/30" />
         </div>
-        <button type="submit" class="w-full rounded-2xl bg-white text-black font-medium px-4 py-3 hover:bg-zinc-200 transition">Create Account</button>
+        <button type="submit" class="w-full rounded-2xl bg-[#d6b873] text-black font-medium px-4 py-3 hover:brightness-110 transition">Create Account</button>
+        <p class="text-xs text-zinc-500">After signup, users will see a pending approval message. You can approve them in Supabase by changing <span class="text-zinc-300">approved</span> to true in the profiles table.</p>
       </form>
     </div>
   </div>
@@ -483,20 +432,101 @@
         Stay connected to new drops, styling inspiration, and the evolving world of MENOCLONE. Follow now or skip for the moment.
       </p>
       <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-        <a id="followInstagramBtn" href="https://instagram.com/menoclone" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-white px-5 py-3 text-center text-sm font-medium text-black transition hover:bg-zinc-200">Follow @menoclone</a>
+        <a id="followInstagramBtn" href="https://instagram.com/menoclone" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-[#d6b873] px-5 py-3 text-center text-sm font-medium text-black transition hover:brightness-110">Follow @menoclone</a>
         <button id="skipInstagramBtn" class="rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm text-white transition hover:bg-white/10">Skip for now</button>
       </div>
     </div>
   </div>
 
   <script>
-    const SUPABASE_URL = "https://ouscwouyxzvybunhwtls.supabaseClient.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im91c2N3b3V5eHp2eWJ1bmh3dGxzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4NjA3MzUsImV4cCI6MjA5MTQzNjczNX0.4fnMcIHJjH9P9cziGV6F9Mmmo21fiGuQtTwh3ZZzw-w"; // paste your anon public key here
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    /*
+      REQUIRED SUPABASE SETUP
 
-    const APP_KEYS = {
-      promptSeen: "menoclone-instagram-prompt-seen"
-    };
+      1) Replace these two values:
+         SUPABASE_URL
+         SUPABASE_ANON_KEY
+
+      2) In Supabase SQL Editor, run:
+
+      create table if not exists public.profiles (
+        id uuid primary key references auth.users(id) on delete cascade,
+        username text unique not null,
+        email text unique not null,
+        approved boolean not null default false,
+        created_at timestamptz not null default now()
+      );
+
+      create table if not exists public.closet_items (
+        id uuid primary key default gen_random_uuid(),
+        user_id uuid not null references auth.users(id) on delete cascade,
+        name text not null,
+        category text not null check (category in ('Tops','Bottoms','Accessories','Shoes')),
+        brand text,
+        color text,
+        size text,
+        season text,
+        notes text,
+        image_url text,
+        created_at timestamptz not null default now()
+      );
+
+      alter table public.profiles enable row level security;
+      alter table public.closet_items enable row level security;
+
+      create policy "profiles select own"
+      on public.profiles for select
+      to authenticated
+      using (auth.uid() = id);
+
+      create policy "profiles insert own"
+      on public.profiles for insert
+      to authenticated
+      with check (auth.uid() = id);
+
+      create policy "closet items select own"
+      on public.closet_items for select
+      to authenticated
+      using (auth.uid() = user_id);
+
+      create policy "closet items insert own"
+      on public.closet_items for insert
+      to authenticated
+      with check (auth.uid() = user_id);
+
+      create policy "closet items delete own"
+      on public.closet_items for delete
+      to authenticated
+      using (auth.uid() = user_id);
+
+      3) Create a public storage bucket named: closet-items
+
+      4) Storage policies:
+
+      create policy "authenticated upload closet images"
+      on storage.objects for insert
+      to authenticated
+      with check (bucket_id = 'closet-items');
+
+      create policy "public read closet images"
+      on storage.objects for select
+      to public
+      using (bucket_id = 'closet-items');
+
+      create policy "authenticated delete own closet images"
+      on storage.objects for delete
+      to authenticated
+      using (bucket_id = 'closet-items');
+
+      5) Approve users by changing public.profiles.approved to true.
+    */
+
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    const hasSupabaseConfig =
+      SUPABASE_URL && SUPABASE_URL !== 'YOUR_SUPABASE_URL' &&
+      SUPABASE_ANON_KEY && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY';
+
+    const supabase = hasSupabaseConfig ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
     const categoryCards = [
       { name: 'Tops', description: 'Tees, jackets, sweaters, and statement layers.', icon: 'top' },
@@ -505,12 +535,18 @@
       { name: 'Shoes', description: 'Sneakers, boots, loafers, and everyday rotation pairs.', icon: 'shoe' }
     ];
 
+    const starterItems = [];
+    const USER_KEYS = { promptSeen: 'menoclone-instagram-prompt-seen' };
+
     const state = {
+      items: starterItems,
+      filters: { search: '', category: 'All', color: 'All', size: 'All', sort: 'newest' },
+      uploadedImageFile: null,
+      uploadedImagePreview: '',
+      isLoggedIn: false,
       user: null,
       profile: null,
-      items: [],
-      outfits: [],
-      filters: { search: '', category: 'All', color: 'All', size: 'All', sort: 'newest' }
+      currentAuthView: 'login'
     };
 
     const categoryGrid = document.getElementById('categoryGrid');
@@ -523,144 +559,85 @@
     const colorFilter = document.getElementById('colorFilter');
     const sizeFilter = document.getElementById('sizeFilter');
     const sortFilter = document.getElementById('sortFilter');
-    const addItemWrap = document.getElementById('addItemWrap');
-    const loginPromptWrap = document.getElementById('loginPromptWrap');
-    const loginPromptBtn = document.getElementById('loginPromptBtn');
-    const savedOutfitsWrap = document.getElementById('savedOutfitsWrap');
-    const profileSection = document.getElementById('profileSection');
-    const savedOutfitsSection = document.getElementById('savedOutfitsSection');
-    const savedOutfitsGrid = document.getElementById('savedOutfitsGrid');
-    const outfitCountLabel = document.getElementById('outfitCountLabel');
-
-    const profileForm = document.getElementById('profileForm');
-    const profileDisplayName = document.getElementById('profileDisplayName');
-    const profileInstagram = document.getElementById('profileInstagram');
-    const profileBio = document.getElementById('profileBio');
-
     const itemModal = document.getElementById('itemModal');
     const openModalBtn = document.getElementById('openModalBtn');
     const closeModalBtn = document.getElementById('closeModalBtn');
+    const cancelModalBtn = document.getElementById('cancelModalBtn');
     const modalBackdrop = document.getElementById('modalBackdrop');
     const itemForm = document.getElementById('itemForm');
+    const imageUpload = document.getElementById('imageUpload');
+    const previewWrap = document.getElementById('previewWrap');
+    const previewImage = document.getElementById('previewImage');
 
-    const outfitModal = document.getElementById('outfitModal');
-    const openOutfitModalBtn = document.getElementById('openOutfitModalBtn');
-    const closeOutfitModalBtn = document.getElementById('closeOutfitModalBtn');
-    const outfitBackdrop = document.getElementById('outfitBackdrop');
-    const outfitForm = document.getElementById('outfitForm');
-    const outfitName = document.getElementById('outfitName');
-    const outfitNotes = document.getElementById('outfitNotes');
-    const outfitItemsPicker = document.getElementById('outfitItemsPicker');
-
-    const loginBtn = document.getElementById('loginBtn');
+    const authBtn = document.getElementById('authBtn');
     const logoutBtn = document.getElementById('logoutBtn');
-    const loginModal = document.getElementById('loginModal');
-    const loginBackdrop = document.getElementById('loginBackdrop');
-    const closeLoginBtn = document.getElementById('closeLoginBtn');
-    const loginMessage = document.getElementById('loginMessage');
-    const showLoginTabBtn = document.getElementById('showLoginTabBtn');
-    const showSignupTabBtn = document.getElementById('showSignupTabBtn');
+    const authModal = document.getElementById('authModal');
+    const authBackdrop = document.getElementById('authBackdrop');
+    const closeAuthBtn = document.getElementById('closeAuthBtn');
+    const showLoginTab = document.getElementById('showLoginTab');
+    const showSignupTab = document.getElementById('showSignupTab');
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
     const loginEmail = document.getElementById('loginEmail');
     const loginPassword = document.getElementById('loginPassword');
+    const signupUsername = document.getElementById('signupUsername');
     const signupEmail = document.getElementById('signupEmail');
     const signupPassword = document.getElementById('signupPassword');
+    const authMessage = document.getElementById('authMessage');
+    const userWelcome = document.getElementById('userWelcome');
 
     const instagramModal = document.getElementById('instagramModal');
     const instagramBackdrop = document.getElementById('instagramBackdrop');
     const skipInstagramBtn = document.getElementById('skipInstagramBtn');
     const followInstagramBtn = document.getElementById('followInstagramBtn');
 
-    function getCategoryIcon(iconType) {
-      const icons = {
-        top: `
-          <svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M40 28L52 20H68L80 28L95 35L88 50L78 45V92H42V45L32 50L25 35L40 28Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-          </svg>
-        `,
-        bottom: `
-          <svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M38 20H82L76 54L68 96H54L50 64L46 96H32L44 54L38 20Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-          </svg>
-        `,
-        accessory: `
-          <svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="32" y="42" width="56" height="42" rx="8" stroke="currentColor" stroke-width="4.5"/>
-            <path d="M45 42C45 33.7157 51.7157 27 60 27C68.2843 27 75 33.7157 75 42" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-          </svg>
-        `,
-        shoe: `
-          <svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M25 72H45L58 60L68 72H85C93 72 99 78 99 86V92H25V72Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-            <path d="M70 72L78 78M58 72L66 78" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-          </svg>
-        `
-      };
-      return icons[iconType] || icons.top;
-    }
-
-    function showMessage(message, isError = false) {
-      loginMessage.textContent = message;
-      loginMessage.classList.remove('hidden', 'border-emerald-400/20', 'bg-emerald-400/10', 'text-emerald-200', 'border-rose-400/20', 'bg-rose-400/10', 'text-rose-200');
-      if (isError) loginMessage.classList.add('border-rose-400/20', 'bg-rose-400/10', 'text-rose-200');
-      else loginMessage.classList.add('border-emerald-400/20', 'bg-emerald-400/10', 'text-emerald-200');
-    }
-
-    function setAuthTab(tab) {
-      if (tab === 'signup') {
-        signupForm.classList.remove('hidden');
-        loginForm.classList.add('hidden');
-        showSignupTabBtn.className = 'flex-1 rounded-2xl bg-white text-black px-4 py-3 text-sm font-medium';
-        showLoginTabBtn.className = 'flex-1 rounded-2xl bg-white/5 text-white px-4 py-3 text-sm font-medium border border-white/10';
+    function showAuthMessage(message, isError = false) {
+      authMessage.textContent = message;
+      authMessage.classList.remove('hidden', 'border-emerald-400/20', 'bg-emerald-400/10', 'text-emerald-200', 'border-rose-400/20', 'bg-rose-400/10', 'text-rose-200');
+      if (isError) {
+        authMessage.classList.add('border-rose-400/20', 'bg-rose-400/10', 'text-rose-200');
       } else {
+        authMessage.classList.add('border-emerald-400/20', 'bg-emerald-400/10', 'text-emerald-200');
+      }
+    }
+
+    function resetAuthMessage() {
+      authMessage.classList.add('hidden');
+      authMessage.textContent = '';
+    }
+
+    function setAuthView(view) {
+      state.currentAuthView = view;
+      resetAuthMessage();
+      if (view === 'login') {
         loginForm.classList.remove('hidden');
         signupForm.classList.add('hidden');
-        showLoginTabBtn.className = 'flex-1 rounded-2xl bg-white text-black px-4 py-3 text-sm font-medium';
-        showSignupTabBtn.className = 'flex-1 rounded-2xl bg-white/5 text-white px-4 py-3 text-sm font-medium border border-white/10';
+        showLoginTab.classList.add('bg-white', 'text-black');
+        showLoginTab.classList.remove('bg-white/5', 'text-white');
+        showSignupTab.classList.remove('bg-white', 'text-black');
+        showSignupTab.classList.add('bg-white/5', 'text-white');
+      } else {
+        signupForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        showSignupTab.classList.add('bg-white', 'text-black');
+        showSignupTab.classList.remove('bg-white/5', 'text-white');
+        showLoginTab.classList.remove('bg-white', 'text-black');
+        showLoginTab.classList.add('bg-white/5', 'text-white');
       }
-      loginMessage.classList.add('hidden');
     }
 
-    function openLoginModal() {
-      if (!loginModal) return;
-      loginModal.classList.remove('hidden');
-      loginModal.classList.add('flex');
-      loginModal.style.display = 'flex';
+    function openAuthModal(view = 'login') {
+      setAuthView(view);
+      authModal.classList.remove('hidden');
+      authModal.classList.add('flex');
     }
 
-    function closeLoginModal() {
-      if (!loginModal) return;
-      loginModal.classList.add('hidden');
-      loginModal.classList.remove('flex');
-      loginModal.style.display = 'none';
-      if (loginForm) loginForm.reset();
-      if (signupForm) signupForm.reset();
-      if (loginMessage) loginMessage.classList.add('hidden');
-    }
-
-    function openItemModal() {
-      itemModal.classList.remove('hidden');
-      itemModal.classList.add('flex');
-    }
-
-    function closeItemModal() {
-      itemModal.classList.add('hidden');
-      itemModal.classList.remove('flex');
-      itemForm.reset();
-    }
-
-    function openOutfitModal() {
-      renderOutfitPicker();
-      outfitModal.classList.remove('hidden');
-      outfitModal.classList.add('flex');
-    }
-
-    function closeOutfitModal() {
-      outfitModal.classList.add('hidden');
-      outfitModal.classList.remove('flex');
-      outfitForm.reset();
-      outfitItemsPicker.innerHTML = '';
+    function closeAuthModal() {
+      authModal.classList.add('hidden');
+      authModal.classList.remove('flex');
+      loginForm.reset();
+      signupForm.reset();
+      resetAuthMessage();
     }
 
     function openInstagramModal() {
@@ -671,31 +648,38 @@
     function closeInstagramModal() {
       instagramModal.classList.add('hidden');
       instagramModal.classList.remove('flex');
-      localStorage.setItem(APP_KEYS.promptSeen, 'true');
+      localStorage.setItem(USER_KEYS.promptSeen, 'true');
     }
 
-    function renderLoginState() {
-      if (state.user) {
-        loginBtn.textContent = 'Logged In';
-        loginBtn.classList.add('bg-white', 'text-black');
-        loginBtn.classList.remove('bg-white/5', 'text-zinc-200');
-        logoutBtn.classList.remove('hidden');
-        addItemWrap.classList.remove('hidden');
-        savedOutfitsWrap.classList.remove('hidden');
-        loginPromptWrap.classList.add('hidden');
-        profileSection.classList.remove('hidden');
-        savedOutfitsSection.classList.remove('hidden');
-      } else {
-        loginBtn.textContent = 'Login';
-        loginBtn.classList.remove('bg-white', 'text-black');
-        loginBtn.classList.add('bg-white/5', 'text-zinc-200');
-        logoutBtn.classList.add('hidden');
-        addItemWrap.classList.add('hidden');
-        savedOutfitsWrap.classList.add('hidden');
-        loginPromptWrap.classList.remove('hidden');
-        profileSection.classList.add('hidden');
-        savedOutfitsSection.classList.add('hidden');
+    function openModal() {
+      if (!state.isLoggedIn) {
+        openAuthModal('login');
+        showAuthMessage('Please log in to add new items.', true);
+        return;
       }
+      itemModal.classList.remove('hidden');
+      itemModal.classList.add('flex');
+    }
+
+    function closeModal() {
+      itemModal.classList.add('hidden');
+      itemModal.classList.remove('flex');
+      itemForm.reset();
+      state.uploadedImageFile = null;
+      state.uploadedImagePreview = '';
+      previewWrap.classList.add('hidden');
+      previewImage.src = '';
+      imageUpload.value = '';
+    }
+
+    function getCategoryIcon(iconType) {
+      const icons = {
+        top: `<svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M40 28L52 20H68L80 28L95 35L88 50L78 45V92H42V45L32 50L25 35L40 28Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/></svg>`,
+        bottom: `<svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M38 20H82L76 54L68 96H54L50 64L46 96H32L44 54L38 20Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/></svg>`,
+        accessory: `<svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="32" y="42" width="56" height="42" rx="8" stroke="currentColor" stroke-width="4.5"/><path d="M45 42C45 33.7157 51.7157 27 60 27C68.2843 27 75 33.7157 75 42" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></svg>`,
+        shoe: `<svg viewBox="0 0 120 120" class="h-28 w-28 sm:h-32 sm:w-32 text-white/90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M25 72H45L58 60L68 72H85C93 72 99 78 99 86V92H25V72Z" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/><path d="M70 72L78 78M58 72L66 78" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></svg>`
+      };
+      return icons[iconType] || icons.top;
     }
 
     function renderCategories() {
@@ -705,7 +689,7 @@
             <div class="absolute inset-0 bg-gradient-to-b from-white/[0.03] via-transparent to-transparent"></div>
             <div class="absolute inset-0 icon-shell"></div>
             <div class="relative z-10 flex flex-1 items-center justify-center">
-              <div class="category-icon-wrap icon-glow flex h-44 w-44 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
+              <div class="icon-glow flex h-44 w-44 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
                 ${getCategoryIcon(card.icon)}
               </div>
             </div>
@@ -732,7 +716,7 @@
     function getFilteredItems() {
       const search = state.filters.search.toLowerCase().trim();
       let filtered = state.items.filter(item => {
-        const matchesSearch = [item.name, item.brand || '', item.notes || '', item.category, item.color || ''].join(' ').toLowerCase().includes(search);
+        const matchesSearch = [item.name, item.brand, item.notes, item.category, item.color].join(' ').toLowerCase().includes(search);
         const matchesCategory = state.filters.category === 'All' || item.category === state.filters.category;
         const matchesColor = state.filters.color === 'All' || (item.color || '').toLowerCase() === state.filters.color.toLowerCase();
         const matchesSize = state.filters.size === 'All' || (item.size || '').toLowerCase() === state.filters.size.toLowerCase();
@@ -762,26 +746,35 @@
     function renderItems() {
       const filtered = getFilteredItems();
       resultsLabel.textContent = `${filtered.length} item${filtered.length === 1 ? '' : 's'}`;
+
+      if (!state.isLoggedIn && filtered.length === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.querySelector('p').textContent = 'Log in or sign up to begin building your personal closet.';
+        itemsGrid.innerHTML = '';
+        return;
+      }
+
       if (!filtered.length) {
         itemsGrid.innerHTML = '';
         emptyState.classList.remove('hidden');
+        emptyState.querySelector('p').textContent = 'Try adjusting your filters or add a new piece to begin building your MENOCLONE digital closet.';
         return;
       }
-      emptyState.classList.add('hidden');
 
+      emptyState.classList.add('hidden');
       itemsGrid.innerHTML = filtered.map(item => `
-        <article class="item-card glass rounded-[2rem] overflow-hidden shadow-2xl shadow-black/20 border border-white/5">
+        <article class="item-card glass rounded-[2.25rem] overflow-hidden shadow-2xl shadow-black/20 border border-[#d6b873]/10">
           <div class="relative aspect-[4/5] overflow-hidden bg-black/30">
             <img src="${item.image_url || item.image || 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80'}" alt="${item.name}" class="item-image w-full h-full object-cover transition duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
             <div class="absolute top-4 left-4"><span class="inline-flex rounded-full bg-white text-black px-3 py-1 text-xs font-medium">${item.category}</span></div>
-            <button data-id="${item.id}" class="delete-btn absolute top-4 right-4 rounded-full bg-black/70 px-3 py-2 text-xs border border-white/10 hover:bg-black ${state.user ? '' : 'hidden'}">Remove</button>
+            ${state.isLoggedIn ? `<button data-id="${item.id}" data-image="${item.image_url || ''}" class="delete-btn absolute top-4 right-4 rounded-full bg-black/70 px-3 py-2 text-xs border border-white/10 hover:bg-black">Remove</button>` : ''}
           </div>
           <div class="p-5">
             <div><h3 class="text-lg font-semibold leading-tight">${item.name}</h3><p class="text-sm text-zinc-400 mt-1">${item.brand || 'Unbranded'}</p></div>
             <div class="flex flex-wrap gap-2 mt-4">
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-200">${item.color || 'N/A'}</span>
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-200">Size ${item.size || 'N/A'}</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-200">${item.color || 'Unlisted'}</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-200">Size ${item.size || 'One Size'}</span>
               <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-zinc-200">${item.season || 'All Season'}</span>
             </div>
             <p class="text-sm text-zinc-400 mt-4 leading-relaxed">${item.notes || 'No notes added yet.'}</p>
@@ -791,79 +784,46 @@
 
       document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', async () => {
-          const id = button.dataset.id;
-          const { error } = await supabaseClient.from('closet_items').delete().eq('id', id);
-          if (error) return alert(error.message);
-          await loadClosetItems();
+          await removeItem(button.dataset.id, button.dataset.image);
         });
       });
     }
 
-    function renderOutfitPicker() {
-      outfitItemsPicker.innerHTML = state.items.map(item => `
-        <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 cursor-pointer">
-          <input type="checkbox" value="${item.id}" class="rounded border-white/20 bg-black/30 text-white" />
-          <span class="text-sm text-zinc-200">${item.name}</span>
-        </label>
-      `).join('');
-    }
-
-    function renderOutfits() {
-      outfitCountLabel.textContent = `${state.outfits.length} outfit${state.outfits.length === 1 ? '' : 's'}`;
-      if (!state.outfits.length) {
-        savedOutfitsGrid.innerHTML = `<div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 text-sm text-zinc-400">No outfits saved yet.</div>`;
-        return;
+    function renderAuthState() {
+      if (state.isLoggedIn && state.profile) {
+        authBtn.textContent = state.profile.username ? state.profile.username : 'Account';
+        authBtn.classList.add('bg-white', 'text-black');
+        authBtn.classList.remove('bg-white/5', 'text-zinc-200');
+        logoutBtn.classList.remove('hidden');
+        userWelcome.textContent = `Welcome, ${state.profile.username || state.user?.email || 'User'}. Your closet is connected to Supabase.`;
+      } else {
+        authBtn.textContent = 'Login / Sign Up';
+        authBtn.classList.remove('bg-white', 'text-black');
+        authBtn.classList.add('bg-white/5', 'text-zinc-200');
+        logoutBtn.classList.add('hidden');
+        userWelcome.textContent = hasSupabaseConfig
+          ? 'Log in to manage your personal style vault.'
+          : 'Add your Supabase URL and anon key in the file to enable account login and saved items.';
       }
-
-      savedOutfitsGrid.innerHTML = state.outfits.map(outfit => `
-        <article class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
-          <h3 class="text-lg font-semibold">${outfit.name}</h3>
-          <p class="mt-2 text-sm text-zinc-400">${outfit.notes || 'No outfit notes yet.'}</p>
-          <p class="mt-4 text-xs uppercase tracking-[0.25em] text-zinc-500">${(outfit.outfit_items || []).length} pieces</p>
-        </article>
-      `).join('');
     }
 
-    function hydrateProfileForm() {
-      profileDisplayName.value = state.profile?.display_name || '';
-      profileInstagram.value = state.profile?.instagram || '';
-      profileBio.value = state.profile?.bio || '';
-    }
-
-    async function ensureProfile(user) {
-      const { data: existing, error: selectError } = await supabase
+    async function fetchProfile(userId) {
+      if (!supabase) return null;
+      const { data, error } = await supabase
         .from('profiles')
-        .select('*')
-        .eq('id', user.id)
-        .maybeSingle();
-
-      if (selectError) throw selectError;
-
-      if (existing) {
-        state.profile = existing;
-        hydrateProfileForm();
-        return;
-      }
-
-      const seedProfile = {
-        id: user.id,
-        email: user.email,
-        display_name: user.email.split('@')[0]
-      };
-
-      const { data: inserted, error: insertError } = await supabase
-        .from('profiles')
-        .insert(seedProfile)
-        .select()
+        .select('id, username, email, approved, created_at')
+        .eq('id', userId)
         .single();
 
-      if (insertError) throw insertError;
-      state.profile = inserted;
-      hydrateProfileForm();
+      if (error) {
+        console.error(error);
+        return null;
+      }
+      return data;
     }
 
-    async function loadClosetItems() {
-      if (!state.user) {
+    async function loadItems() {
+      if (!supabase || !state.user) {
         state.items = [];
         renderStats();
         renderItems();
@@ -875,51 +835,120 @@
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) return alert(error.message);
-      state.items = data || [];
+      if (error) {
+        console.error(error);
+        showAuthMessage('Unable to load closet items from Supabase.', true);
+        state.items = [];
+      } else {
+        state.items = data || [];
+      }
+
       renderStats();
       renderItems();
     }
 
-    async function loadSavedOutfits() {
-      if (!state.user) {
-        state.outfits = [];
-        renderOutfits();
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from('saved_outfits')
-        .select('id, name, notes, created_at, outfit_items(id, closet_item_id)')
-        .order('created_at', { ascending: false });
-
-      if (error) return alert(error.message);
-      state.outfits = data || [];
-      renderOutfits();
-    }
-
-    async function bootstrapSession() {
-      const { data, error } = await supabaseClient.auth.getSession();
-      if (error) {
-        console.error(error);
-        return;
-      }
-
-      state.user = data.session?.user || null;
-      renderLoginState();
-
-      if (state.user) {
-        await ensureProfile(state.user);
-        await loadClosetItems();
-        await loadSavedOutfits();
-      } else {
-        state.profile = null;
-        state.items = [];
-        state.outfits = [];
+    async function syncSession() {
+      if (!supabase) {
+        renderAuthState();
         renderStats();
         renderItems();
-        renderOutfits();
+        return;
       }
+
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (!session?.user) {
+        state.user = null;
+        state.profile = null;
+        state.isLoggedIn = false;
+        state.items = [];
+        renderAuthState();
+        renderStats();
+        renderItems();
+        return;
+      }
+
+      state.user = session.user;
+      const profile = await fetchProfile(session.user.id);
+
+      if (!profile) {
+        state.profile = null;
+        state.isLoggedIn = false;
+        renderAuthState();
+        showAuthMessage('Your account profile could not be found. Check that the profiles table exists.', true);
+        return;
+      }
+
+      if (!profile.approved) {
+        await supabase.auth.signOut();
+        state.user = null;
+        state.profile = null;
+        state.isLoggedIn = false;
+        state.items = [];
+        renderAuthState();
+        renderStats();
+        renderItems();
+        showAuthMessage('Your account was created, but it is still pending approval. Please wait 24–48 hours.', false);
+        openAuthModal('login');
+        return;
+      }
+
+      state.profile = profile;
+      state.isLoggedIn = true;
+      renderAuthState();
+      await loadItems();
+    }
+
+    async function uploadImageToStorage(file, userId) {
+      if (!file || !supabase) return '';
+      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+      const safeExt = ext.replace(/[^a-z0-9]/g, '') || 'jpg';
+      const filePath = `${userId}/${crypto.randomUUID()}.${safeExt}`;
+
+      const { error } = await supabase.storage
+        .from('closet-items')
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (error) throw error;
+
+      const { data } = supabase.storage
+        .from('closet-items')
+        .getPublicUrl(filePath);
+
+      return data.publicUrl;
+    }
+
+    async function removeItem(itemId, imageUrl) {
+      if (!supabase || !state.isLoggedIn) {
+        openAuthModal('login');
+        return;
+      }
+
+      const { error } = await supabase.from('closet_items').delete().eq('id', itemId);
+      if (error) {
+        console.error(error);
+        showAuthMessage('Could not remove this item.', true);
+        openAuthModal('login');
+        return;
+      }
+
+      if (imageUrl && imageUrl.includes('/storage/v1/object/public/closet-items/')) {
+        try {
+          const path = imageUrl.split('/storage/v1/object/public/closet-items/')[1];
+          if (path) {
+            await supabase.storage.from('closet-items').remove([decodeURIComponent(path)]);
+          }
+        } catch (storageError) {
+          console.warn('Image delete warning:', storageError);
+        }
+      }
+
+      state.items = state.items.filter(item => item.id !== itemId);
+      renderStats();
+      renderItems();
     }
 
     searchInput.addEventListener('input', e => { state.filters.search = e.target.value; renderItems(); });
@@ -928,179 +957,202 @@
     sizeFilter.addEventListener('change', e => { state.filters.size = e.target.value; renderItems(); });
     sortFilter.addEventListener('change', e => { state.filters.sort = e.target.value; renderItems(); });
 
-    loginBtn.addEventListener('click', openLoginModal);
+    openModalBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelModalBtn.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+
+    authBtn.addEventListener('click', () => openAuthModal('login'));
     logoutBtn.addEventListener('click', async () => {
-      await supabaseClient.auth.signOut();
+      if (supabase) await supabase.auth.signOut();
       state.user = null;
       state.profile = null;
       state.items = [];
-      state.outfits = [];
-      renderLoginState();
+      state.isLoggedIn = false;
+      renderAuthState();
       renderStats();
       renderItems();
-      renderOutfits();
     });
-
-    openModalBtn.addEventListener('click', openItemModal);
-    closeModalBtn.addEventListener('click', closeItemModal);
-    modalBackdrop.addEventListener('click', closeItemModal);
-
-    openOutfitModalBtn.addEventListener('click', openOutfitModal);
-    closeOutfitModalBtn.addEventListener('click', closeOutfitModal);
-    outfitBackdrop.addEventListener('click', closeOutfitModal);
-
-    loginPromptBtn.addEventListener('click', openLoginModal);
-    loginBackdrop.addEventListener('click', closeLoginModal);
-    closeLoginBtn.addEventListener('click', closeLoginModal);
-    showLoginTabBtn.addEventListener('click', () => setAuthTab('login'));
-    showSignupTabBtn.addEventListener('click', () => setAuthTab('signup'));
+    authBackdrop.addEventListener('click', closeAuthModal);
+    closeAuthBtn.addEventListener('click', closeAuthModal);
+    showLoginTab.addEventListener('click', () => setAuthView('login'));
+    showSignupTab.addEventListener('click', () => setAuthView('signup'));
 
     skipInstagramBtn.addEventListener('click', closeInstagramModal);
     instagramBackdrop.addEventListener('click', closeInstagramModal);
-    followInstagramBtn.addEventListener('click', () => localStorage.setItem(APP_KEYS.promptSeen, 'true'));
+    followInstagramBtn.addEventListener('click', () => localStorage.setItem(USER_KEYS.promptSeen, 'true'));
 
     loginForm.addEventListener('submit', async e => {
       e.preventDefault();
-      const { error } = await supabaseClient.auth.signInWithPassword({
-        email: loginEmail.value.trim(),
-        password: loginPassword.value.trim()
-      });
-      if (error) return showMessage(error.message, true);
-      showMessage('Login successful.');
-      await bootstrapSession();
-      setTimeout(closeLoginModal, 600);
+
+      if (!supabase) {
+        showAuthMessage('Add your Supabase URL and anon key in the file before logging in.', true);
+        return;
+      }
+
+      resetAuthMessage();
+      const email = loginEmail.value.trim().toLowerCase();
+      const password = loginPassword.value.trim();
+
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        showAuthMessage(error.message || 'Incorrect email or password.', true);
+        return;
+      }
+
+      const profile = await fetchProfile(data.user.id);
+      if (!profile) {
+        await supabase.auth.signOut();
+        showAuthMessage('Profile not found. Make sure the profiles table was created.', true);
+        return;
+      }
+
+      if (!profile.approved) {
+        await supabase.auth.signOut();
+        showAuthMessage('Your account is pending approval. Please wait 24–48 hours.', false);
+        return;
+      }
+
+      state.user = data.user;
+      state.profile = profile;
+      state.isLoggedIn = true;
+      renderAuthState();
+      await loadItems();
+      showAuthMessage('Login successful. Your closet is ready.');
+      setTimeout(closeAuthModal, 800);
     });
 
     signupForm.addEventListener('submit', async e => {
       e.preventDefault();
-      const email = signupEmail.value.trim();
+
+      if (!supabase) {
+        showAuthMessage('Add your Supabase URL and anon key in the file before signing up.', true);
+        return;
+      }
+
+      resetAuthMessage();
+      const username = signupUsername.value.trim();
+      const email = signupEmail.value.trim().toLowerCase();
       const password = signupPassword.value.trim();
 
-      const { data, error } = await supabaseClient.auth.signUp({
+      if (!username) {
+        showAuthMessage('Please enter a username.', true);
+        return;
+      }
+
+      const { data, error } = await supabase.auth.signUp({
         email,
-        password
+        password,
+        options: {
+          data: { username }
+        }
       });
 
-      if (error) return showMessage(error.message, true);
-
-      if (data.user) {
-        showMessage('Account created. Check your email if confirmation is enabled.');
-      } else {
-        showMessage('Signup submitted.');
+      if (error) {
+        showAuthMessage(error.message || 'Unable to create account.', true);
+        return;
       }
+
+      const userId = data.user?.id;
+      if (!userId) {
+        showAuthMessage('Account created, but no user ID was returned. Check your email confirmation settings.', true);
+        return;
+      }
+
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .upsert({
+          id: userId,
+          username,
+          email,
+          approved: false
+        });
+
+      if (profileError) {
+        showAuthMessage(profileError.message || 'Account created, but profile could not be saved.', true);
+        return;
+      }
+
+      if (data.session) {
+        await supabase.auth.signOut();
+      }
+
+      showAuthMessage('Signup complete. Please wait 24–48 hours for approval before logging in.');
+      signupForm.reset();
+      setAuthView('login');
     });
 
-    profileForm.addEventListener('submit', async e => {
-      e.preventDefault();
-      if (!state.user) return;
+    imageUpload.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
 
-      const payload = {
-        id: state.user.id,
-        email: state.user.email,
-        display_name: profileDisplayName.value.trim(),
-        instagram: profileInstagram.value.trim(),
-        bio: profileBio.value.trim()
+      state.uploadedImageFile = file;
+      const reader = new FileReader();
+      reader.onload = event => {
+        state.uploadedImagePreview = event.target.result;
+        previewImage.src = state.uploadedImagePreview;
+        previewWrap.classList.remove('hidden');
       };
-
-      const { data, error } = await supabase
-        .from('profiles')
-        .upsert(payload)
-        .select()
-        .single();
-
-      if (error) return alert(error.message);
-      state.profile = data;
-      hydrateProfileForm();
+      reader.readAsDataURL(file);
     });
 
     itemForm.addEventListener('submit', async e => {
       e.preventDefault();
-      if (!state.user) return;
+
+      if (!supabase || !state.isLoggedIn || !state.user) {
+        openAuthModal('login');
+        showAuthMessage('Please log in before saving an item.', true);
+        return;
+      }
 
       const formData = new FormData(itemForm);
-      const payload = {
-        user_id: state.user.id,
-        name: formData.get('name').trim(),
-        category: formData.get('category').trim(),
-        brand: formData.get('brand').trim(),
-        color: formData.get('color').trim(),
-        size: formData.get('size').trim(),
-        season: formData.get('season').trim(),
-        notes: formData.get('notes').trim(),
-        image_url: formData.get('image_url').trim()
-      };
 
-      const { error } = await supabaseClient.from('closet_items').insert(payload);
-      if (error) return alert(error.message);
+      try {
+        const imageUrl = await uploadImageToStorage(state.uploadedImageFile, state.user.id);
 
-      closeItemModal();
-      await loadClosetItems();
-    });
-
-    outfitForm.addEventListener('submit', async e => {
-      e.preventDefault();
-      if (!state.user) return;
-
-      const selectedIds = [...outfitItemsPicker.querySelectorAll('input[type="checkbox"]:checked')].map(input => input.value);
-      if (!selectedIds.length) return alert('Select at least one closet item.');
-
-      const { data: outfit, error: outfitError } = await supabase
-        .from('saved_outfits')
-        .insert({
+        const payload = {
           user_id: state.user.id,
-          name: outfitName.value.trim(),
-          notes: outfitNotes.value.trim()
-        })
-        .select()
-        .single();
+          name: (formData.get('name') || '').trim(),
+          category: (formData.get('category') || '').trim(),
+          brand: (formData.get('brand') || '').trim() || 'MENOCLONE',
+          color: (formData.get('color') || '').trim() || 'Black',
+          size: (formData.get('size') || '').trim() || 'One Size',
+          season: (formData.get('season') || '').trim() || 'All Season',
+          notes: (formData.get('notes') || '').trim(),
+          image_url: imageUrl
+        };
 
-      if (outfitError) return alert(outfitError.message);
+        const { data, error } = await supabase
+          .from('closet_items')
+          .insert(payload)
+          .select()
+          .single();
 
-      const rows = selectedIds.map(id => ({
-        outfit_id: outfit.id,
-        closet_item_id: id
-      }));
+        if (error) throw error;
 
-      const { error: itemsError } = await supabaseClient.from('outfit_items').insert(rows);
-      if (itemsError) return alert(itemsError.message);
-
-      closeOutfitModal();
-      await loadSavedOutfits();
-    });
-
-    supabaseClient.auth.onAuthStateChange(async (_event, session) => {
-      state.user = session?.user || null;
-      renderLoginState();
-      if (state.user) {
-        await ensureProfile(state.user);
-        await loadClosetItems();
-        await loadSavedOutfits();
-      } else {
-        state.profile = null;
-        state.items = [];
-        state.outfits = [];
+        state.items.unshift(data);
         renderStats();
         renderItems();
-        renderOutfits();
+        closeModal();
+      } catch (error) {
+        console.error(error);
+        alert(error.message || 'Could not save item.');
       }
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      if (loginBtn) loginBtn.addEventListener('click', openLoginModal);
-      if (loginPromptBtn) loginPromptBtn.addEventListener('click', openLoginModal);
-      if (closeLoginBtn) closeLoginBtn.addEventListener('click', closeLoginModal);
-      if (loginBackdrop) loginBackdrop.addEventListener('click', closeLoginModal);
     });
 
     renderCategories();
     renderStats();
     renderItems();
-    renderOutfits();
-    renderLoginState();
-    setAuthTab('login');
-    bootstrapSession();
+    renderAuthState();
 
-    if (!localStorage.getItem(APP_KEYS.promptSeen)) {
+    if (hasSupabaseConfig) {
+      syncSession();
+      supabase.auth.onAuthStateChange(async () => {
+        await syncSession();
+      });
+    }
+
+    if (!localStorage.getItem(USER_KEYS.promptSeen)) {
       setTimeout(openInstagramModal, 700);
     }
   </script>
