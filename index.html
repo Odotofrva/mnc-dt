@@ -47,6 +47,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Loading Screen of the Digital Closet -- OdotNYC -->
+
   <div aria-label="MENOCLONE loading screen" id="splash"><div class="splash-card"><img alt="MENOCLONE logo" class="splash-logo" src="mnc.png"><div class="splash-loader"><span></span></div></div></div>
   <div class="app-shell" id="top">
     <header class="site-header reveal">
@@ -66,7 +69,7 @@
         </div>
         <div>
           <p class="eyebrow">Digital closet system</p>
-          <h1>Your closet, saved in the cloud.</h1>
+          <h1>Your closet, saved in the your pocket.</h1>
           <p class="hero-text" id="phoneStatus">Login to unlock your closet, or use the demo to try the wardrobe workflow first.</p>
           <div class="hero-actions"><a class="primary-btn" href="#auth">Login</a><button class="secondary-btn" id="demoHeroBtn" type="button">Try Demo</button></div>
           <span class="demo-badge">Default view: Login + Demo only</span>
@@ -97,10 +100,14 @@
     <footer class="site-footer"><img alt="MENOCLONE logo" src="mnc.png"><p>© 2026 MENOCLONE. Built for digital wardrobe organization.</p></footer>
   </div>
 
-  <div class="modal-backdrop" id="instructionsModal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="instructionsTitle"><div class="modal-header"><h2 id="instructionsTitle">Supabase setup instructions</h2><button class="modal-close" id="closeInstructions" type="button">Close</button></div><ol><li>Create a Supabase project.</li><li>Go to <strong>Authentication → Providers → Email</strong> and enable email/password auth.</li><li>Open <strong>SQL Editor</strong>, paste the SQL from <code>supabase-schema.sql</code>, and run it.</li><li>Go to <strong>Project Settings → API</strong> and copy your Project URL and anon/public key.</li><li>In <code>index.html</code>, replace <code>YOUR_SUPABASE_PROJECT_URL</code> and <code>YOUR_SUPABASE_ANON_KEY</code>.</li><li>Publish the folder to GitHub Pages, Vercel, or your static host.</li></ol><!--<div class="supabase-box"><strong>Important:</strong> Passwords are handled by Supabase Auth. Do not create your own password table. The closet table stores clothing items and uses RLS so users only access their own rows.</div> --></div></div>
+  <div class="modal-backdrop" id="instructionsModal" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="instructionsTitle"><div class="modal-header"><h2 id="instructionsTitle">Supabase setup instructions</h2><button class="modal-close" id="closeInstructions" type="button">Close</button></div><ol><!-- <li>Create a Supabase project.</li><li>Go to <strong>Authentication → Providers → Email</strong> and enable email/password auth.</li><li>Open <strong>SQL Editor</strong>, paste the SQL from <code>supabase-schema.sql</code>, and run it.</li><li>Go to <strong>Project Settings → API</strong> and copy your Project URL and anon/public key.</li><li>In <code>index.html</code>, replace <code>YOUR_SUPABASE_PROJECT_URL</code> and <code>YOUR_SUPABASE_ANON_KEY</code></li><li>Publish the folder to GitHub Pages, Vercel, or your static host.</li></ol>--><!--<div class="supabase-box"><strong>Important:</strong> Passwords are handled by Supabase Auth. Do not create your own password table. The closet table stores clothing items and uses RLS so users only access their own rows.</div> --></div></div>
   <div class="toast" id="toast">Ready.</div>
 
   <script>
+    // This is where the Supabase url and the annon key is placed.
+    // Must add security so we wont have this exposed.
+
+    
     const SUPABASE_URL = 'sb_publishable_atJC01PGHxiEhrDhuKI5sQ_r1verLiT';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXAiLCJyZWYiOiJndGR1amx6dm9jeGZzcG12enBjZiIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzgwMDY0NjgyLCJleHAiOjIwOTU2NDA2ODJ9.YOY11b6EePngxqzOgVJFnsxKyJtYkAhhos2bDl90WFg';
     const supabaseReady = SUPABASE_URL.startsWith('https://') && !SUPABASE_ANON_KEY.includes('YOUR_');
