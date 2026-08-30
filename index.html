@@ -428,8 +428,12 @@
 
     .products{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:12px;
+    }
+
+    .products .product{
+      min-width:0;
     }
 
     .product{
@@ -451,36 +455,35 @@
       position:relative;
       aspect-ratio:4/5;
       overflow:hidden;
-      background:linear-gradient(145deg,#1b1b1b,#111 60%,#171717);
+      background:#151515;
     }
 
-    .product-media::before{
-      content:"";
-      position:absolute;
-      width:55%;
-      aspect-ratio:1;
-      border-radius:50%;
-      left:22%;
-      top:18%;
-      background:radial-gradient(circle at 35% 30%,#333,#111 65%);
-      border:1px solid rgba(255,255,255,.08);
-      transition:transform .7s var(--ease);
+    .product-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .75s var(--ease), filter .45s ease;
     }
+
+    .product:hover .product-media img{
+      transform:scale(1.035);
+      filter:contrast(1.03);
+    }
+
+    .product-media img[src$="statement-tee.png"],
+    .product-media img[src$="enemy-of-norm.png"]{
+      object-fit:contain;
+      background:#c9c5bd;
+    }
+
 
     .product-media::after{
       content:"";
       position:absolute;
       inset:0;
-      background-image:url("mncufo.png");
-      background-size:58%;
-      background-repeat:no-repeat;
-      background-position:center;
-      opacity:.22;
-      filter:drop-shadow(0 0 10px rgba(255,255,255,.05));
+      background:linear-gradient(to bottom,transparent 55%,rgba(0,0,0,.16));
       pointer-events:none;
     }
-
-    .product:hover .product-media::before{transform:scale(1.08) rotate(9deg)}
 
     .product-index{
       position:absolute;
@@ -819,6 +822,292 @@
       .hero h1{font-size:clamp(52px,19vw,88px)}
     }
 
+
+    /* ---------- MOBILE RESPONSIVE REFINEMENTS ---------- */
+    body{
+      min-width:320px;
+    }
+
+    header{
+      padding-left:max(16px,env(safe-area-inset-left));
+      padding-right:max(16px,env(safe-area-inset-right));
+    }
+
+    .splash-ui{
+      padding-left:max(18px,env(safe-area-inset-left));
+      padding-right:max(18px,env(safe-area-inset-right));
+      padding-top:max(18px,env(safe-area-inset-top));
+      padding-bottom:max(18px,env(safe-area-inset-bottom));
+    }
+
+    @media (max-width: 1024px){
+      .hero{
+        grid-template-columns:1fr 1fr;
+      }
+      .products{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 760px){
+      :root{--header-h:60px}
+
+      header{
+        grid-template-columns:64px 1fr auto;
+        gap:8px;
+      }
+
+      .nav-logo{
+        grid-column:2;
+        width:58px;
+        height:46px;
+      }
+
+      .header-actions{
+        grid-column:3;
+        gap:2px;
+      }
+
+      .header-actions .icon-btn{
+        min-height:44px;
+        padding:10px 8px;
+      }
+
+      .hero{
+        min-height:auto;
+        grid-template-columns:1fr;
+      }
+
+      .hero-copy{
+        min-height:calc(82svh - var(--header-h));
+        padding:clamp(56px,12vw,86px) 18px 28px;
+        justify-content:flex-end;
+      }
+
+      .hero h1{
+        max-width:100%;
+        font-size:clamp(48px,15vw,86px);
+        line-height:.86;
+        overflow-wrap:anywhere;
+      }
+
+      .hero-wordmark{
+        width:min(82vw,340px);
+        margin-top:22px;
+      }
+
+      .hero-copy-bottom{
+        width:100%;
+        gap:22px;
+        margin-top:28px;
+      }
+
+      .hero-copy-bottom p{
+        max-width:100%;
+        font-size:13px;
+      }
+
+      .shop-link{
+        min-height:44px;
+        align-items:center;
+      }
+
+      .hero-art{
+        min-height:42svh;
+      }
+
+      .hero-stamp{
+        width:min(40vw,145px);
+        right:14px;
+        top:14px;
+      }
+
+      .art-label{
+        left:14px;
+        bottom:14px;
+        max-width:70%;
+        line-height:1.45;
+      }
+
+      .marquee{
+        padding:11px 0;
+      }
+
+      .section{
+        padding:58px 16px;
+      }
+
+      .section-heading{
+        margin-bottom:24px;
+      }
+
+      .section-heading h2{
+        font-size:clamp(34px,11vw,54px);
+        line-height:.92;
+      }
+
+      .products{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .product{
+        grid-column:auto;
+        max-width:none;
+        width:100%;
+      }
+
+      .product-media{
+        aspect-ratio:4/5;
+      }
+
+      .product-info{
+        padding:14px 14px 16px;
+        font-size:10px;
+      }
+
+      .quick-add{
+        min-height:44px;
+        opacity:1;
+        transform:none;
+        font-size:10px;
+        bottom:12px;
+        left:12px;
+        right:12px;
+      }
+
+      .story{
+        gap:28px;
+      }
+
+      .story h3{
+        font-size:clamp(34px,11vw,54px);
+      }
+
+      .story-copy{
+        gap:18px;
+        font-size:13px;
+      }
+
+      .newsletter{
+        padding:22px 18px;
+        gap:24px;
+      }
+
+      .newsletter h3{
+        font-size:clamp(34px,10vw,50px);
+      }
+
+      .email-form{
+        display:grid;
+        grid-template-columns:1fr auto;
+        width:100%;
+      }
+
+      .email-form input{
+        min-height:48px;
+      }
+
+      .email-form button{
+        min-height:48px;
+      }
+
+      footer{
+        padding:30px 18px max(36px,env(safe-area-inset-bottom));
+        gap:26px;
+      }
+
+      .mobile-panel{
+        padding-left:max(20px,env(safe-area-inset-left));
+        padding-right:max(20px,env(safe-area-inset-right));
+        padding-bottom:max(28px,env(safe-area-inset-bottom));
+      }
+    }
+
+    @media (max-width: 430px){
+      .splash-brand-logo{
+        width:92vw;
+      }
+
+      .enter-btn{
+        width:min(72vw,260px);
+        min-height:48px;
+      }
+
+      header{
+        padding-left:10px;
+        padding-right:10px;
+      }
+
+      .header-actions .icon-btn{
+        font-size:9px;
+        letter-spacing:.08em;
+      }
+
+      .hero-copy{
+        padding-left:14px;
+        padding-right:14px;
+      }
+
+      .hero h1{
+        font-size:clamp(44px,14.6vw,68px);
+      }
+
+      .section{
+        padding-left:14px;
+        padding-right:14px;
+      }
+
+      .newsletter{
+        border-radius:14px;
+      }
+
+      .email-form{
+        grid-template-columns:1fr;
+        border-bottom:0;
+        gap:8px;
+      }
+
+      .email-form input{
+        border-bottom:1px solid #111;
+      }
+
+      .email-form button{
+        padding:12px 0;
+        text-align:left;
+      }
+
+      .toast{
+        left:12px;
+        right:12px;
+        bottom:max(12px,env(safe-area-inset-bottom));
+        text-align:center;
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 520px){
+      .splash-brand-logo{
+        width:min(58vw,560px);
+      }
+
+      .splash-lockup{
+        gap:14px;
+      }
+
+      .enter-btn{
+        padding:12px 20px;
+      }
+
+      .hero-copy{
+        min-height:auto;
+        padding-top:48px;
+      }
+
+      .hero-art{
+        min-height:72vh;
+      }
+    }
+
     @media (prefers-reduced-motion:reduce){
       *{
         animation-duration:.01ms !important;
@@ -841,7 +1130,7 @@
 
     <div class="splash-ui">
       <div class="splash-lockup">
-        <img class="splash-brand-logo" src="mnc.png" alt="MENOCLONE logo" />
+        <img class="splash-brand-logo" src="assets/menoclone-wordmark.png" alt="MENOCLONE logo" />
         <button class="enter-btn" id="enterSite" type="button">
           <span>Enter</span>
         </button>
@@ -858,7 +1147,7 @@
       </nav>
 
       <a href="#" class="nav-logo" aria-label="MENOCLONE home">
-        <img src="mncufo.png" alt="MENOCLONE UFO logo" />
+        <img src="assets/menoclone-ufo.png" alt="MENOCLONE UFO logo" />
       </a>
 
       <div class="header-actions">
@@ -874,7 +1163,7 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="mobile-meta">
-        <img src="mncufo.png" alt="UFO logo" />
+        <img src="assets/menoclone-ufo.png" alt="UFO logo" />
         <span>Originality Has Origins / Season 2</span>
       </div>
     </div>
@@ -884,7 +1173,7 @@
         <div class="hero-copy">
           <p class="eyebrow" data-reveal>Season 2 / New York City</p>
           <h1 data-reveal>Originality Has Origins.</h1>
-          <img class="hero-wordmark" data-reveal src="mnc.png" alt="MENOCLONE wordmark" />
+          <img class="hero-wordmark" data-reveal src="assets/menoclone-wordmark.png" alt="MENOCLONE wordmark" />
           <div class="hero-copy-bottom" data-reveal>
             <p>
               MENOCLONE is a lifestyle experiment at the intersection of fashion,
@@ -895,7 +1184,7 @@
         </div>
 
         <div class="hero-art" aria-label="MENOCLONE abstract visual">
-          <img class="hero-stamp" src="mnc.png" alt="MENOCLONE logo" />
+          <img class="hero-stamp" src="assets/menoclone-wordmark.png" alt="MENOCLONE logo" />
           <div class="orb">
             <div class="orbit"></div>
           </div>
@@ -920,7 +1209,7 @@
         <div class="section-heading" data-reveal>
           <div>
             <h2>Selected Objects</h2>
-            <img class="section-heading-brand" src="mnc.png" alt="MENOCLONE wordmark" />
+            <img class="section-heading-brand" src="assets/menoclone-wordmark.png" alt="MENOCLONE wordmark" />
           </div>
           <p>Season 2 / Limited Release</p>
         </div>
@@ -928,6 +1217,7 @@
         <div class="products">
           <article class="product" data-reveal>
             <div class="product-media">
+              <img src="assets/product-tee.jpg" alt="MENOCLONE Heavy GSM Tee mockup" loading="lazy" />
               <span class="product-index">01</span>
               <button class="quick-add" type="button" data-product="Heavy GSM Tee">Quick Add</button>
             </div>
@@ -939,6 +1229,7 @@
 
           <article class="product" data-reveal>
             <div class="product-media">
+              <img src="assets/product-hoodie.jpg" alt="MENOCLONE Season 2 Hoodie mockup" loading="lazy" />
               <span class="product-index">02</span>
               <button class="quick-add" type="button" data-product="Season 2 Hoodie">Quick Add</button>
             </div>
@@ -950,12 +1241,38 @@
 
           <article class="product" data-reveal>
             <div class="product-media">
+              <img src="assets/product-cap.jpg" alt="MENOCLONE 5 Panel Cap mockup" loading="lazy" />
               <span class="product-index">03</span>
               <button class="quick-add" type="button" data-product="5 Panel Cap">Quick Add</button>
             </div>
             <div class="product-info">
               <span>5 Panel Cap</span>
               <span>$00.00</span>
+            </div>
+          </article>
+
+
+          <article class="product" data-reveal>
+            <div class="product-media">
+              <img src="assets/statement-tee.png" alt="MENOCLONE Statement Tee front and back" loading="lazy" />
+              <span class="product-index">04</span>
+              <button class="quick-add" type="button" data-product="Statement Tee">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>Statement Tee</span>
+              <span>$60.00</span>
+            </div>
+          </article>
+
+          <article class="product" data-reveal>
+            <div class="product-media">
+              <img src="assets/enemy-of-norm.png" alt="MENOCLONE Enemy of Norm Tee front and back" loading="lazy" />
+              <span class="product-index">05</span>
+              <button class="quick-add" type="button" data-product="Enemy of Norm">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>Enemy of Norm</span>
+              <span>$60.00</span>
             </div>
           </article>
         </div>
@@ -965,7 +1282,7 @@
         <div class="story">
           <div data-reveal>
             <div class="story-badge">
-              <img src="mncufo.png" alt="MENOCLONE UFO logo" />
+              <img src="assets/menoclone-ufo.png" alt="MENOCLONE UFO logo" />
               <span>MENOCLONE Signal</span>
             </div>
             <h3>Different by design. Connected by origin.</h3>
@@ -986,7 +1303,7 @@
       <section class="section" id="contact">
         <div class="newsletter" data-reveal>
           <div>
-            <img class="newsletter-brand" src="mnc.png" alt="MENOCLONE wordmark" />
+            <img class="newsletter-brand" src="assets/menoclone-wordmark.png" alt="MENOCLONE wordmark" />
             <h3>Join the signal.</h3>
             <p>Drop alerts, experiments, events and new objects from MENOCLONE.</p>
           </div>
@@ -1007,7 +1324,7 @@
 
     <footer>
       <div class="footer-brand">
-        <img src="mnc.png" alt="MENOCLONE wordmark" />
+        <img src="assets/menoclone-wordmark.png" alt="MENOCLONE wordmark" />
         <span>© 2026</span>
       </div>
       <div>
