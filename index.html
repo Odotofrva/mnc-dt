@@ -562,10 +562,10 @@
       filter:contrast(1.03);
     }
 
-    .product-media img[src$="statement-tee.png"],
-    .product-media img[src$="enemy-of-norm.png"]{
-      object-fit:contain;
-      background:#c9c5bd;
+    .product-media img[src$="mnc-trucker-hat.png"]{
+      object-fit:cover;
+      object-position:center;
+      background:#111;
     }
 
 
@@ -1396,6 +1396,14 @@
       letter-spacing:.14em;
       font-size:10px;
       font-weight:700;
+    }
+
+
+    .product-detail-add:disabled{
+      cursor:default;
+      background:#242424;
+      color:#777;
+      border:1px solid rgba(255,255,255,.10);
     }
 
     .product-detail-price{
@@ -2381,10 +2389,34 @@
             </div>
           </article>
 
+          <article class="product" data-reveal data-name="Artful UFO Hoodie" data-price="TBA" data-description="The Artful UFO Hoodie combines the MENOCLONE wordmark with oversized UFO artwork and a bold Season 2 back graphic built around the brand's visual identity.">
+            <div class="product-media">
+              <img class="real-product" src="mnc-artufo-hoodie.png" alt="MENOCLONE Artful UFO Hoodie front and back" loading="lazy" />
+              <span class="product-index">03</span>
+              <button class="quick-add" type="button" data-product="Artful UFO Hoodie">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>Artful UFO Hoodie</span>
+              <span class="price-hidden">Price in cart</span>
+            </div>
+          </article>
+
+          <article class="product" data-reveal data-name="MENOCLONE Crewneck" data-price="TBA" data-description="Heavyweight MENOCLONE crewneck with clean front branding and UFO graphics for a minimal Season 2 uniform.">
+            <div class="product-media">
+              <img class="real-product" src="mnc-ufo-crewneck.png" alt="MENOCLONE Crewneck front and back" loading="lazy" />
+              <span class="product-index">04</span>
+              <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
+            </div>
+            <div class="product-info">
+              <span>MENOCLONE Crewneck</span>
+              <span class="price-hidden">Price in cart</span>
+            </div>
+          </article>
+
           <article class="product" data-reveal data-name="5 Panel Cap" data-price="TBA" data-description="Five-panel MENOCLONE cap featuring the wordmark and UFO identity in a clean, wearable everyday shape.">
             <div class="product-media">
               <img class="real-product" src="mnc-5panel-cap.png" alt="MENOCLONE 5 Panel Cap front and side views" loading="lazy" />
-              <span class="product-index">03</span>
+              <span class="product-index">05</span>
               <button class="quick-add" type="button" data-product="5 Panel Cap">Quick Add</button>
             </div>
             <div class="product-info">
@@ -2393,44 +2425,19 @@
             </div>
           </article>
 
-
-          <article class="product" data-reveal data-name="Statement Tee" data-price="60.00" data-description="The Artful UFO Hoodie with bold back artwork built around the brand idea: Originality Has Origins.">
+          <article class="product" data-reveal data-name="Trucker Hat" data-price="TBA" data-description="Black MENOCLONE trucker hat with a structured front, white embroidered wordmark and breathable black mesh back.">
             <div class="product-media">
-              <img class="real-product" src="mnc-artufo-hoodie.png" alt="MENOCLONE Statement Tee front and back" loading="lazy" />
-              <span class="product-index">04</span>
-              <button class="quick-add" type="button" data-product="Statement Tee">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>Artful UFO Hoodie</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
-
-          <article class="product" data-reveal data-name="Enemy of Norm" data-price="60.00" data-description="Enemy of Norm is a graphic tee built around MENOCLONE's rejection of sameness, using the UFO identity as a symbol of creative independence.">
-            <div class="product-media">
-              <img class="real-product" src="assets/enemy-of-norm.png" alt="MENOCLONE Enemy of Norm Tee front and back" loading="lazy" />
-              <span class="product-index">05</span>
-              <button class="quick-add" type="button" data-product="Enemy of Norm">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>Enemy of Norm</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
-
-          <article class="product" data-reveal>
-            <div class="product-media">
-              <img class="real-product" src="mnc-ufo-crewneck.png" alt="MENOCLONE Crewneck front and back" loading="lazy" />
+              <img src="mnc-trucker-hat.png" alt="Black MENOCLONE trucker hat with white embroidered wordmark" loading="lazy" />
               <span class="product-index">06</span>
-              <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
+              <button class="quick-add" type="button" data-product="Trucker Hat">Quick Add</button>
             </div>
             <div class="product-info">
-              <span>MENOCLONE Crewneck</span>
-              <span>TBA</span>
+              <span>Trucker Hat</span>
+              <span class="price-hidden">Price in cart</span>
             </div>
           </article>
 
-          <article class="product" data-reveal>
+          <article class="product" data-reveal data-name="MNC Sticker Pack" data-price="TBA" data-description="A collectible MENOCLONE sticker set featuring MNC and UFO marks for laptops, cases, notebooks, boards and creative placement.">
             <div class="product-media">
               <img class="real-product" src="mnc-ufo-stickerpack.png" alt="MENOCLONE MNC UFO sticker pack" loading="lazy" />
               <span class="product-index">07</span>
@@ -2438,7 +2445,7 @@
             </div>
             <div class="product-info">
               <span>MNC Sticker Pack</span>
-              <span>TBA</span>
+              <span class="price-hidden">Price in cart</span>
             </div>
           </article>
         </div>
@@ -2463,7 +2470,7 @@
           </article>
 
           <article class="editorial-card" data-reveal>
-            <img src="mnc-hoodie.png" alt="MENOCLONE Hoodie look" loading="lazy" />
+            <img src="mnc-ufo-hoodie.png" alt="MENOCLONE Season 2 Hoodie look" loading="lazy" />
             <div class="editorial-label">
               <strong data-i18n="lookTwo">Look 02</strong>
               <span data-i18n="lookTwoMeta">Hoodie / Signal Layer</span>
@@ -2471,10 +2478,10 @@
           </article>
 
           <article class="editorial-card" data-reveal>
-            <img src="mnc-artufo-hoodie.png" alt="MENOCLONE Statement Tee look" loading="lazy" />
+            <img src="mnc-artufo-hoodie.png" alt="MENOCLONE Artful UFO Hoodie look" loading="lazy" />
             <div class="editorial-label">
               <strong data-i18n="lookThree">Look 03</strong>
-              <span data-i18n="lookThreeMeta">Statement Tee / $60</span>
+              <span data-i18n="lookThreeMeta">Artful UFO Hoodie / Season 2</span>
             </div>
           </article>
         </div>
@@ -2911,6 +2918,13 @@
       productDetailPrice.dataset.price = price;
       productDetailPrice.textContent = translations[document.documentElement.lang === 'es' ? 'es' : 'en']?.priceRevealedCart || 'Price revealed after adding to cart';
 
+      const quickAddButton = card.querySelector('.quick-add');
+      const isComingSoon = quickAddButton?.disabled === true;
+      productDetailAdd.disabled = isComingSoon;
+      productDetailAdd.textContent = isComingSoon
+        ? (document.documentElement.lang === 'es' ? 'Próximamente' : 'Coming Soon')
+        : (translations[document.documentElement.lang === 'es' ? 'es' : 'en']?.addToCart || 'Add to Cart');
+
       productDetailOverlay.classList.add('show');
       productDetailOverlay.setAttribute('aria-hidden','false');
       body.style.overflow = 'hidden';
@@ -2941,7 +2955,7 @@
         filmKicker:'MENOCLONE Motion',filmTitle:'Campaign Film',filmMeta:'Season 2 / Visual Transmission',
         filmName:'Originality Has Origins',filmDescription:'Drop your MENOCLONE campaign film into the assets folder to replace this placeholder.',filmControls:'Tap or click to play',
         lookbookKicker:'MENOCLONE Editorial',lookbookTitle:'Lookbook',lookbookMeta:'Season 2 / Selected Looks',
-        lookOne:'Look 01',lookOneMeta:'Heavy GSM / Season 2',lookTwo:'Look 02',lookTwoMeta:'Hoodie / Signal Layer',lookThree:'Look 03',lookThreeMeta:'Statement Tee / $60',
+        lookOne:'Look 01',lookOneMeta:'Heavy GSM / Season 2',lookTwo:'Look 02',lookTwoMeta:'Hoodie / Signal Layer',lookThree:'Look 03',lookThreeMeta:'Artful UFO Hoodie / Season 2',
         locatorKicker:'MENOCLONE Field System',locatorTitle:'MNC Art Locator',locatorMeta:'Find the signal',
         locatorHeadline:'Art exists outside the feed.',locatorDescription:'MNC Art Locator is a future map for physical MENOCLONE drops, installations, stickers, objects and creative signals placed around the city.',
         locatorTagDrops:'Drops',locatorTagInstallations:'Installations',locatorTagObjects:'Objects',
@@ -2959,7 +2973,7 @@
         filmKicker:'Movimiento MENOCLONE',filmTitle:'Película de campaña',filmMeta:'Temporada 2 / Transmisión visual',
         filmName:'La originalidad tiene orígenes',filmDescription:'Coloca tu video de campaña MENOCLONE en la carpeta assets para reemplazar este espacio.',filmControls:'Toca o haz clic para reproducir',
         lookbookKicker:'Editorial MENOCLONE',lookbookTitle:'Lookbook',lookbookMeta:'Temporada 2 / Looks seleccionados',
-        lookOne:'Look 01',lookOneMeta:'Heavy GSM / Temporada 2',lookTwo:'Look 02',lookTwoMeta:'Hoodie / Capa de señal',lookThree:'Look 03',lookThreeMeta:'Statement Tee / $60',
+        lookOne:'Look 01',lookOneMeta:'Heavy GSM / Temporada 2',lookTwo:'Look 02',lookTwoMeta:'Hoodie / Capa de señal',lookThree:'Look 03',lookThreeMeta:'Artful UFO Hoodie / Season 2',
         locatorKicker:'Sistema de campo MENOCLONE',locatorTitle:'Localizador de arte MNC',locatorMeta:'Encuentra la señal',
         locatorHeadline:'El arte existe fuera del feed.',locatorDescription:'MNC Art Locator será un mapa para lanzamientos físicos, instalaciones, stickers, objetos y señales creativas de MENOCLONE por la ciudad.',
         locatorTagDrops:'Lanzamientos',locatorTagInstallations:'Instalaciones',locatorTagObjects:'Objetos',
