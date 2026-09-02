@@ -44,13 +44,19 @@
       z-index:1000;
       background:#050505;
       overflow:hidden;
-      transition:opacity .8s var(--ease), visibility .8s var(--ease);
+      transition:
+        opacity 1.05s var(--ease),
+        visibility 1.05s var(--ease),
+        transform 1.05s var(--ease),
+        filter 1.05s var(--ease);
     }
 
     .splash.is-hidden{
       opacity:0;
       visibility:hidden;
       pointer-events:none;
+      transform:scale(1.025);
+      filter:blur(9px);
     }
 
     .splash video,
@@ -139,16 +145,44 @@
     }
     .enter-btn:hover::before{transform:translateY(0)}
 
+    .splash-progress{
+      width:min(220px,55vw);
+      height:1px;
+      overflow:hidden;
+      background:rgba(255,255,255,.18);
+      border-radius:999px;
+    }
+
+    .splash-progress span{
+      display:block;
+      width:100%;
+      height:100%;
+      background:rgba(255,255,255,.78);
+      transform-origin:left center;
+      animation:splashCountdown 5s linear forwards;
+    }
+
+    @keyframes splashCountdown{
+      from{transform:scaleX(0)}
+      to{transform:scaleX(1)}
+    }
+
     /* ---------- SITE ---------- */
     .site{
       opacity:0;
-      transform:translateY(8px);
-      transition:opacity .7s var(--ease), transform .7s var(--ease);
+      transform:scale(.992) translateY(8px);
+      filter:blur(7px);
+      transition:
+        opacity 1.05s var(--ease),
+        transform 1.05s var(--ease),
+        filter 1.05s var(--ease);
     }
 
     body.site-entered .site{
       opacity:1;
       transform:none;
+      filter:blur(0);
+      transition-delay:.10s;
     }
 
     header{
@@ -309,6 +343,62 @@
         linear-gradient(150deg,#171717,#0d0d0d 60%,#181818);
     }
 
+    .hero-ufo-wrap{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      isolation:isolate;
+      transition:transform .75s var(--ease);
+    }
+
+    .hero-ufo-logo{
+      position:relative;
+      z-index:3;
+      width:min(72%,520px);
+      max-height:76%;
+      object-fit:contain;
+      filter:
+        drop-shadow(0 18px 34px rgba(0,0,0,.48))
+        drop-shadow(0 0 28px rgba(255,255,255,.05));
+      transition:
+        transform .75s var(--ease),
+        filter .5s ease;
+    }
+
+    .hero-art:hover .hero-ufo-logo{
+      transform:scale(1.045) rotate(-1.5deg);
+      filter:
+        drop-shadow(0 24px 40px rgba(0,0,0,.55))
+        drop-shadow(0 0 34px rgba(232,255,71,.10));
+    }
+
+    .hero-ufo-ring{
+      position:absolute;
+      z-index:1;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .hero-ufo-ring-one{
+      width:min(72%,480px);
+      aspect-ratio:1;
+      animation:ufoPulse 5.5s ease-in-out infinite;
+    }
+
+    .hero-ufo-ring-two{
+      width:min(92%,640px);
+      aspect-ratio:1;
+      border-color:rgba(232,255,71,.09);
+      animation:ufoPulse 5.5s ease-in-out 1.2s infinite;
+    }
+
+    @keyframes ufoPulse{
+      0%,100%{transform:scale(.94);opacity:.25}
+      50%{transform:scale(1.04);opacity:.72}
+    }
+
     .orb{
       position:absolute;
       width:min(30vw,420px);
@@ -325,10 +415,6 @@
         inset -30px -40px 80px rgba(0,0,0,.6),
         0 0 120px rgba(232,255,71,.08);
       transition:transform .8s var(--ease);
-    }
-
-    .hero-art:hover .orb{
-      transform:translate(-50%,-50%) scale(1.05) rotate(8deg);
     }
 
     .orbit{
@@ -428,8 +514,12 @@
 
     .products{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:12px;
+    }
+
+    .products .product{
+      min-width:0;
     }
 
     .product{
@@ -449,38 +539,43 @@
 
     .product-media{
       position:relative;
-      aspect-ratio:4/5;
+      aspect-ratio:4/3;
       overflow:hidden;
-      background:linear-gradient(145deg,#1b1b1b,#111 60%,#171717);
+      background:#151515;
     }
 
-    .product-media::before{
-      content:"";
-      position:absolute;
-      width:55%;
-      aspect-ratio:1;
-      border-radius:50%;
-      left:22%;
-      top:18%;
-      background:radial-gradient(circle at 35% 30%,#333,#111 65%);
-      border:1px solid rgba(255,255,255,.08);
-      transition:transform .7s var(--ease);
+    .product-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      transition:transform .75s var(--ease), filter .45s ease;
     }
+
+    .product-media img.real-product{
+      object-fit:contain;
+      background:#bdb7ac;
+    }
+
+    .product:hover .product-media img{
+      transform:scale(1.035);
+      filter:contrast(1.03);
+    }
+
+    .product-media img[src$="statement-tee.png"],
+    .product-media img[src$="enemy-of-norm.png"]{
+      object-fit:contain;
+      background:#c9c5bd;
+    }
+
 
     .product-media::after{
       content:"";
       position:absolute;
       inset:0;
-      background-image:url("mncufo.png");
-      background-size:58%;
-      background-repeat:no-repeat;
-      background-position:center;
-      opacity:.22;
-      filter:drop-shadow(0 0 10px rgba(255,255,255,.05));
+      background:linear-gradient(to bottom,transparent 55%,rgba(0,0,0,.16));
       pointer-events:none;
     }
-
-    .product:hover .product-media::before{transform:scale(1.08) rotate(9deg)}
 
     .product-index{
       position:absolute;
@@ -514,6 +609,15 @@
     .product:hover .quick-add{
       transform:translateY(0);
       opacity:1;
+    }
+
+    .quick-add.coming-soon,
+    .quick-add:disabled{
+      cursor:default;
+      background:rgba(20,20,20,.82);
+      color:rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(8px);
     }
 
     .product-info{
@@ -704,6 +808,989 @@
       opacity:.85;
     }
 
+
+
+    /* ---------- PRODUCT PULSE + ZOOM ---------- */
+    .product{
+      position:relative;
+      transform-origin:center;
+      will-change:transform, box-shadow;
+    }
+
+    .product:hover{
+      animation:productHoverPulse 1.55s ease-in-out infinite;
+    }
+
+    .product.is-pulsing{
+      animation:productClickPulse .52s var(--ease) 1;
+    }
+
+    @keyframes productHoverPulse{
+      0%,100%{
+        transform:translateY(-6px) scale(1);
+        box-shadow:0 0 0 rgba(232,255,71,0);
+      }
+      50%{
+        transform:translateY(-8px) scale(1.012);
+        box-shadow:0 12px 38px rgba(232,255,71,.075);
+      }
+    }
+
+    @keyframes productClickPulse{
+      0%{transform:scale(1)}
+      42%{
+        transform:scale(.975);
+        box-shadow:0 0 0 1px rgba(232,255,71,.16),0 0 32px rgba(232,255,71,.12);
+      }
+      100%{transform:scale(1)}
+    }
+
+    .product-media{
+      cursor:zoom-in;
+    }
+
+    .zoom-btn{
+      position:absolute;
+      z-index:4;
+      top:12px;
+      right:12px;
+      min-height:38px;
+      padding:9px 12px;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:999px;
+      background:rgba(10,10,10,.72);
+      backdrop-filter:blur(10px);
+      color:#fff;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:8px;
+      opacity:0;
+      transform:translateY(-5px);
+      transition:
+        opacity .28s ease,
+        transform .28s var(--ease),
+        background .28s ease;
+    }
+
+    .product:hover .zoom-btn,
+    .zoom-btn:focus-visible{
+      opacity:1;
+      transform:none;
+    }
+
+    .zoom-btn:hover{
+      background:rgba(245,245,242,.94);
+      color:#0a0a0a;
+    }
+
+    .zoom-overlay{
+      position:fixed;
+      inset:0;
+      z-index:1200;
+      display:grid;
+      place-items:center;
+      padding:18px;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(18px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .38s ease,visibility .38s ease;
+    }
+
+    .zoom-overlay.show{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .zoom-shell{
+      width:min(96vw,1280px);
+      height:min(92vh,920px);
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:22px;
+      background:#0c0c0c;
+      box-shadow:0 30px 90px rgba(0,0,0,.55);
+      transform:scale(.975);
+      transition:transform .4s var(--ease);
+    }
+
+    .zoom-overlay.show .zoom-shell{
+      transform:none;
+    }
+
+    .zoom-topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 16px;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .zoom-title{
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:10px;
+    }
+
+    .zoom-close{
+      flex:0 0 auto;
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:50%;
+      background:transparent;
+      color:#fff;
+      cursor:pointer;
+      font-size:18px;
+    }
+
+    .zoom-stage{
+      position:relative;
+      min-height:0;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      touch-action:none;
+      background:
+        radial-gradient(circle at 50% 45%,rgba(255,255,255,.055),transparent 34%),
+        #0a0a0a;
+      cursor:grab;
+    }
+
+    .zoom-stage.is-dragging{
+      cursor:grabbing;
+    }
+
+    .zoom-image{
+      max-width:92%;
+      max-height:92%;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      user-select:none;
+      -webkit-user-drag:none;
+      transform-origin:center center;
+      will-change:transform;
+      transition:transform .18s ease-out;
+    }
+
+    .zoom-image.no-transition{
+      transition:none;
+    }
+
+    .zoom-controls{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:12px 14px max(12px,env(safe-area-inset-bottom));
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+
+    .zoom-control{
+      min-width:46px;
+      min-height:42px;
+      padding:9px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      background:transparent;
+      color:#fff;
+      cursor:pointer;
+      font-size:12px;
+    }
+
+    .zoom-level{
+      min-width:70px;
+      text-align:center;
+      color:var(--muted);
+      font-size:9px;
+      letter-spacing:.12em;
+    }
+
+    @media (max-width:760px){
+      .product:hover{
+        animation:none;
+      }
+
+      .product:active,
+      .product.is-pulsing{
+        animation:productClickPulse .52s var(--ease) 1;
+      }
+
+      .zoom-btn{
+        opacity:1;
+        transform:none;
+        top:10px;
+        right:10px;
+        min-height:42px;
+        padding:10px 13px;
+        font-size:8px;
+      }
+
+      .zoom-overlay{
+        padding:0;
+      }
+
+      .zoom-shell{
+        width:100%;
+        height:100dvh;
+        border:0;
+        border-radius:0;
+      }
+
+      .zoom-topbar{
+        padding-top:max(12px,env(safe-area-inset-top));
+      }
+
+      .zoom-image{
+        max-width:96%;
+        max-height:88%;
+      }
+
+      .zoom-controls{
+        gap:6px;
+      }
+    }
+
+
+
+    /* ---------- LOOKBOOK / ART LOCATOR / TERMS ---------- */
+    .editorial-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .editorial-card{
+      position:relative;
+      min-height:420px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#111;
+    }
+
+    .editorial-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .7s var(--ease),filter .45s ease;
+    }
+
+    .editorial-card:hover img{
+      transform:scale(1.035);
+      filter:contrast(1.04);
+    }
+
+    .editorial-label{
+      position:absolute;
+      left:14px;
+      right:14px;
+      bottom:14px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      background:rgba(10,10,10,.58);
+      backdrop-filter:blur(10px);
+    }
+
+    .editorial-label strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+
+    .editorial-label span{
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .locator-panel{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .locator-copy,
+    .locator-visual{
+      min-height:360px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+
+    .locator-copy{
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background:#111;
+    }
+
+    .locator-copy h3{
+      margin:0;
+      max-width:10ch;
+      font-size:clamp(34px,5vw,66px);
+      line-height:.92;
+      text-transform:uppercase;
+      letter-spacing:-.05em;
+    }
+
+    .locator-copy p{
+      margin:18px 0 0;
+      max-width:560px;
+      color:#aaa9a3;
+      font-size:13px;
+      line-height:1.65;
+    }
+
+    .locator-tags{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .locator-tags span{
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .locator-visual{
+      position:relative;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),
+        radial-gradient(circle at 50% 50%,rgba(232,255,71,.09),transparent 24%),
+        #0d0d0d;
+      background-size:32px 32px,32px 32px,auto,auto;
+    }
+
+    .locator-visual img{
+      width:min(52%,260px);
+      opacity:.82;
+      filter:drop-shadow(0 0 26px rgba(232,255,71,.12));
+    }
+
+    .locator-pin{
+      position:absolute;
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 7px rgba(232,255,71,.08),0 0 22px rgba(232,255,71,.35);
+      animation:locatorPulse 2.2s ease-in-out infinite;
+    }
+
+    .locator-pin.one{left:26%;top:36%}
+    .locator-pin.two{right:24%;top:54%;animation-delay:.65s}
+    .locator-pin.three{left:48%;bottom:24%;animation-delay:1.1s}
+
+    @keyframes locatorPulse{
+      0%,100%{transform:scale(.86);opacity:.55}
+      50%{transform:scale(1.12);opacity:1}
+    }
+
+    .terms-wrap{
+      display:grid;
+      grid-template-columns:.75fr 1.25fr;
+      gap:36px;
+      align-items:start;
+    }
+
+    .terms-wrap h3{
+      margin:0;
+      font-size:clamp(32px,5vw,62px);
+      line-height:.94;
+      text-transform:uppercase;
+      letter-spacing:-.05em;
+    }
+
+    .terms-copy{
+      display:grid;
+      gap:20px;
+      color:#aaa9a3;
+      line-height:1.65;
+      font-size:13px;
+    }
+
+    .terms-copy p{margin:0}
+
+    .terms-copy strong{
+      color:var(--text);
+      text-transform:uppercase;
+      letter-spacing:.10em;
+      font-size:10px;
+    }
+
+    @media (max-width:900px){
+      .editorial-grid{grid-template-columns:1fr 1fr}
+      .editorial-card:last-child{grid-column:1 / -1}
+      .locator-panel,.terms-wrap{grid-template-columns:1fr}
+    }
+
+    @media (max-width:760px){
+      .mobile-panel{overflow-y:auto}
+      .mobile-nav{padding-bottom:26px}
+      .mobile-nav a{font-size:clamp(30px,10vw,54px)}
+      .editorial-grid{grid-template-columns:1fr}
+      .editorial-card,.editorial-card:last-child{grid-column:auto;min-height:360px}
+      .locator-copy{min-height:320px;padding:22px}
+      .locator-visual{min-height:320px}
+      .terms-wrap{gap:24px}
+    }
+
+
+    /* ---------- V10 PRODUCT DETAILS ---------- */
+    .price-hidden{
+      color:var(--muted) !important;
+      font-size:9px;
+      letter-spacing:.12em;
+    }
+
+    .product-detail-overlay{
+      position:fixed;
+      inset:0;
+      z-index:1400;
+      display:grid;
+      place-items:center;
+      padding:18px;
+      background:rgba(0,0,0,.88);
+      backdrop-filter:blur(18px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .38s ease,visibility .38s ease;
+    }
+
+    .product-detail-overlay.show{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .product-detail-shell{
+      width:min(96vw,1120px);
+      max-height:92vh;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:24px;
+      background:#0d0d0d;
+      box-shadow:0 30px 90px rgba(0,0,0,.58);
+      transform:translateY(18px) scale(.98);
+      transition:transform .42s var(--ease);
+    }
+
+    .product-detail-overlay.show .product-detail-shell{
+      transform:none;
+    }
+
+    .product-detail-media{
+      position:relative;
+      min-height:620px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 45%,rgba(255,255,255,.05),transparent 32%),
+        #111;
+    }
+
+    .product-detail-media img{
+      width:100%;
+      height:100%;
+      max-height:84vh;
+      object-fit:contain;
+      background:#bdb7ac;
+      cursor:zoom-in;
+    }
+
+    .product-detail-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:28px;
+      padding:28px;
+      overflow-y:auto;
+    }
+
+    .product-detail-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:18px;
+    }
+
+    .product-detail-kicker{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
+
+    .product-detail-copy h3{
+      margin:0;
+      font-size:clamp(34px,4vw,62px);
+      line-height:.92;
+      text-transform:uppercase;
+      letter-spacing:-.05em;
+    }
+
+    .product-detail-copy p{
+      margin:18px 0 0;
+      color:#aaa9a3;
+      line-height:1.7;
+      font-size:13px;
+    }
+
+    .product-detail-close{
+      flex:0 0 auto;
+      width:42px;
+      height:42px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:50%;
+      background:transparent;
+      color:#fff;
+      cursor:pointer;
+      font-size:18px;
+    }
+
+    .product-detail-actions{
+      display:grid;
+      gap:10px;
+    }
+
+    .product-detail-add{
+      min-height:50px;
+      border:0;
+      border-radius:999px;
+      background:var(--accent);
+      color:#0a0a0a;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:10px;
+      font-weight:700;
+    }
+
+    .product-detail-price{
+      min-height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+    }
+
+    .product-detail-note{
+      color:#777;
+      font-size:9px;
+      line-height:1.5;
+      text-transform:uppercase;
+      letter-spacing:.10em;
+    }
+
+    @media (max-width:820px){
+      .product-detail-overlay{
+        padding:0;
+      }
+
+      .product-detail-shell{
+        width:100%;
+        max-height:none;
+        height:100dvh;
+        grid-template-columns:1fr;
+        grid-template-rows:minmax(44vh,56vh) 1fr;
+        border:0;
+        border-radius:0;
+      }
+
+      .product-detail-media{
+        min-height:0;
+      }
+
+      .product-detail-copy{
+        padding:20px 18px max(24px,env(safe-area-inset-bottom));
+      }
+
+      .product-detail-copy h3{
+        font-size:clamp(34px,11vw,54px);
+      }
+    }
+
+    /* ---------- VIDEO SECTION ---------- */
+    .video-section{
+      padding:clamp(70px,8vw,120px) 28px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .video-section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:28px;
+    }
+
+    .video-section-head h2{
+      margin:0;
+      font-size:clamp(30px,5vw,66px);
+      line-height:.92;
+      letter-spacing:-.05em;
+      text-transform:uppercase;
+    }
+
+    .video-section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+
+    .campaign-video{
+      position:relative;
+      overflow:hidden;
+      min-height:420px;
+      aspect-ratio:16/9;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:22px;
+      background:
+        radial-gradient(circle at 50% 45%,rgba(232,255,71,.08),transparent 28%),
+        linear-gradient(140deg,#151515,#080808);
+    }
+
+    .campaign-video video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      background:#080808;
+    }
+
+    .video-fallback-art{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      pointer-events:none;
+    }
+
+    .video-fallback-art img{
+      width:min(42%,360px);
+      height:auto;
+      opacity:.28;
+      filter:drop-shadow(0 0 26px rgba(255,255,255,.04));
+      animation:videoFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes videoFloat{
+      0%,100%{transform:translateY(0) rotate(-1deg)}
+      50%{transform:translateY(-8px) rotate(1deg)}
+    }
+
+    .video-overlay{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      z-index:3;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      pointer-events:none;
+    }
+
+    .video-meta{
+      max-width:520px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      background:rgba(8,8,8,.58);
+      backdrop-filter:blur(10px);
+    }
+
+    .video-meta strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+
+    .video-meta span{
+      color:var(--muted);
+      font-size:10px;
+      line-height:1.5;
+    }
+
+    .video-controls-note{
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(8,8,8,.58);
+      backdrop-filter:blur(10px);
+      color:rgba(255,255,255,.72);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      white-space:nowrap;
+    }
+
+    @media (max-width:760px){
+      .video-section{
+        padding:58px 14px;
+      }
+
+      .video-section-head{
+        align-items:flex-start;
+        flex-direction:column;
+        margin-bottom:20px;
+      }
+
+      .video-section-head h2{
+        font-size:clamp(34px,11vw,54px);
+      }
+
+      .campaign-video{
+        min-height:0;
+        aspect-ratio:9/14;
+        border-radius:18px;
+      }
+
+      .video-overlay{
+        left:12px;
+        right:12px;
+        bottom:12px;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .video-controls-note{
+        white-space:normal;
+      }
+    }
+
+    /* ---------- INSTAGRAM FOLLOW POPUP ---------- */
+    .ig-overlay{
+      position:fixed;
+      inset:0;
+      z-index:900;
+      display:grid;
+      place-items:center;
+      padding:20px;
+      background:rgba(0,0,0,.58);
+      backdrop-filter:blur(12px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:
+        opacity .42s var(--ease),
+        visibility .42s var(--ease);
+    }
+
+    .ig-overlay.show{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .ig-modal{
+      position:relative;
+      width:min(92vw,460px);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 80% 0%,rgba(232,255,71,.07),transparent 34%),
+        #101010;
+      box-shadow:0 28px 80px rgba(0,0,0,.48);
+      transform:translateY(18px) scale(.97);
+      opacity:0;
+      transition:
+        transform .48s var(--ease),
+        opacity .42s ease;
+    }
+
+    .ig-overlay.show .ig-modal{
+      transform:none;
+      opacity:1;
+    }
+
+    .ig-modal-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:20px;
+      padding:22px 22px 0;
+    }
+
+    .ig-modal-logo{
+      width:74px;
+      height:auto;
+      opacity:.94;
+    }
+
+    .ig-close{
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:50%;
+      background:transparent;
+      color:var(--text);
+      cursor:pointer;
+      font-size:18px;
+      line-height:1;
+      transition:
+        transform .25s var(--ease),
+        background .25s ease;
+    }
+
+    .ig-close:hover{
+      transform:rotate(8deg);
+      background:rgba(255,255,255,.08);
+    }
+
+    .ig-modal-copy{
+      padding:18px 22px 4px;
+    }
+
+    .ig-kicker{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+    }
+
+    .ig-modal h3{
+      margin:0;
+      max-width:12ch;
+      font-size:clamp(30px,8vw,48px);
+      line-height:.92;
+      text-transform:uppercase;
+      letter-spacing:-.05em;
+    }
+
+    .ig-modal p{
+      margin:16px 0 0;
+      color:#aaa9a3;
+      line-height:1.6;
+      font-size:13px;
+    }
+
+    .ig-actions{
+      display:grid;
+      gap:10px;
+      padding:22px;
+    }
+
+    .ig-follow{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:14px 18px;
+      border-radius:999px;
+      background:var(--text);
+      color:#0a0a0a;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:10px;
+      font-weight:700;
+      transition:
+        transform .28s var(--ease),
+        opacity .28s ease;
+    }
+
+    .ig-follow:hover{
+      transform:translateY(-2px);
+      opacity:.88;
+    }
+
+    .ig-following{
+      min-height:46px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      background:transparent;
+      color:var(--text);
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:9px;
+      transition:background .25s ease;
+    }
+
+    .ig-following:hover{
+      background:rgba(255,255,255,.07);
+    }
+
+    .ig-handle{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:16px 22px 22px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+    }
+
+    .ig-handle::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 14px rgba(232,255,71,.65);
+    }
+
+    @media (max-width:560px){
+      .ig-overlay{
+        align-items:end;
+        padding:12px;
+        padding-bottom:max(12px,env(safe-area-inset-bottom));
+      }
+
+      .ig-modal{
+        width:100%;
+        border-radius:22px;
+      }
+
+      .ig-modal h3{
+        max-width:10ch;
+      }
+    }
+
     /* ---------- TOAST ---------- */
     .toast{
       position:fixed;
@@ -786,7 +1873,7 @@
       .section{padding:70px 18px}
       .products{grid-template-columns:1fr 1fr}
       .product:last-child{grid-column:span 2}
-      .product:last-child .product-media{aspect-ratio:16/9}
+      .product:last-child .product-media{aspect-ratio:4/3}
       .quick-add{
         opacity:1;
         transform:none;
@@ -814,10 +1901,334 @@
       .splash-brand-logo{width:min(88vw, 460px)}
       .products{grid-template-columns:1fr}
       .product:last-child{grid-column:auto}
-      .product:last-child .product-media{aspect-ratio:4/5}
+      .product:last-child .product-media{aspect-ratio:4/3}
       .section-heading{align-items:flex-start;flex-direction:column}
       .hero h1{font-size:clamp(52px,19vw,88px)}
     }
+
+
+    /* ---------- MOBILE RESPONSIVE REFINEMENTS ---------- */
+    body{
+      min-width:320px;
+    }
+
+    header{
+      padding-left:max(16px,env(safe-area-inset-left));
+      padding-right:max(16px,env(safe-area-inset-right));
+    }
+
+    .splash-ui{
+      padding-left:max(18px,env(safe-area-inset-left));
+      padding-right:max(18px,env(safe-area-inset-right));
+      padding-top:max(18px,env(safe-area-inset-top));
+      padding-bottom:max(18px,env(safe-area-inset-bottom));
+    }
+
+    @media (max-width: 1024px){
+      .hero{
+        grid-template-columns:1fr 1fr;
+      }
+      .products{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 760px){
+      :root{--header-h:60px}
+
+      header{
+        grid-template-columns:64px 1fr auto;
+        gap:8px;
+      }
+
+      .nav-logo{
+        grid-column:2;
+        width:58px;
+        height:46px;
+      }
+
+      .header-actions{
+        grid-column:3;
+        gap:2px;
+      }
+
+      .header-actions .icon-btn{
+        min-height:44px;
+        padding:10px 8px;
+      }
+
+      .hero{
+        min-height:auto;
+        grid-template-columns:1fr;
+      }
+
+      .hero-copy{
+        min-height:calc(82svh - var(--header-h));
+        padding:clamp(56px,12vw,86px) 18px 28px;
+        justify-content:flex-end;
+      }
+
+      .hero h1{
+        max-width:100%;
+        font-size:clamp(48px,15vw,86px);
+        line-height:.86;
+        overflow-wrap:anywhere;
+      }
+
+      .hero-wordmark{
+        width:min(82vw,340px);
+        margin-top:22px;
+      }
+
+      .hero-copy-bottom{
+        width:100%;
+        gap:22px;
+        margin-top:28px;
+      }
+
+      .hero-copy-bottom p{
+        max-width:100%;
+        font-size:13px;
+      }
+
+      .shop-link{
+        min-height:44px;
+        align-items:center;
+      }
+
+      .hero-art{
+        min-height:42svh;
+      }
+
+      .hero-stamp{
+        width:min(40vw,145px);
+        right:14px;
+        top:14px;
+      }
+
+      .art-label{
+        left:14px;
+        bottom:14px;
+        max-width:70%;
+        line-height:1.45;
+      }
+
+      .marquee{
+        padding:11px 0;
+      }
+
+      .section{
+        padding:58px 16px;
+      }
+
+      .section-heading{
+        margin-bottom:24px;
+      }
+
+      .section-heading h2{
+        font-size:clamp(34px,11vw,54px);
+        line-height:.92;
+      }
+
+      .products{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .product{
+        grid-column:auto;
+        max-width:none;
+        width:100%;
+      }
+
+      .product-media{
+        aspect-ratio:4/3;
+      }
+
+      .product-info{
+        padding:14px 14px 16px;
+        font-size:10px;
+      }
+
+      .quick-add{
+        min-height:44px;
+        opacity:1;
+        transform:none;
+        font-size:10px;
+        bottom:12px;
+        left:12px;
+        right:12px;
+      }
+
+      .story{
+        gap:28px;
+      }
+
+      .story h3{
+        font-size:clamp(34px,11vw,54px);
+      }
+
+      .story-copy{
+        gap:18px;
+        font-size:13px;
+      }
+
+      .newsletter{
+        padding:22px 18px;
+        gap:24px;
+      }
+
+      .newsletter h3{
+        font-size:clamp(34px,10vw,50px);
+      }
+
+      .email-form{
+        display:grid;
+        grid-template-columns:1fr auto;
+        width:100%;
+      }
+
+      .email-form input{
+        min-height:48px;
+      }
+
+      .email-form button{
+        min-height:48px;
+      }
+
+      footer{
+        padding:30px 18px max(36px,env(safe-area-inset-bottom));
+        gap:26px;
+      }
+
+      .mobile-panel{
+        padding-left:max(20px,env(safe-area-inset-left));
+        padding-right:max(20px,env(safe-area-inset-right));
+        padding-bottom:max(28px,env(safe-area-inset-bottom));
+      }
+    }
+
+    @media (max-width: 430px){
+      .splash-brand-logo{
+        width:92vw;
+      }
+
+      .enter-btn{
+        width:min(72vw,260px);
+        min-height:48px;
+      }
+
+      header{
+        padding-left:10px;
+        padding-right:10px;
+      }
+
+      .header-actions .icon-btn{
+        font-size:9px;
+        letter-spacing:.08em;
+      }
+
+      .hero-copy{
+        padding-left:14px;
+        padding-right:14px;
+      }
+
+      .hero h1{
+        font-size:clamp(44px,14.6vw,68px);
+      }
+
+      .section{
+        padding-left:14px;
+        padding-right:14px;
+      }
+
+      .newsletter{
+        border-radius:14px;
+      }
+
+      .email-form{
+        grid-template-columns:1fr;
+        border-bottom:0;
+        gap:8px;
+      }
+
+      .email-form input{
+        border-bottom:1px solid #111;
+      }
+
+      .email-form button{
+        padding:12px 0;
+        text-align:left;
+      }
+
+      .toast{
+        left:12px;
+        right:12px;
+        bottom:max(12px,env(safe-area-inset-bottom));
+        text-align:center;
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 520px){
+      .splash-brand-logo{
+        width:min(58vw,560px);
+      }
+
+      .splash-lockup{
+        gap:14px;
+      }
+
+      .enter-btn{
+        padding:12px 20px;
+      }
+
+      .hero-copy{
+        min-height:auto;
+        padding-top:48px;
+      }
+
+      .hero-art{
+        min-height:72vh;
+      }
+    }
+
+
+    /* ---------- V7 SITE TOOLS + CART FEEDBACK ---------- */
+    button,.ig-follow,.shop-link,.enter-btn{-webkit-tap-highlight-color:transparent}
+    button.is-active,.ig-follow.is-active,.shop-link.is-active,.enter-btn.is-active{
+      background:var(--accent)!important;color:#0a0a0a!important;border-color:var(--accent)!important;
+      box-shadow:0 0 0 2px rgba(232,255,71,.12),0 0 24px rgba(232,255,71,.18)
+    }
+    .quick-add.is-active{background:var(--accent)!important;color:#0a0a0a!important}
+
+    .cursor{width:30px!important;height:30px!important;border-radius:0!important;background:transparent!important;mix-blend-mode:normal!important}
+    .cursor::before{content:"";position:absolute;inset:0;background:url("assets/menoclone-ufo.png") center/contain no-repeat;filter:drop-shadow(0 2px 8px rgba(255,255,255,.25));transform:rotate(-7deg)}
+    .cursor.big{width:44px!important;height:44px!important}
+
+    .splash-language{position:absolute;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));z-index:8}
+    .language-toggle{display:flex;gap:6px}
+    .lang-btn{min-width:42px;min-height:34px;padding:7px 10px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(0,0,0,.22);color:#fff;cursor:pointer;font-size:9px;letter-spacing:.12em}
+    .lang-btn.active{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+
+    .site-tools{position:sticky;top:var(--header-h);z-index:44;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 28px;border-bottom:1px solid var(--line);background:rgba(10,10,10,.86);backdrop-filter:blur(14px)}
+    .site-tools-left,.site-tools-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .tool-pill{display:flex;align-items:center;gap:8px;min-height:38px;padding:8px 12px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(255,255,255,.025);font-size:9px;text-transform:uppercase;letter-spacing:.12em}
+    .tool-label{color:var(--muted)}
+    .clock-time,.currency-output{font-variant-numeric:tabular-nums}
+    .currency-output{min-width:78px;text-align:right;color:var(--accent)}
+    .tool-select,.tool-input{height:34px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:#111;color:#fff;padding:0 10px;outline:none;font-size:10px}
+    .tool-input{width:78px}
+
+    .cart-modal-overlay{position:fixed;inset:0;z-index:1350;display:grid;place-items:center;padding:18px;background:rgba(0,0,0,.62);backdrop-filter:blur(12px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .34s ease,visibility .34s ease}
+    .cart-modal-overlay.show{opacity:1;visibility:visible;pointer-events:auto}
+    .cart-modal{width:min(92vw,420px);border:1px solid rgba(255,255,255,.14);border-radius:22px;overflow:hidden;background:#101010;box-shadow:0 24px 70px rgba(0,0,0,.52);transform:translateY(14px) scale(.975);transition:transform .38s var(--ease)}
+    .cart-modal-overlay.show .cart-modal{transform:none}
+    .cart-modal-head{display:flex;justify-content:space-between;align-items:center;padding:18px 18px 0}
+    .cart-modal-head img{width:58px;height:auto}.cart-modal-close{width:40px;height:40px;border:1px solid rgba(255,255,255,.14);border-radius:50%;background:transparent;color:#fff;cursor:pointer}
+    .cart-modal-body{padding:18px}.cart-modal-kicker{margin:0 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:9px}.cart-modal h3{margin:0;font-size:clamp(28px,7vw,42px);line-height:.95;text-transform:uppercase;letter-spacing:-.04em}.cart-modal p{margin:12px 0 0;color:#aaa9a3;line-height:1.55;font-size:13px}
+    .cart-modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 18px 18px}.cart-modal-actions button{min-height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.14);cursor:pointer;text-transform:uppercase;letter-spacing:.12em;font-size:9px}.cart-continue{background:transparent;color:#fff}.cart-view{background:var(--accent);color:#0a0a0a;border-color:var(--accent)!important}
+
+    @media(max-width:760px){.site-tools{position:relative;top:auto;padding:10px 12px;align-items:stretch;flex-direction:column}.site-tools-left,.site-tools-right{width:100%}.tool-pill{flex:1 1 auto;justify-content:space-between}.currency-pill{display:grid;grid-template-columns:auto 70px 70px 70px 1fr;width:100%;gap:6px}.tool-select{max-width:76px}.cart-modal-actions{grid-template-columns:1fr}.splash-language{top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right))}}
 
     @media (prefers-reduced-motion:reduce){
       *{
@@ -836,15 +2247,18 @@
   <section class="splash" id="splash" aria-label="MENOCLONE introduction">
     <div class="video-fallback" aria-hidden="true"></div>
     <video id="splashVideo" autoplay muted loop playsinline preload="metadata">
-      <source src="lookbookmnc.mp4" type="video/mp4" />
+      <source src="assets/menoclone-splash.mp4" type="video/mp4" />
     </video>
+
+    <div class="splash-language"><div class="language-toggle" aria-label="Language"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="es">ES</button></div></div>
 
     <div class="splash-ui">
       <div class="splash-lockup">
-        <img class="splash-brand-logo" src="mncfinal.png" alt="MENOCLONE logo" />
+        <img class="splash-brand-logo" src="assets/menoclone-wordmark.png" alt="MENOCLONE logo" />
         <button class="enter-btn" id="enterSite" type="button">
-          <span>Enter</span>
+          <span data-i18n="enter">Enter</span>
         </button>
+        <div class="splash-progress" aria-hidden="true"><span></span></div>
       </div>
     </div>
   </section>
@@ -852,13 +2266,17 @@
   <div class="site" id="site">
     <header>
       <nav class="desktop-nav" aria-label="Primary">
-        <a href="#shop">Shop</a>
-        <a href="#story">World</a>
-        <a href="#contact">Contact</a>
+        <a href="#shop" data-i18n="shop">Shop</a>
+        <a href="#lookbook" data-i18n="lookbook">Lookbook</a>
+        <a href="#art-locator" data-i18n="artLocator">MNC Art Locator</a>
+        <a href="#story" data-i18n="world">World</a>
+        <a href="#terms" data-i18n="termsNav">Terms</a>
+        <a href="https://www.kickstarter.com/" target="_blank" rel="noopener noreferrer" data-i18n="kickstarter">Kickstarter</a>
+        <a href="#contact" data-i18n="contact">Contact</a>
       </nav>
 
-      <a href="#" class="nav-logo" aria-label="MENOCLONE home">
-        <img src="mncufo.png" alt="MENOCLONE UFO logo" />
+      <a href="#home" class="nav-logo" aria-label="MENOCLONE home">
+        <img src="assets/menoclone-ufo.png" alt="MENOCLONE UFO logo" />
       </a>
 
       <div class="header-actions">
@@ -867,39 +2285,52 @@
       </div>
     </header>
 
+    <div class="site-tools" aria-label="Site tools">
+      <div class="site-tools-left">
+        <div class="tool-pill"><span class="tool-label" data-i18n="worldClock">World Clock</span><select class="tool-select" id="clockZone"><option value="America/New_York">NYC</option><option value="Europe/London">London</option><option value="Europe/Paris">Paris</option><option value="Asia/Tokyo">Tokyo</option><option value="Asia/Seoul">Seoul</option><option value="America/Los_Angeles">Los Angeles</option></select><span class="clock-time" id="worldClock">--:--:--</span></div>
+        <div class="tool-pill currency-pill"><span class="tool-label" data-i18n="currency">Currency</span><input class="tool-input" id="currencyAmount" type="number" min="0" step="0.01" value="60"><select class="tool-select" id="currencyFrom"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>KRW</option><option>CAD</option><option>MXN</option></select><select class="tool-select" id="currencyTo"><option>EUR</option><option>USD</option><option>GBP</option><option>JPY</option><option>KRW</option><option>CAD</option><option>MXN</option></select><span class="currency-output" id="currencyOutput">—</span></div>
+      </div>
+      <div class="site-tools-right"><div class="language-toggle" aria-label="Language"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="es">ES</button></div></div>
+    </div>
+
     <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
       <nav class="mobile-nav" aria-label="Mobile">
-        <a href="#shop">Shop</a>
-        <a href="#story">World</a>
-        <a href="#contact">Contact</a>
+        <a href="#shop" data-i18n="shop">Shop</a>
+        <a href="#lookbook" data-i18n="lookbook">Lookbook</a>
+        <a href="#art-locator" data-i18n="artLocator">MNC Art Locator</a>
+        <a href="#story" data-i18n="world">World</a>
+        <a href="#terms" data-i18n="termsNav">Terms</a>
+        <a href="https://www.kickstarter.com/" target="_blank" rel="noopener noreferrer" data-i18n="kickstarter">Kickstarter</a>
+        <a href="#contact" data-i18n="contact">Contact</a>
       </nav>
       <div class="mobile-meta">
-        <img src="mncufo.png" alt="UFO logo" />
+        <img src="assets/menoclone-ufo.png" alt="UFO logo" />
         <span>Originality Has Origins / Season 2</span>
       </div>
     </div>
 
     <main>
-      <section class="hero">
+      <section class="hero" id="home">
         <div class="hero-copy">
           <p class="eyebrow" data-reveal>Season 2 / New York City</p>
-          <h1 data-reveal>Originality Has Origins.</h1>
-          <img class="hero-wordmark" data-reveal src="mncfinal.png" alt="MENOCLONE wordmark" />
+          <h1 data-reveal data-i18n="origins">Originality Has Origins.</h1>
+          <img class="hero-wordmark" data-reveal src="assets/menoclone-wordmark.png" alt="MENOCLONE wordmark" />
           <div class="hero-copy-bottom" data-reveal>
             <p>
               MENOCLONE is a lifestyle experiment at the intersection of fashion,
               art, design and technology.
             </p>
-            <a class="shop-link" href="#shop">Enter Collection <span>↗</span></a>
+            <a class="shop-link" href="#shop"><span data-i18n="enterCollection">Enter Collection</span> <span>↗</span></a>
           </div>
         </div>
 
-        <div class="hero-art" aria-label="MENOCLONE abstract visual">
-          <img class="hero-stamp" src="mncfinal.png" alt="MENOCLONE logo" />
-          <div class="orb">
-            <div class="orbit"></div>
+        <div class="hero-art" aria-label="MENOCLONE UFO logo visual">
+          <div class="hero-ufo-wrap" id="heroUfoWrap">
+            <span class="hero-ufo-ring hero-ufo-ring-one" aria-hidden="true"></span>
+            <span class="hero-ufo-ring hero-ufo-ring-two" aria-hidden="true"></span>
+            <img class="hero-ufo-logo" src="assets/menoclone-ufo.png" alt="MENOCLONE UFO logo" />
           </div>
-          <p class="art-label">Visual placeholder / replace with campaign image</p>
+          <img class="hero-stamp" src="assets/menoclone-wordmark.png" alt="MENOCLONE wordmark" />
         </div>
       </section>
 
@@ -919,45 +2350,193 @@
       <section class="section" id="shop">
         <div class="section-heading" data-reveal>
           <div>
-            <h2>Selected Objects</h2>
-            <img class="section-heading-brand" src="mncfinal.png" alt="MENOCLONE wordmark" />
+            <h2 data-i18n="selectedObjects">Selected Objects</h2>
+            <img class="section-heading-brand" src="assets/menoclone-wordmark.png" alt="MENOCLONE wordmark" />
           </div>
           <p>Season 2 / Limited Release</p>
         </div>
 
         <div class="products">
-          <article class="product" data-reveal>
+          <article class="product" data-reveal data-name="Heavy GSM Tee" data-price="60.00" data-description="Heavyweight boxed-fit MENOCLONE tee built for a structured streetwear silhouette, featuring Season 2 branding and signature UFO graphics.">
             <div class="product-media">
+              <img class="real-product" src="assets/mnc-heavy-tee.png" alt="MENOCLONE Heavy GSM Tee front and back" loading="lazy" />
               <span class="product-index">01</span>
               <button class="quick-add" type="button" data-product="Heavy GSM Tee">Quick Add</button>
             </div>
             <div class="product-info">
               <span>Heavy GSM Tee</span>
-              <span>$00.00</span>
+              <span class="price-hidden">Price in cart</span>
             </div>
           </article>
 
-          <article class="product" data-reveal>
+          <article class="product" data-reveal data-name="Season 2 Hoodie" data-price="TBA" data-description="Heavy GSM MENOCLONE hoodie with a relaxed silhouette, UFO identity details and a layered Season 2 presentation.">
             <div class="product-media">
+              <img class="real-product" src="assets/mnc-hoodie.png" alt="MENOCLONE Season 2 Hoodie front and back" loading="lazy" />
               <span class="product-index">02</span>
               <button class="quick-add" type="button" data-product="Season 2 Hoodie">Quick Add</button>
             </div>
             <div class="product-info">
               <span>Season 2 Hoodie</span>
-              <span>$00.00</span>
+              <span class="price-hidden">Price in cart</span>
             </div>
           </article>
 
-          <article class="product" data-reveal>
+          <article class="product" data-reveal data-name="5 Panel Cap" data-price="TBA" data-description="Five-panel MENOCLONE cap featuring the wordmark and UFO identity in a clean, wearable everyday shape.">
             <div class="product-media">
+              <img class="real-product" src="assets/mnc-5panel-cap.png" alt="MENOCLONE 5 Panel Cap front and side views" loading="lazy" />
               <span class="product-index">03</span>
               <button class="quick-add" type="button" data-product="5 Panel Cap">Quick Add</button>
             </div>
             <div class="product-info">
               <span>5 Panel Cap</span>
-              <span>$00.00</span>
+              <span class="price-hidden">Price in cart</span>
             </div>
           </article>
+
+
+          <article class="product" data-reveal data-name="Statement Tee" data-price="60.00" data-description="The Statement Tee pairs the MENOCLONE wordmark with bold back artwork built around the brand idea: Originality Has Origins.">
+            <div class="product-media">
+              <img class="real-product" src="assets/statement-tee.png" alt="MENOCLONE Statement Tee front and back" loading="lazy" />
+              <span class="product-index">04</span>
+              <button class="quick-add" type="button" data-product="Statement Tee">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>Statement Tee</span>
+              <span class="price-hidden">Price in cart</span>
+            </div>
+          </article>
+
+          <article class="product" data-reveal data-name="Enemy of Norm" data-price="60.00" data-description="Enemy of Norm is a graphic tee built around MENOCLONE's rejection of sameness, using the UFO identity as a symbol of creative independence.">
+            <div class="product-media">
+              <img class="real-product" src="assets/enemy-of-norm.png" alt="MENOCLONE Enemy of Norm Tee front and back" loading="lazy" />
+              <span class="product-index">05</span>
+              <button class="quick-add" type="button" data-product="Enemy of Norm">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>Enemy of Norm</span>
+              <span class="price-hidden">Price in cart</span>
+            </div>
+          </article>
+
+          <article class="product" data-reveal>
+            <div class="product-media">
+              <img class="real-product" src="assets/mnc-crewneck.png" alt="MENOCLONE Crewneck front and back" loading="lazy" />
+              <span class="product-index">06</span>
+              <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
+            </div>
+            <div class="product-info">
+              <span>MENOCLONE Crewneck</span>
+              <span>TBA</span>
+            </div>
+          </article>
+
+          <article class="product" data-reveal>
+            <div class="product-media">
+              <img class="real-product" src="assets/mnc-stickers.png" alt="MENOCLONE MNC UFO sticker pack" loading="lazy" />
+              <span class="product-index">07</span>
+              <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
+            </div>
+            <div class="product-info">
+              <span>MNC Sticker Pack</span>
+              <span>TBA</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="lookbook">
+        <div class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow" data-i18n="lookbookKicker">MENOCLONE Editorial</p>
+            <h2 data-i18n="lookbookTitle">Lookbook</h2>
+          </div>
+          <p data-i18n="lookbookMeta">Season 2 / Selected Looks</p>
+        </div>
+
+        <div class="editorial-grid">
+          <article class="editorial-card" data-reveal>
+            <img src="assets/mnc-heavy-tee.png" alt="MENOCLONE Heavy GSM Tee look" loading="lazy" />
+            <div class="editorial-label">
+              <strong data-i18n="lookOne">Look 01</strong>
+              <span data-i18n="lookOneMeta">Heavy GSM / Season 2</span>
+            </div>
+          </article>
+
+          <article class="editorial-card" data-reveal>
+            <img src="assets/mnc-hoodie.png" alt="MENOCLONE Hoodie look" loading="lazy" />
+            <div class="editorial-label">
+              <strong data-i18n="lookTwo">Look 02</strong>
+              <span data-i18n="lookTwoMeta">Hoodie / Signal Layer</span>
+            </div>
+          </article>
+
+          <article class="editorial-card" data-reveal>
+            <img src="assets/statement-tee.png" alt="MENOCLONE Statement Tee look" loading="lazy" />
+            <div class="editorial-label">
+              <strong data-i18n="lookThree">Look 03</strong>
+              <span data-i18n="lookThreeMeta">Statement Tee / $60</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="art-locator">
+        <div class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow" data-i18n="locatorKicker">MENOCLONE Field System</p>
+            <h2 data-i18n="locatorTitle">MNC Art Locator</h2>
+          </div>
+          <p data-i18n="locatorMeta">Find the signal</p>
+        </div>
+
+        <div class="locator-panel">
+          <div class="locator-copy" data-reveal>
+            <div>
+              <h3 data-i18n="locatorHeadline">Art exists outside the feed.</h3>
+              <p data-i18n="locatorDescription">MNC Art Locator is a future map for physical MENOCLONE drops, installations, stickers, objects and creative signals placed around the city.</p>
+            </div>
+            <div class="locator-tags">
+              <span>NYC</span>
+              <span data-i18n="locatorTagDrops">Drops</span>
+              <span data-i18n="locatorTagInstallations">Installations</span>
+              <span data-i18n="locatorTagObjects">Objects</span>
+            </div>
+          </div>
+
+          <div class="locator-visual" data-reveal aria-label="MENOCLONE Art Locator concept">
+            <span class="locator-pin one"></span>
+            <span class="locator-pin two"></span>
+            <span class="locator-pin three"></span>
+            <img src="assets/menoclone-ufo.png" alt="MENOCLONE UFO logo" />
+          </div>
+        </div>
+      </section>
+
+      <section class="video-section" id="film">
+        <div class="video-section-head" data-reveal>
+          <div>
+            <p data-i18n="filmKicker">MENOCLONE Motion</p>
+            <h2 data-i18n="filmTitle">Campaign Film</h2>
+          </div>
+          <p data-i18n="filmMeta">Season 2 / Visual Transmission</p>
+        </div>
+
+        <div class="campaign-video" data-reveal>
+          <div class="video-fallback-art" aria-hidden="true">
+            <img src="assets/menoclone-ufo.png" alt="" />
+          </div>
+
+          <video controls playsinline preload="metadata" poster="">
+            <source src="assets/menoclone-campaign.mp4" type="video/mp4" />
+          </video>
+
+          <div class="video-overlay">
+            <div class="video-meta">
+              <strong data-i18n="filmName">Originality Has Origins</strong>
+              <span data-i18n="filmDescription">Drop your MENOCLONE campaign film into the assets folder to replace this placeholder.</span>
+            </div>
+            <div class="video-controls-note" data-i18n="filmControls">Tap or click to play</div>
+          </div>
         </div>
       </section>
 
@@ -965,7 +2544,7 @@
         <div class="story">
           <div data-reveal>
             <div class="story-badge">
-              <img src="mncufo.png" alt="MENOCLONE UFO logo" />
+              <img src="assets/menoclone-ufo.png" alt="MENOCLONE UFO logo" />
               <span>MENOCLONE Signal</span>
             </div>
             <h3>Different by design. Connected by origin.</h3>
@@ -983,11 +2562,27 @@
         </div>
       </section>
 
+      <section class="section" id="terms">
+        <div class="terms-wrap">
+          <div data-reveal>
+            <p class="eyebrow" data-i18n="termsKicker">MENOCLONE Policy</p>
+            <h3 data-i18n="termsTitle">Terms & Conditions</h3>
+          </div>
+
+          <div class="terms-copy" data-reveal>
+            <p><strong data-i18n="termsOrdersHead">Orders</strong><br /><span data-i18n="termsOrders">All product availability is subject to change. Limited releases may sell out without notice.</span></p>
+            <p><strong data-i18n="termsShippingHead">Shipping</strong><br /><span data-i18n="termsShipping">Shipping windows and delivery timing may vary by release and destination.</span></p>
+            <p><strong data-i18n="termsReturnsHead">Returns</strong><br /><span data-i18n="termsReturns">Final return, exchange and refund rules should be reviewed before checkout and may vary by item.</span></p>
+            <p><strong data-i18n="termsCreativeHead">Creative Rights</strong><br /><span data-i18n="termsCreative">MENOCLONE names, logos, artwork, product graphics and original site content remain protected creative property.</span></p>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="contact">
         <div class="newsletter" data-reveal>
           <div>
-            <img class="newsletter-brand" src="mncfinal.png" alt="MENOCLONE wordmark" />
-            <h3>Join the signal.</h3>
+            <img class="newsletter-brand" src="assets/menoclone-wordmark.png" alt="MENOCLONE wordmark" />
+            <h3 data-i18n="joinSignal">Join the signal.</h3>
             <p>Drop alerts, experiments, events and new objects from MENOCLONE.</p>
           </div>
 
@@ -1018,6 +2613,96 @@
     </footer>
   </div>
 
+
+
+
+
+  <div class="product-detail-overlay" id="productDetailOverlay" aria-hidden="true">
+    <section class="product-detail-shell" role="dialog" aria-modal="true" aria-labelledby="productDetailTitle">
+      <div class="product-detail-media" id="productDetailMedia">
+        <img id="productDetailImage" src="" alt="" />
+      </div>
+
+      <div class="product-detail-copy">
+        <div>
+          <div class="product-detail-top">
+            <div>
+              <p class="product-detail-kicker" data-i18n="productDetails">Product Details</p>
+              <h3 id="productDetailTitle">MENOCLONE Product</h3>
+            </div>
+            <button class="product-detail-close" id="productDetailClose" type="button" aria-label="Close product details">×</button>
+          </div>
+          <p id="productDetailDescription"></p>
+        </div>
+
+        <div class="product-detail-actions">
+          <div class="product-detail-price" id="productDetailPrice" data-i18n="priceRevealedCart">Price revealed after adding to cart</div>
+          <button class="product-detail-add" id="productDetailAdd" type="button" data-i18n="addToCart">Add to Cart</button>
+          <div class="product-detail-note" data-i18n="productZoomNote">Tap or click the image to open full zoom.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="cart-modal-overlay" id="cartModalOverlay" aria-hidden="true">
+    <section class="cart-modal" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle">
+      <div class="cart-modal-head"><img src="assets/menoclone-ufo.png" alt="MENOCLONE UFO logo"><button class="cart-modal-close" id="cartModalClose" type="button" aria-label="Close">×</button></div>
+      <div class="cart-modal-body"><p class="cart-modal-kicker" data-i18n="cartUpdate">Cart Update</p><h3 id="cartModalTitle" data-i18n="addedToCart">Added to Cart</h3><p id="cartModalMessage">Product added to your bag.</p></div>
+      <div class="cart-modal-actions"><button class="cart-continue" id="cartContinue" type="button" data-i18n="continueShopping">Continue Shopping</button><button class="cart-view" id="cartView" type="button" data-i18n="viewBag">View Bag</button></div>
+    </section>
+  </div>
+
+  <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
+    <section class="zoom-shell" role="dialog" aria-modal="true" aria-labelledby="zoomTitle">
+      <div class="zoom-topbar">
+        <div class="zoom-title" id="zoomTitle">Product View</div>
+        <button class="zoom-close" id="zoomClose" type="button" aria-label="Close product zoom">×</button>
+      </div>
+
+      <div class="zoom-stage" id="zoomStage">
+        <img class="zoom-image" id="zoomImage" src="" alt="" draggable="false" />
+      </div>
+
+      <div class="zoom-controls" aria-label="Product zoom controls">
+        <button class="zoom-control" id="zoomOut" type="button" aria-label="Zoom out">−</button>
+        <button class="zoom-control" id="zoomReset" type="button">Reset</button>
+        <span class="zoom-level" id="zoomLevel">100%</span>
+        <button class="zoom-control" id="zoomIn" type="button" aria-label="Zoom in">+</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="ig-overlay" id="igOverlay" aria-hidden="true">
+    <aside class="ig-modal" role="dialog" aria-modal="true" aria-labelledby="igTitle">
+      <div class="ig-modal-top">
+        <img class="ig-modal-logo" src="assets/menoclone-ufo.png" alt="MENOCLONE UFO logo" />
+        <button class="ig-close" id="igClose" type="button" aria-label="Close Instagram prompt">×</button>
+      </div>
+
+      <div class="ig-modal-copy">
+        <p class="ig-kicker">Stay in the signal</p>
+        <h3 id="igTitle">Following us on Instagram?</h3>
+        <p>
+          Follow MENOCLONE for product drops, Season 2 updates,
+          visual experiments and new releases.
+        </p>
+      </div>
+
+      <div class="ig-actions">
+        <a
+          class="ig-follow"
+          id="igFollow"
+          href="https://www.instagram.com/menoclone/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Follow @menoclone ↗</a>
+        <button class="ig-following" id="igFollowing" type="button">Already Following</button>
+      </div>
+
+      <div class="ig-handle">@menoclone / Instagram</div>
+    </aside>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
@@ -1032,9 +2717,260 @@
     const toast = document.getElementById('toast');
     const emailForm = document.getElementById('emailForm');
     const cursor = document.getElementById('cursor');
+    const igOverlay = document.getElementById('igOverlay');
+    const igClose = document.getElementById('igClose');
+    const igFollow = document.getElementById('igFollow');
+    const igFollowing = document.getElementById('igFollowing');
+    const zoomOverlay = document.getElementById('zoomOverlay');
+    const zoomImage = document.getElementById('zoomImage');
+    const zoomStage = document.getElementById('zoomStage');
+    const zoomTitle = document.getElementById('zoomTitle');
+    const zoomClose = document.getElementById('zoomClose');
+    const zoomIn = document.getElementById('zoomIn');
+    const zoomOut = document.getElementById('zoomOut');
+    const zoomReset = document.getElementById('zoomReset');
+    const zoomLevel = document.getElementById('zoomLevel');
+    const cartModalOverlay = document.getElementById('cartModalOverlay');
+    const cartModalClose = document.getElementById('cartModalClose');
+    const cartModalMessage = document.getElementById('cartModalMessage');
+    const cartContinue = document.getElementById('cartContinue');
+    const cartView = document.getElementById('cartView');
+    const worldClockEl = document.getElementById('worldClock');
+    const clockZone = document.getElementById('clockZone');
+    const currencyAmount = document.getElementById('currencyAmount');
+    const currencyFrom = document.getElementById('currencyFrom');
+    const currencyTo = document.getElementById('currencyTo');
+    const currencyOutput = document.getElementById('currencyOutput');
+    const productDetailOverlay = document.getElementById('productDetailOverlay');
+    const productDetailImage = document.getElementById('productDetailImage');
+    const productDetailTitle = document.getElementById('productDetailTitle');
+    const productDetailDescription = document.getElementById('productDetailDescription');
+    const productDetailClose = document.getElementById('productDetailClose');
+    const productDetailAdd = document.getElementById('productDetailAdd');
+    const productDetailPrice = document.getElementById('productDetailPrice');
+
+    let activeProductCard = null;
+
+    let igPopupTimer;
 
     let cart = 0;
     let toastTimer;
+    let hasEntered = false;
+    let autoEnterTimer;
+
+
+    // UFO click sound generated in-browser. No external audio file required.
+    let audioCtx;
+
+    function playUfoClick(){
+      try{
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+
+        const now = audioCtx.currentTime;
+        const master = audioCtx.createGain();
+        master.gain.setValueAtTime(.0001, now);
+        master.gain.exponentialRampToValueAtTime(.065, now + .012);
+        master.gain.exponentialRampToValueAtTime(.0001, now + .28);
+        master.connect(audioCtx.destination);
+
+        const osc = audioCtx.createOscillator();
+        const mod = audioCtx.createOscillator();
+        const modGain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        mod.type = 'triangle';
+
+        osc.frequency.setValueAtTime(740, now);
+        osc.frequency.exponentialRampToValueAtTime(220, now + .24);
+
+        mod.frequency.setValueAtTime(34, now);
+        modGain.gain.setValueAtTime(95, now);
+        mod.connect(modGain);
+        modGain.connect(osc.frequency);
+
+        osc.connect(master);
+        osc.start(now);
+        mod.start(now);
+        osc.stop(now + .29);
+        mod.stop(now + .29);
+      }catch(e){
+        // Audio is decorative; interaction should continue if audio is unavailable.
+      }
+    }
+
+    function pulseProduct(card){
+      if(!card) return;
+      card.classList.remove('is-pulsing');
+      void card.offsetWidth;
+      card.classList.add('is-pulsing');
+      window.setTimeout(() => card.classList.remove('is-pulsing'), 560);
+    }
+
+    let zoomScale = 1;
+    let zoomX = 0;
+    let zoomY = 0;
+    let dragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let dragOriginX = 0;
+    let dragOriginY = 0;
+    let pinchStartDistance = 0;
+    let pinchStartScale = 1;
+
+    function clampZoom(value){
+      return Math.min(4, Math.max(1, value));
+    }
+
+    function applyZoom(animated = true){
+      if(!zoomImage) return;
+      zoomImage.classList.toggle('no-transition', !animated);
+
+      if(zoomScale <= 1){
+        zoomX = 0;
+        zoomY = 0;
+      }
+
+      zoomImage.style.transform = `translate(${zoomX}px, ${zoomY}px) scale(${zoomScale})`;
+      zoomLevel.textContent = `${Math.round(zoomScale * 100)}%`;
+      zoomStage.style.cursor = zoomScale > 1 ? (dragging ? 'grabbing' : 'grab') : 'zoom-in';
+
+      if(!animated){
+        requestAnimationFrame(() => zoomImage.classList.remove('no-transition'));
+      }
+    }
+
+    function setZoom(next, animated = true){
+      zoomScale = clampZoom(next);
+      applyZoom(animated);
+    }
+
+    function resetZoom(){
+      zoomScale = 1;
+      zoomX = 0;
+      zoomY = 0;
+      applyZoom(true);
+    }
+
+    function openProductZoom(card){
+      if(!card || !zoomOverlay) return;
+      const img = card.querySelector('.product-media img');
+      const title = card.querySelector('.product-info span:first-child')?.textContent?.trim() || 'MENOCLONE Product';
+      if(!img) return;
+
+      pulseProduct(card);
+      zoomImage.src = img.currentSrc || img.src;
+      zoomImage.alt = img.alt || title;
+      zoomTitle.textContent = title;
+      resetZoom();
+
+      zoomOverlay.classList.add('show');
+      zoomOverlay.setAttribute('aria-hidden','false');
+      body.style.overflow = 'hidden';
+
+      window.setTimeout(() => zoomClose?.focus(), 120);
+    }
+
+    function closeProductZoom(){
+      if(!zoomOverlay) return;
+      zoomOverlay.classList.remove('show');
+      zoomOverlay.setAttribute('aria-hidden','true');
+      resetZoom();
+      body.style.overflow = '';
+    }
+
+    function distanceBetweenTouches(touches){
+      if(touches.length < 2) return 0;
+      const dx = touches[0].clientX - touches[1].clientX;
+      const dy = touches[0].clientY - touches[1].clientY;
+      return Math.hypot(dx,dy);
+    }
+
+
+    function flashActive(el){if(!el)return;el.classList.add('is-active');setTimeout(()=>el.classList.remove('is-active'),280)}
+
+    function displayPrice(price){
+      if(!price || price === 'TBA') return 'TBA';
+      const numeric = Number(price);
+      if(Number.isNaN(numeric)) return price;
+      return `$${numeric.toFixed(2)}`;
+    }
+
+    function openProductDetails(card){
+      if(!card || !productDetailOverlay) return;
+      const img = card.querySelector('.product-media img');
+      activeProductCard = card;
+
+      const name = card.dataset.name || card.querySelector('.product-info span:first-child')?.textContent?.trim() || 'MENOCLONE Product';
+      const description = card.dataset.description || '';
+      const price = card.dataset.price || 'TBA';
+
+      productDetailTitle.textContent = name;
+      productDetailDescription.textContent = description;
+      productDetailImage.src = img?.currentSrc || img?.src || '';
+      productDetailImage.alt = img?.alt || name;
+      productDetailPrice.dataset.price = price;
+      productDetailPrice.textContent = translations[document.documentElement.lang === 'es' ? 'es' : 'en']?.priceRevealedCart || 'Price revealed after adding to cart';
+
+      productDetailOverlay.classList.add('show');
+      productDetailOverlay.setAttribute('aria-hidden','false');
+      body.style.overflow = 'hidden';
+    }
+
+    function closeProductDetails(){
+      productDetailOverlay?.classList.remove('show');
+      productDetailOverlay?.setAttribute('aria-hidden','true');
+      body.style.overflow = '';
+      activeProductCard = null;
+    }
+
+    function openCartModal(productName){const lang=document.documentElement.lang||'en';cartModalMessage.textContent=lang==='es'?`${productName} fue añadido a tu bolsa.`:`${productName} was added to your bag.`;cartModalOverlay.classList.add('show');cartModalOverlay.setAttribute('aria-hidden','false')}
+    function closeCartModal(){cartModalOverlay.classList.remove('show');cartModalOverlay.setAttribute('aria-hidden','true')}
+
+    function updateWorldClock(){try{worldClockEl.textContent=new Intl.DateTimeFormat(document.documentElement.lang==='es'?'es-ES':'en-US',{timeZone:clockZone.value,hour:'numeric',minute:'2-digit',second:'2-digit',hour12:true}).format(new Date())}catch(e){worldClockEl.textContent='--:--:--'}}
+
+    const fallbackRates={USD:{USD:1,EUR:.86,GBP:.74,JPY:147,KRW:1390,CAD:1.37,MXN:18.6},EUR:{USD:1.16,EUR:1,GBP:.86,JPY:171,KRW:1615,CAD:1.59,MXN:21.6},GBP:{USD:1.35,EUR:1.16,GBP:1,JPY:199,KRW:1880,CAD:1.85,MXN:25.1},JPY:{USD:.0068,EUR:.0058,GBP:.005,JPY:1,KRW:9.45,CAD:.0093,MXN:.126},KRW:{USD:.00072,EUR:.00062,GBP:.00053,JPY:.106,KRW:1,CAD:.00099,MXN:.0134},CAD:{USD:.73,EUR:.63,GBP:.54,JPY:107,KRW:1015,CAD:1,MXN:13.58},MXN:{USD:.054,EUR:.046,GBP:.04,JPY:7.9,KRW:74.7,CAD:.074,MXN:1}};
+    let currencyTimer;
+    async function updateCurrency(){const amount=Math.max(0,Number(currencyAmount.value||0)),from=currencyFrom.value,to=currencyTo.value;if(from===to){currencyOutput.textContent=`${amount.toFixed(2)} ${to}`;return}currencyOutput.textContent='…';try{const r=await fetch(`https://api.frankfurter.app/latest?amount=${encodeURIComponent(amount)}&from=${from}&to=${to}`,{cache:'no-store'});if(!r.ok)throw 0;const d=await r.json();const v=d?.rates?.[to];if(typeof v!=='number')throw 0;currencyOutput.textContent=`${new Intl.NumberFormat(undefined,{maximumFractionDigits:2}).format(v)} ${to}`}catch(e){const rate=fallbackRates?.[from]?.[to];currencyOutput.textContent=rate?`≈ ${new Intl.NumberFormat(undefined,{maximumFractionDigits:2}).format(amount*rate)} ${to}`:'N/A'}}
+
+    const translations={
+      en:{
+        shop:'Shop',lookbook:'Lookbook',artLocator:'MNC Art Locator',world:'World',termsNav:'Terms',kickstarter:'Kickstarter',contact:'Contact',
+        enter:'Enter',origins:'Originality Has Origins.',enterCollection:'Enter Collection',selectedObjects:'Selected Objects',
+        joinSignal:'Join the signal.',worldClock:'World Clock',currency:'Currency',cartUpdate:'Cart Update',
+        addedToCart:'Added to Cart',continueShopping:'Continue Shopping',viewBag:'View Bag',
+        filmKicker:'MENOCLONE Motion',filmTitle:'Campaign Film',filmMeta:'Season 2 / Visual Transmission',
+        filmName:'Originality Has Origins',filmDescription:'Drop your MENOCLONE campaign film into the assets folder to replace this placeholder.',filmControls:'Tap or click to play',
+        lookbookKicker:'MENOCLONE Editorial',lookbookTitle:'Lookbook',lookbookMeta:'Season 2 / Selected Looks',
+        lookOne:'Look 01',lookOneMeta:'Heavy GSM / Season 2',lookTwo:'Look 02',lookTwoMeta:'Hoodie / Signal Layer',lookThree:'Look 03',lookThreeMeta:'Statement Tee / $60',
+        locatorKicker:'MENOCLONE Field System',locatorTitle:'MNC Art Locator',locatorMeta:'Find the signal',
+        locatorHeadline:'Art exists outside the feed.',locatorDescription:'MNC Art Locator is a future map for physical MENOCLONE drops, installations, stickers, objects and creative signals placed around the city.',
+        locatorTagDrops:'Drops',locatorTagInstallations:'Installations',locatorTagObjects:'Objects',
+        termsKicker:'MENOCLONE Policy',termsTitle:'Terms & Conditions',termsOrdersHead:'Orders',
+        termsOrders:'All product availability is subject to change. Limited releases may sell out without notice.',
+        termsShippingHead:'Shipping',termsShipping:'Shipping windows and delivery timing may vary by release and destination.',
+        termsReturnsHead:'Returns',termsReturns:'Final return, exchange and refund rules should be reviewed before checkout and may vary by item.',
+        termsCreativeHead:'Creative Rights',termsCreative:'MENOCLONE names, logos, artwork, product graphics and original site content remain protected creative property.',productDetails:'Product Details',priceRevealedCart:'Price revealed after adding to cart',addToCart:'Add to Cart',productZoomNote:'Tap or click the image to open full zoom.'
+      },
+      es:{
+        shop:'Tienda',lookbook:'Lookbook',artLocator:'Localizador de arte MNC',world:'Mundo',termsNav:'Términos',kickstarter:'Kickstarter',contact:'Contacto',
+        enter:'Entrar',origins:'La originalidad tiene orígenes.',enterCollection:'Ver colección',selectedObjects:'Objetos seleccionados',
+        joinSignal:'Únete a la señal.',worldClock:'Reloj mundial',currency:'Moneda',cartUpdate:'Actualización del carrito',
+        addedToCart:'Añadido al carrito',continueShopping:'Seguir comprando',viewBag:'Ver bolsa',
+        filmKicker:'Movimiento MENOCLONE',filmTitle:'Película de campaña',filmMeta:'Temporada 2 / Transmisión visual',
+        filmName:'La originalidad tiene orígenes',filmDescription:'Coloca tu video de campaña MENOCLONE en la carpeta assets para reemplazar este espacio.',filmControls:'Toca o haz clic para reproducir',
+        lookbookKicker:'Editorial MENOCLONE',lookbookTitle:'Lookbook',lookbookMeta:'Temporada 2 / Looks seleccionados',
+        lookOne:'Look 01',lookOneMeta:'Heavy GSM / Temporada 2',lookTwo:'Look 02',lookTwoMeta:'Hoodie / Capa de señal',lookThree:'Look 03',lookThreeMeta:'Statement Tee / $60',
+        locatorKicker:'Sistema de campo MENOCLONE',locatorTitle:'Localizador de arte MNC',locatorMeta:'Encuentra la señal',
+        locatorHeadline:'El arte existe fuera del feed.',locatorDescription:'MNC Art Locator será un mapa para lanzamientos físicos, instalaciones, stickers, objetos y señales creativas de MENOCLONE por la ciudad.',
+        locatorTagDrops:'Lanzamientos',locatorTagInstallations:'Instalaciones',locatorTagObjects:'Objetos',
+        termsKicker:'Política MENOCLONE',termsTitle:'Términos y condiciones',termsOrdersHead:'Pedidos',
+        termsOrders:'La disponibilidad de los productos puede cambiar. Las ediciones limitadas pueden agotarse sin previo aviso.',
+        termsShippingHead:'Envíos',termsShipping:'Los tiempos de envío y entrega pueden variar según el lanzamiento y el destino.',
+        termsReturnsHead:'Devoluciones',termsReturns:'Las reglas finales de devolución, cambio y reembolso deben revisarse antes del pago y pueden variar según el artículo.',
+        termsCreativeHead:'Derechos creativos',termsCreative:'Los nombres, logotipos, arte, gráficos de productos y contenido original del sitio de MENOCLONE siguen siendo propiedad creativa protegida.',productDetails:'Detalles del producto',priceRevealedCart:'El precio se muestra después de añadirlo al carrito',addToCart:'Añadir al carrito',productZoomNote:'Toca o haz clic en la imagen para abrir el zoom completo.'
+      }
+    };
+    function setLanguage(lang){lang=translations[lang]?lang:'en';document.documentElement.lang=lang;localStorage.setItem('menocloneLang',lang);document.querySelectorAll('[data-i18n]').forEach(el=>{const v=translations[lang][el.dataset.i18n];if(v)el.textContent=v});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));updateWorldClock()}
 
     function showToast(message){
       clearTimeout(toastTimer);
@@ -1043,16 +2979,55 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
     }
 
+    function showInstagramPopup(){
+      if(!igOverlay) return;
+
+      // Do not repeatedly show within the same browser if dismissed/followed.
+      const dismissed = localStorage.getItem('menocloneIgPromptDismissed');
+      if(dismissed === '1') return;
+
+      igOverlay.classList.add('show');
+      igOverlay.setAttribute('aria-hidden','false');
+    }
+
+    function closeInstagramPopup(remember = true){
+      if(!igOverlay) return;
+      igOverlay.classList.remove('show');
+      igOverlay.setAttribute('aria-hidden','true');
+
+      if(remember){
+        localStorage.setItem('menocloneIgPromptDismissed','1');
+      }
+    }
+
     function enterExperience(){
+      if(hasEntered) return;
+      hasEntered = true;
+      clearTimeout(autoEnterTimer);
+
       splash.classList.add('is-hidden');
       body.classList.add('site-entered');
       body.style.overflow = '';
+
       try { splashVideo.pause(); } catch(e) {}
-      setTimeout(() => splash.remove(), 900);
+
+      setTimeout(() => {
+        if(splash && splash.parentNode) splash.remove();
+      }, 1250);
+
+      clearTimeout(igPopupTimer);
+      igPopupTimer = setTimeout(() => {
+        showInstagramPopup();
+      }, 1900);
     }
 
     body.style.overflow = 'hidden';
+
     enterSite.addEventListener('click', enterExperience);
+
+    autoEnterTimer = setTimeout(() => {
+      enterExperience();
+    }, 5000);
 
     window.addEventListener('keydown', (e) => {
       if ((e.key === 'Enter' || e.key === ' ') && !splash.classList.contains('is-hidden')) {
@@ -1076,12 +3051,70 @@
       });
     });
 
+
+    // Add a Zoom button to every product card without duplicating product markup.
+    document.querySelectorAll('.product').forEach(card => {
+      const media = card.querySelector('.product-media');
+      if(!media) return;
+
+      media.tabIndex = 0;
+      media.setAttribute('role','button');
+      media.setAttribute('aria-label','Open product image zoom');
+      media.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          playUfoClick();
+          openProductDetails(card);
+        }
+      });
+
+      if(!media.querySelector('.zoom-btn')){
+        const zoomButton = document.createElement('button');
+        zoomButton.className = 'zoom-btn';
+        zoomButton.type = 'button';
+        zoomButton.textContent = 'Zoom +';
+        zoomButton.setAttribute('aria-label','Zoom product image');
+        media.appendChild(zoomButton);
+
+        zoomButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          playUfoClick();
+          openProductZoom(card);
+        });
+      }
+
+      media.addEventListener('click', (e) => {
+        if(e.target.closest('.quick-add') || e.target.closest('.zoom-btn')) return;
+        playUfoClick();
+        openProductDetails(card);
+      });
+
+      card.addEventListener('pointerdown', () => pulseProduct(card));
+      card.querySelector('.product-info')?.addEventListener('click', () => {
+        playUfoClick();
+        openProductDetails(card);
+      });
+    });
+
     document.querySelectorAll('.quick-add').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if(btn.disabled) return;
+        playUfoClick();
+        pulseProduct(btn.closest('.product'));
         cart++;
         cartCount.textContent = cart;
         showToast(`${btn.dataset.product} added to bag`);
+        openCartModal(btn.dataset.product);
       });
+    });
+
+
+    // UFO sound on primary UI controls. Quick-add and zoom controls manage their own sound.
+    document.querySelectorAll(
+      'button:not(.quick-add):not(.zoom-btn):not(.zoom-control):not(.zoom-close), .ig-follow'
+    ).forEach(control => {
+      control.addEventListener('click', playUfoClick);
     });
 
     document.getElementById('cartBtn').addEventListener('click', () => {
@@ -1093,6 +3126,143 @@
       showToast('Signal received');
       emailForm.reset();
     });
+
+    igClose?.addEventListener('click', () => closeInstagramPopup(true));
+    igFollowing?.addEventListener('click', () => closeInstagramPopup(true));
+
+    igFollow?.addEventListener('click', () => {
+      localStorage.setItem('menocloneIgPromptDismissed','1');
+      setTimeout(() => closeInstagramPopup(false), 220);
+    });
+
+    igOverlay?.addEventListener('click', (e) => {
+      if(e.target === igOverlay) closeInstagramPopup(true);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && productDetailOverlay?.classList.contains('show')){
+        closeProductDetails();
+        return;
+      }
+
+      if(e.key === 'Escape' && cartModalOverlay?.classList.contains('show')){closeCartModal();return;}
+
+      if(e.key === 'Escape' && zoomOverlay?.classList.contains('show')){
+        closeProductZoom();
+        return;
+      }
+
+      if(e.key === 'Escape' && igOverlay?.classList.contains('show')){
+        closeInstagramPopup(true);
+      }
+    });
+
+
+    zoomClose?.addEventListener('click', () => {
+      playUfoClick();
+      closeProductZoom();
+    });
+
+    zoomIn?.addEventListener('click', () => {
+      playUfoClick();
+      setZoom(zoomScale + .35);
+    });
+
+    zoomOut?.addEventListener('click', () => {
+      playUfoClick();
+      setZoom(zoomScale - .35);
+    });
+
+    zoomReset?.addEventListener('click', () => {
+      playUfoClick();
+      resetZoom();
+    });
+
+    zoomOverlay?.addEventListener('click', (e) => {
+      if(e.target === zoomOverlay){
+        closeProductZoom();
+      }
+    });
+
+    zoomStage?.addEventListener('dblclick', () => {
+      playUfoClick();
+      setZoom(zoomScale > 1 ? 1 : 2);
+    });
+
+    zoomStage?.addEventListener('wheel', (e) => {
+      if(!zoomOverlay?.classList.contains('show')) return;
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? .18 : -.18;
+      setZoom(zoomScale + delta, false);
+    }, {passive:false});
+
+    zoomStage?.addEventListener('pointerdown', (e) => {
+      if(zoomScale <= 1 || e.pointerType === 'touch') return;
+      dragging = true;
+      dragStartX = e.clientX;
+      dragStartY = e.clientY;
+      dragOriginX = zoomX;
+      dragOriginY = zoomY;
+      zoomStage.setPointerCapture?.(e.pointerId);
+      zoomStage.classList.add('is-dragging');
+    });
+
+    zoomStage?.addEventListener('pointermove', (e) => {
+      if(!dragging) return;
+      zoomX = dragOriginX + (e.clientX - dragStartX);
+      zoomY = dragOriginY + (e.clientY - dragStartY);
+      applyZoom(false);
+    });
+
+    function endZoomDrag(){
+      dragging = false;
+      zoomStage?.classList.remove('is-dragging');
+    }
+
+    zoomStage?.addEventListener('pointerup', endZoomDrag);
+    zoomStage?.addEventListener('pointercancel', endZoomDrag);
+
+    // Mobile pinch-to-zoom and one-finger pan when already zoomed.
+    zoomStage?.addEventListener('touchstart', (e) => {
+      if(e.touches.length === 2){
+        pinchStartDistance = distanceBetweenTouches(e.touches);
+        pinchStartScale = zoomScale;
+      }else if(e.touches.length === 1 && zoomScale > 1){
+        dragging = true;
+        dragStartX = e.touches[0].clientX;
+        dragStartY = e.touches[0].clientY;
+        dragOriginX = zoomX;
+        dragOriginY = zoomY;
+      }
+    }, {passive:true});
+
+    zoomStage?.addEventListener('touchmove', (e) => {
+      if(e.touches.length === 2 && pinchStartDistance){
+        e.preventDefault();
+        const nextDistance = distanceBetweenTouches(e.touches);
+        const ratio = nextDistance / pinchStartDistance;
+        zoomScale = clampZoom(pinchStartScale * ratio);
+        applyZoom(false);
+      }else if(e.touches.length === 1 && dragging && zoomScale > 1){
+        e.preventDefault();
+        zoomX = dragOriginX + (e.touches[0].clientX - dragStartX);
+        zoomY = dragOriginY + (e.touches[0].clientY - dragStartY);
+        applyZoom(false);
+      }
+    }, {passive:false});
+
+    zoomStage?.addEventListener('touchend', (e) => {
+      if(e.touches.length < 2) pinchStartDistance = 0;
+      if(e.touches.length === 0) dragging = false;
+    }, {passive:true});
+
+
+    document.querySelectorAll('button,.ig-follow,.shop-link,.enter-btn').forEach(el=>el.addEventListener('click',()=>flashActive(el)));
+    cartModalClose?.addEventListener('click',closeCartModal);cartContinue?.addEventListener('click',closeCartModal);cartView?.addEventListener('click',()=>{closeCartModal();showToast(cart?`${cart} item${cart>1?'s':''} in bag`:'Your bag is empty')});cartModalOverlay?.addEventListener('click',e=>{if(e.target===cartModalOverlay)closeCartModal()});
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>{playUfoClick();setLanguage(btn.dataset.lang)}));
+    clockZone?.addEventListener('change',updateWorldClock);setInterval(updateWorldClock,1000);
+    [currencyAmount,currencyFrom,currencyTo].forEach(el=>{el?.addEventListener('input',()=>{clearTimeout(currencyTimer);currencyTimer=setTimeout(updateCurrency,220)});el?.addEventListener('change',updateCurrency)});
+    setLanguage(localStorage.getItem('menocloneLang')||'en');updateWorldClock();updateCurrency();
 
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1118,20 +3288,22 @@
     }
 
     const heroArt = document.querySelector('.hero-art');
-    const orb = document.querySelector('.orb');
+    const heroUfoWrap = document.getElementById('heroUfoWrap');
 
     if (window.matchMedia('(pointer:fine)').matches) {
       heroArt.addEventListener('mousemove', (e) => {
         const r = heroArt.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - .5;
         const y = (e.clientY - r.top) / r.height - .5;
-        orb.style.marginLeft = `${x * 18}px`;
-        orb.style.marginTop = `${y * 18}px`;
+        if(heroUfoWrap){
+          heroUfoWrap.style.transform = `translate(${x * 14}px, ${y * 14}px)`;
+        }
       });
 
       heroArt.addEventListener('mouseleave', () => {
-        orb.style.marginLeft = '0px';
-        orb.style.marginTop = '0px';
+        if(heroUfoWrap){
+          heroUfoWrap.style.transform = 'translate(0px, 0px)';
+        }
       });
     }
   </script>
