@@ -1309,6 +1309,325 @@
       }
     }
 
+
+    /* ---------- V22 BAG / CART ---------- */
+    .bag-overlay{
+      position:fixed;
+      inset:0;
+      z-index:1550;
+      display:flex;
+      justify-content:flex-end;
+      background:rgba(0,0,0,.66);
+      backdrop-filter:blur(12px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .34s ease,visibility .34s ease;
+    }
+
+    .bag-overlay.show{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .bag-drawer{
+      width:min(94vw,540px);
+      height:100dvh;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      background:#0d0d0d;
+      border-left:1px solid rgba(255,255,255,.13);
+      box-shadow:-26px 0 80px rgba(0,0,0,.5);
+      transform:translateX(102%);
+      transition:transform .42s var(--ease);
+    }
+
+    .bag-overlay.show .bag-drawer{
+      transform:translateX(0);
+    }
+
+    .bag-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:20px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .bag-head-copy{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .bag-head-copy img{
+      width:46px;
+      height:auto;
+    }
+
+    .bag-head-kicker{
+      margin:0 0 3px;
+      color:var(--muted);
+      font-size:8px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+
+    .bag-head h2{
+      margin:0;
+      font-size:clamp(26px,6vw,40px);
+      line-height:.95;
+      text-transform:uppercase;
+      letter-spacing:-.04em;
+    }
+
+    .bag-close{
+      width:52px;
+      height:52px;
+      min-width:52px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:50%;
+      background:transparent;
+      color:#fff;
+      font-size:24px;
+      cursor:pointer;
+    }
+
+    .bag-body{
+      overflow-y:auto;
+      padding:10px 18px 28px;
+    }
+
+    .bag-empty{
+      min-height:280px;
+      display:grid;
+      place-items:center;
+      padding:34px 18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.7;
+    }
+
+    .bag-items{
+      display:grid;
+      gap:10px;
+    }
+
+    .bag-line{
+      display:grid;
+      grid-template-columns:92px minmax(0,1fr);
+      gap:14px;
+      padding:12px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .bag-line-image{
+      width:92px;
+      height:108px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background:#bdb7ac;
+    }
+
+    .bag-line-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .bag-line-content{
+      min-width:0;
+      display:grid;
+      gap:10px;
+      align-content:start;
+    }
+
+    .bag-line-top{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:flex-start;
+    }
+
+    .bag-line-name{
+      margin:0;
+      font-size:13px;
+      line-height:1.35;
+      text-transform:uppercase;
+      letter-spacing:.035em;
+    }
+
+    .bag-line-price{
+      flex:0 0 auto;
+      color:var(--accent);
+      font-size:11px;
+      line-height:1.4;
+      text-align:right;
+    }
+
+    .bag-line-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .bag-qty{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      border:1px solid rgba(255,255,255,.11);
+      border-radius:999px;
+      padding:4px;
+    }
+
+    .bag-qty button{
+      width:30px;
+      height:30px;
+      border:0;
+      border-radius:50%;
+      background:#191919;
+      color:#fff;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    .bag-qty-value{
+      min-width:24px;
+      text-align:center;
+      font-size:10px;
+      font-variant-numeric:tabular-nums;
+    }
+
+    .bag-remove{
+      border:0;
+      background:transparent;
+      color:#a8a8a2;
+      cursor:pointer;
+      padding:7px 0;
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      text-decoration:underline;
+      text-underline-offset:4px;
+    }
+
+    .bag-remove:hover{
+      color:#fff;
+    }
+
+    .bag-footer{
+      padding:18px max(18px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom));
+      border-top:1px solid rgba(255,255,255,.10);
+      background:rgba(13,13,13,.97);
+    }
+
+    .bag-total-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:6px;
+    }
+
+    .bag-total-row span:first-child{
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+
+    .bag-total{
+      font-size:clamp(21px,5vw,30px);
+      line-height:1;
+      font-variant-numeric:tabular-nums;
+    }
+
+    .bag-total-note{
+      margin:0 0 14px;
+      color:#777;
+      font-size:9px;
+      line-height:1.55;
+    }
+
+    .bag-actions{
+      display:grid;
+      gap:9px;
+    }
+
+    .bag-submit,
+    .bag-continue{
+      min-height:49px;
+      border-radius:999px;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:9px;
+    }
+
+    .bag-submit{
+      border:1px solid var(--accent);
+      background:var(--accent);
+      color:#080808;
+      font-weight:700;
+    }
+
+    .bag-submit:disabled{
+      cursor:not-allowed;
+      opacity:.34;
+    }
+
+    .bag-continue{
+      border:1px solid rgba(255,255,255,.14);
+      background:transparent;
+      color:#fff;
+    }
+
+    @media(max-width:600px){
+      .bag-drawer{
+        width:100vw;
+        border-left:0;
+      }
+
+      .bag-head{
+        padding:14px 14px 12px;
+      }
+
+      .bag-close{
+        width:58px;
+        height:58px;
+        min-width:58px;
+        font-size:28px;
+      }
+
+      .bag-body{
+        padding:6px 14px 24px;
+      }
+
+      .bag-line{
+        grid-template-columns:82px minmax(0,1fr);
+      }
+
+      .bag-line-image{
+        width:82px;
+        height:98px;
+      }
+
+      .bag-line-top{
+        flex-direction:column;
+        gap:6px;
+      }
+
+      .bag-line-price{
+        text-align:left;
+      }
+    }
+
     /* ---------- V10 PRODUCT DETAILS ---------- */
     .price-hidden{
       color:var(--muted) !important;
@@ -2778,6 +3097,39 @@
     </section>
   </div>
 
+
+  <div class="bag-overlay" id="bagOverlay" aria-hidden="true">
+    <aside class="bag-drawer" id="bagDrawer" role="dialog" aria-modal="true" aria-labelledby="bagTitle">
+      <div class="bag-head">
+        <div class="bag-head-copy">
+          <img src="mncufo.png" alt="MENOCLONE UFO logo" />
+          <div>
+            <p class="bag-head-kicker" id="bagKicker">MENOCLONE Order</p>
+            <h2 id="bagTitle">Bag / Cart</h2>
+          </div>
+        </div>
+        <button class="bag-close" id="bagClose" type="button" aria-label="Close bag">×</button>
+      </div>
+
+      <div class="bag-body">
+        <div class="bag-empty" id="bagEmpty">Your bag is empty.</div>
+        <div class="bag-items" id="bagItems"></div>
+      </div>
+
+      <div class="bag-footer">
+        <div class="bag-total-row">
+          <span id="bagSubtotalLabel">Subtotal</span>
+          <strong class="bag-total" id="bagSubtotal">$0.00</strong>
+        </div>
+        <p class="bag-total-note" id="bagTotalNote">Converted pricing follows the selected site currency. Shipping and taxes are not included.</p>
+        <div class="bag-actions">
+          <button class="bag-submit" id="bagSubmit" type="button" disabled>Submit Order</button>
+          <button class="bag-continue" id="bagContinue" type="button">Continue Shopping</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
   <div class="cart-modal-overlay" id="cartModalOverlay" aria-hidden="true">
     <section class="cart-modal" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle">
       <div class="cart-modal-head"><img src="mncufo.png" alt="MENOCLONE UFO logo"><button class="cart-modal-close" id="cartModalClose" type="button" aria-label="Close">×</button></div>
@@ -2869,6 +3221,18 @@
     const cartModalMessage = document.getElementById('cartModalMessage');
     const cartContinue = document.getElementById('cartContinue');
     const cartView = document.getElementById('cartView');
+    const bagOverlay = document.getElementById('bagOverlay');
+    const bagDrawer = document.getElementById('bagDrawer');
+    const bagClose = document.getElementById('bagClose');
+    const bagKicker = document.getElementById('bagKicker');
+    const bagTitle = document.getElementById('bagTitle');
+    const bagEmpty = document.getElementById('bagEmpty');
+    const bagItems = document.getElementById('bagItems');
+    const bagSubtotalLabel = document.getElementById('bagSubtotalLabel');
+    const bagSubtotal = document.getElementById('bagSubtotal');
+    const bagTotalNote = document.getElementById('bagTotalNote');
+    const bagSubmit = document.getElementById('bagSubmit');
+    const bagContinue = document.getElementById('bagContinue');
     const worldClockEl = document.getElementById('worldClock');
     const clockZone = document.getElementById('clockZone');
     const currencyAmount = document.getElementById('currencyAmount');
@@ -2889,7 +3253,9 @@
 
     let igPopupTimer;
 
+    let cartItems = [];
     let cart = 0;
+    const CART_STORAGE_KEY = 'menocloneCartV22';
     let toastTimer;
     let hasEntered = false;
     let autoEnterTimer;
@@ -2932,6 +3298,272 @@
       }catch(e){
         // Audio is decorative; interaction should continue if audio is unavailable.
       }
+    }
+
+
+    const bagTranslations = {
+      en:{
+        kicker:'MENOCLONE Order',title:'Bag / Cart',empty:'Your bag is empty.',
+        subtotal:'Subtotal',remove:'Remove',quantity:'Qty',submit:'Submit Order',
+        continueShopping:'Continue Shopping',
+        totalNote:'Converted pricing follows the selected site currency. Shipping and taxes are not included.',
+        removed:'Removed from bag',
+        checkoutNotice:'Your order is ready for checkout. Connect a checkout/payment endpoint to process the final order.',
+        item:'item',items:'items'
+      },
+      es:{
+        kicker:'Pedido MENOCLONE',title:'Bolsa / Carrito',empty:'Tu bolsa está vacía.',
+        subtotal:'Subtotal',remove:'Eliminar',quantity:'Cant.',submit:'Enviar pedido',
+        continueShopping:'Seguir comprando',
+        totalNote:'Los precios convertidos siguen la moneda seleccionada. El envío y los impuestos no están incluidos.',
+        removed:'Eliminado de la bolsa',
+        checkoutNotice:'Tu pedido está listo para el pago. Conecta un sistema de checkout/pago para procesar el pedido final.',
+        item:'artículo',items:'artículos'
+      },
+      fr:{
+        kicker:'Commande MENOCLONE',title:'Panier',empty:'Votre panier est vide.',
+        subtotal:'Sous-total',remove:'Retirer',quantity:'Qté',submit:'Envoyer la commande',
+        continueShopping:'Continuer les achats',
+        totalNote:'Les prix convertis suivent la devise sélectionnée. La livraison et les taxes ne sont pas incluses.',
+        removed:'Retiré du panier',
+        checkoutNotice:'Votre commande est prête pour le paiement. Connectez un service de paiement pour traiter la commande finale.',
+        item:'article',items:'articles'
+      },
+      ko:{
+        kicker:'MENOCLONE 주문',title:'장바구니',empty:'장바구니가 비어 있습니다.',
+        subtotal:'소계',remove:'삭제',quantity:'수량',submit:'주문 제출',
+        continueShopping:'쇼핑 계속하기',
+        totalNote:'환산 가격은 선택한 사이트 통화를 따릅니다. 배송비와 세금은 포함되지 않습니다.',
+        removed:'장바구니에서 삭제됨',
+        checkoutNotice:'주문 검토가 완료되었습니다. 실제 결제를 처리하려면 체크아웃/결제 엔드포인트를 연결하세요.',
+        item:'개 상품',items:'개 상품'
+      },
+      zh:{
+        kicker:'MENOCLONE 订单',title:'购物袋 / 购物车',empty:'购物车为空。',
+        subtotal:'小计',remove:'移除',quantity:'数量',submit:'提交订单',
+        continueShopping:'继续购物',
+        totalNote:'换算价格以网站当前选择的货币为准，不包含运费和税费。',
+        removed:'已从购物车移除',
+        checkoutNotice:'订单已准备进入结账流程。请连接结账/支付接口以处理最终订单。',
+        item:'件商品',items:'件商品'
+      },
+      ja:{
+        kicker:'MENOCLONE オーダー',title:'バッグ / カート',empty:'カートは空です。',
+        subtotal:'小計',remove:'削除',quantity:'数量',submit:'注文を送信',
+        continueShopping:'買い物を続ける',
+        totalNote:'換算価格はサイトで選択中の通貨に従います。送料と税金は含まれていません。',
+        removed:'カートから削除しました',
+        checkoutNotice:'注文内容はチェックアウトの準備ができています。最終注文を処理するには決済エンドポイントを接続してください。',
+        item:'点',items:'点'
+      }
+    };
+
+    function bagT(key){
+      const lang = document.documentElement.lang || 'en';
+      return bagTranslations[lang]?.[key] || bagTranslations.en[key] || key;
+    }
+
+    function productCardByName(name){
+      return [...document.querySelectorAll('.product')].find(card => card.dataset.name === name) || null;
+    }
+
+    function cartUnitCount(){
+      return cartItems.reduce((sum,item) => sum + Number(item.qty || 0),0);
+    }
+
+    function syncCartCounter(){
+      cart = cartUnitCount();
+      if(cartCount) cartCount.textContent = String(cart);
+      if(bagSubmit) bagSubmit.disabled = cart === 0;
+    }
+
+    function saveCart(){
+      try{
+        localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+      }catch(e){}
+      syncCartCounter();
+    }
+
+    function loadCart(){
+      try{
+        const raw = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || '[]');
+        if(Array.isArray(raw)){
+          cartItems = raw
+            .filter(item => item && typeof item.name === 'string' && Number(item.qty) > 0)
+            .map(item => ({name:item.name,qty:Math.max(1,Math.floor(Number(item.qty)))}));
+        }
+      }catch(e){
+        cartItems = [];
+      }
+      syncCartCounter();
+    }
+
+    function addCartItem(card,qty=1){
+      if(!card || card.dataset.price === 'TBA') return;
+      const name = card.dataset.name;
+      const existing = cartItems.find(item => item.name === name);
+      if(existing) existing.qty += qty;
+      else cartItems.push({name,qty});
+      saveCart();
+    }
+
+    function setCartQuantity(name,nextQty){
+      const item = cartItems.find(row => row.name === name);
+      if(!item) return;
+      const qty = Math.floor(Number(nextQty));
+      if(qty <= 0){
+        cartItems = cartItems.filter(row => row.name !== name);
+      }else{
+        item.qty = qty;
+      }
+      saveCart();
+      renderBag();
+    }
+
+    function removeCartItem(name){
+      cartItems = cartItems.filter(item => item.name !== name);
+      saveCart();
+      renderBag();
+      showToast(bagT('removed'));
+    }
+
+    async function localizedLinePrice(card,qty){
+      const usd = Number(card?.dataset?.price || 0) * qty;
+      const targetCurrency = currencyTo?.value || detectShopperCurrency();
+      const converted = await convertUsdPrice(usd,targetCurrency);
+      if(!converted) return formatCurrencyAmount(usd,'USD');
+      const local = formatCurrencyAmount(converted.value,converted.currency);
+      const base = formatCurrencyAmount(usd,'USD');
+      return converted.currency === 'USD' ? base : `${local} (${base} USD)`;
+    }
+
+    async function localizedCartSubtotal(){
+      const usdTotal = cartItems.reduce((sum,item) => {
+        const card = productCardByName(item.name);
+        const price = Number(card?.dataset?.price || 0);
+        return sum + (Number.isFinite(price) ? price * item.qty : 0);
+      },0);
+
+      const targetCurrency = currencyTo?.value || detectShopperCurrency();
+      const converted = await convertUsdPrice(usdTotal,targetCurrency);
+      if(!converted) return formatCurrencyAmount(usdTotal,'USD');
+
+      const local = formatCurrencyAmount(converted.value,converted.currency);
+      const base = formatCurrencyAmount(usdTotal,'USD');
+      return converted.currency === 'USD' ? base : `${local} (${base} USD)`;
+    }
+
+    async function renderBag(){
+      if(!bagItems || !bagEmpty) return;
+
+      syncCartCounter();
+
+      bagKicker.textContent = bagT('kicker');
+      bagTitle.textContent = bagT('title');
+      bagEmpty.textContent = bagT('empty');
+      bagSubtotalLabel.textContent = bagT('subtotal');
+      bagTotalNote.textContent = bagT('totalNote');
+      bagSubmit.textContent = bagT('submit');
+      bagContinue.textContent = bagT('continueShopping');
+
+      bagItems.innerHTML = '';
+
+      if(cartItems.length === 0){
+        bagEmpty.hidden = false;
+        bagSubtotal.textContent = formatCurrencyAmount(0,currencyTo?.value || 'USD');
+        bagSubmit.disabled = true;
+        return;
+      }
+
+      bagEmpty.hidden = true;
+      bagSubmit.disabled = false;
+
+      for(const item of cartItems){
+        const card = productCardByName(item.name);
+        if(!card) continue;
+
+        const image = card.querySelector('.product-media img');
+        const row = document.createElement('article');
+        row.className = 'bag-line';
+        row.dataset.product = item.name;
+
+        const priceText = await localizedLinePrice(card,item.qty);
+
+        row.innerHTML = `
+          <div class="bag-line-image">
+            <img src="${image?.currentSrc || image?.src || ''}" alt="${image?.alt || localizedProductName(card)}" />
+          </div>
+          <div class="bag-line-content">
+            <div class="bag-line-top">
+              <h3 class="bag-line-name"></h3>
+              <div class="bag-line-price">${priceText}</div>
+            </div>
+            <div class="bag-line-meta">
+              <div class="bag-qty" aria-label="${bagT('quantity')}">
+                <button type="button" class="bag-qty-minus" aria-label="Decrease quantity">−</button>
+                <span class="bag-qty-value">${item.qty}</span>
+                <button type="button" class="bag-qty-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button type="button" class="bag-remove">${bagT('remove')}</button>
+            </div>
+          </div>
+        `;
+
+        row.querySelector('.bag-line-name').textContent = localizedProductName(card);
+
+        row.querySelector('.bag-qty-minus')?.addEventListener('click',() => {
+          playUfoClick();
+          setCartQuantity(item.name,item.qty - 1);
+        });
+
+        row.querySelector('.bag-qty-plus')?.addEventListener('click',() => {
+          playUfoClick();
+          setCartQuantity(item.name,item.qty + 1);
+        });
+
+        row.querySelector('.bag-remove')?.addEventListener('click',() => {
+          playUfoClick();
+          removeCartItem(item.name);
+        });
+
+        bagItems.appendChild(row);
+      }
+
+      bagSubtotal.textContent = await localizedCartSubtotal();
+    }
+
+    async function openBag(){
+      closeCartModal();
+      await renderBag();
+      bagOverlay?.classList.add('show');
+      bagOverlay?.setAttribute('aria-hidden','false');
+      body.style.overflow = 'hidden';
+      setTimeout(() => bagClose?.focus(),80);
+    }
+
+    function closeBag(){
+      bagOverlay?.classList.remove('show');
+      bagOverlay?.setAttribute('aria-hidden','true');
+      body.style.overflow = '';
+    }
+
+    function submitBagOrder(){
+      if(cartItems.length === 0) return;
+
+      const detail = {
+        items: cartItems.map(item => ({
+          name:item.name,
+          quantity:item.qty,
+          usdUnitPrice:Number(productCardByName(item.name)?.dataset?.price || 0)
+        })),
+        currency:currencyTo?.value || detectShopperCurrency(),
+        submittedAt:new Date().toISOString()
+      };
+
+      // Front-end integration hook for a future checkout/payment backend.
+      window.dispatchEvent(new CustomEvent('menoclone:submit-order',{detail}));
+
+      showToast(bagT('checkoutNotice'));
     }
 
     function pulseProduct(card){
@@ -3398,10 +4030,10 @@
         e.stopPropagation();
         if(btn.disabled) return;
         playUfoClick();
-        pulseProduct(btn.closest('.product'));
-        cart++;
-        cartCount.textContent = cart;
-        showToast(`${btn.dataset.product} added to bag`);
+        const card = btn.closest('.product');
+        pulseProduct(card);
+        addCartItem(card,1);
+        showToast(currentTranslation().addedToBag.replace('{product}', localizedProductName(card)));
         openCartModal(btn.dataset.product);
       });
     });
@@ -3415,7 +4047,8 @@
     });
 
     document.getElementById('cartBtn').addEventListener('click', () => {
-      showToast(cart ? `${cart} item${cart > 1 ? 's' : ''} in bag` : 'Your bag is empty');
+      playUfoClick();
+      openBag();
     });
 
     emailForm.addEventListener('submit', (e) => {
@@ -3437,6 +4070,11 @@
     });
 
     window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && bagOverlay?.classList.contains('show')){
+        closeBag();
+        return;
+      }
+
       if(e.key === 'Escape' && productDetailOverlay?.classList.contains('show')){
         closeProductDetails();
         return;
@@ -3610,8 +4248,7 @@
       pulseProduct(activeProductCard);
 
       const productName = activeProductCard.dataset.name || 'MENOCLONE Product';
-      cart++;
-      cartCount.textContent = cart;
+      addCartItem(activeProductCard,1);
 
       const localized = await getLocalizedProductPrice(activeProductCard);
       productDetailPrice.textContent = localized.display;
@@ -3625,8 +4262,34 @@
     });
 
     document.querySelectorAll('button,.ig-follow,.shop-link,.enter-btn').forEach(el=>el.addEventListener('click',()=>flashActive(el)));
-    cartModalClose?.addEventListener('click',closeCartModal);cartContinue?.addEventListener('click',closeCartModal);cartView?.addEventListener('click',()=>{closeCartModal();showToast(cart?`${cart} item${cart>1?'s':''} in bag`:'Your bag is empty')});cartModalOverlay?.addEventListener('click',e=>{if(e.target===cartModalOverlay)closeCartModal()});
-    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>{playUfoClick();setLanguage(btn.dataset.lang)}));
+    cartModalClose?.addEventListener('click',closeCartModal);
+    cartContinue?.addEventListener('click',closeCartModal);
+    cartView?.addEventListener('click',()=>{
+      playUfoClick();
+      openBag();
+    });
+    cartModalOverlay?.addEventListener('click',e=>{if(e.target===cartModalOverlay)closeCartModal()});
+
+    bagClose?.addEventListener('click',()=>{
+      playUfoClick();
+      closeBag();
+    });
+    bagContinue?.addEventListener('click',()=>{
+      playUfoClick();
+      closeBag();
+    });
+    bagSubmit?.addEventListener('click',()=>{
+      playUfoClick();
+      submitBagOrder();
+    });
+    bagOverlay?.addEventListener('click',e=>{
+      if(e.target===bagOverlay) closeBag();
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',async()=>{
+      playUfoClick();
+      setLanguage(btn.dataset.lang);
+      if(bagOverlay?.classList.contains('show')) await renderBag();
+    }));
     clockZone?.addEventListener('change',updateWorldClock);setInterval(updateWorldClock,1000);
     [currencyAmount,currencyFrom,currencyTo].forEach(el=>{el?.addEventListener('input',()=>{clearTimeout(currencyTimer);currencyTimer=setTimeout(updateCurrency,220)});el?.addEventListener('change',updateCurrency)});
     const detectedShopCurrency = detectShopperCurrency();
@@ -3646,10 +4309,12 @@
       currencyFrom.value = 'USD';
     }
 
-    currencyTo?.addEventListener('change', () => {
+    currencyTo?.addEventListener('change', async () => {
       localStorage.setItem('menocloneShopCurrency', currencyTo.value);
+      if(bagOverlay?.classList.contains('show')) await renderBag();
     });
 
+    loadCart();
     setLanguage(localStorage.getItem('menocloneLang')||'en');
     updateWorldClock();
     updateCurrency();
