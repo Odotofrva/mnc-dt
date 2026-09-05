@@ -453,6 +453,16 @@
       filter:drop-shadow(0 0 12px rgba(255,255,255,.04));
     }
 
+
+    /* ---------- V17 HERO CAMPAIGN IMAGE ---------- */
+    .hero-photo-art{background:#0c0c0c;}
+    .hero-photo-art::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(to top,rgba(0,0,0,.26),transparent 34%),linear-gradient(to right,rgba(0,0,0,.08),transparent 28%);}
+    .hero-feature-image{position:absolute;inset:0;z-index:3;width:100%;height:100%;object-fit:cover;object-position:center 35%;transition:transform .8s var(--ease),filter .5s ease;}
+    .hero-photo-art:hover .hero-feature-image{transform:scale(1.025);filter:contrast(1.025);}
+    .hero-photo-art .hero-stamp{z-index:6;}
+    @media (max-width:860px){.hero-photo-art{min-height:70svh}.hero-feature-image{object-position:center 30%;}}
+    @media (max-width:520px){.hero-photo-art{min-height:64svh}}
+
     .marquee{
       overflow:hidden;
       border-bottom:1px solid var(--line);
@@ -809,6 +819,16 @@
     }
 
 
+
+
+    /* ---------- V17 MULTILINGUAL CONTROLS ---------- */
+    .language-toggle{flex-wrap:wrap;justify-content:flex-end;}
+    .lang-btn{white-space:nowrap;}
+    @media (max-width:520px){
+      .splash-language{max-width:min(92vw,340px);}
+      .splash-language .language-toggle{justify-content:flex-end;}
+      .lang-btn{min-width:38px;padding:7px 8px;font-size:8px;}
+    }
 
     /* ---------- PRODUCT PULSE + ZOOM ---------- */
     .product{
@@ -2293,7 +2313,7 @@
       <source src="lookbookmnc.mp4" type="video/mp4" />
     </video>
 
-    <div class="splash-language"><div class="language-toggle" aria-label="Language"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="es">ES</button><button class="lang-btn" type="button" data-lang="fr">FR</button><button class="lang-btn" type="button" data-lang="ko">한국어</button></div></div>
+    <div class="splash-language"><div class="language-toggle" aria-label="Language"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="es">ES</button><button class="lang-btn" type="button" data-lang="fr">FR</button><button class="lang-btn" type="button" data-lang="ko">한국어</button><button class="lang-btn" type="button" data-lang="zh">中文</button><button class="lang-btn" type="button" data-lang="ja">日本語</button></div></div>
 
     <div class="splash-ui">
       <div class="splash-lockup">
@@ -2333,7 +2353,7 @@
         <div class="tool-pill"><span class="tool-label" data-i18n="worldClock">World Clock</span><select class="tool-select" id="clockZone"><option value="America/New_York">NYC</option><option value="Europe/London">London</option><option value="Europe/Paris">Paris</option><option value="Asia/Tokyo">Tokyo</option><option value="Asia/Seoul">Seoul</option><option value="America/Los_Angeles">Los Angeles</option></select><span class="clock-time" id="worldClock">--:--:--</span></div>
         <div class="tool-pill currency-pill"><span class="tool-label" data-i18n="currency">Currency</span><input class="tool-input" id="currencyAmount" type="number" min="0" step="0.01" value="60"><select class="tool-select" id="currencyFrom"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>KRW</option><option>CAD</option><option>MXN</option></select><select class="tool-select" id="currencyTo"><option>EUR</option><option>USD</option><option>GBP</option><option>JPY</option><option>KRW</option><option>CAD</option><option>MXN</option></select><span class="currency-output" id="currencyOutput">—</span></div>
       </div>
-      <div class="site-tools-right"><div class="language-toggle" aria-label="Language"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="es">ES</button><button class="lang-btn" type="button" data-lang="fr">FR</button><button class="lang-btn" type="button" data-lang="ko">한국어</button></div></div>
+      <div class="site-tools-right"><div class="language-toggle" aria-label="Language"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="es">ES</button><button class="lang-btn" type="button" data-lang="fr">FR</button><button class="lang-btn" type="button" data-lang="ko">한국어</button><button class="lang-btn" type="button" data-lang="zh">中文</button><button class="lang-btn" type="button" data-lang="ja">日本語</button></div></div>
     </div>
 
     <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
@@ -2367,11 +2387,9 @@
           </div>
         </div>
 
-        <div class="hero-art" aria-label="MENOCLONE UFO logo visual">
+        <div class="hero-art hero-photo-art" aria-label="MENOCLONE Season Two Trucker Hat campaign visual">
           <div class="hero-ufo-wrap" id="heroUfoWrap">
-            <span class="hero-ufo-ring hero-ufo-ring-one" aria-hidden="true"></span>
-            <span class="hero-ufo-ring hero-ufo-ring-two" aria-hidden="true"></span>
-            <img class="hero-ufo-logo" src="mncufo.png" alt="MENOCLONE UFO logo" />
+            <img class="hero-feature-image" src="mnc-hero-trucker-mannequin.png" alt="MENOCLONE Season Two Trucker Hat displayed on a black constellation mannequin" />
           </div>
           <img class="hero-stamp" src="mncfinal.png" alt="MENOCLONE wordmark" />
         </div>
@@ -2568,10 +2586,10 @@
       <section class="video-section" id="film">
         <div class="video-section-head" data-reveal>
           <div>
-            <p data-i18n="filmKicker">MENOCLONE Motion</p>
-            <h2 data-i18n="filmTitle">Campaign Film</h2>
+            <p data-i18n="filmKicker">MENOCLONE Anime</p>
+            <h2 data-i18n="filmTitle">MNC Anime</h2>
           </div>
-          <p data-i18n="filmMeta">Season 2 / Visual Transmission</p>
+          <p data-i18n="filmMeta">Season 2 / Anime Transmission</p>
         </div>
 
         <div class="campaign-video" data-reveal>
@@ -2585,7 +2603,7 @@
 
           <div class="video-overlay">
             <div class="video-meta">
-              <strong data-i18n="filmName">Originality Has Origins</strong>
+              <strong data-i18n="filmName">MNC Anime</strong>
              <!-- <span data-i18n="filmDescription">Drop your MENOCLONE campaign film into the assets folder to replace this placeholder.</span> -->
             </div>
             <div class="video-controls-note" data-i18n="filmControls">Tap or click to play</div>
@@ -2979,7 +2997,7 @@
     }
 
     function currencyLocale(){
-      return ({en:'en-US',es:'es-ES',fr:'fr-FR',ko:'ko-KR'})[document.documentElement.lang] || 'en-US';
+      return ({en:'en-US',es:'es-ES',fr:'fr-FR',ko:'ko-KR',zh:'zh-CN',ja:'ja-JP'})[document.documentElement.lang] || 'en-US';
     }
 
     function formatCurrencyAmount(value,currency){
@@ -3114,8 +3132,8 @@
         enter:'Enter',origins:'Originality Has Origins.',enterCollection:'Enter Collection',selectedObjects:'Selected Objects',heroKicker:'Season 2 / New York City',heroDescription:'MENOCLONE is a lifestyle experiment at the intersection of fashion, art, design and technology.',shopMeta:'Season 2 / Limited Release',mobileSlogan:'Originality Has Origins / Season 2',storyBadge:'MENOCLONE Signal',storyTitle:'Different by design. Connected by origin.',storyParaOne:'The brand is built around one idea: originality does not appear from nowhere. Every new idea carries traces of what came before it.',storyParaTwo:'MENOCLONE turns those origins into objects, visuals and experiences that invite people to think differently about identity and design.',newsletterDescription:'Drop alerts, experiments, events and new objects from MENOCLONE.',emailPlaceholder:'EMAIL ADDRESS',subscribe:'Subscribe',
         joinSignal:'Join the signal.',worldClock:'World Clock',currency:'Currency',cartUpdate:'Cart Update',
         addedToCart:'Added to Cart',continueShopping:'Continue Shopping',viewBag:'View Bag',
-        filmKicker:'MENOCLONE Motion',filmTitle:'Campaign Film',filmMeta:'Season 2 / Visual Transmission',
-        filmName:'Originality Has Origins',filmDescription:'Drop your MENOCLONE campaign film into the assets folder to replace this placeholder.',filmControls:'Tap or click to play',
+        filmKicker:'MENOCLONE Anime',filmTitle:'MNC Anime',filmMeta:'Season 2 / Anime Transmission',
+        filmName:'MNC Anime',filmDescription:'Drop your MNC Anime video into the assets folder to replace this placeholder.',filmControls:'Tap or click to play',
         lookbookKicker:'MENOCLONE Editorial',lookbookTitle:'Lookbook',lookbookMeta:'Season 2 / Selected Looks',
         lookOne:'Look 01',lookOneMeta:'Trucker Hat / Front Portrait',lookTwo:'Look 02',lookTwoMeta:'Trucker Hat / Angle Study',lookThree:'Look 03',lookThreeMeta:'Trucker Hat / Fitting Study',lookFour:'Look 04',lookFourMeta:'Trucker Hat / Object Study',
         locatorKicker:'MENOCLONE Field System',locatorTitle:'MNC Art Locator',locatorMeta:'Find the signal',
@@ -3132,8 +3150,8 @@
         enter:'Entrar',origins:'La originalidad tiene orígenes.',enterCollection:'Ver colección',selectedObjects:'Objetos seleccionados',heroKicker:'Temporada 2 / Nueva York',heroDescription:'MENOCLONE es un experimento de estilo de vida en la intersección de la moda, el arte, el diseño y la tecnología.',shopMeta:'Temporada 2 / Edición limitada',mobileSlogan:'La originalidad tiene orígenes / Temporada 2',storyBadge:'Señal MENOCLONE',storyTitle:'Diferente por diseño. Conectado por el origen.',storyParaOne:'La marca se construye sobre una idea: la originalidad no aparece de la nada. Cada idea nueva lleva rastros de lo que vino antes.',storyParaTwo:'MENOCLONE convierte esos orígenes en objetos, imágenes y experiencias que invitan a pensar de otra manera sobre la identidad y el diseño.',newsletterDescription:'Alertas de lanzamientos, experimentos, eventos y nuevos objetos de MENOCLONE.',emailPlaceholder:'CORREO ELECTRÓNICO',subscribe:'Suscribirse',
         joinSignal:'Únete a la señal.',worldClock:'Reloj mundial',currency:'Moneda',cartUpdate:'Actualización del carrito',
         addedToCart:'Añadido al carrito',continueShopping:'Seguir comprando',viewBag:'Ver bolsa',
-        filmKicker:'Movimiento MENOCLONE',filmTitle:'Película de campaña',filmMeta:'Temporada 2 / Transmisión visual',
-        filmName:'La originalidad tiene orígenes',filmDescription:'Coloca tu video de campaña MENOCLONE en la carpeta assets para reemplazar este espacio.',filmControls:'Toca o haz clic para reproducir',
+        filmKicker:'Anime MENOCLONE',filmTitle:'MNC Anime',filmMeta:'Temporada 2 / Transmisión anime',
+        filmName:'MNC Anime',filmDescription:'Coloca tu video MNC Anime en la carpeta assets para reemplazar este espacio.',filmControls:'Toca o haz clic para reproducir',
         lookbookKicker:'Editorial MENOCLONE',lookbookTitle:'Lookbook',lookbookMeta:'Temporada 2 / Looks seleccionados',
         lookOne:'Look 01',lookOneMeta:'Gorra trucker / Retrato frontal',lookTwo:'Look 02',lookTwoMeta:'Gorra trucker / Estudio angular',lookThree:'Look 03',lookThreeMeta:'Gorra trucker / Prueba de ajuste',lookFour:'Look 04',lookFourMeta:'Gorra trucker / Estudio de objeto',
         locatorKicker:'Sistema de campo MENOCLONE',locatorTitle:'Localizador de arte MNC',locatorMeta:'Encuentra la señal',
@@ -3150,8 +3168,8 @@
         enter:'Entrer',origins:"L’originalité a des origines.",enterCollection:'Voir la collection',selectedObjects:'Objets sélectionnés',heroKicker:'Saison 2 / New York',heroDescription:'MENOCLONE est une expérience lifestyle à la croisée de la mode, de l’art, du design et de la technologie.',shopMeta:'Saison 2 / Édition limitée',mobileSlogan:"L’originalité a des origines / Saison 2",storyBadge:'Signal MENOCLONE',storyTitle:"Différent par conception. Relié par l’origine.",storyParaOne:"La marque repose sur une idée : l’originalité ne naît pas de nulle part. Chaque idée nouvelle porte les traces de ce qui l’a précédée.",storyParaTwo:'MENOCLONE transforme ces origines en objets, images et expériences qui invitent à repenser l’identité et le design.',newsletterDescription:'Alertes de sorties, expériences, événements et nouveaux objets MENOCLONE.',emailPlaceholder:'ADRESSE E-MAIL',subscribe:"S’abonner",
         joinSignal:'Rejoignez le signal.',worldClock:'Horloge mondiale',currency:'Devise',cartUpdate:'Mise à jour du panier',
         addedToCart:'Ajouté au panier',continueShopping:'Continuer vos achats',viewBag:'Voir le panier',
-        filmKicker:'MENOCLONE en mouvement',filmTitle:'Film de campagne',filmMeta:'Saison 2 / Transmission visuelle',
-        filmName:"L’originalité a des origines",filmDescription:'Placez votre film de campagne MENOCLONE dans le dossier assets pour remplacer cet espace.',filmControls:'Touchez ou cliquez pour lire',
+        filmKicker:'Anime MENOCLONE',filmTitle:'MNC Anime',filmMeta:'Saison 2 / Transmission anime',
+        filmName:'MNC Anime',filmDescription:'Placez votre vidéo MNC Anime dans le dossier assets pour remplacer cet espace.',filmControls:'Touchez ou cliquez pour lire',
         lookbookKicker:'Éditorial MENOCLONE',lookbookTitle:'Lookbook',lookbookMeta:'Saison 2 / Looks sélectionnés',
         lookOne:'Look 01',lookOneMeta:'Casquette trucker / Portrait de face',lookTwo:'Look 02',lookTwoMeta:"Casquette trucker / Étude d’angle",lookThree:'Look 03',lookThreeMeta:"Casquette trucker / Étude d’ajustement",lookFour:'Look 04',lookFourMeta:"Casquette trucker / Étude d’objet",
         locatorKicker:'Système de terrain MENOCLONE',locatorTitle:"Localisateur d’art MNC",locatorMeta:'Trouvez le signal',
@@ -3161,12 +3179,14 @@
         termsShippingHead:'Livraison',termsShipping:'Les délais d’expédition et de livraison peuvent varier selon la sortie et la destination.',termsReturnsHead:'Retours',termsReturns:'Les règles définitives de retour, échange et remboursement doivent être consultées avant le paiement et peuvent varier selon l’article.',
         termsCreativeHead:'Droits créatifs',termsCreative:'Les noms, logos, œuvres, graphismes de produits et contenus originaux de MENOCLONE restent une propriété créative protégée.',productDetails:'Détails du produit',priceRevealedCart:'Prix affiché après l’ajout au panier',addToCart:'Ajouter au panier',productZoomNote:"Touchez ou cliquez sur l’image pour l’agrandir.",returnMain:"Retour à l’accueil",comingSoon:'Bientôt disponible',quickAdd:'Ajout rapide',priceInCart:'Prix dans le panier',cartComingSoon:'{product} sera bientôt disponible.',cartAdded:'{product} a été ajouté à votre panier. Prix : {price}.',addedToBag:'{product} ajouté au panier'
       },
+      zh:{"shop":"商店","lookbook":"造型册","artLocator":"MNC 艺术定位器","world":"世界","termsNav":"条款","kickstarter":"Kickstarter","contact":"联系","enter":"进入","origins":"原创皆有源。","enterCollection":"进入系列","selectedObjects":"精选单品","heroKicker":"第二季 / 纽约","heroDescription":"MENOCLONE 是一个融合时尚、艺术、设计与科技的生活方式实验。","shopMeta":"第二季 / 限量发布","mobileSlogan":"原创皆有源 / 第二季","storyBadge":"MENOCLONE 信号","storyTitle":"因设计而不同，因起源而相连。","storyParaOne":"品牌建立在一个核心理念之上：原创并非凭空出现。每一个新想法都带着过去留下的痕迹。","storyParaTwo":"MENOCLONE 将这些起源转化为物件、视觉与体验，邀请人们以不同方式思考身份与设计。","newsletterDescription":"获取 MENOCLONE 发售提醒、实验项目、活动与全新作品信息。","emailPlaceholder":"电子邮箱","subscribe":"订阅","joinSignal":"加入信号。","worldClock":"世界时钟","currency":"货币","cartUpdate":"购物车更新","addedToCart":"已加入购物车","continueShopping":"继续购物","viewBag":"查看购物车","filmKicker":"MENOCLONE 动画","filmTitle":"MNC Anime","filmMeta":"第二季 / 动画传输","filmName":"MNC Anime","filmDescription":"将你的 MNC Anime 视频放入 assets 文件夹以替换此占位内容。","filmControls":"点击或轻触播放","lookbookKicker":"MENOCLONE 编辑企划","lookbookTitle":"造型册","lookbookMeta":"第二季 / 精选造型","lookOne":"造型 01","lookOneMeta":"卡车帽 / 正面肖像","lookTwo":"造型 02","lookTwoMeta":"卡车帽 / 角度研究","lookThree":"造型 03","lookThreeMeta":"卡车帽 / 佩戴研究","lookFour":"造型 04","lookFourMeta":"卡车帽 / 单品研究","locatorKicker":"MENOCLONE 城市系统","locatorTitle":"MNC 艺术定位器","locatorMeta":"寻找信号","locatorHeadline":"艺术存在于信息流之外。","locatorDescription":"MNC 艺术定位器是一张未来地图，用于寻找城市中的 MENOCLONE 实体发售、装置、贴纸、物件与创意信号。","locatorTagDrops":"发售","locatorTagInstallations":"装置","locatorTagObjects":"物件","termsKicker":"MENOCLONE 政策","termsTitle":"条款与条件","termsOrdersHead":"订单","termsOrders":"所有商品的供应情况均可能发生变化。限量商品可能在不另行通知的情况下售罄。","termsShippingHead":"配送","termsShipping":"发货和送达时间可能因商品发布批次与目的地而有所不同。","termsReturnsHead":"退换货","termsReturns":"最终退货、换货与退款政策应在结账前查看，并可能因商品而异。","termsCreativeHead":"创作权利","termsCreative":"MENOCLONE 名称、标志、艺术作品、商品图形及网站原创内容均属于受保护的创意资产。","productDetails":"商品详情","priceRevealedCart":"加入购物车后显示价格","addToCart":"加入购物车","productZoomNote":"点击或轻触图片可查看完整放大图。","returnMain":"返回主页面","comingSoon":"即将推出","quickAdd":"快速加入","priceInCart":"购物车内显示价格","cartComingSoon":"{product} 即将推出。","cartAdded":"{product} 已加入购物车。价格：{price}。","addedToBag":"{product} 已加入购物车"},
+      ja:{"shop":"ショップ","lookbook":"ルックブック","artLocator":"MNC アートロケーター","world":"ワールド","termsNav":"利用規約","kickstarter":"Kickstarter","contact":"お問い合わせ","enter":"入る","origins":"オリジナリティには起源がある。","enterCollection":"コレクションを見る","selectedObjects":"セレクトアイテム","heroKicker":"シーズン2 / ニューヨーク","heroDescription":"MENOCLONEは、ファッション、アート、デザイン、テクノロジーが交差するライフスタイル実験です。","shopMeta":"シーズン2 / 限定リリース","mobileSlogan":"オリジナリティには起源がある / シーズン2","storyBadge":"MENOCLONE シグナル","storyTitle":"デザインで異なり、起源でつながる。","storyParaOne":"このブランドは、オリジナリティは何もないところから突然生まれるものではない、という考えから始まっています。新しいアイデアには必ず、それ以前の痕跡が残っています。","storyParaTwo":"MENOCLONEはその起源をオブジェクト、ビジュアル、体験へと変換し、アイデンティティとデザインを新しい視点で捉えるきっかけをつくります。","newsletterDescription":"MENOCLONEのドロップ情報、実験、イベント、新作オブジェクトの最新情報を受け取る。","emailPlaceholder":"メールアドレス","subscribe":"登録","joinSignal":"シグナルに参加。","worldClock":"ワールドクロック","currency":"通貨","cartUpdate":"カート更新","addedToCart":"カートに追加しました","continueShopping":"買い物を続ける","viewBag":"カートを見る","filmKicker":"MENOCLONE アニメーション","filmTitle":"MNC Anime","filmMeta":"シーズン2 / アニメ・トランスミッション","filmName":"MNC Anime","filmDescription":"MNC Animeの動画をassetsフォルダに入れて、このプレースホルダーを置き換えてください。","filmControls":"タップまたはクリックして再生","lookbookKicker":"MENOCLONE エディトリアル","lookbookTitle":"ルックブック","lookbookMeta":"シーズン2 / セレクトルック","lookOne":"ルック 01","lookOneMeta":"トラッカーハット / フロントポートレート","lookTwo":"ルック 02","lookTwoMeta":"トラッカーハット / アングルスタディ","lookThree":"ルック 03","lookThreeMeta":"トラッカーハット / フィッティングスタディ","lookFour":"ルック 04","lookFourMeta":"トラッカーハット / オブジェクトスタディ","locatorKicker":"MENOCLONE フィールドシステム","locatorTitle":"MNC アートロケーター","locatorMeta":"シグナルを探す","locatorHeadline":"アートはフィードの外にも存在する。","locatorDescription":"MNCアートロケーターは、街に配置されたMENOCLONEのリアルドロップ、インスタレーション、ステッカー、オブジェクト、クリエイティブシグナルを探すための未来型マップです。","locatorTagDrops":"ドロップ","locatorTagInstallations":"インスタレーション","locatorTagObjects":"オブジェクト","termsKicker":"MENOCLONE ポリシー","termsTitle":"利用規約","termsOrdersHead":"注文","termsOrders":"商品の在庫状況は変更される場合があります。限定商品は予告なく完売することがあります。","termsShippingHead":"配送","termsShipping":"発送および配送時期は、リリース内容や配送先によって異なる場合があります。","termsReturnsHead":"返品","termsReturns":"最終的な返品・交換・返金ポリシーは、購入前に確認してください。商品によって内容が異なる場合があります。","termsCreativeHead":"クリエイティブ権利","termsCreative":"MENOCLONEの名称、ロゴ、アートワーク、商品グラフィック、サイト上のオリジナルコンテンツは保護されたクリエイティブ資産です。","productDetails":"商品詳細","priceRevealedCart":"カートに追加すると価格が表示されます","addToCart":"カートに追加","productZoomNote":"画像をタップまたはクリックすると拡大表示できます。","returnMain":"メイン画面に戻る","comingSoon":"近日公開","quickAdd":"クイック追加","priceInCart":"価格はカートで表示","cartComingSoon":"{product} は近日公開です。","cartAdded":"{product} をカートに追加しました。価格：{price}。","addedToBag":"{product} をカートに追加しました"},
       ko:{
         shop:'스토어',lookbook:'룩북',artLocator:'MNC 아트 로케이터',world:'월드',termsNav:'이용 약관',kickstarter:'킥스타터',contact:'문의',
         enter:'입장',origins:'독창성에는 기원이 있다.',enterCollection:'컬렉션 보기',selectedObjects:'셀렉티드 오브젝트',heroKicker:'시즌 2 / 뉴욕',heroDescription:'MENOCLONE은 패션, 예술, 디자인과 기술이 만나는 지점에서 펼쳐지는 라이프스타일 실험입니다.',shopMeta:'시즌 2 / 한정 발매',mobileSlogan:'독창성에는 기원이 있다 / 시즌 2',storyBadge:'MENOCLONE 시그널',storyTitle:'디자인부터 다르게. 기원으로 연결되다.',storyParaOne:'이 브랜드는 독창성이 아무것도 없는 곳에서 나타나지 않는다는 생각에서 출발합니다. 모든 새로운 아이디어에는 이전의 흔적이 담겨 있습니다.',storyParaTwo:'MENOCLONE은 그 기원을 오브젝트, 비주얼과 경험으로 바꾸어 정체성과 디자인을 새롭게 바라보도록 초대합니다.',newsletterDescription:'MENOCLONE의 드롭 알림, 실험, 이벤트와 새로운 오브젝트 소식을 받아보세요.',emailPlaceholder:'이메일 주소',subscribe:'구독하기',
         joinSignal:'시그널에 참여하세요.',worldClock:'세계 시계',currency:'통화',cartUpdate:'장바구니 업데이트',
         addedToCart:'장바구니에 추가됨',continueShopping:'쇼핑 계속하기',viewBag:'장바구니 보기',
-        filmKicker:'MENOCLONE 모션',filmTitle:'캠페인 필름',filmMeta:'시즌 2 / 비주얼 트랜스미션',filmName:'독창성에는 기원이 있다',filmDescription:'MENOCLONE 캠페인 영상을 assets 폴더에 넣어 이 공간을 교체하세요.',filmControls:'탭하거나 클릭하여 재생',
+        filmKicker:'MENOCLONE 애니메이션',filmTitle:'MNC Anime',filmMeta:'시즌 2 / 애니메이션 트랜스미션',filmName:'MNC Anime',filmDescription:'MNC Anime 영상을 assets 폴더에 넣어 이 공간을 교체하세요.',filmControls:'탭하거나 클릭하여 재생',
         lookbookKicker:'MENOCLONE 에디토리얼',lookbookTitle:'룩북',lookbookMeta:'시즌 2 / 셀렉티드 룩',
         lookOne:'룩 01',lookOneMeta:'트러커 햇 / 정면 포트레이트',lookTwo:'룩 02',lookTwoMeta:'트러커 햇 / 앵글 스터디',lookThree:'룩 03',lookThreeMeta:'트러커 햇 / 피팅 스터디',lookFour:'룩 04',lookFourMeta:'트러커 햇 / 오브젝트 스터디',
         locatorKicker:'MENOCLONE 필드 시스템',locatorTitle:'MNC 아트 로케이터',locatorMeta:'시그널 찾기',locatorHeadline:'예술은 피드 밖에도 존재합니다.',locatorDescription:'MNC 아트 로케이터는 도시 곳곳의 MENOCLONE 오프라인 드롭, 설치 작품, 스티커, 오브젝트와 크리에이티브 시그널을 찾는 미래형 지도입니다.',
@@ -3174,13 +3194,13 @@
       }
     };
     const productTranslations={
-      'MENOCLONE Season Two Boxed Tee':{fr:{name:'T-shirt boxy MENOCLONE Saison 2',description:'T-shirt boxy MENOCLONE Saison 2. Coupe structurée en tissu épais, identité Saison 2 et graphismes UFO signature.'},ko:{name:'MENOCLONE 시즌 2 박스 티셔츠',description:'두꺼운 원단과 구조적인 스트리트웨어 실루엣, 시즌 2 브랜딩과 시그니처 UFO 그래픽을 갖춘 박스 핏 티셔츠입니다.'}},
-      'MENOCLONE Season Two Hoodie':{fr:{name:'Hoodie MENOCLONE Saison 2',description:'Hoodie épais à la coupe décontractée, détails UFO et présentation superposée de la Saison 2.'},ko:{name:'MENOCLONE 시즌 2 후디',description:'헤비 GSM 소재, 여유로운 실루엣, UFO 아이덴티티 디테일과 레이어드 시즌 2 구성이 특징인 후디입니다.'}},
-      'MENOCLONE Artful UFO Hoodie':{fr:{name:'Hoodie artistique UFO MENOCLONE',description:'Le wordmark MENOCLONE rencontre une illustration UFO surdimensionnée et un graphisme dorsal audacieux.'},ko:{name:'MENOCLONE 아트풀 UFO 후디',description:'MENOCLONE 워드마크와 오버사이즈 UFO 아트워크, 브랜드 비주얼을 중심으로 한 강렬한 백 그래픽을 담은 후디입니다.'}},
-      'MENOCLONE Crewneck':{fr:{name:'Sweat col rond MENOCLONE',description:'Sweat épais avec marquage frontal épuré et graphismes UFO pour un uniforme minimal de la Saison 2.'},ko:{name:'MENOCLONE 크루넥',description:'깔끔한 전면 브랜딩과 UFO 그래픽을 적용한 헤비웨이트 시즌 2 크루넥입니다.'}},
-      'MENOCLONE Season Two 5 Panel Hat':{fr:{name:'Casquette 5 panneaux MENOCLONE Saison 2',description:'Silhouette cinq panneaux épurée avec wordmark MENOCLONE et identité UFO. Bientôt disponible.'},ko:{name:'MENOCLONE 시즌 2 5패널 햇',description:'MENOCLONE 워드마크와 UFO 아이덴티티를 담은 깔끔한 5패널 실루엣입니다. 출시 예정.'}},
-      'MENOCLONE Season Two Trucker Hats':{fr:{name:'Casquette trucker MENOCLONE Saison 2',description:'Devant noir structuré, wordmark MENOCLONE blanc et construction en mesh respirant.'},ko:{name:'MENOCLONE 시즌 2 트러커 햇',description:'구조적인 블랙 전면, 화이트 MENOCLONE 워드마크와 통기성 메시 구조가 특징입니다.'}},
-      'MENOCLONE Sticker Pack (3 pack)':{fr:{name:'Pack de 3 stickers MENOCLONE',description:'Trois stickers MNC et UFO à collectionner pour ordinateurs, coques, carnets, planches et autres supports créatifs.'},ko:{name:'MENOCLONE 스티커 팩 3종',description:'노트북, 케이스, 노트, 보드 등 다양한 곳에 붙일 수 있는 MNC 및 UFO 컬렉터 스티커 3종입니다.'}}
+      'MENOCLONE Season Two Boxed Tee':{fr:{name:'T-shirt boxy MENOCLONE Saison 2',description:'T-shirt boxy MENOCLONE Saison 2. Coupe structurée en tissu épais, identité Saison 2 et graphismes UFO signature.'},zh:{"name":"MENOCLONE 第二季 Boxy T恤","description":"MENOCLONE 第二季 Boxy T恤。采用重磅面料与结构感宽松版型，结合第二季品牌标识和标志性 UFO 图形。"},ja:{"name":"MENOCLONE シーズン2 ボックスTシャツ","description":"MENOCLONE シーズン2 ボックスTシャツ。ヘビーウェイト素材と構築的なボックスシルエットに、シーズン2のブランディングとシグネチャーUFOグラフィックを組み合わせています。"},ko:{name:'MENOCLONE 시즌 2 박스 티셔츠',description:'두꺼운 원단과 구조적인 스트리트웨어 실루엣, 시즌 2 브랜딩과 시그니처 UFO 그래픽을 갖춘 박스 핏 티셔츠입니다.'}},
+      'MENOCLONE Season Two Hoodie':{fr:{name:'Hoodie MENOCLONE Saison 2',description:'Hoodie épais à la coupe décontractée, détails UFO et présentation superposée de la Saison 2.'},zh:{"name":"MENOCLONE 第二季连帽衫","description":"MENOCLONE 第二季连帽衫。采用重磅 GSM 面料、宽松轮廓、UFO 识别细节与第二季层次化视觉设计。"},ja:{"name":"MENOCLONE シーズン2 フーディー","description":"MENOCLONE シーズン2 フーディー。ヘビーGSM素材、リラックスシルエット、UFOアイデンティティのディテールとシーズン2らしいレイヤード表現が特徴です。"},ko:{name:'MENOCLONE 시즌 2 후디',description:'헤비 GSM 소재, 여유로운 실루엣, UFO 아이덴티티 디테일과 레이어드 시즌 2 구성이 특징인 후디입니다.'}},
+      'MENOCLONE Artful UFO Hoodie':{fr:{name:'Hoodie artistique UFO MENOCLONE',description:'Le wordmark MENOCLONE rencontre une illustration UFO surdimensionnée et un graphisme dorsal audacieux.'},zh:{"name":"MENOCLONE Artful UFO 连帽衫","description":"MENOCLONE Artful UFO 连帽衫。将 MENOCLONE 字标与大幅 UFO 艺术图形和醒目的背部视觉结合，突出品牌的创意身份。"},ja:{"name":"MENOCLONE Artful UFO フーディー","description":"MENOCLONE Artful UFO フーディー。MENOCLONEワードマークに大型UFOアートワークと大胆なバックグラフィックを組み合わせた、ブランドのビジュアルアイデンティティを象徴する一着です。"},ko:{name:'MENOCLONE 아트풀 UFO 후디',description:'MENOCLONE 워드마크와 오버사이즈 UFO 아트워크, 브랜드 비주얼을 중심으로 한 강렬한 백 그래픽을 담은 후디입니다.'}},
+      'MENOCLONE Crewneck':{fr:{name:'Sweat col rond MENOCLONE',description:'Sweat épais avec marquage frontal épuré et graphismes UFO pour un uniforme minimal de la Saison 2.'},zh:{"name":"MENOCLONE 圆领卫衣","description":"重磅 MENOCLONE 圆领卫衣，以简洁前胸品牌标识和 UFO 图形打造第二季的极简制服感。"},ja:{"name":"MENOCLONE クルーネックスウェット","description":"クリーンなフロントブランディングとUFOグラフィックを備えたヘビーウェイトのMENOCLONEクルーネック。シーズン2のミニマルなユニフォーム感を表現しています。"},ko:{name:'MENOCLONE 크루넥',description:'깔끔한 전면 브랜딩과 UFO 그래픽을 적용한 헤비웨이트 시즌 2 크루넥입니다.'}},
+      'MENOCLONE Season Two 5 Panel Hat':{fr:{name:'Casquette 5 panneaux MENOCLONE Saison 2',description:'Silhouette cinq panneaux épurée avec wordmark MENOCLONE et identité UFO. Bientôt disponible.'},zh:{"name":"MENOCLONE 第二季 5片帽","description":"MENOCLONE 第二季 5片帽。简洁的五片式轮廓搭配 MENOCLONE 字标和 UFO 识别元素。即将推出。"},ja:{"name":"MENOCLONE シーズン2 5パネルハット","description":"MENOCLONE シーズン2 5パネルハット。クリーンな5パネルシルエットにMENOCLONEワードマークとUFOアイデンティティを配置。近日公開。"},ko:{name:'MENOCLONE 시즌 2 5패널 햇',description:'MENOCLONE 워드마크와 UFO 아이덴티티를 담은 깔끔한 5패널 실루엣입니다. 출시 예정.'}},
+      'MENOCLONE Season Two Trucker Hats':{fr:{name:'Casquette trucker MENOCLONE Saison 2',description:'Devant noir structuré, wordmark MENOCLONE blanc et construction en mesh respirant.'},zh:{"name":"MENOCLONE 第二季卡车帽","description":"MENOCLONE 第二季卡车帽。结构感黑色前片、白色 MENOCLONE 字标与透气网眼后片组合。"},ja:{"name":"MENOCLONE シーズン2 トラッカーハット","description":"MENOCLONE シーズン2 トラッカーハット。構築的なブラックフロント、ホワイトのMENOCLONEワードマーク、通気性のあるメッシュバックを組み合わせています。"},ko:{name:'MENOCLONE 시즌 2 트러커 햇',description:'구조적인 블랙 전면, 화이트 MENOCLONE 워드마크와 통기성 메시 구조가 특징입니다.'}},
+      'MENOCLONE Sticker Pack (3 pack)':{fr:{name:'Pack de 3 stickers MENOCLONE',description:'Trois stickers MNC et UFO à collectionner pour ordinateurs, coques, carnets, planches et autres supports créatifs.'},zh:{"name":"MENOCLONE 贴纸套装（3枚）","description":"MENOCLONE 贴纸套装（3枚）。包含三枚可收藏的 MNC 与 UFO 贴纸，适用于笔记本电脑、保护壳、笔记本、滑板和其他创意表面。"},ja:{"name":"MENOCLONE ステッカーパック（3枚）","description":"MENOCLONE ステッカーパック（3枚）。ノートPC、ケース、ノート、ボードなどに使えるMNCとUFOのコレクタブルステッカー3枚セットです。"},ko:{name:'MENOCLONE 스티커 팩 3종',description:'노트북, 케이스, 노트, 보드 등 다양한 곳에 붙일 수 있는 MNC 및 UFO 컬렉터 스티커 3종입니다.'}}
     };
     function currentTranslation(){return translations[document.documentElement.lang] || translations.en}
     function localizedProductName(card){const base=card?.dataset?.name || 'MENOCLONE Product';return productTranslations[base]?.[document.documentElement.lang]?.name || base}
