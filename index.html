@@ -1310,6 +1310,208 @@
     }
 
 
+
+    /* ---------- V23 MENOCLONE SKATE ---------- */
+    .skate-section{background:radial-gradient(circle at 85% 10%,rgba(232,255,71,.08),transparent 22%),#0d0d0d}
+    .skate-intro-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px;margin-bottom:12px}
+    .skate-team-card,.skate-manifesto{min-height:360px;border:1px solid var(--line);border-radius:var(--radius);background:#111;padding:28px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+    .skate-team-card{background:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),#0e0e0e;background-size:28px 28px,28px 28px,auto}
+    .skate-team-mark{display:flex;align-items:center;gap:14px}.skate-team-mark img{width:72px;height:auto}
+    .skate-team-mark span,.skate-product-copy span{color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.15em}
+    .skate-team-card h3{margin:0;max-width:9ch;font-size:clamp(38px,6vw,78px);line-height:.9;letter-spacing:-.05em;text-transform:uppercase}
+    .skate-team-card p,.skate-manifesto p{margin:18px 0 0;color:#aaa9a3;font-size:13px;line-height:1.7}
+    .skate-team-status{margin-top:24px;color:var(--accent);font-size:9px;text-transform:uppercase;letter-spacing:.14em}
+    .skate-manifesto{position:relative;background:linear-gradient(145deg,rgba(255,255,255,.035),transparent 48%),#141414}
+    .skate-manifesto-number{position:absolute;right:18px;top:8px;color:rgba(255,255,255,.045);font-size:clamp(100px,15vw,220px);font-weight:700;line-height:1;pointer-events:none}
+    .skate-manifesto h3{position:relative;z-index:2;margin:0;max-width:14ch;font-size:clamp(30px,4.5vw,58px);line-height:.96;letter-spacing:-.04em;text-transform:uppercase}
+    .skate-categories{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:2}.skate-categories span{padding:8px 11px;border:1px solid rgba(255,255,255,.13);border-radius:999px;color:#aaa9a3;font-size:9px;text-transform:uppercase;letter-spacing:.12em}
+    .skate-products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .skate-product-card{min-height:380px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#0e0e0e;transition:transform .4s var(--ease),border-color .3s ease}.skate-product-card:hover{transform:translateY(-6px);border-color:rgba(232,255,71,.36)}
+    .skate-product-visual{height:250px;display:grid;place-items:center;border-bottom:1px solid rgba(255,255,255,.09);background:radial-gradient(circle at 50% 50%,rgba(232,255,71,.07),transparent 30%),linear-gradient(140deg,#181818,#0b0b0b)}
+    .skate-placeholder-deck{width:76px;height:205px;border:2px solid rgba(255,255,255,.78);border-radius:36px;transform:rotate(10deg)}
+    .skate-placeholder-tape{width:160px;height:92px;border:1px solid rgba(255,255,255,.52);transform:rotate(-8deg);background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 3px,transparent 3px 7px),#151515}
+    .skate-placeholder-gear{width:150px;height:150px;border:2px solid rgba(255,255,255,.55);border-radius:50%;display:grid;place-items:center;font-weight:700;letter-spacing:.12em}
+    .skate-product-copy{padding:18px}.skate-product-copy h4{margin:8px 0 0;font-size:20px;text-transform:uppercase}.skate-product-copy p{margin:12px 0 0;color:#8f8f89;font-size:11px;line-height:1.6}
+    @media(max-width:900px){.skate-intro-grid{grid-template-columns:1fr}.skate-products{grid-template-columns:1fr 1fr}.skate-product-card:last-child{grid-column:1/-1}}
+    @media(max-width:620px){.skate-products{grid-template-columns:1fr}.skate-product-card:last-child{grid-column:auto}.skate-team-card,.skate-manifesto{min-height:320px;padding:22px}}
+
+
+    /* ---------- V24 PNG IMAGE SLOTS / INVADING SOON ---------- */
+    .invading-soon-grid{
+      grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+
+    .invading-soon-grid .invading-soon-card{
+      min-height:0;
+      aspect-ratio:1 / 1;
+      background:#0d0d0d;
+      border:1px solid var(--line);
+    }
+
+    .invading-soon-grid .invading-soon-card img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      background:#0d0d0d;
+      transform:none !important;
+      filter:none !important;
+    }
+
+    /* No text/image overlay in Invading Soon. */
+    .invading-soon-grid .editorial-label,
+    .invading-soon-grid .invading-soon-card::after{
+      display:none !important;
+    }
+
+    .skate-team-photo{
+      width:100%;
+      aspect-ratio:16 / 9;
+      margin:18px 0;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background:#0b0b0b;
+    }
+
+    .skate-team-photo img,
+    .skate-product-image{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:contain;
+      object-position:center;
+      background:#0b0b0b;
+      transform:none !important;
+      filter:none !important;
+    }
+
+    .skate-product-visual{
+      padding:0;
+      overflow:hidden;
+    }
+
+    /* Legacy CSS shapes are no longer used. */
+    .skate-placeholder-deck,
+    .skate-placeholder-tape,
+    .skate-placeholder-gear{
+      display:none !important;
+    }
+
+    @media(max-width:760px){
+      .invading-soon-grid{
+        grid-template-columns:1fr;
+      }
+
+      .invading-soon-grid .invading-soon-card{
+        width:100%;
+        min-height:0;
+        aspect-ratio:1 / 1;
+      }
+
+      .invading-soon-grid .invading-soon-card img{
+        width:100%;
+        height:100%;
+        object-fit:contain;
+        object-position:center;
+      }
+
+      .skate-team-photo{
+        aspect-ratio:4 / 3;
+      }
+
+      .skate-product-visual{
+        height:auto !important;
+        aspect-ratio:1 / 1;
+      }
+
+      .skate-product-image{
+        width:100%;
+        height:100%;
+        object-fit:contain;
+        object-position:center;
+      }
+    }
+
+
+    /* ---------- V25 INVADING SOON + SKATE ROLLOUT ---------- */
+
+    /* Keep all Invading Soon artwork completely visible.
+       No dark/text overlay is placed over these images. */
+    .invading-soon-grid .invading-soon-card{
+      min-height:0;
+      aspect-ratio:1 / 1;
+      background:#090909;
+    }
+
+    .invading-soon-grid .invading-soon-card img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      background:#090909;
+      transform:none !important;
+      filter:none !important;
+    }
+
+    .invading-soon-grid .invading-soon-card::after,
+    .invading-soon-grid .editorial-label{
+      display:none !important;
+    }
+
+    .skate-rollout{
+      width:100%;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#090909;
+    }
+
+    .skate-rollout img{
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:none;
+      object-fit:contain;
+      object-position:center;
+      background:#090909;
+      transform:none !important;
+      filter:none !important;
+    }
+
+    @media(max-width:760px){
+      .invading-soon-grid{
+        grid-template-columns:1fr !important;
+      }
+
+      .invading-soon-grid .invading-soon-card{
+        width:100%;
+        min-height:0;
+        aspect-ratio:auto;
+      }
+
+      .invading-soon-grid .invading-soon-card img{
+        width:100%;
+        height:auto;
+        max-height:none;
+        object-fit:contain;
+      }
+
+      .skate-rollout{
+        width:100%;
+        border-radius:14px;
+      }
+
+      .skate-rollout img{
+        width:100%;
+        height:auto;
+        max-height:none;
+        object-fit:contain;
+      }
+    }
+
     /* ---------- V22 BAG / CART ---------- */
     .bag-overlay{
       position:fixed;
@@ -2675,11 +2877,12 @@
     <header>
       <nav class="desktop-nav" aria-label="Primary">
         <a href="#shop" data-i18n="shop">Shop</a>
-        <a href="#lookbook" data-i18n="lookbook">Lookbook</a>
+        <a href="#invading-soon" data-i18n="lookbook">Invading Soon</a>
+        <a href="#mnc-skate" data-i18n="skateNav">MENOCLONE Skate</a>
         <a href="#art-locator" data-i18n="artLocator">MNC Art Locator</a>
         <a href="#story" data-i18n="world">World</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
-        <a href="https://www.kickstarter.com/" target="_blank" rel="noopener noreferrer" data-i18n="kickstarter">Kickstarter</a>
+        <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
         <a href="#contact" data-i18n="contact">Contact</a>
       </nav>
 
@@ -2704,11 +2907,12 @@
     <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
       <nav class="mobile-nav" aria-label="Mobile">
         <a href="#shop" data-i18n="shop">Shop</a>
-        <a href="#lookbook" data-i18n="lookbook">Lookbook</a>
+        <a href="#invading-soon" data-i18n="lookbook">Invading Soon</a>
+        <a href="#mnc-skate" data-i18n="skateNav">MENOCLONE Skate</a>
         <a href="#art-locator" data-i18n="artLocator">MNC Art Locator</a>
         <a href="#story" data-i18n="world">World</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
-        <a href="https://www.kickstarter.com/" target="_blank" rel="noopener noreferrer" data-i18n="kickstarter">Kickstarter</a>
+        <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
         <a href="#contact" data-i18n="contact">Contact</a>
       </nav>
       <div class="mobile-meta">
@@ -2896,39 +3100,60 @@
         </div>
       </section>
 
-      <section class="section" id="lookbook">
+      <section class="section" id="invading-soon">
         <div class="section-heading" data-reveal>
           <div>
-            <p class="eyebrow" data-i18n="lookbookKicker">MENOCLONE Editorial</p>
-            <h2 data-i18n="lookbookTitle">Lookbook</h2>
+            <p class="eyebrow" data-i18n="lookbookKicker">MENOCLONE Preview</p>
+            <h2 data-i18n="lookbookTitle">Invading Soon</h2>
           </div>
-          <p data-i18n="lookbookMeta">Season 2 / Selected Looks</p>
+          <p data-i18n="lookbookMeta">Season 2 / Incoming Visuals</p>
         </div>
 
-        <div class="editorial-grid lookbook-uniform-grid">
-          <article class="editorial-card" data-reveal>
-            <img src="mnc-heavy-tee.png" alt="MENOCLONE Season Two Boxed Tee look" loading="lazy" />
-            <div class="editorial-label">
-              <strong data-i18n="editorialLookOne">Look 01</strong>
-              <span data-i18n="editorialLookOneMeta">Season Two Boxed Tee</span>
-            </div>
+        <div class="editorial-grid lookbook-uniform-grid invading-soon-grid">
+          <article class="editorial-card invading-soon-card" data-reveal>
+            <img src="invading-soon-01.png" alt="MENOCLONE Mental F**K artwork from Invading Soon" loading="lazy" />
           </article>
 
-          <article class="editorial-card" data-reveal>
-            <img src="mnc-ufo-hoodie.png" alt="MENOCLONE Season Two Hoodie look" loading="lazy" />
-            <div class="editorial-label">
-              <strong data-i18n="editorialLookTwo">Look 02</strong>
-              <span data-i18n="editorialLookTwoMeta">Season Two Hoodie</span>
-            </div>
+          <article class="editorial-card invading-soon-card" data-reveal>
+            <img src="invading-soon-02.png" alt="MENOCLONE Staten Island Ferry UFO artwork from Invading Soon" loading="lazy" />
           </article>
 
-          <article class="editorial-card" data-reveal>
-            <img src="mnc-artufo-hoodie.png" alt="MENOCLONE Artful UFO Hoodie look" loading="lazy" />
-            <div class="editorial-label">
-              <strong data-i18n="editorialLookThree">Look 03</strong>
-              <span data-i18n="editorialLookThreeMeta">Artful UFO Hoodie</span>
-            </div>
+          <article class="editorial-card invading-soon-card" data-reveal>
+            <img src="invading-soon-03.png" alt="MENOCLONE skateboard deck rollout advertisement" loading="lazy" />
           </article>
+        </div>
+      </section>
+
+      <section class="section skate-section" id="mnc-skate">
+        <div class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow" data-i18n="skateKicker">MENOCLONE Skate Division</p>
+            <h2 data-i18n="skateTitle">MENOCLONE Skate</h2>
+          </div>
+          <p data-i18n="skateMeta">Team / Decks / Grip / Objects</p>
+        </div>
+
+        <div class="skate-intro-grid">
+          <article class="skate-team-card" data-reveal>
+            <div class="skate-team-mark"><img src="mncufo.png" alt="MENOCLONE UFO logo"><span data-i18n="skateTeamLabel">MNC Skate Team</span></div>
+            <div class="skate-team-photo">
+              <img src="mncufo.png" alt="MENOCLONE Skate Team image" loading="lazy" />
+            </div>
+            <div><h3 data-i18n="skateTeamTitle">Built for the streets.</h3><p data-i18n="skateTeamDescription">MENOCLONE Skate is the movement side of the brand — a platform for riders, street sessions, creative edits, collaborations and the objects that keep the team moving.</p><div class="skate-team-status" data-i18n="skateTeamStatus">Team roster coming soon</div></div>
+          </article>
+          <article class="skate-manifesto" data-reveal>
+            <div class="skate-manifesto-number">01</div>
+            <div><p class="eyebrow" data-i18n="skateManifestoKicker">Originality in motion</p><h3 data-i18n="skateManifestoTitle">Skateboarding is another canvas.</h3><p data-i18n="skateManifestoDescription">Deck graphics, grip, hardware and skate films become another way for MENOCLONE to combine art, design, fashion and street culture.</p></div>
+            <div class="skate-categories"><span data-i18n="skateTagTeam">Team</span><span data-i18n="skateTagDecks">Decks</span><span data-i18n="skateTagGrip">Grip Tape</span><span data-i18n="skateTagAccessories">Accessories</span><span data-i18n="skateTagFilms">Skate Films</span></div>
+          </article>
+        </div>
+
+        <div class="skate-rollout">
+          <img
+            src="mnc-skate-rollout-ad.png"
+            alt="MENOCLONE new skateboard deck Invading the Streets Soon advertisement"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -3310,7 +3535,7 @@
         removed:'Removed from bag',
         checkoutNotice:'Your order is ready for checkout. Connect a checkout/payment endpoint to process the final order.',
         item:'item',items:'items'
-      },
+      ,skateNav:'MENOCLONE Skate',skateKicker:'MENOCLONE Skate Division',skateTitle:'MENOCLONE Skate',skateMeta:'Team / Decks / Grip / Objects',skateTeamLabel:'MNC Skate Team',skateTeamTitle:'Built for the streets.',skateTeamDescription:'MENOCLONE Skate is the movement side of the brand — a platform for riders, street sessions, creative edits, collaborations and the objects that keep the team moving.',skateTeamStatus:'Team roster coming soon',skateManifestoKicker:'Originality in motion',skateManifestoTitle:'Skateboarding is another canvas.',skateManifestoDescription:'Deck graphics, grip, hardware and skate films become another way for MENOCLONE to combine art, design, fashion and street culture.',skateTagTeam:'Team',skateTagDecks:'Decks',skateTagGrip:'Grip Tape',skateTagAccessories:'Accessories',skateTagFilms:'Skate Films',skateProductLabel:'MNC Skate Product',skateDeckTitle:'Skateboard Deck',skateDeckDescription:'Future MENOCLONE deck drops, graphic editions and team boards will live here.',skateGripTitle:'Grip Tape',skateGripDescription:'Custom MENOCLONE grip graphics, limited patterns and skate-ready surface designs.',skateGearTitle:'Skate Accessories',skateGearDescription:'Hardware, wheels, stickers, tools and future MENOCLONE Skate objects.'},
       es:{
         kicker:'Pedido MENOCLONE',title:'Bolsa / Carrito',empty:'Tu bolsa está vacía.',
         subtotal:'Subtotal',remove:'Eliminar',quantity:'Cant.',submit:'Enviar pedido',
@@ -3319,7 +3544,7 @@
         removed:'Eliminado de la bolsa',
         checkoutNotice:'Tu pedido está listo para el pago. Conecta un sistema de checkout/pago para procesar el pedido final.',
         item:'artículo',items:'artículos'
-      },
+      ,skateNav:'MENOCLONE Skate',skateKicker:'División Skate MENOCLONE',skateTitle:'MENOCLONE Skate',skateMeta:'Equipo / Tablas / Grip / Objetos',skateTeamLabel:'Equipo MNC Skate',skateTeamTitle:'Hecho para las calles.',skateTeamDescription:'MENOCLONE Skate es el lado en movimiento de la marca: riders, sesiones callejeras, edits creativos, colaboraciones y objetos para el equipo.',skateTeamStatus:'Roster del equipo próximamente',skateManifestoKicker:'Originalidad en movimiento',skateManifestoTitle:'El skateboarding es otro lienzo.',skateManifestoDescription:'Gráficos de tablas, grip, hardware y videos de skate se convierten en otra forma de unir arte, diseño, moda y cultura callejera.',skateTagTeam:'Equipo',skateTagDecks:'Tablas',skateTagGrip:'Grip Tape',skateTagAccessories:'Accesorios',skateTagFilms:'Videos de skate',skateProductLabel:'Producto MNC Skate',skateDeckTitle:'Tabla de skate',skateDeckDescription:'Aquí vivirán futuros drops de tablas MENOCLONE, ediciones gráficas y tablas del equipo.',skateGripTitle:'Grip Tape',skateGripDescription:'Gráficos de grip MENOCLONE, patrones limitados y superficies listas para patinar.',skateGearTitle:'Accesorios de skate',skateGearDescription:'Hardware, ruedas, stickers, herramientas y futuros objetos MENOCLONE Skate.'},
       fr:{
         kicker:'Commande MENOCLONE',title:'Panier',empty:'Votre panier est vide.',
         subtotal:'Sous-total',remove:'Retirer',quantity:'Qté',submit:'Envoyer la commande',
@@ -3337,7 +3562,7 @@
         removed:'장바구니에서 삭제됨',
         checkoutNotice:'주문 검토가 완료되었습니다. 실제 결제를 처리하려면 체크아웃/결제 엔드포인트를 연결하세요.',
         item:'개 상품',items:'개 상품'
-      },
+      ,skateNav:'MENOCLONE Skate',skateKicker:'Division Skate MENOCLONE',skateTitle:'MENOCLONE Skate',skateMeta:'Team / Decks / Grip / Objets',skateTeamLabel:'Team MNC Skate',skateTeamTitle:'Conçu pour la rue.',skateTeamDescription:'MENOCLONE Skate est la dimension mouvement de la marque : riders, sessions street, edits créatifs, collaborations et objets pour l’équipe.',skateTeamStatus:'Roster de l’équipe bientôt disponible',skateManifestoKicker:'Originalité en mouvement',skateManifestoTitle:'Le skateboard est une autre toile.',skateManifestoDescription:'Graphismes de decks, grip, hardware et films de skate deviennent une autre façon d’unir art, design, mode et culture street.',skateTagTeam:'Team',skateTagDecks:'Decks',skateTagGrip:'Grip Tape',skateTagAccessories:'Accessoires',skateTagFilms:'Films de skate',skateProductLabel:'Produit MNC Skate',skateDeckTitle:'Deck de skateboard',skateDeckDescription:'Les futurs drops de decks MENOCLONE, éditions graphiques et boards du team seront présentés ici.',skateGripTitle:'Grip Tape',skateGripDescription:'Graphismes de grip MENOCLONE, motifs limités et surfaces prêtes à skater.',skateGearTitle:'Accessoires de skate',skateGearDescription:'Hardware, roues, stickers, outils et futurs objets MENOCLONE Skate.'},
       zh:{
         kicker:'MENOCLONE 订单',title:'购物袋 / 购物车',empty:'购物车为空。',
         subtotal:'小计',remove:'移除',quantity:'数量',submit:'提交订单',
@@ -3346,7 +3571,7 @@
         removed:'已从购物车移除',
         checkoutNotice:'订单已准备进入结账流程。请连接结账/支付接口以处理最终订单。',
         item:'件商品',items:'件商品'
-      },
+      ,skateNav:'MENOCLONE 滑板',skateKicker:'MENOCLONE 滑板部门',skateTitle:'MENOCLONE 滑板',skateMeta:'团队 / 板面 / 砂纸 / 物件',skateTeamLabel:'MNC 滑板队',skateTeamTitle:'为街头而生。',skateTeamDescription:'MENOCLONE Skate 是品牌的滑板平台，聚焦滑手、街头滑板、创意视频、合作项目和团队装备。',skateTeamStatus:'滑板队阵容即将公布',skateManifestoKicker:'运动中的原创性',skateManifestoTitle:'滑板也是一块画布。',skateManifestoDescription:'板面图形、砂纸、五金和滑板影片成为 MENOCLONE 融合艺术、设计、时尚与街头文化的另一种方式。',skateTagTeam:'团队',skateTagDecks:'板面',skateTagGrip:'砂纸',skateTagAccessories:'配件',skateTagFilms:'滑板影片',skateProductLabel:'MNC 滑板产品',skateDeckTitle:'滑板板面',skateDeckDescription:'未来的 MENOCLONE 板面发售、图形限定版和团队板将在这里展示。',skateGripTitle:'滑板砂纸',skateGripDescription:'MENOCLONE 定制砂纸图形、限量图案和滑板表面设计。',skateGearTitle:'滑板配件',skateGearDescription:'五金、轮子、贴纸、工具以及未来的 MENOCLONE Skate 产品。'},
       ja:{
         kicker:'MENOCLONE オーダー',title:'バッグ / カート',empty:'カートは空です。',
         subtotal:'小計',remove:'削除',quantity:'数量',submit:'注文を送信',
@@ -3822,13 +4047,13 @@
 
     const translations={
       en:{
-        shop:'Shop',lookbook:'Lookbook',artLocator:'MNC Art Locator',world:'World',termsNav:'Terms',kickstarter:'Kickstarter',contact:'Contact',
+        shop:'Shop',lookbook:'Invading Soon',artLocator:'MNC Art Locator',world:'World',termsNav:'Terms',kickstarter:'Kickstarter',contact:'Contact',
         enter:'Enter',origins:'Originality Has Origins.',enterCollection:'Enter Collection',selectedObjects:'Selected Objects',heroKicker:'Season 2 / New York City',heroDescription:'MENOCLONE is a lifestyle experiment at the intersection of fashion, art, design and technology.',shopMeta:'Season 2 / Limited Release',mobileSlogan:'Originality Has Origins / Season 2',storyBadge:'MENOCLONE Signal',storyTitle:'Different by design. Connected by origin.',storyParaOne:'The brand is built around one idea: originality does not appear from nowhere. Every new idea carries traces of what came before it.',storyParaTwo:'MENOCLONE turns those origins into objects, visuals and experiences that invite people to think differently about identity and design.',newsletterDescription:'Drop alerts, experiments, events and new objects from MENOCLONE.',emailPlaceholder:'EMAIL ADDRESS',subscribe:'Subscribe',
         joinSignal:'Join the signal.',worldClock:'World Clock',currency:'Currency',cartUpdate:'Cart Update',
         addedToCart:'Added to Cart',continueShopping:'Continue Shopping',viewBag:'View Bag',
         filmKicker:'MENOCLONE Anime',filmTitle:'"Destroy All Clones" Anime by MENOCLONE',filmMeta:'Season 2 / Anime Transmission',
         filmName:'"Destroy All Clones" Anime by MENOCLONE',filmDescription:'Use this Destroy All Clones key art as the placeholder until the anime trailer video is added.',filmControls:'Tap or click to play',
-        lookbookKicker:'MENOCLONE Editorial',lookbookTitle:'Lookbook',lookbookMeta:'Season 2 / Selected Looks',
+        lookbookKicker:'MENOCLONE Preview',lookbookTitle:'Invading Soon',lookbookMeta:'Season 2 / Incoming Visuals',
         lookOne:'Look 01',lookOneMeta:'Trucker Hat / Front Portrait',lookTwo:'Look 02',lookTwoMeta:'Trucker Hat / Angle Study',lookThree:'Look 03',lookThreeMeta:'Trucker Hat / Fitting Study',lookFour:'Look 04',lookFourMeta:'Trucker Hat / Object Study',
         locatorKicker:'MENOCLONE Field System',locatorTitle:'MNC Art Locator',locatorMeta:'Find the signal',
         locatorHeadline:'Art exists outside the feed.',locatorDescription:'MNC Art Locator is a future map for physical MENOCLONE drops, installations, stickers, objects and creative signals placed around the city.',
@@ -3840,13 +4065,13 @@
         termsCreativeHead:'Creative Rights',termsCreative:'MENOCLONE names, logos, artwork, product graphics and original site content remain protected creative property.',productDetails:'Product Details',priceRevealedCart:'Price revealed after adding to cart',addToCart:'Add to Cart',productZoomNote:'Tap or click the image to open full zoom.',returnMain:'Return to Main Screen',comingSoon:'Coming Soon',quickAdd:'Quick Add',priceInCart:'Price in cart',cartComingSoon:'{product} is coming soon.',cartAdded:'{product} was added to your bag. Price: {price}.',addedToBag:'{product} added to bag'
       ,truckerSectionKicker:'Season 2 Headwear',truckerSectionTitle:'MNC Trucker Hat',truckerSectionMeta:'MENOCLONE / Trucker Hat Study',editorialLookOne:'Look 01',editorialLookOneMeta:'Season Two Boxed Tee',editorialLookTwo:'Look 02',editorialLookTwoMeta:'Season Two Hoodie',editorialLookThree:'Look 03',editorialLookThreeMeta:'Artful UFO Hoodie',editorialLookFour:'Look 04',editorialLookFourMeta:'Season Two Trucker Hat'},
       es:{
-        shop:'Tienda',lookbook:'Lookbook',artLocator:'Localizador de arte MNC',world:'Mundo',termsNav:'Términos',kickstarter:'Kickstarter',contact:'Contacto',
+        shop:'Tienda',lookbook:'Invadiendo pronto',artLocator:'Localizador de arte MNC',world:'Mundo',termsNav:'Términos',kickstarter:'Kickstarter',contact:'Contacto',
         enter:'Entrar',origins:'La originalidad tiene orígenes.',enterCollection:'Ver colección',selectedObjects:'Objetos seleccionados',heroKicker:'Temporada 2 / Nueva York',heroDescription:'MENOCLONE es un experimento de estilo de vida en la intersección de la moda, el arte, el diseño y la tecnología.',shopMeta:'Temporada 2 / Edición limitada',mobileSlogan:'La originalidad tiene orígenes / Temporada 2',storyBadge:'Señal MENOCLONE',storyTitle:'Diferente por diseño. Conectado por el origen.',storyParaOne:'La marca se construye sobre una idea: la originalidad no aparece de la nada. Cada idea nueva lleva rastros de lo que vino antes.',storyParaTwo:'MENOCLONE convierte esos orígenes en objetos, imágenes y experiencias que invitan a pensar de otra manera sobre la identidad y el diseño.',newsletterDescription:'Alertas de lanzamientos, experimentos, eventos y nuevos objetos de MENOCLONE.',emailPlaceholder:'CORREO ELECTRÓNICO',subscribe:'Suscribirse',
         joinSignal:'Únete a la señal.',worldClock:'Reloj mundial',currency:'Moneda',cartUpdate:'Actualización del carrito',
         addedToCart:'Añadido al carrito',continueShopping:'Seguir comprando',viewBag:'Ver bolsa',
         filmKicker:'Anime MENOCLONE',filmTitle:'Anime "Destroy All Clones" de MENOCLONE',filmMeta:'Temporada 2 / Transmisión anime',
         filmName:'Anime "Destroy All Clones" de MENOCLONE',filmDescription:'Usa este arte principal de Destroy All Clones como marcador hasta que se agregue el tráiler del anime.',filmControls:'Toca o haz clic para reproducir',
-        lookbookKicker:'Editorial MENOCLONE',lookbookTitle:'Lookbook',lookbookMeta:'Temporada 2 / Looks seleccionados',
+        lookbookKicker:'Avance MENOCLONE',lookbookTitle:'Invadiendo pronto',lookbookMeta:'Temporada 2 / Visuales próximos',
         lookOne:'Look 01',lookOneMeta:'Gorra trucker / Retrato frontal',lookTwo:'Look 02',lookTwoMeta:'Gorra trucker / Estudio angular',lookThree:'Look 03',lookThreeMeta:'Gorra trucker / Prueba de ajuste',lookFour:'Look 04',lookFourMeta:'Gorra trucker / Estudio de objeto',
         locatorKicker:'Sistema de campo MENOCLONE',locatorTitle:'Localizador de arte MNC',locatorMeta:'Encuentra la señal',
         locatorHeadline:'El arte existe fuera del feed.',locatorDescription:'MNC Art Locator será un mapa para lanzamientos físicos, instalaciones, stickers, objetos y señales creativas de MENOCLONE por la ciudad.',
@@ -3858,13 +4083,13 @@
         termsCreativeHead:'Derechos creativos',termsCreative:'Los nombres, logotipos, arte, gráficos de productos y contenido original del sitio de MENOCLONE siguen siendo propiedad creativa protegida.',productDetails:'Detalles del producto',priceRevealedCart:'El precio se muestra después de añadirlo al carrito',addToCart:'Añadir al carrito',productZoomNote:'Toca o haz clic en la imagen para abrir el zoom completo.',returnMain:'Volver a la pantalla principal',comingSoon:'Próximamente',quickAdd:'Añadir rápido',priceInCart:'Precio en el carrito',cartComingSoon:'{product} estará disponible próximamente.',cartAdded:'{product} fue añadido a tu bolsa. Precio: {price}.',addedToBag:'{product} añadido a la bolsa'
       ,truckerSectionKicker:'Accesorios de cabeza / Temporada 2',truckerSectionTitle:'Gorra Trucker MNC',truckerSectionMeta:'MENOCLONE / Estudio de gorra trucker',editorialLookOne:'Look 01',editorialLookOneMeta:'Camiseta boxy Temporada 2',editorialLookTwo:'Look 02',editorialLookTwoMeta:'Hoodie Temporada 2',editorialLookThree:'Look 03',editorialLookThreeMeta:'Hoodie UFO artístico',editorialLookFour:'Look 04',editorialLookFourMeta:'Gorra trucker Temporada 2'},
       fr:{
-        shop:'Boutique',lookbook:'Lookbook',artLocator:"Localisateur d’art MNC",world:'Univers',termsNav:'Conditions',kickstarter:'Kickstarter',contact:'Contact',
+        shop:'Boutique',lookbook:'Invasion imminente',artLocator:"Localisateur d’art MNC",world:'Univers',termsNav:'Conditions',kickstarter:'Kickstarter',contact:'Contact',
         enter:'Entrer',origins:"L’originalité a des origines.",enterCollection:'Voir la collection',selectedObjects:'Objets sélectionnés',heroKicker:'Saison 2 / New York',heroDescription:'MENOCLONE est une expérience lifestyle à la croisée de la mode, de l’art, du design et de la technologie.',shopMeta:'Saison 2 / Édition limitée',mobileSlogan:"L’originalité a des origines / Saison 2",storyBadge:'Signal MENOCLONE',storyTitle:"Différent par conception. Relié par l’origine.",storyParaOne:"La marque repose sur une idée : l’originalité ne naît pas de nulle part. Chaque idée nouvelle porte les traces de ce qui l’a précédée.",storyParaTwo:'MENOCLONE transforme ces origines en objets, images et expériences qui invitent à repenser l’identité et le design.',newsletterDescription:'Alertes de sorties, expériences, événements et nouveaux objets MENOCLONE.',emailPlaceholder:'ADRESSE E-MAIL',subscribe:"S’abonner",
         joinSignal:'Rejoignez le signal.',worldClock:'Horloge mondiale',currency:'Devise',cartUpdate:'Mise à jour du panier',
         addedToCart:'Ajouté au panier',continueShopping:'Continuer vos achats',viewBag:'Voir le panier',
         filmKicker:'Anime MENOCLONE',filmTitle:'Anime "Destroy All Clones" par MENOCLONE',filmMeta:'Saison 2 / Transmission anime',
         filmName:'Anime "Destroy All Clones" par MENOCLONE',filmDescription:'Utilisez ce visuel principal de Destroy All Clones comme image de remplacement jusqu’à l’ajout de la bande-annonce animée.',filmControls:'Touchez ou cliquez pour lire',
-        lookbookKicker:'Éditorial MENOCLONE',lookbookTitle:'Lookbook',lookbookMeta:'Saison 2 / Looks sélectionnés',
+        lookbookKicker:'Aperçu MENOCLONE',lookbookTitle:'Invasion imminente',lookbookMeta:'Saison 2 / Visuels à venir',
         lookOne:'Look 01',lookOneMeta:'Casquette trucker / Portrait de face',lookTwo:'Look 02',lookTwoMeta:"Casquette trucker / Étude d’angle",lookThree:'Look 03',lookThreeMeta:"Casquette trucker / Étude d’ajustement",lookFour:'Look 04',lookFourMeta:"Casquette trucker / Étude d’objet",
         locatorKicker:'Système de terrain MENOCLONE',locatorTitle:"Localisateur d’art MNC",locatorMeta:'Trouvez le signal',
         locatorHeadline:"L’art existe en dehors du fil.",locatorDescription:'MNC Art Locator est une future carte des lancements physiques, installations, stickers, objets et signaux créatifs MENOCLONE placés dans la ville.',
@@ -3873,19 +4098,19 @@
         termsShippingHead:'Livraison',termsShipping:'Les délais d’expédition et de livraison peuvent varier selon la sortie et la destination.',termsReturnsHead:'Retours',termsReturns:'Les règles définitives de retour, échange et remboursement doivent être consultées avant le paiement et peuvent varier selon l’article.',
         termsCreativeHead:'Droits créatifs',termsCreative:'Les noms, logos, œuvres, graphismes de produits et contenus originaux de MENOCLONE restent une propriété créative protégée.',productDetails:'Détails du produit',priceRevealedCart:'Prix affiché après l’ajout au panier',addToCart:'Ajouter au panier',productZoomNote:"Touchez ou cliquez sur l’image pour l’agrandir.",returnMain:"Retour à l’accueil",comingSoon:'Bientôt disponible',quickAdd:'Ajout rapide',priceInCart:'Prix dans le panier',cartComingSoon:'{product} sera bientôt disponible.',cartAdded:'{product} a été ajouté à votre panier. Prix : {price}.',addedToBag:'{product} ajouté au panier'
       ,truckerSectionKicker:'Headwear / Saison 2',truckerSectionTitle:'Casquette Trucker MNC',truckerSectionMeta:'MENOCLONE / Étude de casquette trucker',editorialLookOne:'Look 01',editorialLookOneMeta:'T-shirt boxy Saison 2',editorialLookTwo:'Look 02',editorialLookTwoMeta:'Hoodie Saison 2',editorialLookThree:'Look 03',editorialLookThreeMeta:'Hoodie UFO artistique',editorialLookFour:'Look 04',editorialLookFourMeta:'Casquette trucker Saison 2'},
-      zh:{"shop":"商店","lookbook":"造型册","artLocator":"MNC 艺术定位器","world":"世界","termsNav":"条款","kickstarter":"Kickstarter","contact":"联系","enter":"进入","origins":"原创皆有源。","enterCollection":"进入系列","selectedObjects":"精选单品","heroKicker":"第二季 / 纽约","heroDescription":"MENOCLONE 是一个融合时尚、艺术、设计与科技的生活方式实验。","shopMeta":"第二季 / 限量发布","mobileSlogan":"原创皆有源 / 第二季","storyBadge":"MENOCLONE 信号","storyTitle":"因设计而不同，因起源而相连。","storyParaOne":"品牌建立在一个核心理念之上：原创并非凭空出现。每一个新想法都带着过去留下的痕迹。","storyParaTwo":"MENOCLONE 将这些起源转化为物件、视觉与体验，邀请人们以不同方式思考身份与设计。","newsletterDescription":"获取 MENOCLONE 发售提醒、实验项目、活动与全新作品信息。","emailPlaceholder":"电子邮箱","subscribe":"订阅","joinSignal":"加入信号。","worldClock":"世界时钟","currency":"货币","cartUpdate":"购物车更新","addedToCart":"已加入购物车","continueShopping":"继续购物","viewBag":"查看购物车","filmKicker":"MENOCLONE 动画","filmTitle":"MENOCLONE《Destroy All Clones》动漫","filmMeta":"第二季 / 动画传输","filmName":"MENOCLONE《Destroy All Clones》动漫","filmDescription":"在加入动漫预告片视频之前，先使用这张 Destroy All Clones 主视觉作为占位图。","filmControls":"点击或轻触播放","lookbookKicker":"MENOCLONE 编辑企划","lookbookTitle":"造型册","lookbookMeta":"第二季 / 精选造型","lookOne":"造型 01","lookOneMeta":"卡车帽 / 正面肖像","lookTwo":"造型 02","lookTwoMeta":"卡车帽 / 角度研究","lookThree":"造型 03","lookThreeMeta":"卡车帽 / 佩戴研究","lookFour":"造型 04","lookFourMeta":"卡车帽 / 单品研究","locatorKicker":"MENOCLONE 城市系统","locatorTitle":"MNC 艺术定位器","locatorMeta":"寻找信号","locatorHeadline":"艺术存在于信息流之外。","locatorDescription":"MNC 艺术定位器是一张未来地图，用于寻找城市中的 MENOCLONE 实体发售、装置、贴纸、物件与创意信号。","locatorTagDrops":"发售","locatorTagInstallations":"装置","locatorTagObjects":"物件","termsKicker":"MENOCLONE 政策","termsTitle":"条款与条件","termsOrdersHead":"订单","termsOrders":"所有商品的供应情况均可能发生变化。限量商品可能在不另行通知的情况下售罄。","termsShippingHead":"配送","termsShipping":"发货和送达时间可能因商品发布批次与目的地而有所不同。","termsReturnsHead":"退换货","termsReturns":"最终退货、换货与退款政策应在结账前查看，并可能因商品而异。","termsCreativeHead":"创作权利","termsCreative":"MENOCLONE 名称、标志、艺术作品、商品图形及网站原创内容均属于受保护的创意资产。","productDetails":"商品详情","priceRevealedCart":"加入购物车后显示价格","addToCart":"加入购物车","productZoomNote":"点击或轻触图片可查看完整放大图。","returnMain":"返回主页面","comingSoon":"即将推出","quickAdd":"快速加入","priceInCart":"购物车内显示价格","cartComingSoon":"{product} 即将推出。","cartAdded":"{product} 已加入购物车。价格：{price}。","addedToBag":"{product} 已加入购物车","truckerSectionKicker":"第二季头饰","truckerSectionTitle":"MNC 卡车帽","truckerSectionMeta":"MENOCLONE / 卡车帽研究","editorialLookOne":"造型 01","editorialLookOneMeta":"第二季 Boxy T恤","editorialLookTwo":"造型 02","editorialLookTwoMeta":"第二季连帽衫","editorialLookThree":"造型 03","editorialLookThreeMeta":"Artful UFO 连帽衫","editorialLookFour":"造型 04","editorialLookFourMeta":"第二季卡车帽"},
-      ja:{"shop":"ショップ","lookbook":"ルックブック","artLocator":"MNC アートロケーター","world":"ワールド","termsNav":"利用規約","kickstarter":"Kickstarter","contact":"お問い合わせ","enter":"入る","origins":"オリジナリティには起源がある。","enterCollection":"コレクションを見る","selectedObjects":"セレクトアイテム","heroKicker":"シーズン2 / ニューヨーク","heroDescription":"MENOCLONEは、ファッション、アート、デザイン、テクノロジーが交差するライフスタイル実験です。","shopMeta":"シーズン2 / 限定リリース","mobileSlogan":"オリジナリティには起源がある / シーズン2","storyBadge":"MENOCLONE シグナル","storyTitle":"デザインで異なり、起源でつながる。","storyParaOne":"このブランドは、オリジナリティは何もないところから突然生まれるものではない、という考えから始まっています。新しいアイデアには必ず、それ以前の痕跡が残っています。","storyParaTwo":"MENOCLONEはその起源をオブジェクト、ビジュアル、体験へと変換し、アイデンティティとデザインを新しい視点で捉えるきっかけをつくります。","newsletterDescription":"MENOCLONEのドロップ情報、実験、イベント、新作オブジェクトの最新情報を受け取る。","emailPlaceholder":"メールアドレス","subscribe":"登録","joinSignal":"シグナルに参加。","worldClock":"ワールドクロック","currency":"通貨","cartUpdate":"カート更新","addedToCart":"カートに追加しました","continueShopping":"買い物を続ける","viewBag":"カートを見る","filmKicker":"MENOCLONE アニメーション","filmTitle":"MENOCLONEによる「Destroy All Clones」アニメ","filmMeta":"シーズン2 / アニメ・トランスミッション","filmName":"MENOCLONEによる「Destroy All Clones」アニメ","filmDescription":"アニメ予告編動画が追加されるまで、このDestroy All Clonesのキービジュアルをプレースホルダーとして使用します。","filmControls":"タップまたはクリックして再生","lookbookKicker":"MENOCLONE エディトリアル","lookbookTitle":"ルックブック","lookbookMeta":"シーズン2 / セレクトルック","lookOne":"ルック 01","lookOneMeta":"トラッカーハット / フロントポートレート","lookTwo":"ルック 02","lookTwoMeta":"トラッカーハット / アングルスタディ","lookThree":"ルック 03","lookThreeMeta":"トラッカーハット / フィッティングスタディ","lookFour":"ルック 04","lookFourMeta":"トラッカーハット / オブジェクトスタディ","locatorKicker":"MENOCLONE フィールドシステム","locatorTitle":"MNC アートロケーター","locatorMeta":"シグナルを探す","locatorHeadline":"アートはフィードの外にも存在する。","locatorDescription":"MNCアートロケーターは、街に配置されたMENOCLONEのリアルドロップ、インスタレーション、ステッカー、オブジェクト、クリエイティブシグナルを探すための未来型マップです。","locatorTagDrops":"ドロップ","locatorTagInstallations":"インスタレーション","locatorTagObjects":"オブジェクト","termsKicker":"MENOCLONE ポリシー","termsTitle":"利用規約","termsOrdersHead":"注文","termsOrders":"商品の在庫状況は変更される場合があります。限定商品は予告なく完売することがあります。","termsShippingHead":"配送","termsShipping":"発送および配送時期は、リリース内容や配送先によって異なる場合があります。","termsReturnsHead":"返品","termsReturns":"最終的な返品・交換・返金ポリシーは、購入前に確認してください。商品によって内容が異なる場合があります。","termsCreativeHead":"クリエイティブ権利","termsCreative":"MENOCLONEの名称、ロゴ、アートワーク、商品グラフィック、サイト上のオリジナルコンテンツは保護されたクリエイティブ資産です。","productDetails":"商品詳細","priceRevealedCart":"カートに追加すると価格が表示されます","addToCart":"カートに追加","productZoomNote":"画像をタップまたはクリックすると拡大表示できます。","returnMain":"メイン画面に戻る","comingSoon":"近日公開","quickAdd":"クイック追加","priceInCart":"価格はカートで表示","cartComingSoon":"{product} は近日公開です。","cartAdded":"{product} をカートに追加しました。価格：{price}。","addedToBag":"{product} をカートに追加しました","truckerSectionKicker":"シーズン2 ヘッドウェア","truckerSectionTitle":"MNC トラッカーハット","truckerSectionMeta":"MENOCLONE / トラッカーハット・スタディ","editorialLookOne":"ルック 01","editorialLookOneMeta":"シーズン2 ボックスTシャツ","editorialLookTwo":"ルック 02","editorialLookTwoMeta":"シーズン2 フーディー","editorialLookThree":"ルック 03","editorialLookThreeMeta":"Artful UFO フーディー","editorialLookFour":"ルック 04","editorialLookFourMeta":"シーズン2 トラッカーハット"},
+      zh:{"shop":"商店","lookbook":'即将入侵',"artLocator":"MNC 艺术定位器","world":"世界","termsNav":"条款","kickstarter":"Kickstarter","contact":"联系","enter":"进入","origins":"原创皆有源。","enterCollection":"进入系列","selectedObjects":"精选单品","heroKicker":"第二季 / 纽约","heroDescription":"MENOCLONE 是一个融合时尚、艺术、设计与科技的生活方式实验。","shopMeta":"第二季 / 限量发布","mobileSlogan":"原创皆有源 / 第二季","storyBadge":"MENOCLONE 信号","storyTitle":"因设计而不同，因起源而相连。","storyParaOne":"品牌建立在一个核心理念之上：原创并非凭空出现。每一个新想法都带着过去留下的痕迹。","storyParaTwo":"MENOCLONE 将这些起源转化为物件、视觉与体验，邀请人们以不同方式思考身份与设计。","newsletterDescription":"获取 MENOCLONE 发售提醒、实验项目、活动与全新作品信息。","emailPlaceholder":"电子邮箱","subscribe":"订阅","joinSignal":"加入信号。","worldClock":"世界时钟","currency":"货币","cartUpdate":"购物车更新","addedToCart":"已加入购物车","continueShopping":"继续购物","viewBag":"查看购物车","filmKicker":"MENOCLONE 动画","filmTitle":"MENOCLONE《Destroy All Clones》动漫","filmMeta":"第二季 / 动画传输","filmName":"MENOCLONE《Destroy All Clones》动漫","filmDescription":"在加入动漫预告片视频之前，先使用这张 Destroy All Clones 主视觉作为占位图。","filmControls":"点击或轻触播放","lookbookKicker":'MENOCLONE 预览',"lookbookTitle":'即将入侵',"lookbookMeta":'第二季 / 即将公开视觉',"lookOne":"造型 01","lookOneMeta":"卡车帽 / 正面肖像","lookTwo":"造型 02","lookTwoMeta":"卡车帽 / 角度研究","lookThree":"造型 03","lookThreeMeta":"卡车帽 / 佩戴研究","lookFour":"造型 04","lookFourMeta":"卡车帽 / 单品研究","locatorKicker":"MENOCLONE 城市系统","locatorTitle":"MNC 艺术定位器","locatorMeta":"寻找信号","locatorHeadline":"艺术存在于信息流之外。","locatorDescription":"MNC 艺术定位器是一张未来地图，用于寻找城市中的 MENOCLONE 实体发售、装置、贴纸、物件与创意信号。","locatorTagDrops":"发售","locatorTagInstallations":"装置","locatorTagObjects":"物件","termsKicker":"MENOCLONE 政策","termsTitle":"条款与条件","termsOrdersHead":"订单","termsOrders":"所有商品的供应情况均可能发生变化。限量商品可能在不另行通知的情况下售罄。","termsShippingHead":"配送","termsShipping":"发货和送达时间可能因商品发布批次与目的地而有所不同。","termsReturnsHead":"退换货","termsReturns":"最终退货、换货与退款政策应在结账前查看，并可能因商品而异。","termsCreativeHead":"创作权利","termsCreative":"MENOCLONE 名称、标志、艺术作品、商品图形及网站原创内容均属于受保护的创意资产。","productDetails":"商品详情","priceRevealedCart":"加入购物车后显示价格","addToCart":"加入购物车","productZoomNote":"点击或轻触图片可查看完整放大图。","returnMain":"返回主页面","comingSoon":"即将推出","quickAdd":"快速加入","priceInCart":"购物车内显示价格","cartComingSoon":"{product} 即将推出。","cartAdded":"{product} 已加入购物车。价格：{price}。","addedToBag":"{product} 已加入购物车","truckerSectionKicker":"第二季头饰","truckerSectionTitle":"MNC 卡车帽","truckerSectionMeta":"MENOCLONE / 卡车帽研究","editorialLookOne":"造型 01","editorialLookOneMeta":"第二季 Boxy T恤","editorialLookTwo":"造型 02","editorialLookTwoMeta":"第二季连帽衫","editorialLookThree":"造型 03","editorialLookThreeMeta":"Artful UFO 连帽衫","editorialLookFour":"造型 04","editorialLookFourMeta":"第二季卡车帽"},
+      ja:{"shop":"ショップ","lookbook":'まもなく侵略',"artLocator":"MNC アートロケーター","world":"ワールド","termsNav":"利用規約","kickstarter":"Kickstarter","contact":"お問い合わせ","enter":"入る","origins":"オリジナリティには起源がある。","enterCollection":"コレクションを見る","selectedObjects":"セレクトアイテム","heroKicker":"シーズン2 / ニューヨーク","heroDescription":"MENOCLONEは、ファッション、アート、デザイン、テクノロジーが交差するライフスタイル実験です。","shopMeta":"シーズン2 / 限定リリース","mobileSlogan":"オリジナリティには起源がある / シーズン2","storyBadge":"MENOCLONE シグナル","storyTitle":"デザインで異なり、起源でつながる。","storyParaOne":"このブランドは、オリジナリティは何もないところから突然生まれるものではない、という考えから始まっています。新しいアイデアには必ず、それ以前の痕跡が残っています。","storyParaTwo":"MENOCLONEはその起源をオブジェクト、ビジュアル、体験へと変換し、アイデンティティとデザインを新しい視点で捉えるきっかけをつくります。","newsletterDescription":"MENOCLONEのドロップ情報、実験、イベント、新作オブジェクトの最新情報を受け取る。","emailPlaceholder":"メールアドレス","subscribe":"登録","joinSignal":"シグナルに参加。","worldClock":"ワールドクロック","currency":"通貨","cartUpdate":"カート更新","addedToCart":"カートに追加しました","continueShopping":"買い物を続ける","viewBag":"カートを見る","filmKicker":"MENOCLONE アニメーション","filmTitle":"MENOCLONEによる「Destroy All Clones」アニメ","filmMeta":"シーズン2 / アニメ・トランスミッション","filmName":"MENOCLONEによる「Destroy All Clones」アニメ","filmDescription":"アニメ予告編動画が追加されるまで、このDestroy All Clonesのキービジュアルをプレースホルダーとして使用します。","filmControls":"タップまたはクリックして再生","lookbookKicker":'MENOCLONE プレビュー',"lookbookTitle":'まもなく侵略',"lookbookMeta":'シーズン2 / 公開予定ビジュアル',"lookOne":"ルック 01","lookOneMeta":"トラッカーハット / フロントポートレート","lookTwo":"ルック 02","lookTwoMeta":"トラッカーハット / アングルスタディ","lookThree":"ルック 03","lookThreeMeta":"トラッカーハット / フィッティングスタディ","lookFour":"ルック 04","lookFourMeta":"トラッカーハット / オブジェクトスタディ","locatorKicker":"MENOCLONE フィールドシステム","locatorTitle":"MNC アートロケーター","locatorMeta":"シグナルを探す","locatorHeadline":"アートはフィードの外にも存在する。","locatorDescription":"MNCアートロケーターは、街に配置されたMENOCLONEのリアルドロップ、インスタレーション、ステッカー、オブジェクト、クリエイティブシグナルを探すための未来型マップです。","locatorTagDrops":"ドロップ","locatorTagInstallations":"インスタレーション","locatorTagObjects":"オブジェクト","termsKicker":"MENOCLONE ポリシー","termsTitle":"利用規約","termsOrdersHead":"注文","termsOrders":"商品の在庫状況は変更される場合があります。限定商品は予告なく完売することがあります。","termsShippingHead":"配送","termsShipping":"発送および配送時期は、リリース内容や配送先によって異なる場合があります。","termsReturnsHead":"返品","termsReturns":"最終的な返品・交換・返金ポリシーは、購入前に確認してください。商品によって内容が異なる場合があります。","termsCreativeHead":"クリエイティブ権利","termsCreative":"MENOCLONEの名称、ロゴ、アートワーク、商品グラフィック、サイト上のオリジナルコンテンツは保護されたクリエイティブ資産です。","productDetails":"商品詳細","priceRevealedCart":"カートに追加すると価格が表示されます","addToCart":"カートに追加","productZoomNote":"画像をタップまたはクリックすると拡大表示できます。","returnMain":"メイン画面に戻る","comingSoon":"近日公開","quickAdd":"クイック追加","priceInCart":"価格はカートで表示","cartComingSoon":"{product} は近日公開です。","cartAdded":"{product} をカートに追加しました。価格：{price}。","addedToBag":"{product} をカートに追加しました","truckerSectionKicker":"シーズン2 ヘッドウェア","truckerSectionTitle":"MNC トラッカーハット","truckerSectionMeta":"MENOCLONE / トラッカーハット・スタディ","editorialLookOne":"ルック 01","editorialLookOneMeta":"シーズン2 ボックスTシャツ","editorialLookTwo":"ルック 02","editorialLookTwoMeta":"シーズン2 フーディー","editorialLookThree":"ルック 03","editorialLookThreeMeta":"Artful UFO フーディー","editorialLookFour":"ルック 04","editorialLookFourMeta":"シーズン2 トラッカーハット",skateNav:'MENOCLONE スケート',skateKicker:'MENOCLONE スケート・ディビジョン',skateTitle:'MENOCLONE スケート',skateMeta:'チーム / デッキ / グリップ / オブジェクト',skateTeamLabel:'MNC スケートチーム',skateTeamTitle:'ストリートのために。',skateTeamDescription:'MENOCLONE Skateは、ライダー、ストリートセッション、クリエイティブ映像、コラボレーション、チームを支えるプロダクトを扱うブランドのスケートプラットフォームです。',skateTeamStatus:'チームロスター近日公開',skateManifestoKicker:'動くオリジナリティ',skateManifestoTitle:'スケートボードは、もうひとつのキャンバス。',skateManifestoDescription:'デッキグラフィック、グリップ、ハードウェア、スケートフィルムは、アート、デザイン、ファッション、ストリートカルチャーを融合する新たな方法です。',skateTagTeam:'チーム',skateTagDecks:'デッキ',skateTagGrip:'グリップテープ',skateTagAccessories:'アクセサリー',skateTagFilms:'スケートフィルム',skateProductLabel:'MNC スケートプロダクト',skateDeckTitle:'スケートボードデッキ',skateDeckDescription:'今後のMENOCLONEデッキ、グラフィックエディション、チームボードをここで紹介します。',skateGripTitle:'グリップテープ',skateGripDescription:'MENOCLONEのカスタムグリップグラフィックと限定パターン。',skateGearTitle:'スケートアクセサリー',skateGearDescription:'ハードウェア、ウィール、ステッカー、ツール、今後のMENOCLONE Skateオブジェクト。'},
       ko:{
-        shop:'스토어',lookbook:'룩북',artLocator:'MNC 아트 로케이터',world:'월드',termsNav:'이용 약관',kickstarter:'킥스타터',contact:'문의',
+        shop:'스토어',lookbook:'곧 침공',artLocator:'MNC 아트 로케이터',world:'월드',termsNav:'이용 약관',kickstarter:'킥스타터',contact:'문의',
         enter:'입장',origins:'독창성에는 기원이 있다.',enterCollection:'컬렉션 보기',selectedObjects:'셀렉티드 오브젝트',heroKicker:'시즌 2 / 뉴욕',heroDescription:'MENOCLONE은 패션, 예술, 디자인과 기술이 만나는 지점에서 펼쳐지는 라이프스타일 실험입니다.',shopMeta:'시즌 2 / 한정 발매',mobileSlogan:'독창성에는 기원이 있다 / 시즌 2',storyBadge:'MENOCLONE 시그널',storyTitle:'디자인부터 다르게. 기원으로 연결되다.',storyParaOne:'이 브랜드는 독창성이 아무것도 없는 곳에서 나타나지 않는다는 생각에서 출발합니다. 모든 새로운 아이디어에는 이전의 흔적이 담겨 있습니다.',storyParaTwo:'MENOCLONE은 그 기원을 오브젝트, 비주얼과 경험으로 바꾸어 정체성과 디자인을 새롭게 바라보도록 초대합니다.',newsletterDescription:'MENOCLONE의 드롭 알림, 실험, 이벤트와 새로운 오브젝트 소식을 받아보세요.',emailPlaceholder:'이메일 주소',subscribe:'구독하기',
         joinSignal:'시그널에 참여하세요.',worldClock:'세계 시계',currency:'통화',cartUpdate:'장바구니 업데이트',
         addedToCart:'장바구니에 추가됨',continueShopping:'쇼핑 계속하기',viewBag:'장바구니 보기',
         filmKicker:'MENOCLONE 애니메이션',filmTitle:'MENOCLONE의 "Destroy All Clones" 애니메이션',filmMeta:'시즌 2 / 애니메이션 트랜스미션',filmName:'MENOCLONE의 "Destroy All Clones" 애니메이션',filmDescription:'애니메이션 트레일러 영상이 추가될 때까지 이 Destroy All Clones 키아트를 플레이스홀더로 사용하세요.',filmControls:'탭하거나 클릭하여 재생',
-        lookbookKicker:'MENOCLONE 에디토리얼',lookbookTitle:'룩북',lookbookMeta:'시즌 2 / 셀렉티드 룩',
+        lookbookKicker:'MENOCLONE 프리뷰',lookbookTitle:'곧 침공',lookbookMeta:'시즌 2 / 공개 예정 비주얼',
         lookOne:'룩 01',lookOneMeta:'트러커 햇 / 정면 포트레이트',lookTwo:'룩 02',lookTwoMeta:'트러커 햇 / 앵글 스터디',lookThree:'룩 03',lookThreeMeta:'트러커 햇 / 피팅 스터디',lookFour:'룩 04',lookFourMeta:'트러커 햇 / 오브젝트 스터디',
         locatorKicker:'MENOCLONE 필드 시스템',locatorTitle:'MNC 아트 로케이터',locatorMeta:'시그널 찾기',locatorHeadline:'예술은 피드 밖에도 존재합니다.',locatorDescription:'MNC 아트 로케이터는 도시 곳곳의 MENOCLONE 오프라인 드롭, 설치 작품, 스티커, 오브젝트와 크리에이티브 시그널을 찾는 미래형 지도입니다.',
         locatorTagDrops:'드롭',locatorTagInstallations:'설치 작품',locatorTagObjects:'오브젝트',termsKicker:'MENOCLONE 정책',termsTitle:'이용 약관',termsOrdersHead:'주문',termsOrders:'제품 판매 여부는 변경될 수 있으며 한정판은 사전 공지 없이 품절될 수 있습니다.',termsShippingHead:'배송',termsShipping:'출시 제품과 목적지에 따라 발송 및 배송 기간이 달라질 수 있습니다.',termsReturnsHead:'반품',termsReturns:'결제 전에 최종 반품, 교환 및 환불 규정을 확인해야 하며 제품별로 다를 수 있습니다.',termsCreativeHead:'창작물 권리',termsCreative:'MENOCLONE의 이름, 로고, 아트워크, 제품 그래픽과 사이트 원본 콘텐츠는 보호되는 창작 자산입니다.',productDetails:'제품 상세',priceRevealedCart:'장바구니에 추가하면 가격이 표시됩니다',addToCart:'장바구니에 추가',productZoomNote:'이미지를 탭하거나 클릭하면 크게 볼 수 있습니다.',returnMain:'메인 화면으로 돌아가기',comingSoon:'출시 예정',quickAdd:'빠른 추가',priceInCart:'장바구니에서 가격 확인',cartComingSoon:'{product}은(는) 곧 출시됩니다.',cartAdded:'{product}이(가) 장바구니에 추가되었습니다. 가격: {price}.',addedToBag:'{product} 장바구니에 추가됨'
-      ,truckerSectionKicker:'시즌 2 헤드웨어',truckerSectionTitle:'MNC 트러커 햇',truckerSectionMeta:'MENOCLONE / 트러커 햇 스터디',editorialLookOne:'룩 01',editorialLookOneMeta:'시즌 2 박스 티셔츠',editorialLookTwo:'룩 02',editorialLookTwoMeta:'시즌 2 후디',editorialLookThree:'룩 03',editorialLookThreeMeta:'아트풀 UFO 후디',editorialLookFour:'룩 04',editorialLookFourMeta:'시즌 2 트러커 햇'}
+      ,truckerSectionKicker:'시즌 2 헤드웨어',truckerSectionTitle:'MNC 트러커 햇',truckerSectionMeta:'MENOCLONE / 트러커 햇 스터디',editorialLookOne:'룩 01',editorialLookOneMeta:'시즌 2 박스 티셔츠',editorialLookTwo:'룩 02',editorialLookTwoMeta:'시즌 2 후디',editorialLookThree:'룩 03',editorialLookThreeMeta:'아트풀 UFO 후디',editorialLookFour:'룩 04',editorialLookFourMeta:'시즌 2 트러커 햇',skateNav:'MENOCLONE 스케이트',skateKicker:'MENOCLONE 스케이트 디비전',skateTitle:'MENOCLONE 스케이트',skateMeta:'팀 / 데크 / 그립 / 오브젝트',skateTeamLabel:'MNC 스케이트 팀',skateTeamTitle:'스트리트를 위해 만들어지다.',skateTeamDescription:'MENOCLONE Skate는 라이더, 스트리트 세션, 크리에이티브 영상, 협업과 팀을 위한 오브젝트를 다루는 브랜드의 스케이트 플랫폼입니다.',skateTeamStatus:'팀 로스터 공개 예정',skateManifestoKicker:'움직이는 독창성',skateManifestoTitle:'스케이트보드는 또 하나의 캔버스다.',skateManifestoDescription:'데크 그래픽, 그립, 하드웨어와 스케이트 필름은 아트, 디자인, 패션과 스트리트 문화를 결합하는 또 다른 방식입니다.',skateTagTeam:'팀',skateTagDecks:'데크',skateTagGrip:'그립 테이프',skateTagAccessories:'액세서리',skateTagFilms:'스케이트 필름',skateProductLabel:'MNC 스케이트 제품',skateDeckTitle:'스케이트보드 데크',skateDeckDescription:'향후 MENOCLONE 데크 드롭, 그래픽 에디션과 팀 보드를 이곳에서 소개합니다.',skateGripTitle:'그립 테이프',skateGripDescription:'MENOCLONE 커스텀 그립 그래픽과 한정 패턴.',skateGearTitle:'스케이트 액세서리',skateGearDescription:'하드웨어, 휠, 스티커, 툴과 향후 MENOCLONE Skate 오브젝트.'}
     };
     const productTranslations={
       'MENOCLONE Season Two Boxed Tee':{fr:{name:'T-shirt boxy MENOCLONE Saison 2',description:'T-shirt boxy MENOCLONE Saison 2. Coupe structurée en tissu épais, identité Saison 2 et graphismes UFO signature.'},zh:{"name":"MENOCLONE 第二季 Boxy T恤","description":"MENOCLONE 第二季 Boxy T恤。采用重磅面料与结构感宽松版型，结合第二季品牌标识和标志性 UFO 图形。"},ja:{"name":"MENOCLONE シーズン2 ボックスTシャツ","description":"MENOCLONE シーズン2 ボックスTシャツ。ヘビーウェイト素材と構築的なボックスシルエットに、シーズン2のブランディングとシグネチャーUFOグラフィックを組み合わせています。"},ko:{name:'MENOCLONE 시즌 2 박스 티셔츠',description:'두꺼운 원단과 구조적인 스트리트웨어 실루엣, 시즌 2 브랜딩과 시그니처 UFO 그래픽을 갖춘 박스 핏 티셔츠입니다.'}},
