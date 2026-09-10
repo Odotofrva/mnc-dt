@@ -715,21 +715,24 @@
     }
 
     .email-form{
-      display:flex;
-      align-items:center;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
       min-width:min(430px,45vw);
-      border-bottom:1px solid #111;
     }
 
-    .email-form input{
-      flex:1;
+    .email-form input,.email-form textarea{
+      width:100%;
       border:0;
+      border-bottom:1px solid #111;
       background:transparent;
       color:#111;
       outline:0;
       padding:12px 0;
       min-width:0;
     }
+
+    .email-form textarea{grid-column:1/-1;min-height:92px;resize:vertical}
 
     .email-form button{
       border:0;
@@ -741,6 +744,17 @@
       letter-spacing:.14em;
       font-size:9px;
     }
+
+    .email-form button{grid-column:1/-1;justify-self:end}
+    .form-status{grid-column:1/-1;margin:0!important;min-height:20px;font-size:12px!important}
+
+    .checkout-fields{display:grid;gap:10px;margin:0 0 16px}
+    .checkout-fields input,.checkout-fields textarea{width:100%;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:#151515;color:#fff;padding:12px;font:inherit;outline:none}
+    .checkout-fields textarea{min-height:74px;resize:vertical}
+    .checkout-fields input:focus,.checkout-fields textarea:focus{border-color:var(--accent)}
+    .checkout-status{margin:0 0 12px;color:#aaa9a3;font-size:12px;line-height:1.45;min-height:18px}
+
+    @media(max-width:620px){.email-form{grid-template-columns:1fr;min-width:0}.email-form textarea,.email-form button,.form-status{grid-column:auto}}
 
     footer{
       display:grid;
@@ -3288,6 +3302,7 @@
           </div>
 
           <form class="email-form" id="emailForm">
+            <input type="text" name="name" placeholder="NAME" aria-label="Name" required />
             <input
               type="email"
               name="email"
@@ -3295,7 +3310,10 @@
               aria-label="Email address"
               required
             />
-            <button type="submit"><span data-i18n="subscribe">Subscribe</span> ↗</button>
+            <input type="text" name="subject" placeholder="SUBJECT" aria-label="Subject" required />
+            <textarea name="message" placeholder="MESSAGE" aria-label="Message" required></textarea>
+            <button type="submit"><span>Send Message</span> ↗</button>
+            <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>
@@ -3366,6 +3384,13 @@
       </div>
 
       <div class="bag-footer">
+        <div class="checkout-fields">
+          <input id="checkoutName" type="text" autocomplete="name" placeholder="Full name" aria-label="Full name" required />
+          <input id="checkoutEmail" type="email" autocomplete="email" placeholder="Email address" aria-label="Email address" required />
+          <textarea id="checkoutAddress" autocomplete="street-address" placeholder="Shipping address" aria-label="Shipping address" required></textarea>
+          <textarea id="checkoutNotes" placeholder="Order notes (optional)" aria-label="Order notes"></textarea>
+        </div>
+        <p class="checkout-status" id="checkoutStatus" role="status" aria-live="polite"></p>
         <div class="bag-total-row">
           <span id="bagSubtotalLabel">Subtotal</span>
           <strong class="bag-total" id="bagSubtotal">$0.00</strong>
@@ -3451,6 +3476,7 @@
     const cartCount = document.getElementById('cartCount');
     const toast = document.getElementById('toast');
     const emailForm = document.getElementById('emailForm');
+    const contactStatus = document.getElementById('contactStatus');
     const cursor = document.getElementById('cursor');
     const igOverlay = document.getElementById('igOverlay');
     const igClose = document.getElementById('igClose');
@@ -3482,6 +3508,11 @@
     const bagTotalNote = document.getElementById('bagTotalNote');
     const bagSubmit = document.getElementById('bagSubmit');
     const bagContinue = document.getElementById('bagContinue');
+    const checkoutName = document.getElementById('checkoutName');
+    const checkoutEmail = document.getElementById('checkoutEmail');
+    const checkoutAddress = document.getElementById('checkoutAddress');
+    const checkoutNotes = document.getElementById('checkoutNotes');
+    const checkoutStatus = document.getElementById('checkoutStatus');
     const worldClockEl = document.getElementById('worldClock');
     const clockZone = document.getElementById('clockZone');
     const currencyAmount = document.getElementById('currencyAmount');
@@ -3796,8 +3827,31 @@
       body.style.overflow = '';
     }
 
-    function submitBagOrder(){
+    const ORDER_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/odot.rva@proton.me';
+
+    async function sendStoreEmail(fields){
+      const response = await fetch(ORDER_EMAIL_ENDPOINT,{
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body:fields
+      });
+      if(!response.ok) throw new Error('Email service unavailable');
+      const result = await response.json().catch(() => ({}));
+      if(result.success === false || result.success === 'false') throw new Error(result.message || 'Message not sent');
+      return result;
+    }
+
+    async function submitBagOrder(){
       if(cartItems.length === 0) return;
+
+      const name = checkoutName?.value.trim() || '';
+      const email = checkoutEmail?.value.trim() || '';
+      const address = checkoutAddress?.value.trim() || '';
+      if(!name || !email || !address || !checkoutEmail.checkValidity()){
+        if(checkoutStatus) checkoutStatus.textContent = 'Please enter your name, valid email and shipping address.';
+        checkoutEmail?.reportValidity();
+        return;
+      }
 
       const detail = {
         items: cartItems.map(item => ({
@@ -3809,10 +3863,43 @@
         submittedAt:new Date().toISOString()
       };
 
+      const orderLines = detail.items.map(item =>
+        `${item.quantity} × ${item.name} — ${formatCurrencyAmount(item.usdUnitPrice * item.quantity,'USD')}`
+      ).join('\n');
+      const usdTotal = detail.items.reduce((sum,item) => sum + item.usdUnitPrice * item.quantity,0);
+      const fields = new FormData();
+      fields.append('_subject',`New MENOCLONE order from ${name}`);
+      fields.append('_template','table');
+      fields.append('_captcha','false');
+      fields.append('Customer name',name);
+      fields.append('Customer email',email);
+      fields.append('Shipping address',address);
+      fields.append('Order',orderLines);
+      fields.append('Subtotal',formatCurrencyAmount(usdTotal,'USD'));
+      fields.append('Selected currency',detail.currency);
+      fields.append('Order notes',checkoutNotes?.value.trim() || 'None');
+      fields.append('Submitted',new Date(detail.submittedAt).toLocaleString());
+
       // Front-end integration hook for a future checkout/payment backend.
       window.dispatchEvent(new CustomEvent('menoclone:submit-order',{detail}));
-
-      showToast(bagT('checkoutNotice'));
+      bagSubmit.disabled = true;
+      bagSubmit.textContent = 'Sending…';
+      if(checkoutStatus) checkoutStatus.textContent = 'Sending your order request…';
+      try{
+        await sendStoreEmail(fields);
+        cartItems = [];
+        saveCart();
+        await renderBag();
+        [checkoutName,checkoutEmail,checkoutAddress,checkoutNotes].forEach(field => {if(field) field.value='';});
+        if(checkoutStatus) checkoutStatus.textContent = 'Order sent. MENOCLONE will contact you to confirm payment and shipping.';
+        showToast('Order sent successfully');
+      }catch(error){
+        bagSubmit.disabled = false;
+        if(checkoutStatus) checkoutStatus.textContent = 'Order could not be sent. Please try again or email odot.rva@proton.me.';
+        showToast('Order not sent — please try again');
+      }finally{
+        bagSubmit.textContent = bagT('submit');
+      }
     }
 
     function pulseProduct(card){
@@ -4300,10 +4387,26 @@
       openBag();
     });
 
-    emailForm.addEventListener('submit', (e) => {
+    emailForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      showToast('Signal received');
-      emailForm.reset();
+      const submitButton = emailForm.querySelector('button[type="submit"]');
+      const fields = new FormData(emailForm);
+      fields.append('_subject',`MENOCLONE contact: ${fields.get('subject') || 'Website message'}`);
+      fields.append('_template','table');
+      fields.append('_captcha','false');
+      submitButton.disabled = true;
+      if(contactStatus) contactStatus.textContent = 'Sending…';
+      try{
+        await sendStoreEmail(fields);
+        showToast('Message sent');
+        if(contactStatus) contactStatus.textContent = 'Message sent. Thank you for contacting MENOCLONE.';
+        emailForm.reset();
+      }catch(error){
+        showToast('Message not sent — please try again');
+        if(contactStatus) contactStatus.textContent = 'Message could not be sent. Please email odot.rva@proton.me.';
+      }finally{
+        submitButton.disabled = false;
+      }
     });
 
     igClose?.addEventListener('click', () => closeInstagramPopup(true));
@@ -4527,9 +4630,9 @@
       playUfoClick();
       closeBag();
     });
-    bagSubmit?.addEventListener('click',()=>{
+    bagSubmit?.addEventListener('click',async()=>{
       playUfoClick();
-      submitBagOrder();
+      await submitBagOrder();
     });
     bagOverlay?.addEventListener('click',e=>{
       if(e.target===bagOverlay) closeBag();
