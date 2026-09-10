@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090b0e" />
+  <meta name="description" content="Track MENOCLONE artwork, installations and events across New York City." />
+  <title>MENOCLONE — Art Locator NYC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="markers.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header>
+    <a class="brand" href="#" aria-label="MENOCLONE home">MENOCLONE<span>®</span></a>
+    <div class="header-copy"><b>MNC ART LOCATOR</b><span>NEW YORK CITY / SEASON 2</span></div>
+    <a class="menu" href="https://www.menoclone.com" aria-label="Return to the MENOCLONE home page" style="text-decoration:none">HOME ↗</a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow"><span class="pulse"></span> SIGNAL ACTIVE · NYC</p>
+      <h1>FIND THE<br><i>ORIGIN.</i></h1>
+      <p class="lede">A live field guide to MENOCLONE art, installations, pop-ups and creative signals across the five boroughs.</p>
+      <div class="filters" role="group" aria-label="Filter locations">
+        <button class="filter active" data-filter="all">ALL <span>06</span></button>
+        <button class="filter" data-filter="art">ART <span>03</span></button>
+        <button class="filter" data-filter="event">EVENTS <span>03</span></button>
+      </div>
+    </section>
+
+    <section class="locator" aria-label="NYC art and event locator">
+      <div class="map-shell">
+        <div class="map-meta"><span>40.7128° N / 74.0060° W</span><span id="resultCount">06 SIGNALS FOUND</span></div>
+        <div class="map" id="map">
+          <svg class="boroughs" viewBox="0 0 700 700" aria-label="Stylized map of New York City" role="img">
+            <g fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M330 74 L373 124 363 195 337 266 319 349 281 450 247 530 210 594 179 576 210 496 235 411 258 317 277 227 293 138Z" />
+              <path d="M386 238 L506 177 631 218 596 316 504 359 446 331 389 350 342 317Z" />
+              <path d="M443 362 L584 347 659 414 595 495 480 522 382 487 355 421Z" />
+              <path d="M181 385 L253 348 265 461 224 536 144 506 118 438Z" />
+              <path d="M142 533 L218 559 179 640 83 624 57 574Z" />
+            </g>
+            <g class="labels"><text x="272" y="205">MANHATTAN</text><text x="465" y="260">BRONX</text><text x="466" y="429">QUEENS</text><text x="146" y="448">BROOKLYN</text><text x="80" y="590">STATEN IS.</text></g>
+          </svg>
+          <div class="grid-lines"></div>
+          <div id="markers"></div>
+          <div class="map-key"><span><i class="dot art"></i>ARTWORK</span><span><i class="dot event"></i>EVENT</span></div>
+        </div>
+      </div>
+      <aside class="list-panel">
+        <div class="list-title"><span>ACTIVE LOCATIONS</span><span>UPDATED 09.02.26</span></div>
+        <div id="locationList"></div>
+      </aside>
+    </section>
+  </main>
+
+  <footer><span>ORIGINALITY HAS ORIGINS.</span><span>© 2026 MENOCLONE</span><a href="https://www.instagram.com/menoclone" target="_blank" rel="noreferrer">INSTAGRAM ↗</a></footer>
+
+  <dialog id="detailDialog"><button class="close" aria-label="Close">×</button><div id="detailContent"></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
