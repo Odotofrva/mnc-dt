@@ -578,6 +578,21 @@
       background:#111;
     }
 
+    .product-media img[src$="mnc-pin.png"]{
+      object-fit:contain;
+      object-position:center;
+      box-sizing:border-box;
+      padding:9%;
+      background:#bdb7ac;
+      mix-blend-mode:darken;
+    }
+
+    .product-media img[src$="mnc-tote-bag.png"]{
+      object-fit:cover;
+      object-position:center 48%;
+      background:#bdb7ac;
+    }
+
 
     .product-media::after{
       content:"";
@@ -3670,7 +3685,13 @@
         if(Array.isArray(raw)){
           cartItems = raw
             .filter(item => item && typeof item.name === 'string' && Number(item.qty) > 0)
-            .map(item => ({name:item.name,qty:Math.max(1,Math.floor(Number(item.qty)))}));
+            .map(item => ({
+              name:item.name,
+              qty:Math.max(1,Math.floor(Number(item.qty))),
+              price:Number(item.price || productCardByName(item.name)?.dataset?.price || 0),
+              image:item.image || productCardByName(item.name)?.querySelector('.product-media img')?.getAttribute('src') || '',
+              alt:item.alt || item.name
+            }));
         }
       }catch(e){
         cartItems = [];
@@ -3683,8 +3704,18 @@
       const name = card.dataset.name;
       const existing = cartItems.find(item => item.name === name);
       if(existing) existing.qty += qty;
-      else cartItems.push({name,qty});
+      else{
+        const image = card.querySelector('.product-media img');
+        cartItems.push({
+          name,
+          qty,
+          price:Number(card.dataset.price || 0),
+          image:image?.getAttribute('src') || '',
+          alt:image?.alt || name
+        });
+      }
       saveCart();
+      if(bagOverlay?.classList.contains('show')) renderBag();
     }
 
     function setCartQuantity(name,nextQty){
@@ -3720,7 +3751,7 @@
     async function localizedCartSubtotal(){
       const usdTotal = cartItems.reduce((sum,item) => {
         const card = productCardByName(item.name);
-        const price = Number(card?.dataset?.price || 0);
+        const price = Number(card?.dataset?.price || item.price || 0);
         return sum + (Number.isFinite(price) ? price * item.qty : 0);
       },0);
 
@@ -3760,23 +3791,19 @@
 
       for(const item of cartItems){
         const card = productCardByName(item.name);
-        if(!card) continue;
-
-        const image = card.querySelector('.product-media img');
+        const image = card?.querySelector('.product-media img');
         const row = document.createElement('article');
         row.className = 'bag-line';
         row.dataset.product = item.name;
 
-        const priceText = await localizedLinePrice(card,item.qty);
-
         row.innerHTML = `
           <div class="bag-line-image">
-            <img src="${image?.currentSrc || image?.src || ''}" alt="${image?.alt || localizedProductName(card)}" />
+            <img src="${image?.getAttribute('src') || item.image || ''}" alt="${image?.alt || item.alt || item.name}" />
           </div>
           <div class="bag-line-content">
             <div class="bag-line-top">
               <h3 class="bag-line-name"></h3>
-              <div class="bag-line-price">${priceText}</div>
+              <div class="bag-line-price">${formatCurrencyAmount((Number(card?.dataset?.price || item.price || 0) * item.qty),'USD')}</div>
             </div>
             <div class="bag-line-meta">
               <div class="bag-qty" aria-label="${bagT('quantity')}">
@@ -3789,7 +3816,7 @@
           </div>
         `;
 
-        row.querySelector('.bag-line-name').textContent = localizedProductName(card);
+        row.querySelector('.bag-line-name').textContent = card ? localizedProductName(card) : item.name;
 
         row.querySelector('.bag-qty-minus')?.addEventListener('click',() => {
           playUfoClick();
@@ -3807,6 +3834,11 @@
         });
 
         bagItems.appendChild(row);
+
+        localizedLinePrice(card || {dataset:{price:item.price}},item.qty).then(priceText => {
+          const priceNode = row.querySelector('.bag-line-price');
+          if(priceNode) priceNode.textContent = priceText;
+        });
       }
 
       bagSubtotal.textContent = await localizedCartSubtotal();
@@ -3814,10 +3846,10 @@
 
     async function openBag(){
       closeCartModal();
-      await renderBag();
       bagOverlay?.classList.add('show');
       bagOverlay?.setAttribute('aria-hidden','false');
       body.style.overflow = 'hidden';
+      await renderBag();
       setTimeout(() => bagClose?.focus(),80);
     }
 
@@ -3857,7 +3889,7 @@
         items: cartItems.map(item => ({
           name:item.name,
           quantity:item.qty,
-          usdUnitPrice:Number(productCardByName(item.name)?.dataset?.price || 0)
+          usdUnitPrice:Number(productCardByName(item.name)?.dataset?.price || item.price || 0)
         })),
         currency:currencyTo?.value || detectShopperCurrency(),
         submittedAt:new Date().toISOString()
@@ -3871,6 +3903,8 @@
       fields.append('_subject',`New MENOCLONE order from ${name}`);
       fields.append('_template','table');
       fields.append('_captcha','false');
+      fields.append('_autoresponse','Your order request has been sent to MENOCLONE HQ. We received your order details and will contact you to confirm payment, availability and shipping. — MENOCLONE HQ');
+      fields.append('email',email);
       fields.append('Customer name',name);
       fields.append('Customer email',email);
       fields.append('Shipping address',address);
@@ -3891,8 +3925,8 @@
         saveCart();
         await renderBag();
         [checkoutName,checkoutEmail,checkoutAddress,checkoutNotes].forEach(field => {if(field) field.value='';});
-        if(checkoutStatus) checkoutStatus.textContent = 'Order sent. MENOCLONE will contact you to confirm payment and shipping.';
-        showToast('Order sent successfully');
+        if(checkoutStatus) checkoutStatus.textContent = 'Order sent to MENOCLONE HQ. A confirmation email has been sent to you.';
+        showToast('Order sent to MENOCLONE HQ');
       }catch(error){
         bagSubmit.disabled = false;
         if(checkoutStatus) checkoutStatus.textContent = 'Order could not be sent. Please try again or email odot.rva@proton.me.';
