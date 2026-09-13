@@ -34,10 +34,10 @@
   <main id="shell">
     <section class="hud" aria-label="MENOCLONE UFO AR mission">
       <header class="topbar">
-        <div class="brand"><img src="assets/mnc-ufo-logo.png" alt="MENOCLONE UFO logo"><div><div class="eyebrow">MNC Labs / Field Unit</div><h1>Spot The UFO</h1></div></div>
+        <div class="brand"><img src="assets/mncufo.png" alt="MENOCLONE UFO logo"><div><div class="eyebrow">MNC Labs / Field Unit</div><h1>Spot The UFO</h1></div></div>
         <div class="status"><i></i><span id="ready-text">System ready</span></div>
       </header>
-      <div class="scanner" id="scanner" aria-hidden="true"><div class="orbit"></div><div class="reticle"><i class="corner"></i><i class="corner"></i><i class="corner"></i><i class="corner"></i><div class="scanline"></div><img class="target-logo" src="assets/mnc-ufo-logo.png" alt=""></div></div>
+      <div class="scanner" id="scanner" aria-hidden="true"><div class="orbit"></div><div class="reticle"><i class="corner"></i><i class="corner"></i><i class="corner"></i><i class="corner"></i><div class="scanline"></div><img class="target-logo" src="assets/mncufo.png" alt=""></div></div>
       <div class="mission">
         <div class="mission-row"><span>Mission 001</span><span>NYC Sector</span></div><div class="progress"><span></span></div>
         <p class="prompt">Find the signal.</p>
@@ -51,7 +51,7 @@
   <section id="ar-wrap" class="hidden" aria-label="AR camera experience">
     <div class="ar-overlay"><div class="ar-head"><div class="ar-chip">MNC // <strong id="ar-status">searching</strong></div><button class="close" id="close" aria-label="Close AR scanner">×</button></div><div class="ar-guide" id="guide"></div><div class="ar-foot"><div class="ar-chip">Signal <strong id="signal">00%</strong></div><div class="ar-chip">Mission 001</div></div></div>
     <a-scene id="ar-scene" mindar-image="imageTargetSrc: assets/mnc-ufo-logo.mind; autoStart: false; maxTrack: 1; filterMinCF: 0.0001; filterBeta: 0.001; warmupTolerance: 5; missTolerance: 10; uiLoading: no; uiScanning: no; uiError: no;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" embedded>
-      <a-assets><img id="trackedLogo" src="assets/mnc-ufo-logo.png" alt=""></a-assets>
+      <a-assets><img id="trackedLogo" src="assets/mncufo.png" alt=""></a-assets>
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity id="target" mindar-image-target="targetIndex: 0">
         <a-image src="#trackedLogo" position="0 0 0.04" width="1" height="1" material="transparent: true; alphaTest: 0.05" animation="property: rotation; to: 0 0 360; loop: true; dur: 12000; easing: linear"></a-image>
