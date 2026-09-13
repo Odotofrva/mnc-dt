@@ -1262,6 +1262,128 @@
       50%{transform:scale(1.12);opacity:1}
     }
 
+    /* ---------- MNC-AR EXPERIENCE ---------- */
+    .ar-section{
+      background:
+        radial-gradient(circle at 78% 38%,rgba(232,255,71,.12),transparent 24%),
+        linear-gradient(145deg,#0d0d0d,#111 55%,#090909);
+    }
+
+    .ar-panel{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      min-height:430px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#101010;
+    }
+
+    .ar-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      padding:clamp(28px,5vw,64px);
+    }
+
+    .ar-copy h3{
+      margin:0;
+      max-width:10ch;
+      font-size:clamp(40px,6vw,82px);
+      line-height:.9;
+      letter-spacing:-.055em;
+      text-transform:uppercase;
+    }
+
+    .ar-copy p:not(.eyebrow){
+      max-width:570px;
+      margin:22px 0 0;
+      color:#aaa9a3;
+      font-size:13px;
+      line-height:1.7;
+    }
+
+    .ar-launch{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin-top:30px;
+      padding:14px 20px;
+      border:1px solid var(--accent);
+      border-radius:999px;
+      background:var(--accent);
+      color:#090909;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      transition:transform .3s var(--ease),box-shadow .3s ease;
+    }
+
+    .ar-launch:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 34px rgba(232,255,71,.14);
+    }
+
+    .ar-visual{
+      position:relative;
+      display:grid;
+      place-items:center;
+      min-height:430px;
+      overflow:hidden;
+      border-left:1px solid var(--line);
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),
+        radial-gradient(circle,rgba(232,255,71,.12),transparent 38%),#0b0b0b;
+      background-size:30px 30px,30px 30px,auto,auto;
+    }
+
+    .ar-visual::before,.ar-visual::after{
+      content:"";
+      position:absolute;
+      width:min(68%,330px);
+      aspect-ratio:1;
+      border:1px solid rgba(232,255,71,.22);
+      border-radius:50%;
+      animation:arOrbit 8s linear infinite;
+    }
+
+    .ar-visual::after{
+      width:min(48%,230px);
+      animation-direction:reverse;
+      animation-duration:5s;
+    }
+
+    .ar-visual img{
+      position:relative;
+      z-index:2;
+      width:min(56%,280px);
+      filter:drop-shadow(0 0 34px rgba(232,255,71,.18));
+      animation:arFloat 3.2s ease-in-out infinite;
+    }
+
+    .ar-status{
+      position:absolute;
+      left:22px;
+      bottom:20px;
+      z-index:3;
+      color:var(--accent);
+      font-size:9px;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+
+    @keyframes arOrbit{to{transform:rotate(360deg)}}
+    @keyframes arFloat{50%{transform:translateY(-10px) scale(1.025)}}
+
+    @media(max-width:760px){
+      .ar-panel{grid-template-columns:1fr}
+      .ar-copy{padding:34px 22px}
+      .ar-visual{min-height:320px;border-left:0;border-top:1px solid var(--line)}
+    }
+
     .terms-wrap{
       display:grid;
       grid-template-columns:.75fr 1.25fr;
@@ -2909,6 +3031,7 @@
         <a href="#invading-soon" data-i18n="lookbook">Invading Soon</a>
         <a href="#mnc-skate" data-i18n="skateNav">MENOCLONE Skate</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
+        <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
         <a href="#story" data-i18n="world">World</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
         <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
@@ -2939,6 +3062,7 @@
         <a href="#invading-soon" data-i18n="lookbook">Invading Soon</a>
         <a href="#mnc-skate" data-i18n="skateNav">MENOCLONE Skate</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
+        <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
         <a href="#story" data-i18n="world">World</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
         <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
@@ -3238,6 +3362,29 @@
             <span class="locator-pin two"></span>
             <span class="locator-pin three"></span>
             <img src="mncufo.png" alt="MENOCLONE UFO logo" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section ar-section" id="mnc-ar">
+        <div class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow">MENOCLONE Interactive</p>
+            <h2>MNC-AR</h2>
+          </div>
+          <p>Scan / Detect / Invade</p>
+        </div>
+
+        <div class="ar-panel">
+          <div class="ar-copy" data-reveal>
+            <p class="eyebrow">UFO Augmented Reality Experience</p>
+            <h3>Bring the UFO into your world.</h3>
+            <p>Launch MNC-AR on your mobile device, allow camera access and scan the MENOCLONE logo to unlock the UFO augmented reality experience.</p>
+            <a class="ar-launch" href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer" aria-label="Launch the MNC-AR experience in a new tab">Launch MNC-AR <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="ar-visual" data-reveal aria-label="MENOCLONE UFO augmented reality portal">
+            <img src="mncufo.png" alt="MENOCLONE UFO logo" loading="lazy" />
+            <span class="ar-status">AR Signal Ready</span>
           </div>
         </div>
       </section>
