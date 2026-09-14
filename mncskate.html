@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<title>MNC-SKATE — Fingerboards + Modular Skatepark</title>
+<meta name="description" content="MNC-SKATE by MENOCLONE — custom fingerboards, components, and modular fingerboard skatepark obstacles.">
+<style>
+:root{
+  --black:#090909;
+  --ink:#111;
+  --white:#fff;
+  --paper:#f4f4f1;
+  --soft:#ecece8;
+  --line:#d7d7d1;
+  --muted:#6c6c68;
+  --acid:#d9ff35;
+  --cyan:#63f4ff;
+  --red:#ff4d43;
+  --max:1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+
+/* TOP */
+.utility{
+  background:#000;color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #242424;
+}
+.utility .wrap{height:34px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.utility-left,.utility-right{display:flex;gap:18px;align-items:center}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--acid);box-shadow:0 0 12px var(--acid)}
+.header{
+  background:#fff;border-bottom:1px solid var(--line)
+}
+.header-main{
+  min-height:104px;display:grid;grid-template-columns:260px 1fr 260px;align-items:center;gap:26px
+}
+.logo{
+  font-size:34px;font-weight:1000;letter-spacing:-.075em;line-height:.8;
+  display:inline-block
+}
+.logo small{
+  display:block;font-size:9px;letter-spacing:.28em;margin-top:9px;color:#777
+}
+.search{
+  border:1px solid #bbb;display:flex;height:44px;background:#fff
+}
+.search input{
+  flex:1;border:0;outline:0;padding:0 14px;font-size:13px
+}
+.search button{
+  width:50px;border:0;border-left:1px solid #bbb;background:#0b0b0b;color:#fff;font-weight:900
+}
+.header-actions{
+  display:flex;justify-content:flex-end;gap:17px;align-items:center;font-size:12px;font-weight:800;text-transform:uppercase
+}
+.cart-badge{
+  min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--acid);
+  color:#000;display:inline-grid;place-items:center;margin-left:4px;font-size:10px
+}
+
+/* NAV */
+.nav{
+  background:#0b0b0b;color:#fff;border-bottom:3px solid var(--acid)
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.nav-links{display:flex;overflow:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  white-space:nowrap;padding:16px 16px 14px;font-size:12px;font-weight:900;text-transform:uppercase;
+  letter-spacing:.035em;border-right:1px solid #242424
+}
+.nav-links a:first-child{border-left:1px solid #242424}
+.nav-links a:hover{background:#1d1d1d;color:var(--acid)}
+.drop{
+  color:#000;background:var(--acid)!important
+}
+
+/* HERO */
+.hero{
+  background:#d8d8d3;border-bottom:1px solid #bcbcb5;overflow:hidden
+}
+.hero-inner{
+  min-height:520px;display:grid;grid-template-columns:1.1fr .9fr
+}
+.hero-copy{
+  padding:62px 50px 58px 0;display:flex;flex-direction:column;justify-content:center;position:relative
+}
+.kicker{
+  font-size:11px;font-weight:1000;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:18px
+}
+.hero h1{
+  margin:0;font-size:clamp(54px,8vw,112px);line-height:.79;letter-spacing:-.085em;text-transform:uppercase
+}
+.hero h1 span{
+  display:inline-block;color:transparent;-webkit-text-stroke:2px #111
+}
+.hero p{
+  max-width:620px;line-height:1.65;font-size:15px;margin:26px 0;color:#3f3f3d
+}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{
+  border:2px solid #111;min-height:46px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;
+  text-transform:uppercase;font-size:11px;font-weight:1000;letter-spacing:.07em
+}
+.btn.black{background:#111;color:#fff}
+.btn.acid{background:var(--acid);color:#111;border-color:#111}
+.btn:hover{transform:translateY(-1px)}
+.hero-art{
+  position:relative;background:
+  linear-gradient(120deg,#111 0 48%,#151515 48% 100%);
+  min-height:520px;overflow:hidden
+}
+.hero-art:before{
+  content:"MNC / MNC / MNC / MNC / MNC / MNC / MNC / MNC /";
+  position:absolute;inset:-40px;color:#252525;font-weight:1000;font-size:70px;line-height:.8;
+  transform:rotate(-12deg);letter-spacing:-.08em;word-break:break-all;opacity:.8
+}
+.board{
+  position:absolute;left:9%;right:6%;top:50%;height:150px;border-radius:90px;transform:translateY(-50%) rotate(-10deg);
+  background:linear-gradient(90deg,#f8f8f2,#d8d8d3);border:2px solid #111;
+  box-shadow:0 30px 50px rgba(0,0,0,.5),0 0 0 7px rgba(255,255,255,.03)
+}
+.board:before,.board:after{
+  content:"";position:absolute;top:50%;width:61px;height:61px;border-radius:50%;
+  background:#f4f4ef;border:8px solid #111;transform:translateY(-50%);z-index:4
+}
+.board:before{left:54px}.board:after{right:54px}
+.truck{
+  position:absolute;top:50%;height:10px;width:86px;background:#969696;z-index:3;transform:translateY(-50%)
+}
+.t1{left:42px}.t2{right:42px}
+.board-word{
+  position:absolute;inset:0;display:grid;place-items:center;font-size:40px;font-weight:1000;letter-spacing:-.075em;
+  z-index:5
+}
+.board-word span{background:#111;color:var(--acid);padding:7px 11px;transform:skew(-8deg)}
+.sticker{
+  position:absolute;border:2px solid #111;background:var(--acid);padding:9px 11px;
+  text-transform:uppercase;font-size:10px;font-weight:1000;letter-spacing:.06em;z-index:5
+}
+.s1{right:18px;top:22px;transform:rotate(4deg)}
+.s2{left:20px;bottom:20px;background:#fff;transform:rotate(-6deg)}
+
+/* INFO STRIP */
+.trust{
+  border-bottom:1px solid var(--line);background:#fff
+}
+.trust .wrap{
+  display:grid;grid-template-columns:repeat(4,1fr)
+}
+.trust-item{
+  padding:16px;border-left:1px solid var(--line);text-align:center;font-size:10px;font-weight:900;
+  text-transform:uppercase;letter-spacing:.08em
+}
+.trust-item:last-child{border-right:1px solid var(--line)}
+.trust-item b{display:block;font-size:12px;margin-bottom:4px}
+
+/* SECTIONS */
+section{padding:50px 0}
+.section-title{
+  display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px;border-bottom:3px solid #111;
+  padding-bottom:11px
+}
+.section-title h2{
+  margin:0;font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:-.045em
+}
+.section-title a,.section-title span{
+  font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.09em
+}
+
+/* CATEGORIES */
+.categories{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:12px
+}
+.category{
+  min-height:220px;background:var(--paper);border:1px solid var(--line);position:relative;overflow:hidden;
+  display:flex;align-items:flex-end
+}
+.category:hover .cat-art{transform:translate(-50%,-50%) scale(1.04)}
+.cat-art{
+  position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);transition:.25s
+}
+.cat-name{
+  width:100%;background:#111;color:#fff;padding:12px 13px;font-size:11px;font-weight:1000;text-transform:uppercase;
+  display:flex;justify-content:space-between;position:relative;z-index:5
+}
+/* category illustrations */
+.mini-deck{
+  width:145px;height:48px;border-radius:30px;background:#fff;border:2px solid #111;
+  transform:rotate(-15deg);box-shadow:0 8px 0 #111
+}
+.mini-deck:after{content:"MNC";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:1000;font-size:18px}
+.wheels{display:flex;gap:14px}
+.wheel{width:45px;height:45px;border:10px solid #111;border-radius:50%;background:var(--acid)}
+.trucks{width:130px;height:13px;background:#aaa;border:2px solid #111;position:relative}
+.trucks:before,.trucks:after{content:"";position:absolute;top:50%;width:38px;height:38px;border:7px solid #111;border-radius:50%;background:#fff;transform:translateY(-50%)}
+.trucks:before{left:-8px}.trucks:after{right:-8px}
+.qp{
+  width:120px;height:105px;border-left:4px solid #111;border-bottom:4px solid #111;border-radius:0 0 0 7px;
+  position:relative
+}
+.qp:before{content:"";position:absolute;inset:-2px 0 0 22px;border-top:4px solid #111;border-radius:100% 0 0 0;transform:skewY(-28deg)}
+.pack{
+  width:95px;height:145px;border:3px solid #111;background:#fff;box-shadow:9px 9px 0 var(--acid);display:grid;place-items:center;
+  font-weight:1000;font-size:15px
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+}
+.product{
+  border:1px solid var(--line);background:#fff;min-width:0
+}
+.product-media{
+  height:255px;background:#f5f5f1;position:relative;display:grid;place-items:center;overflow:hidden
+}
+.product-badge{
+  position:absolute;left:10px;top:10px;background:#111;color:#fff;padding:6px 7px;font-size:9px;font-weight:1000;
+  letter-spacing:.08em;text-transform:uppercase
+}
+.product-badge.green{background:var(--acid);color:#111}
+.product-copy{padding:14px}
+.product-type{font-size:9px;color:#777;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+.product h3{font-size:13px;line-height:1.4;margin:5px 0 9px;min-height:37px}
+.price{font-size:14px;font-weight:1000}
+.price .old{text-decoration:line-through;color:#999;margin-right:5px}
+.add{
+  margin-top:12px;width:100%;height:38px;border:0;background:#111;color:#fff;font-size:10px;font-weight:1000;
+  text-transform:uppercase;letter-spacing:.08em
+}
+.add:hover{background:var(--acid);color:#111}
+/* product art */
+.prod-deck{
+  width:70px;height:205px;border-radius:44px;background:#fff;border:3px solid #111;position:relative;
+  box-shadow:7px 7px 0 #111
+}
+.prod-deck:before{content:"MNC";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);font-size:27px;font-weight:1000}
+.prod-complete{
+  width:70px;height:205px;border-radius:44px;background:#111;position:relative;box-shadow:8px 8px 0 var(--acid)
+}
+.prod-complete:before{content:"MNC";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);color:#fff;font-size:25px;font-weight:1000}
+.prod-complete:after{content:"";position:absolute;left:-20px;right:-20px;top:40px;height:9px;background:#aaa;box-shadow:0 115px 0 #aaa}
+.prod-wheel{width:105px;height:105px;border-radius:50%;border:26px solid #111;background:var(--acid);box-shadow:8px 8px 0 #ccc}
+.prod-truck{width:160px;height:18px;background:#a9a9a9;border:2px solid #111;position:relative}
+.prod-truck:before,.prod-truck:after{content:"";position:absolute;top:50%;width:50px;height:50px;border:11px solid #111;border-radius:50%;background:#fff;transform:translateY(-50%)}
+.prod-truck:before{left:-16px}.prod-truck:after{right:-16px}
+.prod-ramp{
+  width:180px;height:105px;border-left:4px solid #111;border-bottom:4px solid #111;position:relative
+}
+.prod-ramp:before{content:"";position:absolute;left:26px;right:0;top:0;height:100%;border-top:4px solid #111;border-radius:100% 0 0 0;transform:skewY(-26deg)}
+.prod-half{
+  width:180px;height:100px;border-bottom:4px solid #111;position:relative
+}
+.prod-half:before,.prod-half:after{content:"";position:absolute;bottom:0;width:49%;height:95px;border-top:4px solid #111}
+.prod-half:before{left:0;border-left:4px solid #111;border-radius:100% 0 0 0;transform:skewY(-24deg)}
+.prod-half:after{right:0;border-right:4px solid #111;border-radius:0 100% 0 0;transform:skewY(24deg)}
+.prod-pipe{width:130px;height:130px;border:13px solid #111;border-radius:50%;box-shadow:8px 8px 0 var(--acid)}
+.prod-pack{width:110px;height:178px;border:3px solid #111;background:#fff;box-shadow:10px 10px 0 var(--acid);display:grid;place-items:center;font-weight:1000;font-size:18px}
+
+/* BUILD BANNER */
+.build-banner{
+  background:#111;color:#fff;padding:0
+}
+.build-grid{
+  min-height:440px;display:grid;grid-template-columns:1fr 1fr
+}
+.build-copy{
+  padding:55px 50px 55px 0;display:flex;flex-direction:column;justify-content:center
+}
+.build-copy .label{color:var(--acid);font-size:10px;letter-spacing:.16em;font-weight:1000;text-transform:uppercase}
+.build-copy h2{
+  font-size:clamp(44px,6vw,78px);line-height:.86;letter-spacing:-.065em;text-transform:uppercase;margin:14px 0 20px
+}
+.build-copy p{color:#bcbcbc;line-height:1.7;max-width:570px}
+.build-list{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2a2a2a;border:1px solid #2a2a2a;margin-top:22px
+}
+.build-list div{padding:12px;background:#151515;font-size:10px;font-weight:900;text-transform:uppercase}
+.build-list div:before{content:"+";color:var(--acid);margin-right:8px}
+.build-art{
+  min-height:440px;background:
+  linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px),
+  #191919;
+  background-size:30px 30px;position:relative;overflow:hidden
+}
+.park{
+  position:absolute;inset:55px 40px;border:1px solid #444;transform:perspective(700px) rotateX(56deg);
+  background:#202020
+}
+.park:before{
+  content:"MNC-SKATE";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-size:36px;font-weight:1000;color:#2e2e2e
+}
+.ob{position:absolute;background:#aaa;border:2px solid #000}
+.ob1{width:100px;height:35px;left:8%;top:15%}
+.ob2{width:140px;height:16px;right:12%;top:35%}
+.ob3{width:80px;height:80px;border-radius:100% 0 0 0;left:15%;bottom:10%;background:#888}
+.ob4{width:105px;height:70px;border-radius:0 100% 0 0;right:10%;bottom:8%;background:#888}
+
+/* STORY */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px}
+.story-box{
+  border:1px solid var(--line);padding:28px;background:var(--paper)
+}
+.story-box h3{font-size:28px;letter-spacing:-.045em;text-transform:uppercase;margin:0 0 12px}
+.story-box p{color:#61615e;line-height:1.7;font-size:14px}
+.roadmap{counter-reset:road}
+.road{
+  counter-increment:road;display:grid;grid-template-columns:70px 1fr;padding:16px 0;border-bottom:1px solid var(--line)
+}
+.road:before{
+  content:"0" counter(road);font-weight:1000;font-size:13px
+}
+.road b{font-size:13px;text-transform:uppercase}
+.road small{display:block;color:#777;margin-top:5px;line-height:1.5}
+
+/* ROSTER */
+.roster{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rider{
+  min-height:300px;border:1px solid var(--line);background:#eee;position:relative;overflow:hidden
+}
+.rider:before{
+  content:"";position:absolute;width:90px;height:90px;border:2px solid #c4c4c0;border-radius:50%;top:40px;left:50%;transform:translateX(-50%)
+}
+.rider:after{
+  content:"";position:absolute;width:165px;height:150px;border:2px solid #c4c4c0;border-radius:90px 90px 10px 10px;top:145px;left:50%;transform:translateX(-50%)
+}
+.rider-label{
+  position:absolute;left:0;right:0;bottom:0;background:#111;color:#fff;padding:13px;z-index:3
+}
+.rider-label b{display:block;text-transform:uppercase;font-size:11px}
+.rider-label span{font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.08em}
+
+/* NEWSLETTER FOOTER */
+.newsletter{background:var(--acid);border-top:1px solid #111;border-bottom:1px solid #111}
+.newsletter .wrap{
+  min-height:110px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px
+}
+.newsletter h3{font-size:25px;text-transform:uppercase;letter-spacing:-.045em;margin:0}
+.newsletter p{font-size:11px;font-weight:700;margin:6px 0 0}
+.signup{display:flex;height:44px}
+.signup input{flex:1;border:2px solid #111;padding:0 13px;outline:0;background:#fff}
+.signup button{border:2px solid #111;border-left:0;background:#111;color:#fff;padding:0 20px;font-size:10px;font-weight:1000;text-transform:uppercase}
+footer{background:#0c0c0c;color:#bbb;padding:44px 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:36px}
+.footer-logo{font-size:27px;font-weight:1000;color:#fff;letter-spacing:-.06em}
+footer h4{color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.09em;margin:0 0 14px}
+footer a{display:block;font-size:11px;color:#aaa;margin:9px 0}
+footer a:hover{color:var(--acid)}
+.footer-note{color:#777;font-size:10px;line-height:1.6;margin-top:14px}
+.copy{border-top:1px solid #252525;margin-top:36px;padding-top:18px;font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:#707070;display:flex;justify-content:space-between;gap:20px}
+
+/* CART TOAST */
+.toast{
+  position:fixed;right:18px;bottom:18px;background:#111;color:#fff;padding:13px 16px;border-left:4px solid var(--acid);
+  font-size:11px;font-weight:900;text-transform:uppercase;transform:translateY(120px);opacity:0;transition:.25s;z-index:99
+}
+.toast.show{transform:none;opacity:1}
+
+@media(max-width:980px){
+  .header-main{grid-template-columns:1fr auto}
+  .search{grid-column:1/-1;grid-row:2;margin-bottom:18px}
+  .hero-inner,.build-grid,.story-grid{grid-template-columns:1fr}
+  .hero-copy{padding-right:0}
+  .hero-art{min-height:390px}
+  .categories{grid-template-columns:repeat(3,1fr)}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .build-copy{padding-right:0}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .wrap{width:min(var(--max),calc(100% - 20px))}
+  .utility-right{display:none}
+  .header-main{grid-template-columns:1fr auto;min-height:84px}
+  .logo{font-size:29px}
+  .header-actions span:first-child{display:none}
+  .nav .wrap{width:100%}
+  .nav-links a{padding:14px 13px}
+  .hero-copy{padding:42px 0}
+  .hero h1{font-size:58px}
+  .hero-art{min-height:320px}
+  .board{height:110px}
+  .board:before,.board:after{width:45px;height:45px;border-width:6px}
+  .board:before{left:32px}.board:after{right:32px}
+  .t1{left:23px}.t2{right:23px}
+  .board-word{font-size:26px}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .trust-item:nth-child(3){border-top:1px solid var(--line)}
+  .trust-item:nth-child(4){border-top:1px solid var(--line)}
+  .categories{grid-template-columns:1fr 1fr}
+  .category{min-height:180px}
+  .products{grid-template-columns:1fr 1fr;gap:9px}
+  .product-media{height:210px}
+  .product-copy{padding:10px}
+  .product h3{font-size:12px}
+  .section-title{align-items:flex-start;flex-direction:column}
+  .roster{grid-template-columns:1fr}
+  .newsletter .wrap{grid-template-columns:1fr;padding:25px 0}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .copy{flex-direction:column}
+}
+
+/* ===== MNC-SKATE MOTION + QUICK VIEW ===== */
+:root{--ease:cubic-bezier(.2,.8,.2,1)}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E")
+}
+a,button,.product,.category,.rider,.story-box{transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease),background .28s var(--ease)}
+button,.btn,.product-media,.category{position:relative;overflow:hidden}
+.product,.category{will-change:transform}
+.product:hover{transform:translateY(-7px);box-shadow:0 18px 40px rgba(0,0,0,.10);border-color:#a8a8a2}
+.category:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(0,0,0,.08)}
+.product-media{cursor:zoom-in}
+.product-media::after,.category::after,.btn::after,.add::after,.search button::after,.signup button::after{
+  content:"";position:absolute;inset:auto;width:12px;height:12px;border-radius:50%;
+  left:var(--rx,50%);top:var(--ry,50%);background:rgba(217,255,53,.48);
+  transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none
+}
+.ripple::after{animation:mncRipple .55s ease-out}
+@keyframes mncRipple{
+  0%{transform:translate(-50%,-50%) scale(0);opacity:.7}
+  100%{transform:translate(-50%,-50%) scale(16);opacity:0}
+}
+.hero-copy>*{opacity:0;transform:translateY(24px);animation:heroIn .7s var(--ease) forwards}
+.hero-copy .kicker{animation-delay:.08s}.hero-copy h1{animation-delay:.16s}.hero-copy p{animation-delay:.25s}.hero-copy .actions{animation-delay:.34s}
+@keyframes heroIn{to{opacity:1;transform:none}}
+.hero-art{animation:heroGlow 6s ease-in-out infinite alternate}
+@keyframes heroGlow{
+  from{box-shadow:inset 0 0 0 rgba(217,255,53,0)}
+  to{box-shadow:inset 0 0 95px rgba(217,255,53,.08)}
+}
+.board{animation:deckFloat 4.2s ease-in-out infinite}
+@keyframes deckFloat{
+  0%,100%{transform:translateY(-50%) rotate(-10deg)}
+  50%{transform:translateY(calc(-50% - 11px)) rotate(-8deg)}
+}
+.sticker{animation:stickerPulse 2.8s ease-in-out infinite alternate}
+.s2{animation-delay:.6s}
+@keyframes stickerPulse{to{transform:rotate(0deg) scale(1.045)}}
+.status-dot{animation:statusBlink 1.5s ease-in-out infinite}
+@keyframes statusBlink{50%{opacity:.32;box-shadow:0 0 3px var(--acid)}}
+
+.motion-reveal{opacity:0;transform:translateY(28px)}
+.motion-reveal.motion-in{opacity:1;transform:none;transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.motion-reveal.motion-in:nth-child(2){transition-delay:.06s}
+.motion-reveal.motion-in:nth-child(3){transition-delay:.12s}
+.motion-reveal.motion-in:nth-child(4){transition-delay:.18s}
+.motion-reveal.motion-in:nth-child(5){transition-delay:.24s}
+
+.product.shake{animation:skatePop .42s var(--ease)}
+@keyframes skatePop{
+  0%{transform:translateY(0) rotate(0)}
+  30%{transform:translateY(-8px) rotate(-1deg)}
+  65%{transform:translateY(1px) rotate(.6deg)}
+  100%{transform:translateY(0) rotate(0)}
+}
+
+.sound-toggle{
+  position:fixed;left:16px;bottom:16px;z-index:1200;border:1px solid #333;background:#111;color:#fff;
+  padding:10px 12px;font-size:9px;font-weight:1000;text-transform:uppercase;letter-spacing:.09em;
+  box-shadow:0 10px 30px rgba(0,0,0,.25)
+}
+.sound-toggle span{color:var(--acid)}
+
+.quickview-backdrop{
+  position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);
+  opacity:0;pointer-events:none;transition:opacity .28s var(--ease);display:grid;place-items:center;padding:18px
+}
+.quickview-backdrop.open{opacity:1;pointer-events:auto}
+.quickview{
+  width:min(920px,100%);max-height:min(760px,92vh);overflow:auto;background:#fff;color:#111;
+  border:2px solid #111;box-shadow:0 30px 100px rgba(0,0,0,.5);
+  transform:translateY(28px) scale(.97);opacity:0;transition:transform .3s var(--ease),opacity .3s var(--ease)
+}
+.quickview-backdrop.open .quickview{transform:none;opacity:1}
+.quickview-top{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#111;color:#fff}
+.quickview-brand{font-size:10px;font-weight:1000;letter-spacing:.13em;text-transform:uppercase}
+.quickview-close{width:34px;height:34px;border:1px solid #444;background:#111;color:#fff;font-weight:1000;font-size:18px}
+.quickview-grid{display:grid;grid-template-columns:1.05fr .95fr}
+.quickview-visual{
+  min-height:430px;background:#f1f1ed;display:grid;place-items:center;position:relative;overflow:hidden;padding:35px
+}
+.quickview-visual>*{transform:scale(1.55)}
+.quickview-info{padding:38px}
+.quickview-type{font-size:9px;color:#777;font-weight:1000;text-transform:uppercase;letter-spacing:.12em}
+.quickview-info h3{font-size:34px;line-height:.98;letter-spacing:-.055em;text-transform:uppercase;margin:8px 0 13px}
+.quickview-info p{font-size:13px;line-height:1.75;color:#62625f}
+.quickview-specs{margin:20px 0;border-top:1px solid #ccc}
+.quickview-spec{display:flex;justify-content:space-between;gap:15px;padding:11px 0;border-bottom:1px solid #ddd;font-size:10px;text-transform:uppercase}
+.quickview-spec b{font-size:10px}
+.quickview-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.quickview-timer{height:5px;background:#ddd;position:relative;overflow:hidden}
+.quickview-timer span{display:block;height:100%;background:var(--acid);transform-origin:left;animation:qvCountdown 5s linear forwards}
+@keyframes qvCountdown{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+.quickview-hint{margin-top:14px;font-size:9px;text-transform:uppercase;color:#8c8c88;letter-spacing:.08em}
+
+.click-flash{
+  position:fixed;width:18px;height:18px;border:2px solid var(--acid);border-radius:50%;pointer-events:none;z-index:2000;
+  transform:translate(-50%,-50%) scale(.3);animation:flashRing .45s ease-out forwards
+}
+@keyframes flashRing{to{transform:translate(-50%,-50%) scale(3);opacity:0}}
+
+@media(max-width:760px){
+  .quickview-grid{grid-template-columns:1fr}
+  .quickview-visual{min-height:280px}
+  .quickview-visual>*{transform:scale(1.25)}
+  .quickview-info{padding:24px}
+  .quickview-info h3{font-size:27px}
+}
+
+
+/* ===== EASY-REPLACE PHOTO SLOTS ===== */
+.product-photo-slot{
+  width:100%;height:100%;position:absolute;inset:0;display:grid;place-items:center;padding:18px;
+}
+.product-photo-slot img{
+  width:100%;height:100%;object-fit:contain;display:block;position:relative;z-index:2;
+}
+.product-photo-slot .fallback-art{position:relative;z-index:1}
+.product-photo-slot img[data-failed="true"]{display:none}
+.product-photo-slot img:not([data-failed="true"]) + .fallback-art{opacity:0;position:absolute;pointer-events:none}
+.hero-user-photo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;
+}
+.hero-user-photo[data-failed="true"]{display:none}
+.hero-art.has-user-photo .board,
+.hero-art.has-user-photo .sticker{z-index:4}
+.hero-art.has-user-photo::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.15),rgba(0,0,0,.05));z-index:3;pointer-events:none
+}
+.photo-note{
+  font-size:9px;color:#888;margin-top:7px;text-transform:uppercase;letter-spacing:.07em
+}
+
+
+/* ===== MNC-SKATE INTERACTIVE 3D HERO ===== */
+.hero-art{
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 45%,rgba(217,255,53,.15),transparent 28%),
+    radial-gradient(circle at 72% 22%,rgba(99,244,255,.10),transparent 24%),
+    linear-gradient(135deg,#111,#181818 58%,#0d0d0d);
+  isolation:isolate;
+}
+.hero-art::before{
+  content:"MNC / SKATE / LAB / 3D / MNC / SKATE / LAB / 3D /";
+  position:absolute;inset:-55px;z-index:0;color:#242424;font-weight:1000;font-size:64px;line-height:.85;
+  transform:rotate(-12deg);letter-spacing:-.08em;word-break:break-all;opacity:.72;pointer-events:none
+}
+#mncFingerboard3D{
+  position:absolute;inset:0;width:100%;height:100%;z-index:2;
+  --poster-color:transparent;
+  --progress-bar-color:var(--acid);
+  --progress-bar-height:4px;
+  background:transparent;
+}
+.model-ui{
+  position:absolute;left:18px;right:18px;bottom:18px;z-index:6;display:flex;align-items:flex-end;
+  justify-content:space-between;gap:12px;pointer-events:none
+}
+.model-help{
+  background:rgba(10,10,10,.78);color:#fff;border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(10px);padding:10px 12px;max-width:260px;font-size:9px;font-weight:900;
+  text-transform:uppercase;letter-spacing:.08em;line-height:1.55
+}
+.model-help b{color:var(--acid)}
+.model-controls{display:flex;gap:7px;pointer-events:auto}
+.model-control{
+  border:1px solid rgba(255,255,255,.22);background:rgba(10,10,10,.82);color:#fff;
+  min-height:38px;padding:0 12px;font-size:9px;font-weight:1000;text-transform:uppercase;letter-spacing:.08em
+}
+.model-control:hover{background:var(--acid);color:#111;border-color:#111}
+.ar-button{
+  border:2px solid #111;background:var(--acid);color:#111;padding:10px 13px;
+  font-size:9px;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;
+  position:absolute;right:18px;top:18px
+}
+.model-status{
+  position:absolute;left:18px;top:18px;z-index:7;background:#111;color:#fff;border-left:4px solid var(--acid);
+  padding:9px 11px;font-size:9px;font-weight:1000;text-transform:uppercase;letter-spacing:.08em
+}
+.model-status.error{border-left-color:#ff4d43}
+.model-file-note{
+  display:block;color:#8b8b87;font-size:8px;margin-top:4px;letter-spacing:.04em;text-transform:none
+}
+@media(max-width:640px){
+  .model-help{max-width:190px}
+  .model-controls{flex-direction:column}
+  .model-control{min-height:34px;padding:0 9px}
+  .ar-button{right:10px;top:10px}
+  .model-status{left:10px;top:10px;max-width:190px}
+}
+
+</style>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="utility">
+  <div class="wrap">
+    <div class="utility-left"><span class="status-dot"></span><span>MNC-SKATE / Prototype Lab Active</span></div>
+    <div class="utility-right"><span>Originality Has Origins</span><span>Built by MENOCLONE</span></div>
+  </div>
+</div>
+
+<header class="header">
+  <div class="wrap header-main">
+    <a class="logo" href="#top">MNC-SKATE<small>MENOCLONE SKATE LAB</small></a>
+    <div class="search">
+      <input id="searchInput" type="search" placeholder="Search fingerboards, wheels, ramps...">
+      <button id="searchBtn" aria-label="Search">→</button>
+    </div>
+    <div class="header-actions">
+      <span><a href="#story">About</a></span>
+      <span><a href="#roster">Roster</a></span>
+      <span>Cart <b class="cart-badge" id="cartCount">0</b></span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-links">
+      <a class="drop" href="#products">Shop All</a>
+      <a href="#fingerboards">Fingerboards</a>
+      <a href="#products">Decks</a>
+      <a href="#products">Trucks</a>
+      <a href="#products">Wheels</a>
+      <a href="#park">Skatepark</a>
+      <a href="#products">Obstacles</a>
+      <a href="#story">MNC Labs</a>
+      <a href="#roster">Team</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <div class="kicker">MENOCLONE / MNC-SKATE</div>
+        <h1>Fingerboards.<br><span>Built Different.</span></h1>
+        <p>
+          MNC-SKATE is a startup project building custom fingerboards, performance parts,
+          collectible packaging and a modular miniature skatepark system. Made for sessions,
+          shelves, creators and anyone who believes the smallest skate setup can still have a full identity.
+        </p>
+        <div class="actions">
+          <a class="btn black" href="#products">Shop the Prototype Line</a>
+          <a class="btn acid" href="#park">Explore the Park Build</a>
+        </div>
+      </div>
+
+      <div class="hero-art" id="heroArt" aria-label="Interactive MNC-SKATE fingerboard 3D model">
+        <model-viewer
+          id="mncFingerboard3D"
+          src="mncufo.glb"
+          alt="Interactive 3D model of the MNC-SKATE fingerboard"
+          camera-controls
+          touch-action="pan-y"
+          auto-rotate
+          auto-rotate-delay="2500"
+          rotation-per-second="18deg"
+          camera-orbit="20deg 72deg 105%"
+          min-camera-orbit="auto auto 65%"
+          max-camera-orbit="auto auto 190%"
+          field-of-view="30deg"
+          environment-image="neutral"
+          shadow-intensity="1.15"
+          shadow-softness=".8"
+          exposure="1.05"
+          ar
+          ar-modes="webxr scene-viewer quick-look">
+
+          <button class="ar-button" slot="ar-button" type="button">View Fingerboard in AR</button>
+        </model-viewer>
+
+        <div class="model-status" id="modelStatus">
+          Loading 3D Fingerboard
+          <span class="model-file-note">assets/mnc-fingerboard.glb</span>
+        </div>
+
+        <div class="model-ui">
+          <div class="model-help"><b>Interact:</b> drag to rotate · scroll/pinch to zoom · double-click to reset</div>
+          <div class="model-controls">
+            <button class="model-control" id="toggleRotate" type="button">Pause Rotation</button>
+            <button class="model-control" id="resetModel" type="button">Reset View</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="wrap">
+      <div class="trust-item"><b>Prototype Driven</b>Designed from the ground up</div>
+      <div class="trust-item"><b>Modular Park</b>Build + rearrange obstacles</div>
+      <div class="trust-item"><b>Small Batch</b>Founders-era releases</div>
+      <div class="trust-item"><b>MENOCLONE DNA</b>Art × skate × maker tech</div>
+    </div>
+  </div>
+
+  <section id="fingerboards">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Popular Categories</h2>
+        <span>Build your MNC setup</span>
+      </div>
+
+      <div class="categories">
+        <a class="category" href="#products">
+          <div class="cat-art mini-deck"></div>
+          <div class="cat-name"><span>Fingerboards</span><span>→</span></div>
+        </a>
+        <a class="category" href="#products">
+          <div class="cat-art wheels"><span class="wheel"></span><span class="wheel"></span></div>
+          <div class="cat-name"><span>Wheels</span><span>→</span></div>
+        </a>
+        <a class="category" href="#products">
+          <div class="cat-art trucks"></div>
+          <div class="cat-name"><span>Trucks</span><span>→</span></div>
+        </a>
+        <a class="category" href="#park">
+          <div class="cat-art qp"></div>
+          <div class="cat-name"><span>Obstacles</span><span>→</span></div>
+        </a>
+        <a class="category" href="#products">
+          <div class="cat-art pack">MNC</div>
+          <div class="cat-name"><span>Packaging</span><span>→</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Featured Products</h2>
+        <a href="#products">View All MNC-SKATE →</a>
+      </div>
+
+      <div class="products" id="productGrid">
+        <article class="product" data-name="MNC-SKATE Complete Fingerboard">
+          <div class="product-media"><span class="product-badge green">Prototype</span><div class="product-photo-slot"><img src="assets/mnc-complete.jpg" alt="MNC-SKATE Founder Complete" onerror="this.dataset.failed='true'"><div class="prod-complete fallback-art"></div></div></div>
+          <div class="product-copy">
+            <div class="product-type">Complete Fingerboard</div>
+            <h3>MNC-SKATE Founder Complete — Black / Acid</h3>
+            <div class="price">Coming Soon</div>
+            <button class="add" data-product="Founder Complete">Join Product Waitlist</button>
+          </div>
+        </article>
+
+        <article class="product" data-name="MNC Blank Deck White">
+          <div class="product-media"><span class="product-badge">Deck 001</span><div class="product-photo-slot"><img src="assets/mnc-deck.jpg" alt="MNC blank deck" onerror="this.dataset.failed='true'"><div class="prod-deck fallback-art"></div></div></div>
+          <div class="product-copy">
+            <div class="product-type">Deck</div>
+            <h3>MNC Blank Deck — White / Black Logo</h3>
+            <div class="price">Prototype</div>
+            <button class="add" data-product="MNC Blank Deck">Join Product Waitlist</button>
+          </div>
+        </article>
+
+        <article class="product" data-name="MNC Logo Fingerboard Wheels">
+          <div class="product-media"><span class="product-badge">Parts</span><div class="product-photo-slot"><img src="assets/mnc-wheels.jpg" alt="MNC fingerboard wheels" onerror="this.dataset.failed='true'"><div class="prod-wheel fallback-art"></div></div></div>
+          <div class="product-copy">
+            <div class="product-type">Wheels</div>
+            <h3>MNC Logo Wheels — White / Acid Core</h3>
+            <div class="price">Prototype</div>
+            <button class="add" data-product="MNC Logo Wheels">Join Product Waitlist</button>
+          </div>
+        </article>
+
+        <article class="product" data-name="MNC Fingerboard Trucks">
+          <div class="product-media"><span class="product-badge">Parts</span><div class="product-photo-slot"><img src="assets/mnc-trucks.jpg" alt="MNC fingerboard trucks" onerror="this.dataset.failed='true'"><div class="prod-truck fallback-art"></div></div></div>
+          <div class="product-copy">
+            <div class="product-type">Trucks</div>
+            <h3>MNC Performance Trucks — Raw Silver</h3>
+            <div class="price">Prototype</div>
+            <button class="add" data-product="MNC Trucks">Join Product Waitlist</button>
+          </div>
+        </article>
+
+        <article class="product" data-name="MNC Quarter Pipe">
+          <div class="product-media"><span class="product-badge green">Park Build</span><div class="product-photo-slot"><img src="assets/mnc-quarterpipe.jpg" alt="MNC quarter pipe" onerror="this.dataset.failed='true'"><div class="prod-ramp fallback-art"></div></div></div>
+          <div class="product-copy">
+            <div class="product-type">Obstacle</div>
+            <h3>MNC Modular Quarter Pipe</h3>
+            <div class="price">3D-Printed Prototype</div>
+            <button class="add" data-product="MNC Quarter Pipe">Join Product Waitlist</button>
+          </div>
+        </article>
+
+        <article class="product" data-name="MNC Mini Ramp Half Pipe">
+          <div class="product-media"><span class="product-badge green">Park Build</span><div class="product-photo-slot"><img src="assets/mnc-miniramp.jpg" alt="MNC mini ramp" onerror="this.dataset.failed='true'"><div class="prod-half fallback-art"></div></div></div>
+          <div class="product-copy">
+            <div class="product-type">Obstacle</div>
+            <h3>MNC Mini Ramp / Half Pipe Module</h3>
+            <div class="price">3D-Printed Prototype</div>
+            <button class="add" data-product="MNC Mini Ramp">Join Product Waitlist</button>
+          </div>
+        </article>
+
+        <article class="product" data-name="MNC Full Pipe Fingerboard Obstacle">
+          <div class="product-media"><span class="product-badge green">Park Build</span><div class="product-photo-slot"><img src="assets/mnc-fullpipe.jpg" alt="MNC full pipe" onerror="this.dataset.failed='true'"><div class="prod-pipe fallback-art"></div></div></div>
+          <div class="product-copy">
+            <div class="product-type">Obstacle</div>
+            <h3>MNC Full Pipe Module</h3>
+            <div class="price">3D-Printed Prototype</div>
+            <button class="add" data-product="MNC Full Pipe">Join Product Waitlist</button>
+          </div>
+        </article>
+
+        <article class="product" data-name="MNC Fingerboard Collector Packaging">
+          <div class="product-media"><span class="product-badge">Packaging</span><div class="product-photo-slot"><img src="assets/mnc-packaging.jpg" alt="MNC collector packaging" onerror="this.dataset.failed='true'"><div class="prod-pack fallback-art">MNC</div></div></div>
+          <div class="product-copy">
+            <div class="product-type">Collector Pack</div>
+            <h3>MNC-SKATE Display Packaging</h3>
+            <div class="price">Prototype</div>
+            <button class="add" data-product="MNC Packaging">Join Product Waitlist</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="build-banner" id="park">
+    <div class="wrap build-grid">
+      <div class="build-copy">
+        <div class="label">MNC-SKATE / Modular Park System</div>
+        <h2>Build the whole spot.</h2>
+        <p>
+          MNC-SKATE is more than a board. We are developing a modular skatepark platform
+          built around 3D-printed obstacles that can be mixed, moved, collected and expanded.
+          The idea is to let the user build a personal miniature spot the same way a skater sees a city.
+        </p>
+        <div class="build-list">
+          <div>Quarter Pipe</div>
+          <div>Half Pipe</div>
+          <div>Mini Ramp</div>
+          <div>Full Pipe</div>
+          <div>Rails</div>
+          <div>Ledges + Banks</div>
+        </div>
+      </div>
+      <div class="build-art">
+        <div class="park">
+          <span class="ob ob1"></span><span class="ob ob2"></span><span class="ob ob3"></span><span class="ob ob4"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>The Startup Build</h2>
+        <span>Concept → Prototype → Drop</span>
+      </div>
+      <div class="story-grid">
+        <div class="story-box">
+          <h3>Why MNC-SKATE?</h3>
+          <p>
+            We want to treat fingerboarding with the same attention given to full-size skate products:
+            graphics, hardware, packaging, park architecture and community. MNC-SKATE connects
+            MENOCLONE's art direction with product prototyping and maker culture.
+          </p>
+          <p>
+            The first phase is intentionally small: build physical samples, test them, document the process,
+            improve the parts, and create a founders-era release around the people who helped shape it.
+          </p>
+          <a class="btn black" href="https://www.menoclone.com/" target="_blank" rel="noopener">Visit MENOCLONE.com</a>
+        </div>
+
+        <div class="story-box roadmap">
+          <div class="road"><div><b>Prototype System</b><small>Decks, wheels, trucks, packaging and first obstacle library.</small></div></div>
+          <div class="road"><div><b>Physical Testing</b><small>3D print the park, assemble completes and refine dimensions.</small></div></div>
+          <div class="road"><div><b>Founding Roster</b><small>Three riders / creators test setups and film the first sessions.</small></div></div>
+          <div class="road"><div><b>Founders Drop</b><small>Limited boards and modular park parts with collectible packaging.</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roster">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>MNC-SKATE Roster</h2>
+        <span>First Generation / 3 Spots</span>
+      </div>
+      <div class="roster">
+        <div class="rider"><div class="rider-label"><b>Roster Slot 01</b><span>Fingerboard Rider</span></div></div>
+        <div class="rider"><div class="rider-label"><b>Roster Slot 02</b><span>Creator / Builder</span></div></div>
+        <div class="rider"><div class="rider-label"><b>Roster Slot 03</b><span>Community Rider</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter" id="contact">
+    <div class="wrap">
+      <div>
+        <h3>Get MNC-SKATE build updates.</h3>
+        <p>Prototype drops, park progress, roster calls and launch news.</p>
+      </div>
+      <form class="signup" onsubmit="event.preventDefault(); showToast('You are on the MNC-SKATE update list'); this.reset();">
+        <input type="email" required placeholder="Enter your email">
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">MNC-SKATE</div>
+        <div class="footer-note">
+          A MENOCLONE startup project exploring fingerboard culture, modular skatepark design,
+          maker technology and collectible product systems.
+        </div>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <a href="#products">Fingerboards</a>
+        <a href="#products">Decks</a>
+        <a href="#products">Wheels</a>
+        <a href="#products">Trucks</a>
+        <a href="#park">Obstacles</a>
+      </div>
+      <div>
+        <h4>MNC-SKATE</h4>
+        <a href="#story">About the Build</a>
+        <a href="#park">Skatepark</a>
+        <a href="#roster">Roster</a>
+        <a href="https://www.menoclone.com/" target="_blank" rel="noopener">MENOCLONE</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:odot.rva@proton.me">odot.rva@proton.me</a>
+        <a href="#contact">Join Updates</a>
+        <a href="#top">Back to Top</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 MENOCLONE / MNC-SKATE. Originality Has Origins.</span>
+      <span>Fingerboards × Skatepark × Product Design × Maker Tech</span>
+    </div>
+  </div>
+</footer>
+
+
+<button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true">Skate Sound: <span>ON</span></button>
+
+<div class="quickview-backdrop" id="quickviewBackdrop" aria-hidden="true">
+  <div class="quickview" role="dialog" aria-modal="true" aria-labelledby="quickviewTitle">
+    <div class="quickview-top">
+      <div class="quickview-brand">MNC-SKATE / PRODUCT INSIGHT</div>
+      <button class="quickview-close" id="quickviewClose" aria-label="Close product quick view">×</button>
+    </div>
+    <div class="quickview-timer"><span id="quickviewTimerBar"></span></div>
+    <div class="quickview-grid">
+      <div class="quickview-visual" id="quickviewVisual"></div>
+      <div class="quickview-info">
+        <div class="quickview-type" id="quickviewType">MNC-SKATE Product</div>
+        <h3 id="quickviewTitle">Product</h3>
+        <p id="quickviewDescription"></p>
+        <div class="quickview-specs" id="quickviewSpecs"></div>
+        <div class="quickview-actions">
+          <button class="btn black" id="quickviewInterest" type="button">Join Product Waitlist</button>
+          <button class="btn acid" id="quickviewManualClose" type="button">Close View</button>
+        </div>
+        <div class="quickview-hint">This product view closes automatically after 5 seconds.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Added</div>
+
+<script>
+let count = 0;
+const cartCount = document.getElementById('cartCount');
+const toast = document.getElementById('toast');
+const quickviewBackdrop = document.getElementById('quickviewBackdrop');
+const quickviewVisual = document.getElementById('quickviewVisual');
+const quickviewType = document.getElementById('quickviewType');
+const quickviewTitle = document.getElementById('quickviewTitle');
+const quickviewDescription = document.getElementById('quickviewDescription');
+const quickviewSpecs = document.getElementById('quickviewSpecs');
+const quickviewTimerBar = document.getElementById('quickviewTimerBar');
+const soundToggle = document.getElementById('soundToggle');
+let quickviewTimer = null;
+let soundEnabled = true;
+let audioCtx = null;
+
+const productInsights = {
+  "MNC-SKATE Complete Fingerboard":{
+    description:"A complete MNC-SKATE setup built as the flagship founders-era fingerboard. The goal is a ready-to-session board that also feels collectible enough to live on a display wall.",
+    specs:[["Format","Complete"],["Focus","Session + Display"],["Finish","Black / Acid"],["Stage","Prototype"]]
+  },
+  "MNC Blank Deck White":{
+    description:"The core MNC deck concept stripped down to a clean white base with high-contrast branding. Intended as the platform for future graphics, limited art drops and collaborative editions.",
+    specs:[["Part","Deck"],["Graphic","MNC Logo"],["Finish","White / Black"],["Stage","Prototype"]]
+  },
+  "MNC Logo Fingerboard Wheels":{
+    description:"Custom wheel concept with MNC branding built into the visual language of the setup. Designed to turn a small performance part into a recognizable brand detail.",
+    specs:[["Part","Wheels"],["Concept","Logo Edition"],["Core","Acid Accent"],["Stage","Prototype"]]
+  },
+  "MNC Fingerboard Trucks":{
+    description:"Raw-silver truck concept for MNC complete setups. The design direction is minimal and functional so the trucks support the stronger deck and wheel graphics.",
+    specs:[["Part","Trucks"],["Finish","Raw Silver"],["Use","Complete Setups"],["Stage","Prototype"]]
+  },
+  "MNC Quarter Pipe":{
+    description:"A modular quarter-pipe obstacle planned for the MNC-SKATE park system. The objective is a compact, repeatable part that can be moved, paired and expanded into larger park layouts.",
+    specs:[["Type","Quarter Pipe"],["Build","3D Printed"],["System","Modular Park"],["Stage","Prototype"]]
+  },
+  "MNC Mini Ramp Half Pipe":{
+    description:"A compact transition module designed for continuous lines and repeat sessions. It can function as a standalone mini ramp or as part of a larger MNC-SKATE park configuration.",
+    specs:[["Type","Mini Ramp"],["Build","3D Printed"],["System","Modular Park"],["Stage","Prototype"]]
+  },
+  "MNC Full Pipe Fingerboard Obstacle":{
+    description:"The full-pipe concept pushes the park beyond basic ledges and ramps. It is intended as a signature obstacle that gives the MNC-SKATE park a recognizable silhouette.",
+    specs:[["Type","Full Pipe"],["Build","3D Printed"],["Role","Signature Obstacle"],["Stage","Prototype"]]
+  },
+  "MNC Fingerboard Collector Packaging":{
+    description:"Retail-style collector packaging built to make each fingerboard feel like a release, not just a loose product. The back can carry specs, story, QR links and future drop information.",
+    specs:[["Type","Collector Packaging"],["Use","Retail + Display"],["Brand","MENOCLONE"],["Stage","Prototype"]]
+  }
+};
+
+function showToast(message){
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(()=>toast.classList.remove('show'),2200);
+}
+
+function getAudioContext(){
+  if(!audioCtx){
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if(audioCtx.state === "suspended") audioCtx.resume();
+  return audioCtx;
+}
+
+/* Synthetic skateboard click: a short rolling-noise burst + hard deck/truck clack.
+   No external audio file is required. */
+function playSkateSound(){
+  if(!soundEnabled) return;
+  try{
+    const ctx = getAudioContext();
+    const now = ctx.currentTime;
+
+    // rolling texture
+    const buffer = ctx.createBuffer(1, ctx.sampleRate * .18, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for(let i=0;i<data.length;i++){
+      const env = Math.exp(-i/(ctx.sampleRate*.055));
+      data[i] = (Math.random()*2-1) * env * .22;
+    }
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+    const noiseFilter = ctx.createBiquadFilter();
+    noiseFilter.type = "bandpass";
+    noiseFilter.frequency.value = 1150;
+    noiseFilter.Q.value = .8;
+    const noiseGain = ctx.createGain();
+    noiseGain.gain.setValueAtTime(.5, now);
+    noiseGain.gain.exponentialRampToValueAtTime(.01, now+.17);
+    noise.connect(noiseFilter).connect(noiseGain).connect(ctx.destination);
+    noise.start(now);
+
+    // truck/deck clack
+    [180, 105].forEach((freq,idx)=>{
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = idx ? "square" : "triangle";
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq*.6, now+.06);
+      g.gain.setValueAtTime(idx ? .055 : .08, now);
+      g.gain.exponentialRampToValueAtTime(.001, now+.08);
+      osc.connect(g).connect(ctx.destination);
+      osc.start(now + idx*.018);
+      osc.stop(now+.09);
+    });
+  }catch(e){}
+}
+
+function rippleEffect(el, event){
+  if(!el) return;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty('--rx',(event.clientX-r.left)+'px');
+  el.style.setProperty('--ry',(event.clientY-r.top)+'px');
+  el.classList.remove('ripple');
+  void el.offsetWidth;
+  el.classList.add('ripple');
+  setTimeout(()=>el.classList.remove('ripple'),600);
+}
+
+function flashClick(x,y){
+  const dot = document.createElement('span');
+  dot.className = 'click-flash';
+  dot.style.left = x+'px';
+  dot.style.top = y+'px';
+  document.body.appendChild(dot);
+  setTimeout(()=>dot.remove(),500);
+}
+
+function openQuickview(product){
+  const name = product.dataset.name;
+  const insight = productInsights[name] || {
+    description:"MNC-SKATE prototype product currently being developed as part of the first fingerboard and skatepark system.",
+    specs:[["Brand","MNC-SKATE"],["Stage","Prototype"]]
+  };
+  const media = product.querySelector('.product-media');
+  const type = product.querySelector('.product-type')?.textContent || 'MNC-SKATE Product';
+  const title = product.querySelector('h3')?.textContent || name;
+
+  quickviewVisual.innerHTML = media ? media.innerHTML : '';
+  quickviewType.textContent = type;
+  quickviewTitle.textContent = title;
+  quickviewDescription.textContent = insight.description;
+  quickviewSpecs.innerHTML = insight.specs.map(([k,v])=>`<div class="quickview-spec"><span>${k}</span><b>${v}</b></div>`).join('');
+
+  quickviewBackdrop.classList.add('open');
+  quickviewBackdrop.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+
+  quickviewTimerBar.style.animation = 'none';
+  void quickviewTimerBar.offsetWidth;
+  quickviewTimerBar.style.animation = 'qvCountdown 5s linear forwards';
+
+  clearTimeout(quickviewTimer);
+  quickviewTimer = setTimeout(closeQuickview,5000);
+
+  product.classList.remove('shake');
+  void product.offsetWidth;
+  product.classList.add('shake');
+}
+
+function closeQuickview(){
+  quickviewBackdrop.classList.remove('open');
+  quickviewBackdrop.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+  clearTimeout(quickviewTimer);
+}
+
+document.getElementById('quickviewClose').addEventListener('click',closeQuickview);
+document.getElementById('quickviewManualClose').addEventListener('click',closeQuickview);
+document.getElementById('quickviewInterest').addEventListener('click',()=>{
+  count++;
+  cartCount.textContent = count;
+  showToast('Added to MNC-SKATE interest list');
+  closeQuickview();
+});
+quickviewBackdrop.addEventListener('click',e=>{
+  if(e.target === quickviewBackdrop) closeQuickview();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key === 'Escape' && quickviewBackdrop.classList.contains('open')) closeQuickview();
+});
+
+soundToggle.addEventListener('click',()=>{
+  soundEnabled = !soundEnabled;
+  soundToggle.setAttribute('aria-pressed', String(soundEnabled));
+  soundToggle.querySelector('span').textContent = soundEnabled ? 'ON' : 'OFF';
+  if(soundEnabled) playSkateSound();
+});
+
+document.querySelectorAll('.add').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    count++;
+    cartCount.textContent = count;
+    showToast(btn.dataset.product + ' added to interest list');
+  });
+});
+
+document.querySelectorAll('.product').forEach(product=>{
+  product.querySelector('.product-media')?.addEventListener('click',()=>openQuickview(product));
+  product.querySelector('.product-copy h3')?.addEventListener('click',()=>openQuickview(product));
+});
+
+function filterProducts(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const items = [...document.querySelectorAll('.product')];
+  let matches = 0;
+  items.forEach(item=>{
+    const visible = !q || item.dataset.name.toLowerCase().includes(q);
+    item.style.display = visible ? '' : 'none';
+    if(visible) matches++;
+  });
+  if(q) showToast(matches ? matches + ' matching product(s)' : 'No matching products');
+}
+
+document.getElementById('searchBtn').addEventListener('click', filterProducts);
+document.getElementById('searchInput').addEventListener('keydown',e=>{
+  if(e.key === 'Enter') filterProducts();
+});
+
+/* Click sound, ripple, and visual feedback for buttons + image-like cards. */
+document.addEventListener('click',e=>{
+  const target = e.target.closest('button,.btn,.product-media,.category');
+  if(!target) return;
+  if(target !== soundToggle || soundEnabled) playSkateSound();
+  rippleEffect(target,e);
+  flashClick(e.clientX,e.clientY);
+});
+
+/* Scroll-in motion */
+const revealTargets = document.querySelectorAll(
+  '.category,.product,.story-box,.rider,.section-title,.build-copy,.build-art,.trust-item,.footer-grid>div'
+);
+revealTargets.forEach(el=>el.classList.add('motion-reveal'));
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('motion-in');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+revealTargets.forEach(el=>observer.observe(el));
+
+/* Subtle mouse tilt on desktop product cards */
+if(window.matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('.product').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX-r.left)/r.width - .5;
+      const y = (e.clientY-r.top)/r.height - .5;
+      card.style.transform = `translateY(-7px) rotateX(${(-y*2.2).toFixed(2)}deg) rotateY(${(x*2.8).toFixed(2)}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>card.style.transform='');
+  });
+}
+
+/* ===== 3D HERO CONTROLS ===== */
+const mncModel = document.getElementById('mncFingerboard3D');
+const modelStatus = document.getElementById('modelStatus');
+const toggleRotate = document.getElementById('toggleRotate');
+const resetModel = document.getElementById('resetModel');
+
+if(mncModel){
+  mncModel.addEventListener('load',()=>{
+    modelStatus.innerHTML = '3D Fingerboard Ready<span class="model-file-note">Drag · rotate · zoom · AR capable</span>';
+    modelStatus.classList.remove('error');
+    setTimeout(()=>{ modelStatus.style.opacity = '.72'; },1800);
+  });
+
+  mncModel.addEventListener('error',()=>{
+    modelStatus.innerHTML = 'Add your GLB model<span class="model-file-note">Place it at assets/mnc-fingerboard.glb</span>';
+    modelStatus.classList.add('error');
+  });
+
+  toggleRotate?.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    const isOn = mncModel.hasAttribute('auto-rotate');
+    if(isOn){
+      mncModel.removeAttribute('auto-rotate');
+      toggleRotate.textContent = 'Start Rotation';
+    }else{
+      mncModel.setAttribute('auto-rotate','');
+      toggleRotate.textContent = 'Pause Rotation';
+    }
+  });
+
+  const reset3DView = ()=>{
+    mncModel.cameraOrbit = '20deg 72deg 105%';
+    mncModel.fieldOfView = '30deg';
+    if(typeof mncModel.jumpCameraToGoal === 'function') mncModel.jumpCameraToGoal();
+  };
+
+  resetModel?.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    reset3DView();
+  });
+
+  mncModel.addEventListener('dblclick',reset3DView);
+
+  // Play the existing skate click sound when the 3D model is first engaged.
+  mncModel.addEventListener('pointerdown',()=>{
+    if(typeof playSkateSound === 'function') playSkateSound();
+  },{passive:true});
+}
+
+</script>
+
+<!--
+MNC-SKATE ASSET GUIDE
+
+3D HERO MODEL:
+assets/mnc-fingerboard.glb
+
+PRODUCT PHOTOS:
+assets/mnc-complete.jpg
+assets/mnc-deck.jpg
+assets/mnc-wheels.jpg
+assets/mnc-trucks.jpg
+assets/mnc-quarterpipe.jpg
+assets/mnc-miniramp.jpg
+assets/mnc-fullpipe.jpg
+assets/mnc-packaging.jpg
+
+The hero uses Google's <model-viewer> web component.
+Users can drag to rotate, scroll/pinch to zoom, pause rotation, reset the view,
+and use AR on supported mobile devices.
+-->
+
+</body>
+</html>
