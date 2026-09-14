@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0a0a0a">
-<title>MNC-SKATE — Fingerboards + Modular Skatepark</title>
+<title>MENOCLONE | MNC-SKATE</title>
 <meta name="description" content="MNC-SKATE by MENOCLONE — custom fingerboards, components, and modular fingerboard skatepark obstacles.">
 <style>
 :root{
@@ -692,12 +692,12 @@ button,.btn,.product-media,.category{position:relative;overflow:hidden}
           ar
           ar-modes="webxr scene-viewer quick-look">
 
-          <button class="ar-button" slot="ar-button" type="button">View Fingerboard in AR</button>
+          <button class="ar-button" slot="ar-button" type="button">View AR</button>
         </model-viewer>
 
         <div class="model-status" id="modelStatus">
-          Loading 3D Fingerboard
-          <span class="model-file-note">assets/mnc-fingerboard.glb</span>
+          Loading ...
+          <span class="model-file-note">assets/mncskate1.glb</span>
         </div>
 
         <div class="model-ui">
@@ -1263,7 +1263,7 @@ const resetModel = document.getElementById('resetModel');
 
 if(mncModel){
   mncModel.addEventListener('load',()=>{
-    modelStatus.innerHTML = '3D Fingerboard Ready<span class="model-file-note">Drag · rotate · zoom · AR capable</span>';
+    modelStatus.innerHTML = 'MNC-SKATE<span class="model-file-note">Drag · rotate · zoom · AR capable</span>';
     modelStatus.classList.remove('error');
     setTimeout(()=>{ modelStatus.style.opacity = '.72'; },1800);
   });
