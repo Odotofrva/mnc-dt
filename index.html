@@ -3000,6 +3000,121 @@
       }
       .cursor{display:none}
     }
+  
+
+    /* ---------- V26 COMPACT MNC-SKATE + PAGE LINK ---------- */
+    .skate-section{
+      padding-top:clamp(46px,5vw,72px);
+      padding-bottom:clamp(46px,5vw,72px);
+    }
+
+    .skate-section .section-heading{
+      margin-bottom:22px;
+    }
+
+    .skate-intro-grid{
+      grid-template-columns:.9fr 1.1fr;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .skate-team-card,
+    .skate-manifesto{
+      min-height:280px;
+      padding:22px;
+    }
+
+    .skate-team-photo{
+      aspect-ratio:3 / 1;
+      max-height:108px;
+      margin:12px 0;
+    }
+
+    .skate-team-card h3{
+      font-size:clamp(30px,4vw,52px);
+    }
+
+    .skate-manifesto h3{
+      font-size:clamp(28px,3.7vw,48px);
+    }
+
+    .skate-team-card p,
+    .skate-manifesto p{
+      margin-top:12px;
+      font-size:12px;
+      line-height:1.55;
+    }
+
+    .skate-team-status{
+      margin-top:14px;
+    }
+
+    .skate-categories span{
+      padding:7px 9px;
+      font-size:8px;
+    }
+
+    .skate-page-cta{
+      display:flex;
+      justify-content:center;
+      margin:16px 0 14px;
+    }
+
+    .skate-page-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      min-height:44px;
+      padding:13px 20px;
+      border:1px solid var(--accent);
+      border-radius:999px;
+      background:var(--accent);
+      color:#090909;
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      transition:transform .3s var(--ease),box-shadow .3s ease;
+    }
+
+    .skate-page-link:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 34px rgba(232,255,71,.14);
+    }
+
+    .skate-rollout{
+      width:min(100%,760px);
+      margin:0 auto;
+    }
+
+    .skate-rollout img{
+      width:100%;
+      height:auto;
+      max-height:360px;
+      object-fit:contain;
+      object-position:center;
+    }
+
+    @media(max-width:900px){
+      .skate-intro-grid{grid-template-columns:1fr 1fr;}
+      .skate-team-card,.skate-manifesto{min-height:260px;}
+    }
+
+    @media(max-width:760px){
+      .skate-section{
+        padding-top:40px;
+        padding-bottom:40px;
+      }
+      .skate-intro-grid{grid-template-columns:1fr;}
+      .skate-team-card,.skate-manifesto{min-height:0;padding:20px;}
+      .skate-team-photo{aspect-ratio:16 / 6;max-height:130px;}
+      .skate-page-cta{margin:14px 0 12px;}
+      .skate-page-link{width:100%;max-width:360px;}
+      .skate-rollout{width:100%;max-width:620px;}
+      .skate-rollout img{max-height:280px;object-fit:contain;}
+    }
+
   </style>
 </head>
 
@@ -3029,7 +3144,7 @@
       <nav class="desktop-nav" aria-label="Primary">
         <a href="#shop" data-i18n="shop">Shop</a>
         <a href="#invading-soon" data-i18n="lookbook">Invading Soon</a>
-        <a href="#mnc-skate" data-i18n="skateNav">MENOCLONE Skate</a>
+        <a href="mncskate.html" data-i18n="skateNav">MENOCLONE Skate</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
         <a href="mncar.html" target="_blank" rel="noopener noreferrer">MNC-AR</a>
         <a href="#story" data-i18n="world">World</a>
@@ -3060,7 +3175,7 @@
       <nav class="mobile-nav" aria-label="Mobile">
         <a href="#shop" data-i18n="shop">Shop</a>
         <a href="#invading-soon" data-i18n="lookbook">Invading Soon</a>
-        <a href="#mnc-skate" data-i18n="skateNav">MENOCLONE Skate</a>
+        <a href="mncskate.html" data-i18n="skateNav">MENOCLONE Skate</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
         <a href="mncar.html" target="_blank" rel="noopener noreferrer">MNC-AR</a>
         <a href="#story" data-i18n="world">World</a>
@@ -3323,6 +3438,12 @@
             <div><p class="eyebrow" data-i18n="skateManifestoKicker">Originality in motion</p><h3 data-i18n="skateManifestoTitle">Skateboarding is another canvas.</h3><p data-i18n="skateManifestoDescription">Deck graphics, grip, hardware and skate films become another way for MENOCLONE to combine art, design, fashion and street culture.</p></div>
             <div class="skate-categories"><span data-i18n="skateTagTeam">Team</span><span data-i18n="skateTagDecks">Decks</span><span data-i18n="skateTagGrip">Grip Tape</span><span data-i18n="skateTagAccessories">Accessories</span><span data-i18n="skateTagFilms">Skate Films</span></div>
           </article>
+        </div>
+
+        <div class="skate-page-cta" data-reveal>
+          <a class="skate-page-link" href="mncskate.html" aria-label="Open the MENOCLONE Skate page">
+            Explore MNC-SKATE <span aria-hidden="true">→</span>
+          </a>
         </div>
 
         <div class="skate-rollout">
