@@ -184,43 +184,6 @@ section{padding:50px 0}
   font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.09em
 }
 
-/* CATEGORIES */
-.categories{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:12px
-}
-.category{
-  min-height:220px;background:var(--paper);border:1px solid var(--line);position:relative;overflow:hidden;
-  display:flex;align-items:flex-end
-}
-.category:hover .cat-art{transform:translate(-50%,-50%) scale(1.04)}
-.cat-art{
-  position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);transition:.25s
-}
-.cat-name{
-  width:100%;background:#111;color:#fff;padding:12px 13px;font-size:11px;font-weight:1000;text-transform:uppercase;
-  display:flex;justify-content:space-between;position:relative;z-index:5
-}
-/* category illustrations */
-.mini-deck{
-  width:145px;height:48px;border-radius:30px;background:#fff;border:2px solid #111;
-  transform:rotate(-15deg);box-shadow:0 8px 0 #111
-}
-.mini-deck:after{content:"MNC";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:1000;font-size:18px}
-.wheels{display:flex;gap:14px}
-.wheel{width:45px;height:45px;border:10px solid #111;border-radius:50%;background:var(--acid)}
-.trucks{width:130px;height:13px;background:#aaa;border:2px solid #111;position:relative}
-.trucks:before,.trucks:after{content:"";position:absolute;top:50%;width:38px;height:38px;border:7px solid #111;border-radius:50%;background:#fff;transform:translateY(-50%)}
-.trucks:before{left:-8px}.trucks:after{right:-8px}
-.qp{
-  width:120px;height:105px;border-left:4px solid #111;border-bottom:4px solid #111;border-radius:0 0 0 7px;
-  position:relative
-}
-.qp:before{content:"";position:absolute;inset:-2px 0 0 22px;border-top:4px solid #111;border-radius:100% 0 0 0;transform:skewY(-28deg)}
-.pack{
-  width:95px;height:145px;border:3px solid #111;background:#fff;box-shadow:9px 9px 0 var(--acid);display:grid;place-items:center;
-  font-weight:1000;font-size:15px
-}
-
 /* PRODUCTS */
 .products{
   display:grid;grid-template-columns:repeat(4,1fr);gap:18px
@@ -315,6 +278,38 @@ section{padding:50px 0}
 .ob3{width:80px;height:80px;border-radius:100% 0 0 0;left:15%;bottom:10%;background:#888}
 .ob4{width:105px;height:70px;border-radius:0 100% 0 0;right:10%;bottom:8%;background:#888}
 
+/* BUILD YOUR OWN SPOT PHOTO */
+.build-spot-photo{
+  grid-column:1/-1;
+  width:min(1080px,100%);
+  margin:0 auto 58px;
+  padding:12px;
+  background:#0b0b0b;
+  border:1px solid #343434;
+  box-shadow:0 26px 70px rgba(0,0,0,.28);
+  position:relative;
+  overflow:hidden
+}
+.build-spot-photo img{
+  display:block;
+  width:100%;
+  height:auto;
+  background:#111
+}
+.build-spot-caption{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:center;
+  padding:12px 3px 1px;
+  color:#c9c9c4;
+  font-size:9px;
+  font-weight:1000;
+  text-transform:uppercase;
+  letter-spacing:.1em
+}
+.build-spot-caption b{color:var(--acid)}
+
 /* STORY */
 .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px}
 .story-box{
@@ -381,7 +376,6 @@ footer a:hover{color:var(--acid)}
   .hero-inner,.build-grid,.story-grid{grid-template-columns:1fr}
   .hero-copy{padding-right:0}
   .hero-art{min-height:390px}
-  .categories{grid-template-columns:repeat(3,1fr)}
   .products{grid-template-columns:repeat(2,1fr)}
   .build-copy{padding-right:0}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -405,8 +399,6 @@ footer a:hover{color:var(--acid)}
   .trust .wrap{grid-template-columns:1fr 1fr}
   .trust-item:nth-child(3){border-top:1px solid var(--line)}
   .trust-item:nth-child(4){border-top:1px solid var(--line)}
-  .categories{grid-template-columns:1fr 1fr}
-  .category{min-height:180px}
   .products{grid-template-columns:1fr 1fr;gap:9px}
   .product-media{height:210px}
   .product-copy{padding:10px}
@@ -415,6 +407,8 @@ footer a:hover{color:var(--acid)}
   .roster{grid-template-columns:1fr}
   .newsletter .wrap{grid-template-columns:1fr;padding:25px 0}
   .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .build-spot-photo{padding:7px;margin-bottom:38px}
+  .build-spot-caption{align-items:flex-start;flex-direction:column;gap:5px}
   .copy{flex-direction:column}
 }
 
@@ -424,13 +418,12 @@ body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.035;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E")
 }
-a,button,.product,.category,.rider,.story-box{transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease),background .28s var(--ease)}
-button,.btn,.product-media,.category{position:relative;overflow:hidden}
-.product,.category{will-change:transform}
+a,button,.product,.rider,.story-box{transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease),background .28s var(--ease)}
+button,.btn,.product-media{position:relative;overflow:hidden}
+.product{will-change:transform}
 .product:hover{transform:translateY(-7px);box-shadow:0 18px 40px rgba(0,0,0,.10);border-color:#a8a8a2}
-.category:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(0,0,0,.08)}
 .product-media{cursor:zoom-in}
-.product-media::after,.category::after,.btn::after,.add::after,.search button::after,.signup button::after{
+.product-media::after,.btn::after,.add::after,.search button::after,.signup button::after{
   content:"";position:absolute;inset:auto;width:12px;height:12px;border-radius:50%;
   left:var(--rx,50%);top:var(--ry,50%);background:rgba(217,255,53,.48);
   transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none
@@ -641,7 +634,7 @@ button,.btn,.product-media,.category{position:relative;overflow:hidden}
   <div class="wrap">
     <div class="nav-links">
       <a class="drop" href="#products">Shop All</a>
-      <a href="#fingerboards">Fingerboards</a>
+      <a href="#products">Fingerboards</a>
       <a href="#products">Decks</a>
       <a href="#products">Trucks</a>
       <a href="#products">Wheels</a>
@@ -719,38 +712,6 @@ button,.btn,.product-media,.category{position:relative;overflow:hidden}
       <div class="trust-item"><b>MENOCLONE DNA</b>Art × skate × maker tech</div>
     </div>
   </div>
-
-  <section id="fingerboards">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Popular Categories</h2>
-        <span>Build your MNC setup</span>
-      </div>
-
-      <div class="categories">
-        <a class="category" href="#products">
-          <div class="cat-art mini-deck"></div>
-          <div class="cat-name"><span>Fingerboards</span><span>→</span></div>
-        </a>
-        <a class="category" href="#products">
-          <div class="cat-art wheels"><span class="wheel"></span><span class="wheel"></span></div>
-          <div class="cat-name"><span>Wheels</span><span>→</span></div>
-        </a>
-        <a class="category" href="#products">
-          <div class="cat-art trucks"></div>
-          <div class="cat-name"><span>Trucks</span><span>→</span></div>
-        </a>
-        <a class="category" href="#park">
-          <div class="cat-art qp"></div>
-          <div class="cat-name"><span>Obstacles</span><span>→</span></div>
-        </a>
-        <a class="category" href="#products">
-          <div class="cat-art pack">MNC</div>
-          <div class="cat-name"><span>Packaging</span><span>→</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <section id="products">
     <div class="wrap">
@@ -865,6 +826,13 @@ button,.btn,.product-media,.category{position:relative;overflow:hidden}
       <div class="build-art">
         <div class="park">
           <span class="ob ob1"></span><span class="ob ob2"></span><span class="ob ob3"></span><span class="ob ob4"></span>
+        </div>
+      </div>
+      <div class="build-spot-photo">
+        <img src="assets/mnc-skate-build-your-own-spot.png" alt="MENOCLONE modular fingerboard skatepark build your own spot concept">
+        <div class="build-spot-caption">
+          <b>Build Your Own Spot</b>
+          <span>MNC-SKATE / Modular Fingerboard Park Concept</span>
         </div>
       </div>
     </div>
@@ -1220,7 +1188,7 @@ document.getElementById('searchInput').addEventListener('keydown',e=>{
 
 /* Click sound, ripple, and visual feedback for buttons + image-like cards. */
 document.addEventListener('click',e=>{
-  const target = e.target.closest('button,.btn,.product-media,.category');
+  const target = e.target.closest('button,.btn,.product-media');
   if(!target) return;
   if(target !== soundToggle || soundEnabled) playSkateSound();
   rippleEffect(target,e);
@@ -1229,7 +1197,7 @@ document.addEventListener('click',e=>{
 
 /* Scroll-in motion */
 const revealTargets = document.querySelectorAll(
-  '.category,.product,.story-box,.rider,.section-title,.build-copy,.build-art,.trust-item,.footer-grid>div'
+  '.product,.story-box,.rider,.section-title,.build-copy,.build-art,.build-spot-photo,.trust-item,.footer-grid>div'
 );
 revealTargets.forEach(el=>el.classList.add('motion-reveal'));
 const observer = new IntersectionObserver(entries=>{
