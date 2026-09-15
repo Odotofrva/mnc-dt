@@ -265,7 +265,7 @@ section{padding:50px 0}
   background-size:30px 30px;position:relative;overflow:hidden
 }
 .park{
-  position:absolute;inset:55px 40px;border:1px solid #444;transform:perspective(700px) rotateX(56deg);
+  position:absolute;inset:55px 40px;border:1px solid #444; rotateX(56deg);
   background:#202020
 }
 .park:before{
@@ -667,7 +667,7 @@ button,.btn,.product-media{position:relative;overflow:hidden}
       <div class="hero-art" id="heroArt" aria-label="Interactive MNC-SKATE fingerboard 3D model">
         <model-viewer
           id="mncFingerboard3D"
-          src="assets/mncskate1.glb"
+          src="mncskate1.glb"
           alt="Interactive 3D model of the MNC-SKATE fingerboard"
           camera-controls
           touch-action="pan-y"
@@ -825,14 +825,9 @@ button,.btn,.product-media{position:relative;overflow:hidden}
       </div>
       <div class="build-art">
         <div class="park">
-          <span class="ob ob1"></span><span class="ob ob2"></span><span class="ob ob3"></span><span class="ob ob4"></span>
-        </div>
-      </div>
-      <div class="build-spot-photo">
-        <img src="assets/mnc-skate-build-your-own-spot.png" alt="MENOCLONE modular fingerboard skatepark build your own spot concept">
+          <img src="assets/mnc-skate-build-your-own-spot.png" alt="MENOCLONE modular fingerboard skatepark build your own spot concept">
         <div class="build-spot-caption">
-          <b>Build Your Own Spot</b>
-          <span>MNC-SKATE / Modular Fingerboard Park Concept</span>
+          
         </div>
       </div>
     </div>
@@ -1237,7 +1232,7 @@ if(mncModel){
   });
 
   mncModel.addEventListener('error',()=>{
-    modelStatus.innerHTML = 'Add your GLB model<span class="model-file-note">Place it at assets/mncskate1.glb</span>';
+    modelStatus.innerHTML = 'Add your GLB model<span class="model-file-note">Place it at assets/mnc-fingerboard.glb</span>';
     modelStatus.classList.add('error');
   });
 
@@ -1278,7 +1273,7 @@ if(mncModel){
 MNC-SKATE ASSET GUIDE
 
 3D HERO MODEL:
-assets/mncskate1.glb
+assets/mnc-fingerboard.glb
 
 PRODUCT PHOTOS:
 assets/mnc-complete.jpg
