@@ -330,14 +330,19 @@ section{padding:50px 0}
 /* ROSTER */
 .roster{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .rider{
-  min-height:300px;border:1px solid var(--line);background:#eee;position:relative;overflow:hidden
+  min-height:360px;border:1px solid var(--line);background:#eee;position:relative;overflow:hidden
 }
-.rider:before{
-  content:"";position:absolute;width:90px;height:90px;border:2px solid #c4c4c0;border-radius:50%;top:40px;left:50%;transform:translateX(-50%)
+.rider:before,.rider:after{display:none}
+.rider-photo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;
+  display:block;transition:transform .45s var(--ease),filter .45s var(--ease)
 }
-.rider:after{
-  content:"";position:absolute;width:165px;height:150px;border:2px solid #c4c4c0;border-radius:90px 90px 10px 10px;top:145px;left:50%;transform:translateX(-50%)
+.rider::before{
+  content:"";display:block;position:absolute;inset:0;z-index:2;
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 48%,rgba(0,0,0,.12) 68%,rgba(0,0,0,.72) 100%);
+  pointer-events:none
 }
+.rider:hover .rider-photo{transform:scale(1.035)}
 .rider-label{
   position:absolute;left:0;right:0;bottom:0;background:#111;color:#fff;padding:13px;z-index:3
 }
@@ -871,9 +876,18 @@ button,.btn,.product-media{position:relative;overflow:hidden}
         <span>First Generation / 3 Spots</span>
       </div>
       <div class="roster">
-        <div class="rider"><div class="rider-label"><b>Roster Slot 01</b><span>Fingerboard Rider</span></div></div>
-        <div class="rider"><div class="rider-label"><b>Roster Slot 02</b><span>Creator / Builder</span></div></div>
-        <div class="rider"><div class="rider-label"><b>Roster Slot 03</b><span>Community Rider</span></div></div>
+        <div class="rider">
+          <img class="rider-photo" src="assets/mncskateroster1.png" alt="MNC-SKATE roster placeholder model">
+          <div class="rider-label"><b>Roster Slot 01</b><span>Fingerboard Rider</span></div>
+        </div>
+        <div class="rider">
+          <img class="rider-photo" src="assets/mncskateroster1.png" alt="MNC-SKATE roster placeholder model">
+          <div class="rider-label"><b>Roster Slot 02</b><span>Creator / Builder</span></div>
+        </div>
+        <div class="rider">
+          <img class="rider-photo" src="assets/mncskateroster1.png" alt="MNC-SKATE roster placeholder model">
+          <div class="rider-label"><b>Roster Slot 03</b><span>Community Rider</span></div>
+        </div>
       </div>
     </div>
   </section>
