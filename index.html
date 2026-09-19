@@ -16,7 +16,7 @@
       --muted:#8d8d87;
       --line:rgba(255,255,255,.14);
       --accent:#e8ff47;
-      --header-h:72px;
+      --header-h:72px;x
       --radius:18px;
       --ease:cubic-bezier(.2,.8,.2,1);
     }
@@ -587,7 +587,17 @@
       mix-blend-mode:darken;
     }
 
-    .product-media img[src$="mnc-tote-bag.png"]{
+    .product-media img[src$="mnc-ufo-pin.png"],
+    .product-media img[src$="mnc-5panel-hat-new.png"]{
+      object-fit:contain;
+      object-position:center;
+      box-sizing:border-box;
+      padding:3%;
+      background:#f4f4f2;
+    }
+
+    .product-media img[src$="mnc-tote-bag.png"],
+    .product-media img[src$="odds-has-origins-tote-bag.png"]{
       object-fit:cover;
       object-position:center 48%;
       background:#bdb7ac;
@@ -3145,6 +3155,7 @@
         <a href="#shop" data-i18n="shop">Shop</a>
         <a href="#beaming-down-soon" data-i18n="lookbook">Beaming Down Soon</a>
         <a href="mncskate.html" data-i18n="skateNav">MENOCLONE Skate</a>
+        <a href="mncgaming.html">MNC Gaming</a>
         <a href="mncarmc.html">MNC ARM Clock</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
         <a href="mncar.html" target="_blank" rel="noopener noreferrer">MNC-AR</a>
@@ -3177,6 +3188,7 @@
         <a href="#shop" data-i18n="shop">Shop</a>
         <a href="#beaming-down-soon" data-i18n="lookbook">Beaming Down Soon</a>
         <a href="mncskate.html" data-i18n="skateNav">MENOCLONE Skate</a>
+        <a href="mncgaming.html">MNC Gaming</a>
         <a href="mncarmc.html">MNC ARM Clock</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
         <a href="mncar.html" target="_blank" rel="noopener noreferrer">MNC-AR</a>
@@ -3285,9 +3297,9 @@
             </div>
           </article>
 
-          <article class="product" data-reveal data-name="MENOCLONE Season Two 5 Panel Hat" data-price="TBA" data-description="MENOCLONE Season Two 5 Panel Hat. A clean five-panel silhouette featuring the MENOCLONE wordmark and UFO identity. Coming Soon.">
+          <article class="product" data-reveal data-name="MENOCLONE Season Two 5 Panel Hat" data-price="TBA" data-description="MENOCLONE Season Two 5 Panel Hat. An all-black five-panel silhouette with a clean woven MENOCLONE front label, black hardware and adjustable rear strap. Coming Soon.">
             <div class="product-media">
-              <img class="real-product" src="mnc-5panel-cap.png" alt="MENOCLONE 5 Panel Cap front and side views" loading="lazy" />
+              <img class="real-product" src="mnc-5panel-hat-new.png" alt="New black MENOCLONE 5 Panel Hat shown from multiple angles with front label detail" loading="lazy" />
               <span class="product-index">05</span>
               <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
             </div>
@@ -3321,14 +3333,14 @@
             </div>
           </article>
 
-          <article class="product" data-reveal data-name="MNC Pin" data-price="10.00" data-description="MNC Pin. A collectible black pin featuring the signature white MNC UFO mark, made to add MENOCLONE identity to jackets, bags and everyday gear.">
+          <article class="product" data-reveal data-name="MNC UFO Pin" data-price="10.00" data-description="MNC UFO Pin. A collectible black button pin featuring the signature white MNC UFO mark, made to add MENOCLONE identity to jackets, bags and everyday gear.">
             <div class="product-media">
-              <img class="real-product" src="mnc-pin.png" alt="Black MNC pin with white UFO logo" loading="lazy" />
+              <img class="real-product" src="mnc-ufo-pin.png" alt="Black MNC UFO pins with white UFO logo, including front and back views" loading="lazy" />
               <span class="product-index">08</span>
-              <button class="quick-add" type="button" data-product="MNC Pin">Quick Add</button>
+              <button class="quick-add" type="button" data-product="MNC UFO Pin">Quick Add</button>
             </div>
             <div class="product-info">
-              <span>MNC Pin</span>
+              <span>MNC UFO Pin</span>
               <span class="price-hidden">Price in cart</span>
             </div>
           </article>
@@ -3341,6 +3353,18 @@
             </div>
             <div class="product-info">
               <span>MNC Tote Bag</span>
+              <span class="price-hidden">Price in cart</span>
+            </div>
+          </article>
+
+          <article class="product" data-reveal data-name="Odds Has Origins Tote Bag" data-price="50.00" data-description="Odds Has Origins Tote Bag. A MENOCLONE carryall built for daily essentials, creative gear and city movement, featuring the Odds Has Origins graphic concept.">
+            <div class="product-media">
+              <img class="real-product" src="odds-has-origins-tote-bag.png" alt="MENOCLONE Odds Has Origins Tote Bag product photo showing multiple tote bags on a table" loading="lazy" />
+              <span class="product-index">10</span>
+              <button class="quick-add" type="button" data-product="Odds Has Origins Tote Bag">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>Odds Has Origins Tote Bag</span>
               <span class="price-hidden">Price in cart</span>
             </div>
           </article>
@@ -3419,45 +3443,6 @@
           <article class="editorial-card invading-soon-card" data-reveal>
             <img src="mncGiantBack.png" alt="MENOCLONE Gloss Bot design for Beaming Down Soon" loading="lazy" />
           </article>
-        </div>
-      </section>
-
-      <section class="section skate-section" id="mnc-skate">
-        <div class="section-heading" data-reveal>
-          <div>
-            <p class="eyebrow" data-i18n="skateKicker">MENOCLONE Skate Division</p>
-            <h2 data-i18n="skateTitle">MENOCLONE Skate</h2>
-          </div>
-          <p data-i18n="skateMeta">Team / Decks / Grip / Objects</p>
-        </div>
-
-        <div class="skate-intro-grid">
-          <article class="skate-team-card" data-reveal>
-            <div class="skate-team-mark"><img src="mncufo.png" alt="MENOCLONE UFO logo"><span data-i18n="skateTeamLabel">MNC Skate Team</span></div>
-            <div class="skate-team-photo">
-              <img src="mncufo.png" alt="MENOCLONE Skate Team image" loading="lazy" />
-            </div>
-            <div><h3 data-i18n="skateTeamTitle">Built for the streets.</h3><p data-i18n="skateTeamDescription">MENOCLONE Skate is the movement side of the brand — a platform for riders, street sessions, creative edits, collaborations and the objects that keep the team moving.</p><div class="skate-team-status" data-i18n="skateTeamStatus">Team roster coming soon</div></div>
-          </article>
-          <article class="skate-manifesto" data-reveal>
-            <div class="skate-manifesto-number">01</div>
-            <div><p class="eyebrow" data-i18n="skateManifestoKicker">Originality in motion</p><h3 data-i18n="skateManifestoTitle">Skateboarding is another canvas.</h3><p data-i18n="skateManifestoDescription">Deck graphics, grip, hardware and skate films become another way for MENOCLONE to combine art, design, fashion and street culture.</p></div>
-            <div class="skate-categories"><span data-i18n="skateTagTeam">Team</span><span data-i18n="skateTagDecks">Decks</span><span data-i18n="skateTagGrip">Grip Tape</span><span data-i18n="skateTagAccessories">Accessories</span><span data-i18n="skateTagFilms">Skate Films</span></div>
-          </article>
-        </div>
-
-        <div class="skate-page-cta" data-reveal>
-          <a class="skate-page-link" href="mncskate.html" aria-label="Open the MENOCLONE Skate page">
-            Explore MNC-SKATE <span aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="skate-rollout">
-          <img
-            src="mnc-skate-rollout-ad.png"
-            alt="MENOCLONE new skateboard deck Invading the Streets Soon advertisement"
-            loading="lazy"
-          />
         </div>
       </section>
 
@@ -4538,7 +4523,8 @@
       'MENOCLONE Crewneck':{fr:{name:'Sweat col rond MENOCLONE',description:'Sweat épais avec marquage frontal épuré et graphismes UFO pour un uniforme minimal de la Saison 2.'},zh:{"name":"MENOCLONE 圆领卫衣","description":"重磅 MENOCLONE 圆领卫衣，以简洁前胸品牌标识和 UFO 图形打造第二季的极简制服感。"},ja:{"name":"MENOCLONE クルーネックスウェット","description":"クリーンなフロントブランディングとUFOグラフィックを備えたヘビーウェイトのMENOCLONEクルーネック。シーズン2のミニマルなユニフォーム感を表現しています。"},ko:{name:'MENOCLONE 크루넥',description:'깔끔한 전면 브랜딩과 UFO 그래픽을 적용한 헤비웨이트 시즌 2 크루넥입니다.'}},
       'MENOCLONE Season Two 5 Panel Hat':{fr:{name:'Casquette 5 panneaux MENOCLONE Saison 2',description:'Silhouette cinq panneaux épurée avec wordmark MENOCLONE et identité UFO. Bientôt disponible.'},zh:{"name":"MENOCLONE 第二季 5片帽","description":"MENOCLONE 第二季 5片帽。简洁的五片式轮廓搭配 MENOCLONE 字标和 UFO 识别元素。即将推出。"},ja:{"name":"MENOCLONE シーズン2 5パネルハット","description":"MENOCLONE シーズン2 5パネルハット。クリーンな5パネルシルエットにMENOCLONEワードマークとUFOアイデンティティを配置。近日公開。"},ko:{name:'MENOCLONE 시즌 2 5패널 햇',description:'MENOCLONE 워드마크와 UFO 아이덴티티를 담은 깔끔한 5패널 실루엣입니다. 출시 예정.'}},
       'MENOCLONE Season Two Trucker Hats':{fr:{name:'Casquette trucker MENOCLONE Saison 2',description:'Devant noir structuré, wordmark MENOCLONE blanc et construction en mesh respirant.'},zh:{"name":"MENOCLONE 第二季卡车帽","description":"MENOCLONE 第二季卡车帽。结构感黑色前片、白色 MENOCLONE 字标与透气网眼后片组合。"},ja:{"name":"MENOCLONE シーズン2 トラッカーハット","description":"MENOCLONE シーズン2 トラッカーハット。構築的なブラックフロント、ホワイトのMENOCLONEワードマーク、通気性のあるメッシュバックを組み合わせています。"},ko:{name:'MENOCLONE 시즌 2 트러커 햇',description:'구조적인 블랙 전면, 화이트 MENOCLONE 워드마크와 통기성 메시 구조가 특징입니다.'}},
-      'MENOCLONE Sticker Pack (3 pack)':{fr:{name:'Pack de 3 stickers MENOCLONE',description:'Trois stickers MNC et UFO à collectionner pour ordinateurs, coques, carnets, planches et autres supports créatifs.'},zh:{"name":"MENOCLONE 贴纸套装（3枚）","description":"MENOCLONE 贴纸套装（3枚）。包含三枚可收藏的 MNC 与 UFO 贴纸，适用于笔记本电脑、保护壳、笔记本、滑板和其他创意表面。"},ja:{"name":"MENOCLONE ステッカーパック（3枚）","description":"MENOCLONE ステッカーパック（3枚）。ノートPC、ケース、ノート、ボードなどに使えるMNCとUFOのコレクタブルステッカー3枚セットです。"},ko:{name:'MENOCLONE 스티커 팩 3종',description:'노트북, 케이스, 노트, 보드 등 다양한 곳에 붙일 수 있는 MNC 및 UFO 컬렉터 스티커 3종입니다.'}}
+      'MENOCLONE Sticker Pack (3 pack)':{fr:{name:'Pack de 3 stickers MENOCLONE',description:'Trois stickers MNC et UFO à collectionner pour ordinateurs, coques, carnets, planches et autres supports créatifs.'},zh:{"name":"MENOCLONE 贴纸套装（3枚）","description":"MENOCLONE 贴纸套装（3枚）。包含三枚可收藏的 MNC 与 UFO 贴纸，适用于笔记本电脑、保护壳、笔记本、滑板和其他创意表面。"},ja:{"name":"MENOCLONE ステッカーパック（3枚）","description":"MENOCLONE ステッカーパック（3枚）。ノートPC、ケース、ノート、ボードなどに使えるMNCとUFOのコレクタブルステッカー3枚セットです。"},ko:{name:'MENOCLONE 스티커 팩 3종',description:'노트북, 케이스, 노트, 보드 등 다양한 곳에 붙일 수 있는 MNC 및 UFO 컬렉터 스티커 3종입니다.'}},
+      'Odds Has Origins Tote Bag':{fr:{name:'Sac cabas Odds Has Origins',description:'Sac cabas MENOCLONE pour les essentiels du quotidien et le matériel créatif, avec un visuel Odds Has Origins.'},zh:{"name":"Odds Has Origins 托特包","description":"MENOCLONE 托特包，适合日常随身物与创作装备，搭载 Odds Has Origins 视觉设计。"},ja:{"name":"Odds Has Origins トートバッグ","description":"日常の必需品やクリエイティブツールを持ち運ぶための MENOCLONE トートバッグ。Odds Has Origins グラフィックを採用しています。"},ko:{name:'Odds Has Origins 토트백',description:'일상 소지품과 크리에이티브 장비를 담기 위한 MENOCLONE 토트백으로, Odds Has Origins 그래픽이 적용되었습니다.'}}
     };
     function currentTranslation(){return translations[document.documentElement.lang] || translations.en}
     function localizedProductName(card){const base=card?.dataset?.name || 'MENOCLONE Product';return productTranslations[base]?.[document.documentElement.lang]?.name || base}
