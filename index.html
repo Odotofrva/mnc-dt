@@ -4009,7 +4009,7 @@
         continueShopping:'Continue Shopping',
         totalNote:'Converted pricing follows the selected site currency. Shipping and taxes are not included.',
         removed:'Removed from bag',
-        checkoutNotice:'Your order is ready for checkout. Connect a checkout/payment endpoint to process the final order.',
+        checkoutNotice:'Submit your order and the complete cart details will be emailed directly to MENOCLONE HQ.',
         item:'item',items:'items'
       ,skateNav:'MENOCLONE Skate',skateKicker:'MENOCLONE Skate Division',skateTitle:'MENOCLONE Skate',skateMeta:'Team / Decks / Grip / Objects',skateTeamLabel:'MNC Skate Team',skateTeamTitle:'Built for the streets.',skateTeamDescription:'MENOCLONE Skate is the movement side of the brand — a platform for riders, street sessions, creative edits, collaborations and the objects that keep the team moving.',skateTeamStatus:'Team roster coming soon',skateManifestoKicker:'Originality in motion',skateManifestoTitle:'Skateboarding is another canvas.',skateManifestoDescription:'Deck graphics, grip, hardware and skate films become another way for MENOCLONE to combine art, design, fashion and street culture.',skateTagTeam:'Team',skateTagDecks:'Decks',skateTagGrip:'Grip Tape',skateTagAccessories:'Accessories',skateTagFilms:'Skate Films',skateProductLabel:'MNC Skate Product',skateDeckTitle:'Skateboard Deck',skateDeckDescription:'Future MENOCLONE deck drops, graphic editions and team boards will live here.',skateGripTitle:'Grip Tape',skateGripDescription:'Custom MENOCLONE grip graphics, limited patterns and skate-ready surface designs.',skateGearTitle:'Skate Accessories',skateGearDescription:'Hardware, wheels, stickers, tools and future MENOCLONE Skate objects.'},
       es:{
@@ -4265,7 +4265,7 @@
       body.style.overflow = '';
     }
 
-    const ORDER_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/odot.rva@proton.me';
+    const ORDER_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/menoclone@proton.me';
 
     async function sendStoreEmail(fields){
       const response = await fetch(ORDER_EMAIL_ENDPOINT,{
@@ -4306,11 +4306,12 @@
       ).join('\n');
       const usdTotal = detail.items.reduce((sum,item) => sum + item.usdUnitPrice * item.quantity,0);
       const fields = new FormData();
-      fields.append('_subject',`New MENOCLONE order from ${name}`);
+      fields.append('_subject',`NEW MENOCLONE WEBSITE ORDER — ${name}`);
       fields.append('_template','table');
       fields.append('_captcha','false');
       fields.append('_autoresponse','Your order request has been sent to MENOCLONE HQ. We received your order details and will contact you to confirm payment, availability and shipping. — MENOCLONE HQ');
       fields.append('email',email);
+      fields.append('_replyto',email);
       fields.append('Customer name',name);
       fields.append('Customer email',email);
       fields.append('Shipping address',address);
@@ -4335,7 +4336,7 @@
         showToast('Order sent to MENOCLONE HQ');
       }catch(error){
         bagSubmit.disabled = false;
-        if(checkoutStatus) checkoutStatus.textContent = 'Order could not be sent. Please try again or email odot.rva@proton.me.';
+        if(checkoutStatus) checkoutStatus.textContent = 'Order could not be sent. Please try again or email menoclone@proton.me.';
         showToast('Order not sent — please try again');
       }finally{
         bagSubmit.textContent = bagT('submit');
@@ -4846,7 +4847,7 @@
         emailForm.reset();
       }catch(error){
         showToast('Message not sent — please try again');
-        if(contactStatus) contactStatus.textContent = 'Message could not be sent. Please email odot.rva@proton.me.';
+        if(contactStatus) contactStatus.textContent = 'Message could not be sent. Please email menoclone@proton.me.';
       }finally{
         submitButton.disabled = false;
       }
