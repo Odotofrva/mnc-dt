@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#0a0a0a" />
   <meta name="description" content="MENOCLONE — Originality Has Origins." />
   <title>MENOCLONE — Originality Has Origins</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <style>
     :root{
@@ -1782,6 +1783,166 @@
       }
     }
 
+    /* ---------- CLONE DESTROYER / INTERACTIVE 3D + AR ---------- */
+    .clone-destroyer-feature{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
+      min-height:620px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:
+        radial-gradient(circle at 76% 36%,rgba(232,255,71,.10),transparent 28%),
+        #0d0d0d;
+    }
+
+    .clone-destroyer-copy{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:34px;
+      padding:clamp(28px,5vw,64px);
+      border-right:1px solid var(--line);
+      background:linear-gradient(145deg,rgba(255,255,255,.025),transparent 55%);
+    }
+
+    .clone-destroyer-copy h3{
+      margin:0;
+      max-width:8ch;
+      font-size:clamp(46px,7vw,96px);
+      line-height:.86;
+      letter-spacing:-.06em;
+      text-transform:uppercase;
+    }
+
+    .clone-destroyer-copy p:not(.eyebrow){
+      margin:22px 0 0;
+      max-width:520px;
+      color:#aaa9a3;
+      font-size:13px;
+      line-height:1.7;
+    }
+
+    .clone-destroyer-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:26px;
+    }
+
+    .clone-destroyer-meta span{
+      padding:8px 11px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:999px;
+      color:#aaa9a3;
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .clone-destroyer-hint{
+      color:var(--accent);
+      font-size:9px;
+      line-height:1.55;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+    }
+
+    .clone-destroyer-viewer{
+      position:relative;
+      min-height:620px;
+      background:
+        linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px),
+        radial-gradient(circle at 50% 48%,rgba(232,255,71,.10),transparent 32%),
+        #090909;
+      background-size:32px 32px,32px 32px,auto,auto;
+    }
+
+    .clone-destroyer-viewer model-viewer{
+      width:100%;
+      height:100%;
+      min-height:620px;
+      background:transparent;
+      --poster-color:transparent;
+      --progress-bar-color:var(--accent);
+      --progress-bar-height:2px;
+    }
+
+    .clone-ar-button{
+      position:absolute;
+      left:50%;
+      bottom:22px;
+      z-index:8;
+      transform:translateX(-50%);
+      min-width:210px;
+      padding:14px 19px;
+      border:1px solid var(--accent);
+      border-radius:999px;
+      background:var(--accent);
+      color:#080808;
+      box-shadow:0 12px 34px rgba(0,0,0,.34);
+      cursor:pointer;
+      font:700 9px/1 Arial,Helvetica,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      transition:transform .3s var(--ease),box-shadow .3s ease;
+    }
+
+    .clone-ar-button:hover{
+      transform:translateX(-50%) translateY(-3px);
+      box-shadow:0 16px 42px rgba(232,255,71,.14);
+    }
+
+    .clone-viewer-badge{
+      position:absolute;
+      top:18px;
+      left:18px;
+      z-index:7;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      background:rgba(10,10,10,.64);
+      backdrop-filter:blur(10px);
+      color:#d8d8d2;
+      font-size:8px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      pointer-events:none;
+    }
+
+    .clone-viewer-status{
+      position:absolute;
+      right:18px;
+      top:18px;
+      z-index:7;
+      color:var(--accent);
+      font-size:8px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      pointer-events:none;
+    }
+
+    @media(max-width:900px){
+      .clone-destroyer-feature{grid-template-columns:1fr}
+      .clone-destroyer-copy{border-right:0;border-bottom:1px solid var(--line)}
+      .clone-destroyer-viewer,.clone-destroyer-viewer model-viewer{min-height:560px}
+    }
+
+    @media(max-width:620px){
+      .clone-destroyer-feature{min-height:0;border-radius:14px}
+      .clone-destroyer-copy{padding:30px 22px}
+      .clone-destroyer-copy h3{font-size:clamp(44px,15vw,70px)}
+      .clone-destroyer-viewer,.clone-destroyer-viewer model-viewer{min-height:520px}
+      .clone-ar-button{bottom:16px;min-width:190px}
+      .clone-viewer-badge,.clone-viewer-status{top:14px}
+      .clone-viewer-badge{left:14px}
+      .clone-viewer-status{right:14px}
+    }
+
     /* ---------- V22 BAG / CART ---------- */
     .bag-overlay{
       position:fixed;
@@ -2160,8 +2321,9 @@
     .product-detail-media img{
       width:100%;
       height:100%;
-      max-height:84vh;
-      object-fit:contain;
+      max-height:none;
+      object-fit:cover;
+      object-position:center;
       background:#bdb7ac;
       cursor:zoom-in;
     }
@@ -3267,7 +3429,7 @@
         <a href="mncgaming.html">MNC Gaming</a>
         <a href="mncarmc.html">MNC ARM Clock</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
-        <a href="mncar.html" target="_blank" rel="noopener noreferrer">MNC-AR</a>
+        <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
         <a href="#story" data-i18n="world">World</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
         <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
@@ -3300,7 +3462,7 @@
         <a href="mncgaming.html">MNC Gaming</a>
         <a href="mncarmc.html">MNC ARM Clock</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
-        <a href="mncar.html" target="_blank" rel="noopener noreferrer">MNC-AR</a>
+        <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
         <a href="#story" data-i18n="world">World</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
         <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
@@ -3565,6 +3727,47 @@
             <img src="mncGiantBack.png" alt="MENOCLONE Gloss Bot design for Beaming Down Soon" loading="lazy" />
           </article>
         </div>
+
+        <div class="clone-destroyer-feature" id="clone-destroyer" data-reveal>
+          <div class="clone-destroyer-copy">
+            <div>
+              <p class="eyebrow">MENOCLONE Collectible / Late 2026</p>
+              <h3>Clone Destroyer</h3>
+              <p>Meet the upcoming MENOCLONE Clone Destroyer toy. Rotate it, zoom in and explore the full 3D collectible directly in the browser, then place the toy in your real-world space with augmented reality on a compatible mobile device.</p>
+              <div class="clone-destroyer-meta" aria-label="Clone Destroyer features">
+                <span>Interactive 3D</span>
+                <span>AR Ready</span>
+                <span>Late 2026</span>
+              </div>
+            </div>
+            <div class="clone-destroyer-hint">Drag to rotate · Pinch or scroll to zoom · Select “View in Your Space” for AR</div>
+          </div>
+
+          <div class="clone-destroyer-viewer">
+            <span class="clone-viewer-badge">3D / AR Preview</span>
+            <span class="clone-viewer-status">Beaming Down Soon</span>
+            <model-viewer
+              id="cloneDestroyerViewer"
+              src="clonedestroyertoy.glb"
+              alt="Interactive 3D preview of the MENOCLONE Clone Destroyer toy"
+              camera-controls
+              touch-action="pan-y"
+              auto-rotate
+              rotation-per-second="16deg"
+              shadow-intensity="1"
+              shadow-softness=".8"
+              environment-image="neutral"
+              exposure="1"
+              ar
+              ar-modes="webxr scene-viewer quick-look"
+              ar-placement="floor"
+              ar-scale="auto"
+              interaction-prompt="auto"
+              loading="eager">
+              <button class="clone-ar-button" slot="ar-button" type="button">View in Your Space ↗</button>
+            </model-viewer>
+          </div>
+        </div>
       </section>
 
       <section class="section" id="art-locator">
@@ -3613,7 +3816,7 @@
             <p class="eyebrow">UFO Augmented Reality Experience</p>
             <h3>Bring the UFO into your world.</h3>
             <p>Launch MNC-AR on your mobile device, allow camera access and scan the MENOCLONE logo to unlock the UFO augmented reality experience.</p>
-            <a class="ar-launch" href="mncar.html" target="_blank" rel="noopener noreferrer" aria-label="Launch the MNC-AR experience in a new tab">Launch MNC-AR <span aria-hidden="true">↗</span></a>
+            <a class="ar-launch" href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer" aria-label="Launch the MNC-AR experience in a new tab">Launch MNC-AR <span aria-hidden="true">↗</span></a>
           </div>
           <div class="ar-visual" data-reveal aria-label="MENOCLONE UFO augmented reality portal">
             <img src="mncufo.png" alt="MENOCLONE UFO logo" loading="lazy" />
