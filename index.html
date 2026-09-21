@@ -600,7 +600,8 @@
 
     .product-media img[src$="mnc-tote-bag.png"],
     .product-media img[src$="odds-has-origins-tote-bag.png"],
-    .product-media img[src$="mnc-odot-lego-mug-front.jpg"]{
+    .product-media img[src$="mnc-odot-lego-mug-front.jpg"],
+    .product-media img[src$="mnc-brick-god-mugs.png"]{
       object-fit:cover;
       object-position:center;
       background:#f4f4f2;
@@ -1784,8 +1785,8 @@
       }
     }
 
-    /* ---------- CLONE DESTROYER / INTERACTIVE 3D + AR ---------- */
-    .clone-destroyer-feature{
+    /* ---------- MNC ODOT CAPSULE / INTERACTIVE 3D + AR ---------- */
+    .odot-capsule-feature{
       margin-top:18px;
       display:grid;
       grid-template-columns:.82fr 1.18fr;
@@ -1798,7 +1799,7 @@
         #0d0d0d;
     }
 
-    .clone-destroyer-copy{
+    .odot-capsule-copy{
       position:relative;
       z-index:2;
       display:flex;
@@ -1810,7 +1811,7 @@
       background:linear-gradient(145deg,rgba(255,255,255,.025),transparent 55%);
     }
 
-    .clone-destroyer-copy h3{
+    .odot-capsule-copy h3{
       margin:0;
       max-width:8ch;
       font-size:clamp(46px,7vw,96px);
@@ -1819,7 +1820,7 @@
       text-transform:uppercase;
     }
 
-    .clone-destroyer-copy p:not(.eyebrow){
+    .odot-capsule-copy p:not(.eyebrow){
       margin:22px 0 0;
       max-width:520px;
       color:#aaa9a3;
@@ -1827,14 +1828,14 @@
       line-height:1.7;
     }
 
-    .clone-destroyer-meta{
+    .odot-capsule-meta{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
       margin-top:26px;
     }
 
-    .clone-destroyer-meta span{
+    .odot-capsule-meta span{
       padding:8px 11px;
       border:1px solid rgba(255,255,255,.13);
       border-radius:999px;
@@ -1844,7 +1845,7 @@
       letter-spacing:.12em;
     }
 
-    .clone-destroyer-hint{
+    .odot-capsule-hint{
       color:var(--accent);
       font-size:9px;
       line-height:1.55;
@@ -1852,7 +1853,7 @@
       letter-spacing:.14em;
     }
 
-    .clone-destroyer-viewer{
+    .odot-capsule-viewer{
       position:relative;
       min-height:620px;
       background:
@@ -1863,7 +1864,7 @@
       background-size:32px 32px,32px 32px,auto,auto;
     }
 
-    .clone-destroyer-viewer model-viewer{
+    .odot-capsule-viewer model-viewer{
       width:100%;
       height:100%;
       min-height:620px;
@@ -1873,7 +1874,7 @@
       --progress-bar-height:2px;
     }
 
-    .clone-ar-button{
+    .odot-ar-button{
       position:absolute;
       left:50%;
       bottom:22px;
@@ -1893,12 +1894,12 @@
       transition:transform .3s var(--ease),box-shadow .3s ease;
     }
 
-    .clone-ar-button:hover{
+    .odot-ar-button:hover{
       transform:translateX(-50%) translateY(-3px);
       box-shadow:0 16px 42px rgba(232,255,71,.14);
     }
 
-    .clone-viewer-badge{
+    .odot-viewer-badge{
       position:absolute;
       top:18px;
       left:18px;
@@ -1915,7 +1916,7 @@
       pointer-events:none;
     }
 
-    .clone-viewer-status{
+    .odot-viewer-status{
       position:absolute;
       right:18px;
       top:18px;
@@ -1928,20 +1929,20 @@
     }
 
     @media(max-width:900px){
-      .clone-destroyer-feature{grid-template-columns:1fr}
-      .clone-destroyer-copy{border-right:0;border-bottom:1px solid var(--line)}
-      .clone-destroyer-viewer,.clone-destroyer-viewer model-viewer{min-height:560px}
+      .odot-capsule-feature{grid-template-columns:1fr}
+      .odot-capsule-copy{border-right:0;border-bottom:1px solid var(--line)}
+      .odot-capsule-viewer,.odot-capsule-viewer model-viewer{min-height:560px}
     }
 
     @media(max-width:620px){
-      .clone-destroyer-feature{min-height:0;border-radius:14px}
-      .clone-destroyer-copy{padding:30px 22px}
-      .clone-destroyer-copy h3{font-size:clamp(44px,15vw,70px)}
-      .clone-destroyer-viewer,.clone-destroyer-viewer model-viewer{min-height:520px}
-      .clone-ar-button{bottom:16px;min-width:190px}
-      .clone-viewer-badge,.clone-viewer-status{top:14px}
-      .clone-viewer-badge{left:14px}
-      .clone-viewer-status{right:14px}
+      .odot-capsule-feature{min-height:0;border-radius:14px}
+      .odot-capsule-copy{padding:30px 22px}
+      .odot-capsule-copy h3{font-size:clamp(44px,15vw,70px)}
+      .odot-capsule-viewer,.odot-capsule-viewer model-viewer{min-height:520px}
+      .odot-ar-button{bottom:16px;min-width:190px}
+      .odot-viewer-badge,.odot-viewer-status{top:14px}
+      .odot-viewer-badge{left:14px}
+      .odot-viewer-status{right:14px}
     }
 
     /* ---------- V22 BAG / CART ---------- */
@@ -3654,14 +3655,14 @@
           </article>
 
 
-          <article class="product" data-reveal data-name="MNC ODOT LEGO Coffee Mug" data-price="50.00" data-description="MNC ODOT LEGO Coffee Mug. A collectible MENOCLONE coffee mug featuring the ODOT LEGO character artwork in a clean full-wrap presentation.">
+          <article class="product" data-reveal data-name="MNC Brick God Coffee Mugs" data-price="45.00" data-description="MNC Brick God Coffee Mugs. Collectible MENOCLONE mugs featuring the Brick God character artwork and embedded AR technology for an interactive experience.">
             <div class="product-media">
-              <img class="real-product" src="mnc-odot-lego-mug-front.jpg" alt="MNC ODOT LEGO coffee mug with MENOCLONE character artwork" loading="lazy" />
+              <img class="real-product" src="mnc-brick-god-mugs.png" alt="Group of MNC Brick God coffee mugs displayed on a marble table" loading="lazy" />
               <span class="product-index">12</span>
-              <button class="quick-add" type="button" data-product="MNC ODOT LEGO Coffee Mug">Quick Add</button>
+              <button class="quick-add" type="button" data-product="MNC Brick God Coffee Mugs">Quick Add</button>
             </div>
             <div class="product-info">
-              <span>MNC ODOT LEGO Coffee Mug</span>
+              <span>MNC Brick God Coffee Mugs</span>
               <span class="price-hidden">Price in cart</span>
             </div>
           </article>
@@ -3730,7 +3731,11 @@
 
         <div class="editorial-grid lookbook-uniform-grid invading-soon-grid">
           <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="mnc-monochrome-szn2-tapestry.png" alt="MENOCLONE MNC Monochrome SZN 2 tapestry preview for Beaming Down Soon" loading="lazy" />
+            <img src="beaming-soon-monogram-totes.png" alt="MENOCLONE black and white monogram tote bags laid out on carpet for Beaming Down Soon" loading="lazy" />
+          </article>
+
+          <article class="editorial-card invading-soon-card" data-reveal>
+            <img src="beaming-soon-skate-roster.png" alt="MENOCLONE mannequin in black hoodie holding a MENOCLONE skateboard for Beaming Down Soon" loading="lazy" />
           </article>
 
           <article class="editorial-card invading-soon-card" data-reveal>
@@ -3746,28 +3751,28 @@
           </article>
         </div>
 
-        <div class="clone-destroyer-feature" id="clone-destroyer" data-reveal>
-          <div class="clone-destroyer-copy">
+        <div class="odot-capsule-feature" id="odot-capsule" data-reveal>
+          <div class="odot-capsule-copy">
             <div>
               <p class="eyebrow">MENOCLONE Collectible / Late 2026</p>
-              <h3>Clone Destroyer</h3>
-              <p>Meet the upcoming MENOCLONE Clone Destroyer toy. Rotate it, zoom in and explore the full 3D collectible directly in the browser, then place the toy in your real-world space with augmented reality on a compatible mobile device.</p>
-              <div class="clone-destroyer-meta" aria-label="Clone Destroyer features">
+              <h3>MNC “Odot” Capsule</h3>
+              <p>Meet the MNC “Odot” Capsule, a new MENOCLONE collectible experience. Rotate it, zoom in and explore the full 3D capsule directly in the browser, then place it in your real-world space with augmented reality on a compatible mobile device.</p>
+              <div class="odot-capsule-meta" aria-label="MNC Odot Capsule features">
                 <span>Interactive 3D</span>
                 <span>AR Ready</span>
                 <span>Late 2026</span>
               </div>
             </div>
-            <div class="clone-destroyer-hint">Drag to rotate · Pinch or scroll to zoom · Select “View in Your Space” for AR</div>
+            <div class="odot-capsule-hint">Drag to rotate · Pinch or scroll to zoom · Select “View in Your Space” for AR</div>
           </div>
 
-          <div class="clone-destroyer-viewer">
-            <span class="clone-viewer-badge">3D / AR Preview</span>
-            <span class="clone-viewer-status">Beaming Down Soon</span>
+          <div class="odot-capsule-viewer">
+            <span class="odot-viewer-badge">3D / AR Preview</span>
+            <span class="odot-viewer-status">Beaming Down Soon</span>
             <model-viewer
-              id="cloneDestroyerViewer"
-              src="clonedestroyertoy.glb"
-              alt="Interactive 3D preview of the MENOCLONE Clone Destroyer toy"
+              id="odotCapsuleViewer"
+              src="mnc-odot-capsule.glb"
+              alt="Interactive 3D preview of the MENOCLONE MNC Odot Capsule"
               camera-controls
               touch-action="pan-y"
               auto-rotate
@@ -3779,10 +3784,10 @@
               ar
               ar-modes="webxr scene-viewer quick-look"
               ar-placement="floor"
-              ar-scale="auto"
+              ar-scale="fixed"
               interaction-prompt="auto"
               loading="eager">
-              <button class="clone-ar-button" slot="ar-button" type="button">View in Your Space ↗</button>
+              <button class="odot-ar-button" slot="ar-button" type="button">View in Your Space ↗</button>
             </model-viewer>
           </div>
         </div>
@@ -4896,7 +4901,7 @@
       'MNC UFO Pins':{fr:{name:'Pins MNC UFO',description:'Pins bouton noirs MNC UFO de 2,25 pouces avec le marquage UFO signature de MENOCLONE pour vestes, sacs et objets du quotidien.'},zh:{"name":"MNC UFO 别针","description":"2.25 英寸 MNC UFO 收藏别针，采用 MENOCLONE 标志性 UFO 图案，适合夹在外套、包袋和日常装备上。"},ja:{"name":"MNC UFO ピンズ","description":"MENOCLONE のシグネチャー UFO マークをあしらった 2.25 インチのコレクタブルボタンピン。ジャケットやバッグ、日常のギアに最適です。"},ko:{name:'MNC UFO 핀',description:'MENOCLONE 시그니처 UFO 마크를 담은 2.25인치 컬렉터블 버튼 핀으로 재킷, 가방, 일상 소품에 잘 어울립니다.'}},
       'MNC SZN 2 Pins':{fr:{name:'Pins MNC Saison 2',description:'Pins bouton noirs MNC Saison 2 de 2,25 pouces avec l’artwork badge de la Saison 2 pour vestes, sacs et objets du quotidien.'},zh:{"name":"MNC SZN 2 别针","description":"2.25 英寸 MNC SZN 2 收藏别针，采用 MENOCLONE Season 2 徽章图案，适合外套、包袋和日常装备。"},ja:{"name":"MNC SZN 2 ピンズ","description":"MENOCLONE Season 2 バッジアートワークを採用した 2.25 インチのコレクタブルボタンピン。ジャケットやバッグ、日常のギアに最適です。"},ko:{name:'MNC SZN 2 핀',description:'MENOCLONE 시즌 2 배지 아트워크를 담은 2.25인치 컬렉터블 버튼 핀으로 재킷, 가방, 일상 소품에 잘 어울립니다.'}},
       'Odds Has Origins Tote Bag':{fr:{name:'Sac cabas Odds Has Origins',description:'Sac cabas MENOCLONE pour les essentiels du quotidien et le matériel créatif, avec un visuel Odds Has Origins.'},zh:{"name":"Odds Has Origins 托特包","description":"MENOCLONE 托特包，适合日常随身物与创作装备，搭载 Odds Has Origins 视觉设计。"},ja:{"name":"Odds Has Origins トートバッグ","description":"日常の必需品やクリエイティブツールを持ち運ぶための MENOCLONE トートバッグ。Odds Has Origins グラフィックを採用しています。"},ko:{name:'Odds Has Origins 토트백',description:'일상 소지품과 크리에이티브 장비를 담기 위한 MENOCLONE 토트백으로, Odds Has Origins 그래픽이 적용되었습니다.'}},
-      'MNC ODOT LEGO Coffee Mug':{fr:{name:'Mug MNC ODOT LEGO',description:'Mug de collection MENOCLONE avec l’illustration du personnage ODOT LEGO dans un visuel enveloppant.'},zh:{"name":"MNC ODOT LEGO 咖啡杯","description":"MENOCLONE 收藏咖啡杯，采用 ODOT LEGO 角色图案和环绕式视觉设计。"},ja:{"name":"MNC ODOT LEGO コーヒーマグ","description":"ODOT LEGO キャラクターアートをフルラップで配置した MENOCLONE のコレクタブルマグ。"},ko:{name:'MNC ODOT LEGO 커피 머그',description:'ODOT LEGO 캐릭터 아트워크를 랩어라운드 스타일로 담은 MENOCLONE 컬렉터블 머그입니다.'}},
+      'MNC Brick God Coffee Mugs':{fr:{name:'Mugs MNC Brick God',description:'Mugs de collection MENOCLONE avec l’artwork Brick God et une technologie AR intégrée pour une expérience interactive.'},zh:{"name":"MNC Brick God 咖啡杯","description":"MENOCLONE 收藏咖啡杯，采用 Brick God 角色图案，并嵌入 AR 技术，带来互动体验。"},ja:{"name":"MNC Brick God コーヒーマグ","description":"Brick God キャラクターアートを使用し、AR 技術を内蔵したインタラクティブな MENOCLONE コレクタブルマグです。"},ko:{name:'MNC Brick God 커피 머그',description:'Brick God 캐릭터 아트워크와 AR 기술이 내장된 인터랙티브한 MENOCLONE 컬렉터블 머그입니다.'}},
     };
     function currentTranslation(){return translations[document.documentElement.lang] || translations.en}
     function localizedProductName(card){const base=card?.dataset?.name || 'MENOCLONE Product';return productTranslations[base]?.[document.documentElement.lang]?.name || base}
