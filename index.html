@@ -599,10 +599,13 @@
     }
 
     .product-media img[src$="mnc-tote-bag.png"],
-    .product-media img[src$="odds-has-origins-tote-bag.png"]{
+    .product-media img[src$="odds-has-origins-tote-bag.png"],
+    .product-media img[src$="mnc-odot-lego-mug-front.jpg"],
+    .product-media img[src$="mnc-monogram-tote-green.jpg"],
+    .product-media img[src$="mnc-monogram-tote-monochrome.jpg"]{
       object-fit:cover;
-      object-position:center 48%;
-      background:#bdb7ac;
+      object-position:center;
+      background:#f4f4f2;
     }
 
 
@@ -3396,84 +3399,6 @@
       .skate-rollout img{max-height:280px;object-fit:contain;}
     }
 
-
-
-    /* ---------- MNC-AR SHOP AWARENESS PROMPT ---------- */
-    .mnc-ar-shop-overlay{
-      position:fixed;
-      inset:0;
-      z-index:1600;
-      display:grid;
-      place-items:center;
-      padding:18px;
-      background:rgba(0,0,0,.82);
-      backdrop-filter:blur(16px);
-      -webkit-backdrop-filter:blur(16px);
-      opacity:0;
-      visibility:hidden;
-      pointer-events:none;
-      transition:opacity .32s ease,visibility .32s ease;
-    }
-    .mnc-ar-shop-overlay.show{opacity:1;visibility:visible;pointer-events:auto}
-    .mnc-ar-shop-dialog{
-      position:relative;
-      width:min(94vw,560px);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:22px;
-      background:
-        radial-gradient(circle at 82% 12%,rgba(232,255,71,.12),transparent 26%),
-        linear-gradient(145deg,#141414,#0a0a0a 70%);
-      box-shadow:0 28px 90px rgba(0,0,0,.58);
-      transform:translateY(12px) scale(.985);
-      transition:transform .34s var(--ease);
-    }
-    .mnc-ar-shop-overlay.show .mnc-ar-shop-dialog{transform:none}
-    .mnc-ar-shop-grid{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      opacity:.25;
-      background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-      background-size:30px 30px;
-      mask-image:linear-gradient(to bottom,#000,transparent 72%);
-      -webkit-mask-image:linear-gradient(to bottom,#000,transparent 72%);
-    }
-    .mnc-ar-shop-content{position:relative;z-index:2;padding:clamp(28px,5vw,44px)}
-    .mnc-ar-shop-mark{width:68px;height:auto;margin-bottom:28px;filter:drop-shadow(0 0 18px rgba(232,255,71,.12))}
-    .mnc-ar-shop-kicker{margin:0 0 10px;color:var(--accent);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
-    .mnc-ar-shop-dialog h3{margin:0;max-width:11ch;font-size:clamp(34px,7vw,58px);line-height:.92;letter-spacing:-.045em;text-transform:uppercase}
-    .mnc-ar-shop-copy{margin:18px 0 0;max-width:500px;color:#aaa9a3;font-size:13px;line-height:1.7}
-    .mnc-ar-shop-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-    .mnc-ar-shop-launch,.mnc-ar-shop-continue{
-      min-height:46px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:13px 18px;
-      border-radius:999px;
-      cursor:pointer;
-      font:inherit;
-      font-size:9px;
-      font-weight:700;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      transition:transform .28s var(--ease),background .28s ease,border-color .28s ease;
-    }
-    .mnc-ar-shop-launch{border:1px solid var(--accent);background:var(--accent);color:#090909}
-    .mnc-ar-shop-continue{border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff}
-    .mnc-ar-shop-launch:hover,.mnc-ar-shop-continue:hover{transform:translateY(-2px)}
-    .mnc-ar-shop-continue:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.06)}
-    .mnc-ar-shop-close{position:absolute;z-index:3;top:14px;right:14px;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:rgba(10,10,10,.58);color:#fff;cursor:pointer;font-size:17px}
-    body.mnc-ar-shop-open{overflow:hidden}
-    @media(max-width:520px){
-      .mnc-ar-shop-overlay{padding:10px;align-items:end}
-      .mnc-ar-shop-dialog{width:100%;border-radius:20px 20px 12px 12px}
-      .mnc-ar-shop-content{padding:34px 20px max(26px,env(safe-area-inset-bottom))}
-      .mnc-ar-shop-actions{display:grid;grid-template-columns:1fr}
-      .mnc-ar-shop-launch,.mnc-ar-shop-continue{width:100%;min-height:50px}
-    }
-
   </style>
 </head>
 
@@ -3729,6 +3654,43 @@
               <span class="price-hidden">Price in cart</span>
             </div>
           </article>
+
+
+          <article class="product" data-reveal data-name="MNC ODOT LEGO Coffee Mug" data-price="50.00" data-description="MNC ODOT LEGO Coffee Mug. A collectible MENOCLONE coffee mug featuring the ODOT LEGO character artwork in a clean full-wrap presentation.">
+            <div class="product-media">
+              <img class="real-product" src="mnc-odot-lego-mug-front.jpg" alt="MNC ODOT LEGO coffee mug with MENOCLONE character artwork" loading="lazy" />
+              <span class="product-index">12</span>
+              <button class="quick-add" type="button" data-product="MNC ODOT LEGO Coffee Mug">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>MNC ODOT LEGO Coffee Mug</span>
+              <span class="price-hidden">Price in cart</span>
+            </div>
+          </article>
+
+          <article class="product" data-reveal data-name="MNC Monogram Tote — Green" data-price="50.00" data-description="MNC Monogram Tote — Green. A black MENOCLONE tote covered in the green, black and white MNC monogram pattern with repeating UFO and wordmark graphics.">
+            <div class="product-media">
+              <img class="real-product" src="mnc-monogram-tote-green.jpg" alt="Green, black and white MENOCLONE MNC Monogram Tote" loading="lazy" />
+              <span class="product-index">13</span>
+              <button class="quick-add" type="button" data-product="MNC Monogram Tote — Green">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>MNC Monogram Tote — Green</span>
+              <span class="price-hidden">Price in cart</span>
+            </div>
+          </article>
+
+          <article class="product" data-reveal data-name="MNC Monogram Tote — Monochrome" data-price="50.00" data-description="MNC Monogram Tote — Monochrome. A black and white MENOCLONE tote covered in the monochrome MNC monogram pattern with repeating UFO and wordmark graphics.">
+            <div class="product-media">
+              <img class="real-product" src="mnc-monogram-tote-monochrome.jpg" alt="Black and white MENOCLONE MNC Monogram Tote" loading="lazy" />
+              <span class="product-index">14</span>
+              <button class="quick-add" type="button" data-product="MNC Monogram Tote — Monochrome">Quick Add</button>
+            </div>
+            <div class="product-info">
+              <span>MNC Monogram Tote — Monochrome</span>
+              <span class="price-hidden">Price in cart</span>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -3914,7 +3876,7 @@
 
         <div class="street-team-panel">
           <div class="street-team-media" data-reveal>
-            <img src="assets/mnc-street-team-flyer.png" alt="MENOCLONE Join the Street Team recruitment flyer featuring the MENOCLONE mannequin crew" loading="lazy" />
+            <img src="mnc-street-team-flyer.png" alt="MENOCLONE Join the Street Team recruitment flyer featuring the MENOCLONE mannequin crew" loading="lazy" />
           </div>
 
           <div class="street-team-copy" data-reveal>
@@ -4165,26 +4127,6 @@
     </aside>
   </div>
 
-
-
-  <!-- MNC-AR awareness prompt shown when a visitor reaches the Shop section -->
-  <div class="mnc-ar-shop-overlay" id="mncArShopOverlay" aria-hidden="true">
-    <div class="mnc-ar-shop-dialog" role="dialog" aria-modal="true" aria-labelledby="mncArShopTitle" aria-describedby="mncArShopDescription">
-      <div class="mnc-ar-shop-grid" aria-hidden="true"></div>
-      <button class="mnc-ar-shop-close" id="mncArShopClose" type="button" aria-label="Close MNC-AR message">×</button>
-      <div class="mnc-ar-shop-content">
-        <img class="mnc-ar-shop-mark" src="mncufo.png" alt="MENOCLONE UFO logo" />
-        <p class="mnc-ar-shop-kicker">MENOCLONE / Extended Experience</p>
-        <h3 id="mncArShopTitle">Are you aware of MNC-AR?</h3>
-        <p class="mnc-ar-shop-copy" id="mncArShopDescription">Before you explore the collection, discover MNC-AR — our augmented reality experience for bringing MENOCLONE objects and digital experiences into your world.</p>
-        <div class="mnc-ar-shop-actions">
-          <a class="mnc-ar-shop-launch" id="mncArShopLaunch" href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">Explore MNC-AR ↗</a>
-          <button class="mnc-ar-shop-continue" id="mncArShopContinue" type="button">Continue to Shop</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
@@ -4204,13 +4146,6 @@
     const igClose = document.getElementById('igClose');
     const igFollow = document.getElementById('igFollow');
     const igFollowing = document.getElementById('igFollowing');
-
-    const mncArShopOverlay = document.getElementById('mncArShopOverlay');
-    const mncArShopClose = document.getElementById('mncArShopClose');
-    const mncArShopContinue = document.getElementById('mncArShopContinue');
-    const mncArShopLaunch = document.getElementById('mncArShopLaunch');
-    const shopSection = document.getElementById('shop');
-
     const zoomOverlay = document.getElementById('zoomOverlay');
     const zoomImage = document.getElementById('zoomImage');
     const zoomStage = document.getElementById('zoomStage');
@@ -4982,7 +4917,10 @@
       'MENOCLONE Sticker Pack (3 pack)':{fr:{name:'Pack de 3 stickers MENOCLONE',description:'Trois stickers MNC et UFO à collectionner pour ordinateurs, coques, carnets, planches et autres supports créatifs.'},zh:{"name":"MENOCLONE 贴纸套装（3枚）","description":"MENOCLONE 贴纸套装（3枚）。包含三枚可收藏的 MNC 与 UFO 贴纸，适用于笔记本电脑、保护壳、笔记本、滑板和其他创意表面。"},ja:{"name":"MENOCLONE ステッカーパック（3枚）","description":"MENOCLONE ステッカーパック（3枚）。ノートPC、ケース、ノート、ボードなどに使えるMNCとUFOのコレクタブルステッカー3枚セットです。"},ko:{name:'MENOCLONE 스티커 팩 3종',description:'노트북, 케이스, 노트, 보드 등 다양한 곳에 붙일 수 있는 MNC 및 UFO 컬렉터 스티커 3종입니다.'}},
       'MNC UFO Pins':{fr:{name:'Pins MNC UFO',description:'Pins bouton noirs MNC UFO de 2,25 pouces avec le marquage UFO signature de MENOCLONE pour vestes, sacs et objets du quotidien.'},zh:{"name":"MNC UFO 别针","description":"2.25 英寸 MNC UFO 收藏别针，采用 MENOCLONE 标志性 UFO 图案，适合夹在外套、包袋和日常装备上。"},ja:{"name":"MNC UFO ピンズ","description":"MENOCLONE のシグネチャー UFO マークをあしらった 2.25 インチのコレクタブルボタンピン。ジャケットやバッグ、日常のギアに最適です。"},ko:{name:'MNC UFO 핀',description:'MENOCLONE 시그니처 UFO 마크를 담은 2.25인치 컬렉터블 버튼 핀으로 재킷, 가방, 일상 소품에 잘 어울립니다.'}},
       'MNC SZN 2 Pins':{fr:{name:'Pins MNC Saison 2',description:'Pins bouton noirs MNC Saison 2 de 2,25 pouces avec l’artwork badge de la Saison 2 pour vestes, sacs et objets du quotidien.'},zh:{"name":"MNC SZN 2 别针","description":"2.25 英寸 MNC SZN 2 收藏别针，采用 MENOCLONE Season 2 徽章图案，适合外套、包袋和日常装备。"},ja:{"name":"MNC SZN 2 ピンズ","description":"MENOCLONE Season 2 バッジアートワークを採用した 2.25 インチのコレクタブルボタンピン。ジャケットやバッグ、日常のギアに最適です。"},ko:{name:'MNC SZN 2 핀',description:'MENOCLONE 시즌 2 배지 아트워크를 담은 2.25인치 컬렉터블 버튼 핀으로 재킷, 가방, 일상 소품에 잘 어울립니다.'}},
-      'Odds Has Origins Tote Bag':{fr:{name:'Sac cabas Odds Has Origins',description:'Sac cabas MENOCLONE pour les essentiels du quotidien et le matériel créatif, avec un visuel Odds Has Origins.'},zh:{"name":"Odds Has Origins 托特包","description":"MENOCLONE 托特包，适合日常随身物与创作装备，搭载 Odds Has Origins 视觉设计。"},ja:{"name":"Odds Has Origins トートバッグ","description":"日常の必需品やクリエイティブツールを持ち運ぶための MENOCLONE トートバッグ。Odds Has Origins グラフィックを採用しています。"},ko:{name:'Odds Has Origins 토트백',description:'일상 소지품과 크리에이티브 장비를 담기 위한 MENOCLONE 토트백으로, Odds Has Origins 그래픽이 적용되었습니다.'}}
+      'Odds Has Origins Tote Bag':{fr:{name:'Sac cabas Odds Has Origins',description:'Sac cabas MENOCLONE pour les essentiels du quotidien et le matériel créatif, avec un visuel Odds Has Origins.'},zh:{"name":"Odds Has Origins 托特包","description":"MENOCLONE 托特包，适合日常随身物与创作装备，搭载 Odds Has Origins 视觉设计。"},ja:{"name":"Odds Has Origins トートバッグ","description":"日常の必需品やクリエイティブツールを持ち運ぶための MENOCLONE トートバッグ。Odds Has Origins グラフィックを採用しています。"},ko:{name:'Odds Has Origins 토트백',description:'일상 소지품과 크리에이티브 장비를 담기 위한 MENOCLONE 토트백으로, Odds Has Origins 그래픽이 적용되었습니다.'}},
+      'MNC ODOT LEGO Coffee Mug':{fr:{name:'Mug MNC ODOT LEGO',description:'Mug de collection MENOCLONE avec l’illustration du personnage ODOT LEGO dans un visuel enveloppant.'},zh:{"name":"MNC ODOT LEGO 咖啡杯","description":"MENOCLONE 收藏咖啡杯，采用 ODOT LEGO 角色图案和环绕式视觉设计。"},ja:{"name":"MNC ODOT LEGO コーヒーマグ","description":"ODOT LEGO キャラクターアートをフルラップで配置した MENOCLONE のコレクタブルマグ。"},ko:{name:'MNC ODOT LEGO 커피 머그',description:'ODOT LEGO 캐릭터 아트워크를 랩어라운드 스타일로 담은 MENOCLONE 컬렉터블 머그입니다.'}},
+      'MNC Monogram Tote — Green':{fr:{name:'Tote MNC Monogram — Vert',description:'Tote MENOCLONE noir avec motif monogramme MNC vert, noir et blanc, UFO et wordmarks répétés.'},zh:{"name":"MNC Monogram 托特包 — 绿色","description":"黑色 MENOCLONE 托特包，采用绿色、黑色和白色 MNC Monogram 图案以及重复 UFO 和字标。"},ja:{"name":"MNC Monogram トート — グリーン","description":"グリーン、ブラック、ホワイトの MNC モノグラムと UFO・ワードマークを全面に配したブラックトート。"},ko:{name:'MNC Monogram 토트 — 그린',description:'그린, 블랙, 화이트 MNC 모노그램과 반복 UFO 및 워드마크를 적용한 블랙 MENOCLONE 토트입니다.'}},
+      'MNC Monogram Tote — Monochrome':{fr:{name:'Tote MNC Monogram — Monochrome',description:'Tote MENOCLONE noir et blanc avec motif monogramme MNC, UFO et wordmarks répétés.'},zh:{"name":"MNC Monogram 托特包 — 黑白","description":"黑白 MENOCLONE 托特包，采用 MNC Monogram 图案以及重复 UFO 和字标。"},ja:{"name":"MNC Monogram トート — モノクローム","description":"ブラック＆ホワイトの MNC モノグラムと UFO・ワードマークを全面に配した MENOCLONE トート。"},ko:{name:'MNC Monogram 토트 — 모노크롬',description:'블랙 앤 화이트 MNC 모노그램과 반복 UFO 및 워드마크를 적용한 MENOCLONE 토트입니다.'}}
     };
     function currentTranslation(){return translations[document.documentElement.lang] || translations.en}
     function localizedProductName(card){const base=card?.dataset?.name || 'MENOCLONE Product';return productTranslations[base]?.[document.documentElement.lang]?.name || base}
@@ -5364,52 +5302,6 @@
         openCartModal(productName);
       }, 320);
     });
-
-
-    // MNC-AR Shop awareness prompt: show once per page load when Shop is reached.
-    let mncArShopPromptShown = false;
-    let mncArShopLastFocused = null;
-
-    function openMncArShopPrompt(){
-      if(!mncArShopOverlay || mncArShopPromptShown) return;
-      mncArShopPromptShown = true;
-      mncArShopLastFocused = document.activeElement;
-      mncArShopOverlay.classList.add('show');
-      mncArShopOverlay.setAttribute('aria-hidden','false');
-      body.classList.add('mnc-ar-shop-open');
-      playUfoClick?.();
-      window.setTimeout(()=>mncArShopLaunch?.focus(),120);
-    }
-
-    function closeMncArShopPrompt(){
-      if(!mncArShopOverlay) return;
-      mncArShopOverlay.classList.remove('show');
-      mncArShopOverlay.setAttribute('aria-hidden','true');
-      body.classList.remove('mnc-ar-shop-open');
-      if(mncArShopLastFocused && typeof mncArShopLastFocused.focus === 'function'){
-        window.setTimeout(()=>mncArShopLastFocused.focus(),80);
-      }
-    }
-
-    mncArShopClose?.addEventListener('click',()=>{ playUfoClick?.(); closeMncArShopPrompt(); });
-    mncArShopContinue?.addEventListener('click',()=>{ playUfoClick?.(); closeMncArShopPrompt(); });
-    mncArShopLaunch?.addEventListener('click',()=>{ playUfoClick?.(); closeMncArShopPrompt(); });
-    mncArShopOverlay?.addEventListener('click',(e)=>{ if(e.target===mncArShopOverlay) closeMncArShopPrompt(); });
-    document.addEventListener('keydown',(e)=>{
-      if(e.key==='Escape' && mncArShopOverlay?.classList.contains('show')) closeMncArShopPrompt();
-    });
-
-    if(shopSection){
-      const mncArShopObserver = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting && entry.intersectionRatio >= .18){
-            openMncArShopPrompt();
-            mncArShopObserver.disconnect();
-          }
-        });
-      },{threshold:[.18,.35]});
-      mncArShopObserver.observe(shopSection);
-    }
 
     document.querySelectorAll('button,.ig-follow,.shop-link,.enter-btn').forEach(el=>el.addEventListener('click',()=>flashActive(el)));
     cartModalClose?.addEventListener('click',closeCartModal);
