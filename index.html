@@ -3396,6 +3396,84 @@
       .skate-rollout img{max-height:280px;object-fit:contain;}
     }
 
+
+
+    /* ---------- MNC-AR SHOP AWARENESS PROMPT ---------- */
+    .mnc-ar-shop-overlay{
+      position:fixed;
+      inset:0;
+      z-index:1600;
+      display:grid;
+      place-items:center;
+      padding:18px;
+      background:rgba(0,0,0,.82);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity .32s ease,visibility .32s ease;
+    }
+    .mnc-ar-shop-overlay.show{opacity:1;visibility:visible;pointer-events:auto}
+    .mnc-ar-shop-dialog{
+      position:relative;
+      width:min(94vw,560px);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:22px;
+      background:
+        radial-gradient(circle at 82% 12%,rgba(232,255,71,.12),transparent 26%),
+        linear-gradient(145deg,#141414,#0a0a0a 70%);
+      box-shadow:0 28px 90px rgba(0,0,0,.58);
+      transform:translateY(12px) scale(.985);
+      transition:transform .34s var(--ease);
+    }
+    .mnc-ar-shop-overlay.show .mnc-ar-shop-dialog{transform:none}
+    .mnc-ar-shop-grid{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.25;
+      background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+      background-size:30px 30px;
+      mask-image:linear-gradient(to bottom,#000,transparent 72%);
+      -webkit-mask-image:linear-gradient(to bottom,#000,transparent 72%);
+    }
+    .mnc-ar-shop-content{position:relative;z-index:2;padding:clamp(28px,5vw,44px)}
+    .mnc-ar-shop-mark{width:68px;height:auto;margin-bottom:28px;filter:drop-shadow(0 0 18px rgba(232,255,71,.12))}
+    .mnc-ar-shop-kicker{margin:0 0 10px;color:var(--accent);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
+    .mnc-ar-shop-dialog h3{margin:0;max-width:11ch;font-size:clamp(34px,7vw,58px);line-height:.92;letter-spacing:-.045em;text-transform:uppercase}
+    .mnc-ar-shop-copy{margin:18px 0 0;max-width:500px;color:#aaa9a3;font-size:13px;line-height:1.7}
+    .mnc-ar-shop-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .mnc-ar-shop-launch,.mnc-ar-shop-continue{
+      min-height:46px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 18px;
+      border-radius:999px;
+      cursor:pointer;
+      font:inherit;
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      transition:transform .28s var(--ease),background .28s ease,border-color .28s ease;
+    }
+    .mnc-ar-shop-launch{border:1px solid var(--accent);background:var(--accent);color:#090909}
+    .mnc-ar-shop-continue{border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff}
+    .mnc-ar-shop-launch:hover,.mnc-ar-shop-continue:hover{transform:translateY(-2px)}
+    .mnc-ar-shop-continue:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.06)}
+    .mnc-ar-shop-close{position:absolute;z-index:3;top:14px;right:14px;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:rgba(10,10,10,.58);color:#fff;cursor:pointer;font-size:17px}
+    body.mnc-ar-shop-open{overflow:hidden}
+    @media(max-width:520px){
+      .mnc-ar-shop-overlay{padding:10px;align-items:end}
+      .mnc-ar-shop-dialog{width:100%;border-radius:20px 20px 12px 12px}
+      .mnc-ar-shop-content{padding:34px 20px max(26px,env(safe-area-inset-bottom))}
+      .mnc-ar-shop-actions{display:grid;grid-template-columns:1fr}
+      .mnc-ar-shop-launch,.mnc-ar-shop-continue{width:100%;min-height:50px}
+    }
+
   </style>
 </head>
 
@@ -4087,6 +4165,26 @@
     </aside>
   </div>
 
+
+
+  <!-- MNC-AR awareness prompt shown when a visitor reaches the Shop section -->
+  <div class="mnc-ar-shop-overlay" id="mncArShopOverlay" aria-hidden="true">
+    <div class="mnc-ar-shop-dialog" role="dialog" aria-modal="true" aria-labelledby="mncArShopTitle" aria-describedby="mncArShopDescription">
+      <div class="mnc-ar-shop-grid" aria-hidden="true"></div>
+      <button class="mnc-ar-shop-close" id="mncArShopClose" type="button" aria-label="Close MNC-AR message">×</button>
+      <div class="mnc-ar-shop-content">
+        <img class="mnc-ar-shop-mark" src="mncufo.png" alt="MENOCLONE UFO logo" />
+        <p class="mnc-ar-shop-kicker">MENOCLONE / Extended Experience</p>
+        <h3 id="mncArShopTitle">Are you aware of MNC-AR?</h3>
+        <p class="mnc-ar-shop-copy" id="mncArShopDescription">Before you explore the collection, discover MNC-AR — our augmented reality experience for bringing MENOCLONE objects and digital experiences into your world.</p>
+        <div class="mnc-ar-shop-actions">
+          <a class="mnc-ar-shop-launch" id="mncArShopLaunch" href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">Explore MNC-AR ↗</a>
+          <button class="mnc-ar-shop-continue" id="mncArShopContinue" type="button">Continue to Shop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
 
@@ -4106,6 +4204,13 @@
     const igClose = document.getElementById('igClose');
     const igFollow = document.getElementById('igFollow');
     const igFollowing = document.getElementById('igFollowing');
+
+    const mncArShopOverlay = document.getElementById('mncArShopOverlay');
+    const mncArShopClose = document.getElementById('mncArShopClose');
+    const mncArShopContinue = document.getElementById('mncArShopContinue');
+    const mncArShopLaunch = document.getElementById('mncArShopLaunch');
+    const shopSection = document.getElementById('shop');
+
     const zoomOverlay = document.getElementById('zoomOverlay');
     const zoomImage = document.getElementById('zoomImage');
     const zoomStage = document.getElementById('zoomStage');
@@ -5259,6 +5364,52 @@
         openCartModal(productName);
       }, 320);
     });
+
+
+    // MNC-AR Shop awareness prompt: show once per page load when Shop is reached.
+    let mncArShopPromptShown = false;
+    let mncArShopLastFocused = null;
+
+    function openMncArShopPrompt(){
+      if(!mncArShopOverlay || mncArShopPromptShown) return;
+      mncArShopPromptShown = true;
+      mncArShopLastFocused = document.activeElement;
+      mncArShopOverlay.classList.add('show');
+      mncArShopOverlay.setAttribute('aria-hidden','false');
+      body.classList.add('mnc-ar-shop-open');
+      playUfoClick?.();
+      window.setTimeout(()=>mncArShopLaunch?.focus(),120);
+    }
+
+    function closeMncArShopPrompt(){
+      if(!mncArShopOverlay) return;
+      mncArShopOverlay.classList.remove('show');
+      mncArShopOverlay.setAttribute('aria-hidden','true');
+      body.classList.remove('mnc-ar-shop-open');
+      if(mncArShopLastFocused && typeof mncArShopLastFocused.focus === 'function'){
+        window.setTimeout(()=>mncArShopLastFocused.focus(),80);
+      }
+    }
+
+    mncArShopClose?.addEventListener('click',()=>{ playUfoClick?.(); closeMncArShopPrompt(); });
+    mncArShopContinue?.addEventListener('click',()=>{ playUfoClick?.(); closeMncArShopPrompt(); });
+    mncArShopLaunch?.addEventListener('click',()=>{ playUfoClick?.(); closeMncArShopPrompt(); });
+    mncArShopOverlay?.addEventListener('click',(e)=>{ if(e.target===mncArShopOverlay) closeMncArShopPrompt(); });
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='Escape' && mncArShopOverlay?.classList.contains('show')) closeMncArShopPrompt();
+    });
+
+    if(shopSection){
+      const mncArShopObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting && entry.intersectionRatio >= .18){
+            openMncArShopPrompt();
+            mncArShopObserver.disconnect();
+          }
+        });
+      },{threshold:[.18,.35]});
+      mncArShopObserver.observe(shopSection);
+    }
 
     document.querySelectorAll('button,.ig-follow,.shop-link,.enter-btn').forEach(el=>el.addEventListener('click',()=>flashActive(el)));
     cartModalClose?.addEventListener('click',closeCartModal);
