@@ -3735,7 +3735,7 @@
           </article>
 
           <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="finger-ring.png" alt="MENOCLONE MNC UFO preview for Beaming Down Soon" loading="lazy" />
+            <img src="beaming-soon-mnc-ufo-photo.png" alt="MENOCLONE MNC UFO preview for Beaming Down Soon" loading="lazy" />
           </article>
 
           <article class="editorial-card invading-soon-card" data-reveal>
@@ -3777,6 +3777,7 @@
               touch-action="pan-y"
               auto-rotate
               rotation-per-second="16deg"
+              data-ar-rotation-speed="4"
               shadow-intensity="1"
               shadow-softness=".8"
               environment-image="neutral"
@@ -5341,6 +5342,48 @@
     setLanguage(localStorage.getItem('menocloneLang')||'en');
     updateWorldClock();
     updateCurrency();
+
+    // MNC UFO: slowly rotate the model while it is being viewed in WebXR AR.
+    // Native Scene Viewer / Quick Look are external viewers and do not expose
+    // their live model transform back to the webpage, so this behavior applies
+    // when <model-viewer> is running its in-browser WebXR AR session.
+    const mncUfoViewer = document.getElementById('mncUfoViewer');
+    let mncUfoArRotateFrame = 0;
+    let mncUfoArRotateStart = 0;
+    let mncUfoArRotationBase = 0;
+
+    function stopMncUfoArRotation(){
+      if(mncUfoArRotateFrame){
+        cancelAnimationFrame(mncUfoArRotateFrame);
+        mncUfoArRotateFrame = 0;
+      }
+      mncUfoArRotateStart = 0;
+    }
+
+    function startMncUfoArRotation(){
+      stopMncUfoArRotation();
+      const speed = Number(mncUfoViewer?.dataset.arRotationSpeed || 4); // degrees per second
+
+      const rotate = (time) => {
+        if(!mncUfoArRotateStart) mncUfoArRotateStart = time;
+        const elapsedSeconds = (time - mncUfoArRotateStart) / 1000;
+        const y = (mncUfoArRotationBase + elapsedSeconds * speed) % 360;
+        mncUfoViewer?.setAttribute('orientation', `0deg ${y.toFixed(2)}deg 0deg`);
+        mncUfoArRotateFrame = requestAnimationFrame(rotate);
+      };
+
+      mncUfoArRotateFrame = requestAnimationFrame(rotate);
+    }
+
+    mncUfoViewer?.addEventListener('ar-status', (event) => {
+      const status = event.detail?.status;
+      if(status === 'session-started'){
+        startMncUfoArRotation();
+      }else if(status === 'not-presenting' || status === 'failed'){
+        stopMncUfoArRotation();
+        mncUfoViewer.setAttribute('orientation', '0deg 0deg 0deg');
+      }
+    });
 
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
