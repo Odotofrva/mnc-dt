@@ -573,7 +573,7 @@
       filter:contrast(1.03);
     }
 
-    .product-media img[src$="mnc-trucker-hat2.png"]{
+    .product-media img[src$="mnc-season-two-trucker-hats.png"]{
       object-fit:cover;
       object-position:center;
       background:#111;
@@ -783,6 +783,8 @@
     .checkout-fields textarea{min-height:74px;resize:vertical}
     .checkout-fields input:focus,.checkout-fields textarea:focus{border-color:var(--accent)}
     .checkout-status{margin:0 0 12px;color:#aaa9a3;font-size:12px;line-height:1.45;min-height:18px}
+    .checkout-assurance{margin:0 0 14px;padding:12px 14px;border:1px solid rgba(232,255,71,.22);border-radius:12px;background:rgba(232,255,71,.055);color:#dcded1;font-size:11px;line-height:1.6}
+    .checkout-assurance strong{color:var(--accent);font-weight:700}
 
     @media(max-width:620px){.email-form{grid-template-columns:1fr;min-width:0}.email-form textarea,.email-form button,.form-status{grid-column:auto}}
 
@@ -1128,6 +1130,44 @@
     }
 
 
+
+
+
+    /* ---------- MENOCLONE / SEOUL EXPANSION ---------- */
+    .seoul-section{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 82% 18%,rgba(255,255,255,.08),transparent 24%),
+        radial-gradient(circle at 20% 80%,rgba(232,255,71,.05),transparent 28%),
+        #0b0b0b;
+    }
+    .seoul-section::before{
+      content:"SEOUL / 서울";
+      position:absolute;
+      right:-.04em;
+      top:.05em;
+      color:rgba(255,255,255,.025);
+      font-size:clamp(100px,18vw,300px);
+      font-weight:700;
+      line-height:.8;
+      letter-spacing:-.08em;
+      pointer-events:none;
+      white-space:nowrap;
+    }
+    .seoul-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px;position:relative;z-index:2}
+    .seoul-visual,.seoul-copy{min-height:520px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#101010}
+    .seoul-visual{display:grid;place-items:center;padding:clamp(30px,6vw,76px);background:linear-gradient(145deg,#151515,#090909)}
+    .seoul-visual img{width:min(92%,620px);height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.4));transition:transform .7s var(--ease)}
+    .seoul-visual:hover img{transform:scale(1.035)}
+    .seoul-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,5vw,72px)}
+    .seoul-copy h3{margin:0;max-width:10ch;font-size:clamp(42px,6vw,86px);line-height:.9;letter-spacing:-.055em;text-transform:uppercase}
+    .seoul-copy p:not(.eyebrow){margin:20px 0 0;max-width:720px;color:#aaa9a3;font-size:14px;line-height:1.75}
+    .seoul-route{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:30px}
+    .seoul-route span{padding:8px 11px;border:1px solid rgba(255,255,255,.13);border-radius:999px;color:#aaa9a3;font-size:9px;text-transform:uppercase;letter-spacing:.12em}
+    .seoul-route b{color:var(--accent);font-size:12px}
+    .seoul-note{margin-top:24px!important;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);color:#d8d8d2!important}
+    @media(max-width:820px){.seoul-grid{grid-template-columns:1fr}.seoul-visual,.seoul-copy{min-height:auto}.seoul-visual{aspect-ratio:1/1}.seoul-copy{padding:34px 22px}}
 
     /* ---------- LOOKBOOK / ART LOCATOR / TERMS ---------- */
     .editorial-grid{
@@ -3433,6 +3473,7 @@
         <a href="mncarmc.html">MNC ARM Clock</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
         <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
+        <a href="#seoul">Seoul</a>
         <a href="#story" data-i18n="world">World</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
         <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
@@ -3466,6 +3507,7 @@
         <a href="mncarmc.html">MNC ARM Clock</a>
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
         <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
+        <a href="#seoul">Seoul</a>
         <a href="#story" data-i18n="world">World</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
         <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
@@ -3525,7 +3567,7 @@
         <div class="products">
           <article class="product" data-reveal data-name="MENOCLONE Season Two Boxed Tee" data-price="90.00" data-description="MENOCLONE Season Two Boxed Tee. Heavyweight boxed fit with a structured streetwear silhouette, Season Two branding and signature UFO graphics.">
             <div class="product-media">
-              <img class="real-product" src="mnc-heavy-tee.png" alt="MENOCLONE Season Two Boxed Tee front and back" loading="lazy" />
+              <img class="real-product" src="mnc-season-two-boxed-tee.png" alt="MENOCLONE Season Two Boxed Tee front and back product presentation" loading="lazy" />
               <span class="product-index">01</span>
               <button class="quick-add" type="button" data-product="MENOCLONE Season Two Boxed Tee">Quick Add</button>
             </div>
@@ -3585,7 +3627,7 @@
 
           <article class="product" data-reveal data-name="MENOCLONE Season Two Trucker Hats" data-price="60.00" data-description="MENOCLONE Season Two Trucker Hats. Structured black front, white MENOCLONE wordmark and breathable mesh construction.">
             <div class="product-media">
-              <img src="mnc-trucker-hat2.png" alt="Black MENOCLONE trucker hat with white embroidered wordmark" loading="lazy" />
+              <img src="mnc-season-two-trucker-hats.png" alt="MENOCLONE Season Two black trucker hats with white embroidered wordmark" loading="lazy" />
               <span class="product-index">06</span>
               <button class="quick-add" type="button" data-product="MENOCLONE Season Two Trucker Hats">Quick Add</button>
             </div>
@@ -3904,6 +3946,34 @@
         </div>
       </section>
 
+
+      <section class="section seoul-section" id="seoul">
+        <div class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow">MENOCLONE Global Signal</p>
+            <h2>New York → Seoul</h2>
+          </div>
+          <p>Koreatown, NYC / Seoul, Korea / Future Expansion</p>
+        </div>
+
+        <div class="seoul-grid">
+          <div class="seoul-visual" data-reveal>
+            <img src="mnc-korean-wordmark.png" alt="MENOCLONE Korean wordmark created in appreciation of Korean culture" loading="lazy" />
+          </div>
+
+          <div class="seoul-copy" data-reveal>
+            <p class="eyebrow">A Dream Beyond Borders</p>
+            <h3>Building the signal toward Seoul.</h3>
+            <p>MENOCLONE plans to expand its creative world into Seoul, Korea by building meaningful partnerships through the cultural bridge of Koreatown, New York City. The goal is not simply to enter another market, but to connect with designers, artists, makers and independent thinkers who move on the same creative frequency.</p>
+            <p>For founder OdotNYC, visiting Seoul has long been a personal dream. As MENOCLONE grows, that dream has become part of the brand's future: bringing its lifestyle of fashion, art, design and technology into a city known for its own powerful creative energy, while learning from the people and culture already shaping it.</p>
+            <p class="seoul-note">The Korean MENOCLONE logo was created as a gesture of respect and appreciation for Korean culture. It represents curiosity, humility and a commitment to keep learning daily—not an attempt to claim the culture, but to honor the inspiration and relationships MENOCLONE hopes to build.</p>
+            <div class="seoul-route" aria-label="MENOCLONE expansion path">
+              <span>New York City</span><b>→</b><span>Koreatown NYC</span><b>→</b><span>Seoul, Korea</span><b>→</b><span>Creative Partnerships</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="story">
         <div class="story">
           <div data-reveal>
@@ -4039,6 +4109,7 @@
           <textarea id="checkoutAddress" autocomplete="street-address" placeholder="Shipping address" aria-label="Shipping address" required></textarea>
           <textarea id="checkoutNotes" placeholder="Order notes (optional)" aria-label="Order notes"></textarea>
         </div>
+        <p class="checkout-assurance" id="checkoutAssurance"><strong>ORDER DELIVERY:</strong> When you submit your order, the complete order request is sent directly to MENOCLONE at <strong>odot.rva@proton.me</strong>. Your order will receive a unique MENOCLONE order number for reference.</p>
         <p class="checkout-status" id="checkoutStatus" role="status" aria-live="polite"></p>
         <div class="bag-total-row">
           <span id="bagSubtotalLabel">Subtotal</span>
@@ -4237,7 +4308,7 @@
         continueShopping:'Continue Shopping',
         totalNote:'Converted pricing follows the selected site currency. Shipping and taxes are not included.',
         removed:'Removed from bag',
-        checkoutNotice:'Submit your order and the complete cart details will be emailed directly to MENOCLONE HQ.',
+        checkoutNotice:'Submit your order and the complete cart details will be emailed directly to MENOCLONE HQ at odot.rva@proton.me with a unique order number.',
         item:'item',items:'items'
       ,skateNav:'MENOCLONE Skate',skateKicker:'MENOCLONE Skate Division',skateTitle:'MENOCLONE Skate',skateMeta:'Team / Decks / Grip / Objects',skateTeamLabel:'MNC Skate Team',skateTeamTitle:'Built for the streets.',skateTeamDescription:'MENOCLONE Skate is the movement side of the brand — a platform for riders, street sessions, creative edits, collaborations and the objects that keep the team moving.',skateTeamStatus:'Team roster coming soon',skateManifestoKicker:'Originality in motion',skateManifestoTitle:'Skateboarding is another canvas.',skateManifestoDescription:'Deck graphics, grip, hardware and skate films become another way for MENOCLONE to combine art, design, fashion and street culture.',skateTagTeam:'Team',skateTagDecks:'Decks',skateTagGrip:'Grip Tape',skateTagAccessories:'Accessories',skateTagFilms:'Skate Films',skateProductLabel:'MNC Skate Product',skateDeckTitle:'Skateboard Deck',skateDeckDescription:'Future MENOCLONE deck drops, graphic editions and team boards will live here.',skateGripTitle:'Grip Tape',skateGripDescription:'Custom MENOCLONE grip graphics, limited patterns and skate-ready surface designs.',skateGearTitle:'Skate Accessories',skateGearDescription:'Hardware, wheels, stickers, tools and future MENOCLONE Skate objects.'},
       es:{
@@ -4493,7 +4564,7 @@
       body.style.overflow = '';
     }
 
-    const ORDER_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/menoclone@proton.me';
+    const ORDER_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/odot.rva@proton.me';
 
     async function sendStoreEmail(fields){
       const response = await fetch(ORDER_EMAIL_ENDPOINT,{
@@ -4505,6 +4576,14 @@
       const result = await response.json().catch(() => ({}));
       if(result.success === false || result.success === 'false') throw new Error(result.message || 'Message not sent');
       return result;
+    }
+
+    function generateOrderNumber(){
+      const now = new Date();
+      const date = [now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('');
+      const time = [String(now.getHours()).padStart(2,'0'),String(now.getMinutes()).padStart(2,'0'),String(now.getSeconds()).padStart(2,'0')].join('');
+      const random = Math.random().toString(36).slice(2,6).toUpperCase();
+      return `MNC-${date}-${time}-${random}`;
     }
 
     async function submitBagOrder(){
@@ -4519,7 +4598,9 @@
         return;
       }
 
+      const orderNumber = generateOrderNumber();
       const detail = {
+        orderNumber,
         items: cartItems.map(item => ({
           name:item.name,
           quantity:item.qty,
@@ -4534,12 +4615,13 @@
       ).join('\n');
       const usdTotal = detail.items.reduce((sum,item) => sum + item.usdUnitPrice * item.quantity,0);
       const fields = new FormData();
-      fields.append('_subject',`NEW MENOCLONE WEBSITE ORDER — ${name}`);
+      fields.append('_subject',`MENOCLONE ORDER — ${orderNumber}`);
       fields.append('_template','table');
       fields.append('_captcha','false');
-      fields.append('_autoresponse','Your order request has been sent to MENOCLONE HQ. We received your order details and will contact you to confirm payment, availability and shipping. — MENOCLONE HQ');
+      fields.append('_autoresponse',`Your MENOCLONE order request ${orderNumber} has been received. We will contact you to confirm payment, availability and shipping. Keep this order number for reference. — MENOCLONE HQ`);
       fields.append('email',email);
       fields.append('_replyto',email);
+      fields.append('Order number',orderNumber);
       fields.append('Customer name',name);
       fields.append('Customer email',email);
       fields.append('Shipping address',address);
@@ -4553,18 +4635,18 @@
       window.dispatchEvent(new CustomEvent('menoclone:submit-order',{detail}));
       bagSubmit.disabled = true;
       bagSubmit.textContent = 'Sending…';
-      if(checkoutStatus) checkoutStatus.textContent = 'Sending your order request…';
+      if(checkoutStatus) checkoutStatus.textContent = `Sending order ${orderNumber} directly to MENOCLONE HQ…`;
       try{
         await sendStoreEmail(fields);
         cartItems = [];
         saveCart();
         await renderBag();
         [checkoutName,checkoutEmail,checkoutAddress,checkoutNotes].forEach(field => {if(field) field.value='';});
-        if(checkoutStatus) checkoutStatus.textContent = 'Order sent to MENOCLONE HQ. A confirmation email has been sent to you.';
-        showToast('Order sent to MENOCLONE HQ');
+        if(checkoutStatus) checkoutStatus.textContent = `Order ${orderNumber} was sent to MENOCLONE HQ. A confirmation email has been sent to you.`;
+        showToast(`Order ${orderNumber} sent to MENOCLONE HQ`);
       }catch(error){
         bagSubmit.disabled = false;
-        if(checkoutStatus) checkoutStatus.textContent = 'Order could not be sent. Please try again or email menoclone@proton.me.';
+        if(checkoutStatus) checkoutStatus.textContent = 'Order could not be sent. Please try again or email odot.rva@proton.me.';
         showToast('Order not sent — please try again');
       }finally{
         bagSubmit.textContent = bagT('submit');
