@@ -533,6 +533,39 @@
       min-width:0;
     }
 
+    .product-category{
+      margin-top:46px;
+    }
+
+    .product-category:first-of-type{
+      margin-top:0;
+    }
+
+    .product-category-heading{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      margin:0 0 18px;
+      padding-bottom:12px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .product-category-heading h3{
+      margin:0;
+      font-size:clamp(18px,2.2vw,30px);
+      text-transform:uppercase;
+      letter-spacing:-.025em;
+    }
+
+    .product-category-heading span{
+      color:var(--muted);
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      white-space:nowrap;
+    }
+
     .product{
       group:product;
       display:block;
@@ -600,6 +633,8 @@
 
     .product-media img[src$="mnc-tote-bag.png"],
     .product-media img[src$="odds-has-origins-tote-bag.png"],
+    .product-media img[src$="revolution-not-tele-tote-bags.png"],
+    .product-media img[src$="hologram-ufo-stickers.png"],
     .product-media img[src$="mnc-odot-lego-mug-front.jpg"],
     .product-media img[src$="mnc-brick-god-mugs.png"],
     .product-media img[src$="mnc-odot-travel-coffee-mug.jpg"]{
@@ -3564,155 +3599,170 @@
           <p data-i18n="shopMeta">Season 2 / Limited Release</p>
         </div>
 
-        <div class="products">
-          <article class="product" data-reveal data-name="MENOCLONE Season Two Boxed Tee" data-price="90.00" data-description="MENOCLONE Season Two Boxed Tee. Heavyweight boxed fit with a structured streetwear silhouette, Season Two branding and signature UFO graphics.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-season-two-boxed-tee.png" alt="MENOCLONE Season Two Boxed Tee front and back product presentation" loading="lazy" />
-              <span class="product-index">01</span>
-              <button class="quick-add" type="button" data-product="MENOCLONE Season Two Boxed Tee">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MENOCLONE Season Two Boxed Tee</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+        <div class="product-category" data-reveal>
+          <div class="product-category-heading">
+            <h3>Apparel</h3>
+            <span>Tees / Hoodies / Crewnecks</span>
+          </div>
+          <div class="products">
+            <article class="product" data-reveal data-name="MENOCLONE Season Two Boxed Tee" data-price="90.00" data-description="MENOCLONE Season Two Boxed Tee. Heavyweight boxed fit with a structured streetwear silhouette, Season Two branding and signature UFO graphics.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-season-two-boxed-tee.png" alt="MENOCLONE Season Two Boxed Tee front and back product presentation" loading="lazy" />
+                <span class="product-index">01</span>
+                <button class="quick-add" type="button" data-product="MENOCLONE Season Two Boxed Tee">Quick Add</button>
+              </div>
+              <div class="product-info"><span>MENOCLONE Season Two Boxed Tee</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
-          <article class="product" data-reveal data-name="MENOCLONE Season Two Hoodie" data-price="90.00" data-description="MENOCLONE Season Two Hoodie. Heavy GSM construction with a relaxed silhouette, UFO identity details and a layered Season Two presentation.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-ufo-hoodie.png" alt="MENOCLONE Season 2 Hoodie front and back" loading="lazy" />
-              <span class="product-index">02</span>
-              <button class="quick-add" type="button" data-product="MENOCLONE Season Two Hoodie">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MENOCLONE Season Two Hoodie</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+            <article class="product" data-reveal data-name="MENOCLONE Season Two Hoodie" data-price="90.00" data-description="MENOCLONE Season Two Hoodie. Heavy GSM construction with a relaxed silhouette, UFO identity details and a layered Season Two presentation.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-ufo-hoodie.png" alt="MENOCLONE Season 2 Hoodie front and back" loading="lazy" />
+                <span class="product-index">02</span>
+                <button class="quick-add" type="button" data-product="MENOCLONE Season Two Hoodie">Quick Add</button>
+              </div>
+              <div class="product-info"><span>MENOCLONE Season Two Hoodie</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
-          <article class="product" data-reveal data-name="MENOCLONE Artful UFO Hoodie" data-price="100.00" data-description="MENOCLONE Artful UFO Hoodie. The MENOCLONE wordmark is paired with oversized UFO artwork and a bold back graphic built around the brand visual identity.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-artufo-hoodie.png" alt="MENOCLONE Artful UFO Hoodie front and back" loading="lazy" />
-              <span class="product-index">03</span>
-              <button class="quick-add" type="button" data-product="MENOCLONE Artful UFO Hoodie">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MENOCLONE Artful UFO Hoodie</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+            <article class="product" data-reveal data-name="MENOCLONE Artful UFO Hoodie" data-price="100.00" data-description="MENOCLONE Artful UFO Hoodie. The MENOCLONE wordmark is paired with oversized UFO artwork and a bold back graphic built around the brand visual identity.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-artufo-hoodie.png" alt="MENOCLONE Artful UFO Hoodie front and back" loading="lazy" />
+                <span class="product-index">03</span>
+                <button class="quick-add" type="button" data-product="MENOCLONE Artful UFO Hoodie">Quick Add</button>
+              </div>
+              <div class="product-info"><span>MENOCLONE Artful UFO Hoodie</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
-          <article class="product" data-reveal data-name="MENOCLONE Crewneck" data-price="TBA" data-description="Heavyweight MENOCLONE crewneck with clean front branding and UFO graphics for a minimal Season 2 uniform.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-ufo-crewneck.png" alt="MENOCLONE Crewneck front and back" loading="lazy" />
-              <span class="product-index">04</span>
-              <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
-            </div>
-            <div class="product-info">
-              <span>MENOCLONE Crewneck</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+            <article class="product" data-reveal data-name="MENOCLONE Crewneck" data-price="TBA" data-description="Heavyweight MENOCLONE crewneck with clean front branding and UFO graphics for a minimal Season 2 uniform.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-ufo-crewneck.png" alt="MENOCLONE Crewneck front and back" loading="lazy" />
+                <span class="product-index">04</span>
+                <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
+              </div>
+              <div class="product-info"><span>MENOCLONE Crewneck</span><span class="price-hidden">Price in cart</span></div>
+            </article>
+          </div>
+        </div>
 
-          <article class="product" data-reveal data-name="MENOCLONE Season Two 5 Panel Hat" data-price="TBA" data-description="MENOCLONE Season Two 5 Panel Hat. An all-black five-panel silhouette with a clean woven MENOCLONE front label, black hardware and adjustable rear strap. Coming Soon.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-5panel-hat-new.png" alt="New black MENOCLONE 5 Panel Hat shown from multiple angles with front label detail" loading="lazy" />
-              <span class="product-index">05</span>
-              <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
-            </div>
-            <div class="product-info">
-              <span>MENOCLONE Season Two 5 Panel Hat</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+        <div class="product-category" data-reveal>
+          <div class="product-category-heading">
+            <h3>Headwear</h3>
+            <span>5 Panel / Trucker</span>
+          </div>
+          <div class="products">
+            <article class="product" data-reveal data-name="MENOCLONE Season Two 5 Panel Hat" data-price="TBA" data-description="MENOCLONE Season Two 5 Panel Hat. An all-black five-panel silhouette with a clean woven MENOCLONE front label, black hardware and adjustable rear strap. Coming Soon.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-5panel-hat-new.png" alt="New black MENOCLONE 5 Panel Hat shown from multiple angles with front label detail" loading="lazy" />
+                <span class="product-index">05</span>
+                <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
+              </div>
+              <div class="product-info"><span>MENOCLONE Season Two 5 Panel Hat</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
-          <article class="product" data-reveal data-name="MENOCLONE Season Two Trucker Hats" data-price="60.00" data-description="MENOCLONE Season Two Trucker Hats. Structured black front, white MENOCLONE wordmark and breathable mesh construction.">
-            <div class="product-media">
-              <img src="mnc-season-two-trucker-hats.png" alt="MENOCLONE Season Two black trucker hats with white embroidered wordmark" loading="lazy" />
-              <span class="product-index">06</span>
-              <button class="quick-add" type="button" data-product="MENOCLONE Season Two Trucker Hats">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MENOCLONE Season Two Trucker Hat</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+            <article class="product" data-reveal data-name="MENOCLONE Season Two Trucker Hats" data-price="60.00" data-description="MENOCLONE Season Two Trucker Hats. Structured black front, white MENOCLONE wordmark and breathable mesh construction.">
+              <div class="product-media">
+                <img src="mnc-season-two-trucker-hats.png" alt="MENOCLONE Season Two black trucker hats with white embroidered wordmark" loading="lazy" />
+                <span class="product-index">06</span>
+                <button class="quick-add" type="button" data-product="MENOCLONE Season Two Trucker Hats">Quick Add</button>
+              </div>
+              <div class="product-info"><span>MENOCLONE Season Two Trucker Hat</span><span class="price-hidden">Price in cart</span></div>
+            </article>
+          </div>
+        </div>
 
-          <article class="product" data-reveal data-name="MENOCLONE Sticker Pack (3 pack)" data-price="30.00" data-description="MENOCLONE Sticker Pack (3 pack). Three collectible MNC and UFO stickers for laptops, cases, notebooks, boards and creative placement.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-ufo-stickerpack.png" alt="MENOCLONE MNC UFO sticker pack" loading="lazy" />
-              <span class="product-index">07</span>
-              <button class="quick-add" type="button" data-product="MENOCLONE Sticker Pack (3 pack)">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MENOCLONE Sticker Pack (3 pack)</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+        <div class="product-category" data-reveal>
+          <div class="product-category-heading">
+            <h3>Bags</h3>
+            <span>Totes / Carry Objects</span>
+          </div>
+          <div class="products">
+            <article class="product" data-reveal data-name="MNC Tote Bag" data-price="50.00" data-description="MNC Tote Bag. A statement carryall featuring the MENOCLONE constellation mannequin artwork, built for daily essentials, creative gear and city movement.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-tote-bag.png" alt="MENOCLONE constellation mannequin tote bags displayed in a boutique" loading="lazy" />
+                <span class="product-index">07</span>
+                <button class="quick-add" type="button" data-product="MNC Tote Bag">Quick Add</button>
+              </div>
+              <div class="product-info"><span>MNC Tote Bag</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
-          <article class="product" data-reveal data-name="MNC UFO Pins" data-price="10.00" data-description="MNC UFO Pins. 2.25in collectible black button pins featuring the signature white MNC UFO mark, made to add MENOCLONE identity to jackets, bags and everyday gear.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-ufo-pin.png" alt="Black MNC UFO pins with white UFO logo, including front and back views" loading="lazy" />
-              <span class="product-index">08</span>
-              <button class="quick-add" type="button" data-product="MNC UFO Pins">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MNC UFO Pins</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+            <article class="product" data-reveal data-name="Odds Has Origins Tote Bag" data-price="50.00" data-description="Odds Has Origins Tote Bag. A MENOCLONE carryall built for daily essentials, creative gear and city movement, featuring the Odds Has Origins graphic concept.">
+              <div class="product-media">
+                <img class="real-product" src="odds-has-origins-tote-bag.png" alt="MENOCLONE Odds Has Origins Tote Bag product photo showing multiple tote bags on a table" loading="lazy" />
+                <span class="product-index">08</span>
+                <button class="quick-add" type="button" data-product="Odds Has Origins Tote Bag">Quick Add</button>
+              </div>
+              <div class="product-info"><span>Odds Has Origins Tote Bag</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
-          <article class="product" data-reveal data-name="MNC SZN 2 Pins" data-price="10.00" data-description="MNC SZN 2 Pins. 2.25in collectible black button pins featuring the MENOCLONE Season 2 badge artwork, built for jackets, bags and everyday gear.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-szn2-pins.png" alt="MENOCLONE Season 2 button pins with front and back views arranged on a white table" loading="lazy" />
-              <span class="product-index">09</span>
-              <button class="quick-add" type="button" data-product="MNC SZN 2 Pins">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MNC SZN 2 Pins</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+            <article class="product" data-reveal data-name="Revolution Not Tele Tote Bags" data-price="50.00" data-description="Revolution Not Tele Tote Bags. A MENOCLONE statement tote featuring the alien-abduction television artwork, built for everyday carry, creative gear and city movement.">
+              <div class="product-media">
+                <img class="real-product" src="revolution-not-tele-tote-bags.png" alt="Revolution Not Tele MENOCLONE tote bags displayed outdoors" loading="lazy" />
+                <span class="product-index">09</span>
+                <button class="quick-add" type="button" data-product="Revolution Not Tele Tote Bags">Quick Add</button>
+              </div>
+              <div class="product-info"><span>Revolution Not Tele Tote Bags</span><span class="price-hidden">Price in cart</span></div>
+            </article>
+          </div>
+        </div>
 
-          <article class="product" data-reveal data-name="MNC Tote Bag" data-price="50.00" data-description="MNC Tote Bag. A statement carryall featuring the MENOCLONE constellation mannequin artwork, built for daily essentials, creative gear and city movement.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-tote-bag.png" alt="MENOCLONE constellation mannequin tote bags displayed in a boutique" loading="lazy" />
-              <span class="product-index">10</span>
-              <button class="quick-add" type="button" data-product="MNC Tote Bag">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MNC Tote Bag</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+        <div class="product-category" data-reveal>
+          <div class="product-category-heading">
+            <h3>Stickers &amp; Pins</h3>
+            <span>Collectibles / Signal Objects</span>
+          </div>
+          <div class="products">
+            <article class="product" data-reveal data-name="MENOCLONE Sticker Pack (3 pack)" data-price="30.00" data-description="MENOCLONE Sticker Pack (3 pack). Three collectible MNC and UFO stickers for laptops, cases, notebooks, boards and creative placement.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-ufo-stickerpack.png" alt="MENOCLONE MNC UFO sticker pack" loading="lazy" />
+                <span class="product-index">10</span>
+                <button class="quick-add" type="button" data-product="MENOCLONE Sticker Pack (3 pack)">Quick Add</button>
+              </div>
+              <div class="product-info"><span>MENOCLONE Sticker Pack (3 pack)</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
-          <article class="product" data-reveal data-name="Odds Has Origins Tote Bag" data-price="50.00" data-description="Odds Has Origins Tote Bag. A MENOCLONE carryall built for daily essentials, creative gear and city movement, featuring the Odds Has Origins graphic concept.">
-            <div class="product-media">
-              <img class="real-product" src="odds-has-origins-tote-bag.png" alt="MENOCLONE Odds Has Origins Tote Bag product photo showing multiple tote bags on a table" loading="lazy" />
-              <span class="product-index">11</span>
-              <button class="quick-add" type="button" data-product="Odds Has Origins Tote Bag">Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>Odds Has Origins Tote Bag</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+            <article class="product" data-reveal data-name="Hologram UFO Stickers (3 pack)" data-price="15.00" data-description="Hologram UFO Stickers (3 pack). Three reflective holographic MNC UFO stickers with a shifting rainbow finish for laptops, cases, notebooks, boards and creative placement.">
+              <div class="product-media">
+                <img class="real-product" src="hologram-ufo-stickers.png" alt="MENOCLONE hologram UFO stickers held in hand with additional stickers on a table" loading="lazy" />
+                <span class="product-index">11</span>
+                <button class="quick-add" type="button" data-product="Hologram UFO Stickers (3 pack)">Quick Add</button>
+              </div>
+              <div class="product-info"><span>Hologram UFO Stickers (3 pack)</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
+            <article class="product" data-reveal data-name="MNC UFO Pins" data-price="10.00" data-description="MNC UFO Pins. 2.25in collectible black button pins featuring the signature white MNC UFO mark, made to add MENOCLONE identity to jackets, bags and everyday gear.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-ufo-pin.png" alt="Black MNC UFO pins with white UFO logo, including front and back views" loading="lazy" />
+                <span class="product-index">12</span>
+                <button class="quick-add" type="button" data-product="MNC UFO Pins">Quick Add</button>
+              </div>
+              <div class="product-info"><span>MNC UFO Pins</span><span class="price-hidden">Price in cart</span></div>
+            </article>
 
-          <article class="product" data-reveal data-name='MNC "Odot" Travel Coffee Mug' data-price="40.00" data-description="MNC &quot;Odot&quot; Travel Coffee Mug. Built for early starts, long build sessions and creative days. Founder OdotNYC is a father who enjoys great coffee while creating works of art. He is also a selft taught developer, designer, engineer and creative whose mornings begin with a cup made in the spirit of how his grandmother would have prepared it if she were still here.">
-            <div class="product-media">
-              <img class="real-product" src="mnc-odot-travel-coffee-mug.jpg" alt="MNC Odot Travel Coffee Mug featuring the Odot character artwork" loading="lazy" />
-              <span class="product-index">12</span>
-              <button class="quick-add" type="button" data-product='MNC "Odot" Travel Coffee Mug'>Quick Add</button>
-            </div>
-            <div class="product-info">
-              <span>MNC "Odot" Travel Coffee Mug</span>
-              <span class="price-hidden">Price in cart</span>
-            </div>
-          </article>
+            <article class="product" data-reveal data-name="MNC SZN 2 Pins" data-price="10.00" data-description="MNC SZN 2 Pins. 2.25in collectible black button pins featuring the MENOCLONE Season 2 badge artwork, built for jackets, bags and everyday gear.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-szn2-pins.png" alt="MENOCLONE Season 2 button pins with front and back views arranged on a white table" loading="lazy" />
+                <span class="product-index">13</span>
+                <button class="quick-add" type="button" data-product="MNC SZN 2 Pins">Quick Add</button>
+              </div>
+              <div class="product-info"><span>MNC SZN 2 Pins</span><span class="price-hidden">Price in cart</span></div>
+            </article>
+          </div>
+        </div>
 
-
-
-
+        <div class="product-category" data-reveal>
+          <div class="product-category-heading">
+            <h3>Drinkware</h3>
+            <span>Coffee / Daily Objects</span>
+          </div>
+          <div class="products">
+            <article class="product" data-reveal data-name='MNC "Odot" Travel Coffee Mug' data-price="40.00" data-description="MNC &quot;Odot&quot; Travel Coffee Mug. Built for early starts, long build sessions and creative days. Founder OdotNYC is a father who enjoys great coffee while creating works of art. He is also a selft taught developer, designer, engineer and creative whose mornings begin with a cup made in the spirit of how his grandmother would have prepared it if she were still here.">
+              <div class="product-media">
+                <img class="real-product" src="mnc-odot-travel-coffee-mug.jpg" alt="MNC Odot Travel Coffee Mug featuring the Odot character artwork" loading="lazy" />
+                <span class="product-index">14</span>
+                <button class="quick-add" type="button" data-product='MNC "Odot" Travel Coffee Mug'>Quick Add</button>
+              </div>
+              <div class="product-info"><span>MNC "Odot" Travel Coffee Mug</span><span class="price-hidden">Price in cart</span></div>
+            </article>
+          </div>
         </div>
       </section>
 
