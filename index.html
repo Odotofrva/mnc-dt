@@ -3325,6 +3325,177 @@
       .skate-rollout img{max-height:280px;object-fit:contain;}
     }
 
+
+    /* ---------- MNC REALMS / INTERACTIVE PLANETS ---------- */
+    .realms-section{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 76% 26%,rgba(232,255,71,.09),transparent 25%),
+        radial-gradient(circle at 16% 82%,rgba(78,95,255,.09),transparent 28%),
+        #0a0a0a;
+    }
+
+    .realms-section::before{
+      content:"MNC REALMS";
+      position:absolute;
+      right:-.03em;
+      top:.04em;
+      color:rgba(255,255,255,.024);
+      font-size:clamp(92px,17vw,290px);
+      font-weight:700;
+      line-height:.82;
+      letter-spacing:-.08em;
+      white-space:nowrap;
+      pointer-events:none;
+    }
+
+    .realms-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+      gap:12px;
+      align-items:stretch;
+    }
+
+    .realms-copy,
+    .realms-viewer{
+      min-height:560px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#101010;
+    }
+
+    .realms-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding:clamp(30px,5vw,66px);
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.035),transparent 48%),
+        #111;
+    }
+
+    .realms-copy h3{
+      margin:0;
+      max-width:8ch;
+      font-size:clamp(46px,7vw,92px);
+      line-height:.88;
+      letter-spacing:-.06em;
+      text-transform:uppercase;
+    }
+
+    .realms-copy p:not(.eyebrow){
+      max-width:610px;
+      margin:22px 0 0;
+      color:#aaa9a3;
+      font-size:14px;
+      line-height:1.72;
+    }
+
+    .realms-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:28px;
+    }
+
+    .realms-meta span{
+      padding:8px 11px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:999px;
+      color:#aaa9a3;
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .realms-hint{
+      margin-top:34px;
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,.1);
+      color:#7f7f7a;
+      font-size:9px;
+      line-height:1.6;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .realms-viewer{
+      position:relative;
+      min-width:0;
+      background:
+        linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px),
+        radial-gradient(circle at 50% 48%,rgba(232,255,71,.08),transparent 30%),
+        #090909;
+      background-size:34px 34px,34px 34px,auto,auto;
+    }
+
+    .realms-viewer model-viewer{
+      width:100%;
+      height:100%;
+      min-height:560px;
+      background:transparent;
+      --poster-color:transparent;
+    }
+
+    .realms-viewer-badge,
+    .realms-viewer-status{
+      position:absolute;
+      z-index:5;
+      top:18px;
+      padding:8px 11px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:999px;
+      background:rgba(8,8,8,.68);
+      backdrop-filter:blur(10px);
+      font-size:8px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      pointer-events:none;
+    }
+
+    .realms-viewer-badge{left:18px;color:#d8d8d2}
+    .realms-viewer-status{right:18px;color:var(--accent)}
+
+    .realms-ar-button{
+      position:absolute;
+      left:50%;
+      bottom:22px;
+      transform:translateX(-50%);
+      z-index:6;
+      border:1px solid var(--accent);
+      border-radius:999px;
+      padding:14px 20px;
+      background:var(--accent);
+      color:#080808;
+      font:700 10px/1 Arial,Helvetica,sans-serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      cursor:pointer;
+      box-shadow:0 12px 32px rgba(0,0,0,.3);
+    }
+
+    .realms-ar-button:hover{transform:translateX(-50%) translateY(-2px)}
+
+    @media(max-width:860px){
+      .realms-grid{grid-template-columns:1fr}
+      .realms-copy,.realms-viewer{min-height:auto}
+      .realms-viewer model-viewer{min-height:460px}
+    }
+
+    @media(max-width:520px){
+      .realms-copy{padding:30px 20px}
+      .realms-viewer model-viewer{min-height:390px}
+      .realms-viewer-badge,.realms-viewer-status{top:12px}
+      .realms-viewer-badge{left:12px}
+      .realms-viewer-status{right:12px}
+      .realms-ar-button{bottom:16px;width:calc(100% - 32px);text-align:center}
+    }
+
   </style>
 </head>
 
@@ -3360,7 +3531,7 @@
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
         <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
         <a href="#seoul">Seoul</a>
-        <a href="#story" data-i18n="world">World</a>
+        <a href="#realms">MNC Realms</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
         <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
         <a href="#contact" data-i18n="contact">Contact</a>
@@ -3394,7 +3565,7 @@
         <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
         <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
         <a href="#seoul">Seoul</a>
-        <a href="#story" data-i18n="world">World</a>
+        <a href="#realms">MNC Realms</a>
         <a href="#terms" data-i18n="termsNav">Terms</a>
         <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
         <a href="#contact" data-i18n="contact">Contact</a>
@@ -3846,27 +4017,58 @@
         </div>
       </section>
 
-      <section class="section" id="story">
-        <div class="story">
-          <div data-reveal>
-            <div class="story-badge">
-              <img src="mncufo.png" alt="MENOCLONE UFO logo" />
-              <span data-i18n="storyBadge">MENOCLONE Signal</span>
-            </div>
-            <h3 data-i18n="storyTitle">Different by design. Connected by origin.</h3>
+      <section class="section realms-section" id="realms">
+        <div class="section-heading" data-reveal>
+          <div>
+            <p class="eyebrow">MENOCLONE Universe / Interactive 3D</p>
+            <h2>MNC Realms</h2>
           </div>
-          <div class="story-copy" data-reveal>
-            <p data-i18n="storyParaOne">
-              The brand is built around one idea: originality does not appear from
-              nowhere. Every new idea carries traces of what came before it.
-            </p>
-            <p data-i18n="storyParaTwo">
-              MENOCLONE turns those origins into objects, visuals and experiences
-              that invite people to think differently about identity and design.
-            </p>
+          <p>7 Worlds / Travel System / AR Preview</p>
+        </div>
+
+        <div class="realms-grid">
+          <div class="realms-copy" data-reveal>
+            <div>
+              <p class="eyebrow">Enter the MENOCLONE Universe</p>
+              <h3>Explore the Realms.</h3>
+              <p>MNC Realms expands the MENOCLONE universe into a system of seven distinct worlds, including Earth. Each realm carries its own environment, identity and future experiences. Explore the planetary system in 3D now, then place it into your own space with augmented reality on a compatible device.</p>
+              <div class="realms-meta" aria-label="MNC Realms features">
+                <span>7 Planets</span>
+                <span>Interactive 3D</span>
+                <span>AR Ready</span>
+                <span>MENOCLONE Universe</span>
+              </div>
+            </div>
+            <div class="realms-hint">Drag to rotate · Pinch or scroll to zoom · Select “View Realms in AR” on a compatible mobile device</div>
+          </div>
+
+          <div class="realms-viewer" data-reveal>
+            <span class="realms-viewer-badge">MNC Realms / 3D</span>
+            <span class="realms-viewer-status">AR Signal Ready</span>
+            <model-viewer
+              id="mncRealmsViewer"
+              src="mnc-realms-planets.glb"
+              alt="Interactive 3D model of the MENOCLONE MNC Realms planetary system"
+              camera-controls
+              touch-action="pan-y"
+              auto-rotate
+              rotation-per-second="10deg"
+              shadow-intensity="1"
+              shadow-softness=".8"
+              environment-image="neutral"
+              exposure="1"
+              ar
+              ar-modes="webxr scene-viewer quick-look"
+              ar-placement="floor"
+              ar-scale="auto"
+              interaction-prompt="auto"
+              loading="eager">
+              <button class="realms-ar-button" slot="ar-button" type="button">View Realms in AR ↗</button>
+            </model-viewer>
           </div>
         </div>
       </section>
+
 
       <section class="section" id="terms">
         <div class="terms-wrap">
