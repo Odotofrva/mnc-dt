@@ -3518,7 +3518,9 @@
     .product-media,.product-media img.real-product{background:#f3f0e8!important}
     .product-media img.real-product{object-fit:contain!important;object-position:center!important}
     .product-media::after{background:none!important}
-    </style>
+    /* Uniform cream image backgrounds for the MNC x NEW ERA collection */
+.product-category:has(h3) .product-media img[src^="assets/mnc-new-era-"]{object-fit:contain;background:#f3f0e8}
+</style>
 </head>
 
 <body>
@@ -3706,14 +3708,26 @@
 
 <div class="product-category" data-reveal>
 <div class="product-category-heading"><h3>MNC x NEW ERA</h3><span>AR-Enhanced / Fan Experiences</span></div>
-<p class="collab-intro">MENOCLONE x New Era concept collection. Represent Philadelphia or New York with signature MNC UFO detailing. Each cap is designed around an exclusive augmented reality fan experience. AR activation details will be announced.</p>
+<p class="collab-intro">MENOCLONE x New Era concept collection. Featuring Philadelphia Eagles, New York Mets, Buffalo Bills, Charlotte Hornets, South Carolina Gamecocks and Clemson Tigers designs with signature MNC UFO detailing. All caps are $100 each. Each cap is designed around an exclusive augmented reality fan experience. AR activation details will be announced.</p>
 <div class="products"><article class="product" data-reveal data-name="MENOCLONE x New Era Philadelphia Eagles Hat" data-price="100.00" data-description="MENOCLONE x New Era Philadelphia Eagles fitted hat. Deep green cap with MNC UFO detail and an exclusive augmented reality fan experience. AR activation details forthcoming.">
  <div class="product-media"><img class="real-product" src="mnc-new-era-eagles.png" alt="MENOCLONE x New Era Philadelphia Eagles Hat" loading="lazy" /><span class="product-index">AR 01</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era Philadelphia Eagles Hat">Quick Add</button></div>
- <div class="product-info"><span>MENOCLONE x New Era Philadelphia Eagles Hat</span><span class="price-hidden">Price in cart</span></div>
+ <div class="product-info"><span>MENOCLONE x New Era Philadelphia Eagles Hat</span><span class="price-hidden">$100.00</span></div>
  </article><article class="product" data-reveal data-name="MENOCLONE x New Era New York Mets Hat" data-price="100.00" data-description="MENOCLONE x New Era New York Mets fitted hat. Blue cap with orange NY emblem and MNC UFO detail, designed for an exclusive augmented reality fan experience. AR activation details forthcoming.">
  <div class="product-media"><img class="real-product" src="mnc-new-era-mets.png" alt="MENOCLONE x New Era New York Mets Hat" loading="lazy" /><span class="product-index">AR 02</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era New York Mets Hat">Quick Add</button></div>
- <div class="product-info"><span>MENOCLONE x New Era New York Mets Hat</span><span class="price-hidden">Price in cart</span></div>
- </article></div></div>
+ <div class="product-info"><span>MENOCLONE x New Era New York Mets Hat</span><span class="price-hidden">$100.00</span></div>
+ </article>
+<article class="product" data-reveal data-name="MENOCLONE x New Era Buffalo Bills Snapback" data-price="100.00" data-description="Exclusive MENOCLONE x New Era Buffalo Bills cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming.">
+<div class="product-media"><img class="real-product" src="assets/mnc-new-era-buffalo-bills.jpg" alt="MENOCLONE x New Era Buffalo Bills Snapback" loading="lazy" /><span class="product-index">AR 03</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era Buffalo Bills Snapback">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era Buffalo Bills Snapback</span><span class="price-hidden">$100.00</span></div></article>
+<article class="product" data-reveal data-name="MENOCLONE x New Era Charlotte Hornets Snapback" data-price="100.00" data-description="Exclusive MENOCLONE x New Era Charlotte Hornets cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming.">
+<div class="product-media"><img class="real-product" src="assets/mnc-new-era-charlotte-hornets.jpg" alt="MENOCLONE x New Era Charlotte Hornets Snapback" loading="lazy" /><span class="product-index">AR 04</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era Charlotte Hornets Snapback">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era Charlotte Hornets Snapback</span><span class="price-hidden">$100.00</span></div></article>
+<article class="product" data-reveal data-name="MENOCLONE x New Era South Carolina Gamecocks Snapback" data-price="100.00" data-description="Exclusive MENOCLONE x New Era South Carolina Gamecocks cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming.">
+<div class="product-media"><img class="real-product" src="assets/mnc-new-era-south-carolina-gamecocks.jpg" alt="MENOCLONE x New Era South Carolina Gamecocks Snapback" loading="lazy" /><span class="product-index">AR 05</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era South Carolina Gamecocks Snapback">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era South Carolina Gamecocks Snapback</span><span class="price-hidden">$100.00</span></div></article>
+<article class="product" data-reveal data-name="MENOCLONE x New Era Clemson Tigers Snapback" data-price="100.00" data-description="Exclusive MENOCLONE x New Era Clemson Tigers cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming.">
+<div class="product-media"><img class="real-product" src="assets/mnc-new-era-clemson-tigers.jpg" alt="MENOCLONE x New Era Clemson Tigers Snapback" loading="lazy" /><span class="product-index">AR 06</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era Clemson Tigers Snapback">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era Clemson Tigers Snapback</span><span class="price-hidden">$100.00</span></div></article></div></div>
         <div class="product-category" data-reveal>
           <div class="product-category-heading">
             <h3>Bags</h3>
@@ -5038,7 +5052,7 @@
     };
     function currentTranslation(){return translations[document.documentElement.lang] || translations.en}
     function localizedProductName(card){const base=card?.dataset?.name || 'MENOCLONE Product';return productTranslations[base]?.[document.documentElement.lang]?.name || base}
-    function applyProductTranslations(lang){document.querySelectorAll('.product').forEach(card=>{const base=card.dataset.name;if(!card.dataset.originalDescription)card.dataset.originalDescription=card.dataset.description;const localized=productTranslations[base]?.[lang];const title=card.querySelector('.product-info span:first-child');if(title)title.textContent=localized?.name||base;card.dataset.description=localized?.description||card.dataset.originalDescription;const button=card.querySelector('.quick-add');if(button)button.textContent=button.disabled?translations[lang].comingSoon:translations[lang].quickAdd;const price=card.querySelector('.price-hidden');if(price)price.textContent=translations[lang].priceInCart});}
+    function applyProductTranslations(lang){document.querySelectorAll('.product').forEach(card=>{const base=card.dataset.name;if(!card.dataset.originalDescription)card.dataset.originalDescription=card.dataset.description;const localized=productTranslations[base]?.[lang];const title=card.querySelector('.product-info span:first-child');if(title)title.textContent=localized?.name||base;card.dataset.description=localized?.description||card.dataset.originalDescription;const button=card.querySelector('.quick-add');if(button)button.textContent=button.disabled?translations[lang].comingSoon:translations[lang].quickAdd;const price=card.querySelector('.price-hidden');if(price)price.textContent=card.closest('.product-category')?.querySelector('h3')?.textContent?.trim()==='MNC x NEW ERA'?'$100.00':translations[lang].priceInCart});}
     function setLanguage(lang){lang=translations[lang]?lang:'en';document.documentElement.lang=lang;document.documentElement.dir='ltr';localStorage.setItem('menocloneLang',lang);document.querySelectorAll('[data-i18n]').forEach(el=>{const v=translations[lang][el.dataset.i18n];if(v)el.textContent=v});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const v=translations[lang][el.dataset.i18nPlaceholder];if(v)el.placeholder=v});applyProductTranslations(lang);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));updateWorldClock();updateCurrency()}
 
     function showToast(message){
