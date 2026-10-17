@@ -3520,7 +3520,26 @@
     .product-media::after{background:none!important}
     /* Uniform cream image backgrounds for the MNC x NEW ERA collection */
 .product-category:has(h3) .product-media img[src^="assets/mnc-new-era-"]{object-fit:contain;background:#f3f0e8}
-</style>
+
+    /* Product imagery: show the complete product without cropping, on a consistent cream canvas. */
+    .products .product-media {aspect-ratio:4 / 3;background:#f3f0e8;display:grid;place-items:center;}
+    .products .product-media img,
+    .products .product-media img.real-product,
+    .products .product-media img[src$="mnc-season-two-trucker-hats.png"],
+    .products .product-media img[src$="mnc-tote-bag.png"],
+    .products .product-media img[src$="odds-has-origins-tote-bag.png"],
+    .products .product-media img[src$="revolution-not-tele-tote-bags.png"],
+    .products .product-media img[src$="hologram-ufo-stickers.png"],
+    .products .product-media img[src$="mnc-odot-lego-mug-front.jpg"],
+    .products .product-media img[src$="mnc-brick-god-mugs.png"],
+    .products .product-media img[src$="mnc-odot-travel-coffee-mug.jpg"] {
+      width:100%;height:100%;object-fit:contain;object-position:center;
+      box-sizing:border-box;padding:12px;background:#f3f0e8;mix-blend-mode:normal;
+    }
+    .products .product-media::after {display:none;}
+    @media(max-width:620px){.products .product-media img{padding:8px;}}
+
+  </style>
 </head>
 
 <body>
@@ -3906,6 +3925,12 @@
             <img src="MNC-hockey.png" alt="MENOCLONE Gloss Bot design for Beaming Down Soon" loading="lazy" />
           </article>
           <article class="editorial-card invading-soon-card" data-reveal><img src="realms-of-se7en-cover.png" alt="MENOCLONE REALMS OF SE7EN video game cover" loading="lazy" /></article>
+          <article class="editorial-card invading-soon-card" data-reveal>
+            <img src="assets/menoclone-gold-knuckle-ring.png" alt="MENOCLONE polished gold four-finger statement ring — coming soon" loading="lazy" />
+          </article>
+          <article class="editorial-card invading-soon-card" data-reveal>
+            <img src="assets/menoclone-premium-flower-preview.png" alt="MENOCLONE premium flower retro cartridge artwork — coming soon, adults only where legally available" loading="lazy" />
+          </article>
         </div>
 
         <div class="odot-capsule-feature" id="mnc-ufo" data-reveal>
