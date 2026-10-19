@@ -1,14 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0a0a0a" />
-  <meta name="description" content="MENOCLONE — Originality Has Origins." />
-  <title>MENOCLONE — Originality Has Origins</title>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#0a0a0a" name="theme-color"/>
+<meta content="MENOCLONE — Originality Has Origins." name="description"/>
+<title>MENOCLONE — Originality Has Origins</title>
+<script src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js" type="module"></script>
+<style>
     :root{
       --bg:#0a0a0a;
       --bg-soft:#111111;
@@ -3540,751 +3540,631 @@
     @media(max-width:620px){.products .product-media img{padding:8px;}}
 
   </style>
-</head>
-
+<style>
+/* MNC October collection update */
+.brand-header-image{width:100%;height:100%;object-fit:cover;border-radius:9px}
+.nav-logo{width:92px;overflow:hidden}
+.bag-head-copy .brand-header-image{width:52px;height:52px;object-fit:cover;border-radius:10px}
+.mnc-campaign-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.5fr);align-items:center;gap:25px;padding:20px;margin:18px 0 25px;background:linear-gradient(120deg,#101c0b,#111);border:1px solid #456b26;border-radius:20px;overflow:hidden}
+.mnc-campaign-panel img{width:100%;max-height:480px;object-fit:contain;border-radius:12px}
+.mnc-campaign-panel strong{font-size:clamp(22px,3vw,45px);letter-spacing:-.04em}
+.mnc-campaign-panel p{color:#b9c7a4;letter-spacing:.15em;text-transform:uppercase;font-size:11px}
+.seoul-visual{padding:14px;background:#f5f2e8}.seoul-visual img{width:100%;max-width:none;filter:none}
+.ring-preview-transparent{object-fit:contain!important;mix-blend-mode:screen}
+.product{transition:transform .4s,box-shadow .4s,border-color .4s}
+.product:hover{box-shadow:0 18px 65px rgba(149,255,58,.10),0 0 0 1px rgba(149,255,58,.18)}
+.quick-add{transform:none;opacity:1;bottom:12px}
+.product-media:after{pointer-events:none}
+.mnc-campaign-panel img{animation:mncFloat 6s ease-in-out infinite}
+@keyframes mncFloat{50%{transform:translateY(-7px)}}
+@media(max-width:700px){.mnc-campaign-panel{grid-template-columns:1fr}.mnc-campaign-panel img{max-height:360px}}
+@media(prefers-reduced-motion:reduce){.mnc-campaign-panel img,.product:hover{animation:none!important;transition:none!important}}
+</style></head>
 <body>
-  <!-- Replace this source with your real splash video: assets/menoclone-splash.mp4 -->
-  <section class="splash" id="splash" aria-label="MENOCLONE introduction">
-    <div class="video-fallback" aria-hidden="true"></div>
-    <video id="splashVideo" autoplay muted loop playsinline preload="metadata">
-      <source src="orbit1.mp4" type="video/mp4" />
-    </video>
+<!-- Replace this source with your real splash video: assets/menoclone-splash.mp4 -->
+<section aria-label="MENOCLONE introduction" class="splash" id="splash">
+<div aria-hidden="true" class="video-fallback"></div>
+<video autoplay="" id="splashVideo" loop="" muted="" playsinline="" preload="metadata">
+<source src="orbit1.mp4" type="video/mp4"/>
+</video>
+<div class="splash-language"><div aria-label="Language" class="language-toggle"><button class="lang-btn active" data-lang="en" type="button">EN</button><button class="lang-btn" data-lang="es" type="button">ES</button><button class="lang-btn" data-lang="fr" type="button">FR</button><button class="lang-btn" data-lang="ko" type="button">한국어</button><button class="lang-btn" data-lang="zh" type="button">中文</button><button class="lang-btn" data-lang="ja" type="button">日本語</button></div></div>
+<div class="splash-ui">
+<div class="splash-lockup">
+<img alt="MENOCLONE logo" class="splash-brand-logo" src="mncfinal.png"/>
+<button class="enter-btn" id="enterSite" type="button">
+<span data-i18n="enter">Enter</span>
+</button>
+<div aria-hidden="true" class="splash-progress"><span></span></div>
+</div>
+</div>
+</section>
+<div class="site" id="site">
+<header>
+<nav aria-label="Primary" class="desktop-nav">
+<a data-i18n="shop" href="#shop">Shop</a>
+<a data-i18n="lookbook" href="#beaming-down-soon">Beaming Down Soon</a>
+<a data-i18n="skateNav" href="mncskate.html">MENOCLONE Skate</a>
+<a href="https://odotofrva.github.io/gaming-mnc/">MNC Gaming</a>
+<a href="mncarmc.html">MNC ARM Clock</a>
 
-    <div class="splash-language"><div class="language-toggle" aria-label="Language"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="es">ES</button><button class="lang-btn" type="button" data-lang="fr">FR</button><button class="lang-btn" type="button" data-lang="ko">한국어</button><button class="lang-btn" type="button" data-lang="zh">中文</button><button class="lang-btn" type="button" data-lang="ja">日本語</button></div></div>
+<a href="https://odotofrva.github.io/MNC-AR/" rel="noopener noreferrer" target="_blank">MNC-AR</a>
+<a href="#menoclone-meets-porsche">MNC × Porsche</a>
+<a href="#seoul">Seoul</a>
+<a data-i18n="termsNav" href="#terms">Terms</a>
+<a data-i18n="kickstarter" href="mnckick.html">Kickstarter</a>
+<a data-i18n="contact" href="#contact">Contact</a>
+</nav>
+<a aria-label="MENOCLONE home" class="nav-logo" href="#home">
+<img alt="MENOCLONE campaign artwork" class="brand-header-image" src="mnc-new-era-campaign.png"/>
+</a>
+<div class="header-actions">
+<button class="icon-btn" id="cartBtn" type="button">Bag <span id="cartCount">0</span></button>
+<button aria-expanded="false" class="icon-btn menu-btn" id="menuBtn" type="button">Menu</button>
+</div>
+</header>
+<div aria-label="Site tools" class="site-tools">
+<div class="site-tools-left">
+<div class="tool-pill"><span class="tool-label" data-i18n="worldClock">World Clock</span><select class="tool-select" id="clockZone"><option value="America/New_York">NYC</option><option value="Europe/London">London</option><option value="Europe/Paris">Paris</option><option value="Asia/Tokyo">Tokyo</option><option value="Asia/Seoul">Seoul</option><option value="America/Los_Angeles">Los Angeles</option></select><span class="clock-time" id="worldClock">--:--:--</span></div>
+<div class="tool-pill currency-pill"><span class="tool-label" data-i18n="currency">Currency</span><input class="tool-input" id="currencyAmount" min="0" step="0.01" type="number" value="60"/><select class="tool-select" id="currencyFrom"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>KRW</option><option>CAD</option><option>MXN</option></select><select class="tool-select" id="currencyTo"><option>EUR</option><option>USD</option><option>GBP</option><option>JPY</option><option>KRW</option><option>CAD</option><option>MXN</option></select><span class="currency-output" id="currencyOutput">—</span></div>
+</div>
+<div class="site-tools-right"><div aria-label="Language" class="language-toggle"><button class="lang-btn active" data-lang="en" type="button">EN</button><button class="lang-btn" data-lang="es" type="button">ES</button><button class="lang-btn" data-lang="fr" type="button">FR</button><button class="lang-btn" data-lang="ko" type="button">한국어</button><button class="lang-btn" data-lang="zh" type="button">中文</button><button class="lang-btn" data-lang="ja" type="button">日本語</button></div></div>
+</div>
+<div aria-hidden="true" class="mobile-panel" id="mobilePanel">
+<nav aria-label="Mobile" class="mobile-nav">
+<a data-i18n="shop" href="#shop">Shop</a>
+<a data-i18n="lookbook" href="#beaming-down-soon">Beaming Down Soon</a>
+<a data-i18n="skateNav" href="mncskate.html">MENOCLONE Skate</a>
+<a href="https://odotofrva.github.io/gaming-mnc/">MNC Gaming</a>
+<a href="mncarmc.html">MNC ARM Clock</a>
 
-    <div class="splash-ui">
-      <div class="splash-lockup">
-        <img class="splash-brand-logo" src="mncfinal.png" alt="MENOCLONE logo" />
-        <button class="enter-btn" id="enterSite" type="button">
-          <span data-i18n="enter">Enter</span>
-        </button>
-        <div class="splash-progress" aria-hidden="true"><span></span></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="site" id="site">
-    <header>
-      <nav class="desktop-nav" aria-label="Primary">
-        <a href="#shop" data-i18n="shop">Shop</a>
-        <a href="#beaming-down-soon" data-i18n="lookbook">Beaming Down Soon</a>
-        <a href="mncskate.html" data-i18n="skateNav">MENOCLONE Skate</a>
-        <a href="https://odotofrva.github.io/gaming-mnc/">MNC Gaming</a>
-        <a href="mncarmc.html">MNC ARM Clock</a>
-        <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
-        <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
-        <a href="#menoclone-meets-porsche">MNC × Porsche</a>
-        <a href="#seoul">Seoul</a>
-        <a href="#terms" data-i18n="termsNav">Terms</a>
-        <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
-        <a href="#contact" data-i18n="contact">Contact</a>
-      </nav>
-
-      <a href="#home" class="nav-logo" aria-label="MENOCLONE home">
-        <img class="nyc-map" src="nyc-art-locator-map.svg" alt="Stylized map of New York City showing the five boroughs and art locator signals" />
-      </a>
-
-      <div class="header-actions">
-        <button class="icon-btn" id="cartBtn" type="button">Bag <span id="cartCount">0</span></button>
-        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false">Menu</button>
-      </div>
-    </header>
-
-    <div class="site-tools" aria-label="Site tools">
-      <div class="site-tools-left">
-        <div class="tool-pill"><span class="tool-label" data-i18n="worldClock">World Clock</span><select class="tool-select" id="clockZone"><option value="America/New_York">NYC</option><option value="Europe/London">London</option><option value="Europe/Paris">Paris</option><option value="Asia/Tokyo">Tokyo</option><option value="Asia/Seoul">Seoul</option><option value="America/Los_Angeles">Los Angeles</option></select><span class="clock-time" id="worldClock">--:--:--</span></div>
-        <div class="tool-pill currency-pill"><span class="tool-label" data-i18n="currency">Currency</span><input class="tool-input" id="currencyAmount" type="number" min="0" step="0.01" value="60"><select class="tool-select" id="currencyFrom"><option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option><option>KRW</option><option>CAD</option><option>MXN</option></select><select class="tool-select" id="currencyTo"><option>EUR</option><option>USD</option><option>GBP</option><option>JPY</option><option>KRW</option><option>CAD</option><option>MXN</option></select><span class="currency-output" id="currencyOutput">—</span></div>
-      </div>
-      <div class="site-tools-right"><div class="language-toggle" aria-label="Language"><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="es">ES</button><button class="lang-btn" type="button" data-lang="fr">FR</button><button class="lang-btn" type="button" data-lang="ko">한국어</button><button class="lang-btn" type="button" data-lang="zh">中文</button><button class="lang-btn" type="button" data-lang="ja">日本語</button></div></div>
-    </div>
-
-    <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-      <nav class="mobile-nav" aria-label="Mobile">
-        <a href="#shop" data-i18n="shop">Shop</a>
-        <a href="#beaming-down-soon" data-i18n="lookbook">Beaming Down Soon</a>
-        <a href="mncskate.html" data-i18n="skateNav">MENOCLONE Skate</a>
-        <a href="https://odotofrva.github.io/gaming-mnc/">MNC Gaming</a>
-        <a href="mncarmc.html">MNC ARM Clock</a>
-        <a href="mnclocate.html" data-i18n="artLocator">MNC Art Locator</a>
-        <a href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer">MNC-AR</a>
-        <a href="#menoclone-meets-porsche">MNC × Porsche</a>
-        <a href="#seoul">Seoul</a>
-        <a href="#terms" data-i18n="termsNav">Terms</a>
-        <a href="mnckick.html" data-i18n="kickstarter">Kickstarter</a>
-        <a href="#contact" data-i18n="contact">Contact</a>
-      </nav>
-      <div class="mobile-meta">
-        <img src="mncufo.png" alt="UFO logo" />
-        <span data-i18n="mobileSlogan">Originality Has Origins / Season 2</span>
-      </div>
-    </div>
-
-    <main>
-      <section class="hero" id="home">
-        <div class="hero-copy">
-          <p class="eyebrow" data-reveal data-i18n="heroKicker">Season 2 / New York City</p>
-          <h1 data-reveal data-i18n="origins">Originality Has Origins.</h1>
-          <img class="hero-wordmark" data-reveal src="mncfinal.png" alt="MENOCLONE wordmark" />
-          <div class="hero-copy-bottom" data-reveal>
-            <p data-i18n="heroDescription">
+<a href="https://odotofrva.github.io/MNC-AR/" rel="noopener noreferrer" target="_blank">MNC-AR</a>
+<a href="#menoclone-meets-porsche">MNC × Porsche</a>
+<a href="#seoul">Seoul</a>
+<a data-i18n="termsNav" href="#terms">Terms</a>
+<a data-i18n="kickstarter" href="mnckick.html">Kickstarter</a>
+<a data-i18n="contact" href="#contact">Contact</a>
+</nav>
+<div class="mobile-meta">
+<img alt="UFO logo" src="mncufo.png"/>
+<span data-i18n="mobileSlogan">Originality Has Origins / Season 2</span>
+</div>
+</div>
+<main>
+<section class="hero" id="home">
+<div class="hero-copy">
+<p class="eyebrow" data-i18n="heroKicker" data-reveal="">Season 2 / New York City</p>
+<h1 data-i18n="origins" data-reveal="">Originality Has Origins.</h1>
+<img alt="MENOCLONE wordmark" class="hero-wordmark" data-reveal="" src="mncfinal.png"/>
+<div class="hero-copy-bottom" data-reveal="">
+<p data-i18n="heroDescription">
               MENOCLONE is a lifestyle experiment at the intersection of fashion,
               art, design and technology.
             </p>
-            <a class="shop-link" href="#shop"><span data-i18n="enterCollection">Enter Collection</span> <span>↗</span></a>
-          </div>
-        </div>
-
-        <div class="hero-art hero-photo-art" aria-label="MENOCLONE Season Two Trucker Hat campaign visual">
-          <div class="hero-ufo-wrap" id="heroUfoWrap">
-            <img class="hero-feature-image" src="mnc-hero-trucker-mannequin.png" alt="MENOCLONE Season Two Trucker Hat displayed on a black constellation mannequin" />
-          </div>
-          <img class="hero-stamp" src="mncfinal.png" alt="MENOCLONE wordmark" />
-        </div>
-      </section>
-
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <span>Originality Has Origins</span><span>●</span>
-          <span>MENOCLONE Season 2</span><span>●</span>
-          <span>New York City</span><span>●</span>
-          <span>Fashion Art Technology</span><span>●</span>
-          <span>Originality Has Origins</span><span>●</span>
-          <span>MENOCLONE Season 2</span><span>●</span>
-          <span>New York City</span><span>●</span>
-          <span>Fashion Art Technology</span><span>●</span>
-        </div>
-      </div>
-
-      <section class="section" id="shop">
-        <div class="section-heading" data-reveal>
-          <div>
-            <h2 data-i18n="selectedObjects">Selected Objects</h2>
-            <img class="section-heading-brand" src="mncfinal.png" alt="MENOCLONE wordmark" />
-          </div>
-          <p data-i18n="shopMeta">Season 2 / Limited Release</p>
-        </div>
-
-        <div class="product-category" data-reveal>
-          <div class="product-category-heading">
-            <h3>Apparel</h3>
-            <span>Tees / Hoodies / Crewnecks</span>
-          </div>
-          <div class="products">
-            <article class="product" data-reveal data-name="MENOCLONE Season Two Boxed Tee" data-price="90.00" data-description="MENOCLONE Season Two Boxed Tee. Heavyweight boxed fit with a structured streetwear silhouette, cream MENOCLONE arched wordmark on black.">
-              <div class="product-media">
-                <img class="real-product" src="assets/mnc-boxed-tee-cream.png" alt="MENOCLONE Season Two Boxed Tee front and back product presentation" loading="lazy" />
-                <span class="product-index">01</span>
-                <button class="quick-add" type="button" data-product="MENOCLONE Season Two Boxed Tee">Quick Add</button>
-              </div>
-              <div class="product-info"><span>MENOCLONE Season Two Boxed Tee</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-
-            <article class="product" data-reveal data-name="MENOCLONE Season Two Hoodie" data-price="90.00" data-description="MENOCLONE Season Two Hoodie. Heavy GSM construction with a relaxed silhouette, cream arched MENOCLONE front wordmark.">
-              <div class="product-media">
-                <img class="real-product" src="assets/mnc-hoodie-cream.png" alt="MENOCLONE Season 2 Hoodie front and back" loading="lazy" />
-                <span class="product-index">02</span>
-                <button class="quick-add" type="button" data-product="MENOCLONE Season Two Hoodie">Quick Add</button>
-              </div>
-              <div class="product-info"><span>MENOCLONE Season Two Hoodie</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-
-            <article class="product" data-reveal data-name="MENOCLONE Crewneck" data-price="90.00" data-description="Heavyweight MENOCLONE crewneck with cream arched MENOCLONE front wordmark for a minimal Season 2 uniform.">
-              <div class="product-media">
-                <img class="real-product" src="assets/mnc-crewneck-cream.png" alt="MENOCLONE Crewneck front and back" loading="lazy" />
-                <span class="product-index">04</span>
-                <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
-              </div>
-              <div class="product-info"><span>MENOCLONE Crewneck</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-          </div>
-        </div>
-
-        <div class="product-category" data-reveal>
-          <div class="product-category-heading">
-            <h3>Headwear</h3>
-            <span>5 Panel / Trucker</span>
-          </div>
-          <div class="products">
-            <article class="product" data-reveal data-name="MENOCLONE Season Two 5 Panel Hat" data-price="TBA" data-description="MENOCLONE Season Two 5 Panel Hat. An all-black five-panel silhouette with a clean woven MENOCLONE front label, black hardware and adjustable rear strap. Coming Soon.">
-              <div class="product-media">
-                <img class="real-product" src="mnc-5panel-hat-new.png" alt="New black MENOCLONE 5 Panel Hat shown from multiple angles with front label detail" loading="lazy" />
-                <span class="product-index">05</span>
-                <button class="quick-add coming-soon" type="button" disabled>Coming Soon</button>
-              </div>
-              <div class="product-info"><span>MENOCLONE Season Two 5 Panel Hat</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-
-            <article class="product" data-reveal data-name="MENOCLONE Season Two Trucker Hats" data-price="60.00" data-description="MENOCLONE Season Two Trucker Hats. Structured black front, white MENOCLONE wordmark and breathable mesh construction.">
-              <div class="product-media">
-                <img src="mnc-season-two-trucker-hats.png" alt="MENOCLONE Season Two black trucker hats with white embroidered wordmark" loading="lazy" />
-                <span class="product-index">06</span>
-                <button class="quick-add" type="button" data-product="MENOCLONE Season Two Trucker Hats">Quick Add</button>
-              </div>
-              <div class="product-info"><span>MENOCLONE Season Two Trucker Hat</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-          </div>
-        </div>
-
-<div class="product-category" data-reveal>
-<div class="product-category-heading"><h3>MNC x NEW ERA</h3><span>AR-Enhanced / Fan Experiences</span></div>
+<a class="shop-link" href="#shop"><span data-i18n="enterCollection">Enter Collection</span> <span>↗</span></a>
+</div>
+</div>
+<div aria-label="MENOCLONE Season Two Trucker Hat campaign visual" class="hero-art hero-photo-art">
+<div class="hero-ufo-wrap" id="heroUfoWrap">
+<img alt="MENOCLONE Season Two Trucker Hat displayed on a black constellation mannequin" class="hero-feature-image" src="mnc-hero-trucker-mannequin.png"/>
+</div>
+<img alt="MENOCLONE wordmark" class="hero-stamp" src="mncfinal.png"/>
+</div>
+</section>
+<div aria-hidden="true" class="marquee">
+<div class="marquee-track">
+<span>Originality Has Origins</span><span>●</span>
+<span>MENOCLONE Season 2</span><span>●</span>
+<span>New York City</span><span>●</span>
+<span>Fashion Art Technology</span><span>●</span>
+<span>Originality Has Origins</span><span>●</span>
+<span>MENOCLONE Season 2</span><span>●</span>
+<span>New York City</span><span>●</span>
+<span>Fashion Art Technology</span><span>●</span>
+</div>
+</div>
+<section class="section" id="shop">
+<div class="section-heading" data-reveal="">
+<div>
+<h2 data-i18n="selectedObjects">Selected Objects</h2>
+<img alt="MENOCLONE wordmark" class="section-heading-brand" src="mncfinal.png"/>
+</div>
+<p data-i18n="shopMeta">Season 2 / Limited Release</p>
+</div>
+<div class="product-category" data-reveal="">
+<div class="product-category-heading">
+<h3>Apparel</h3>
+<span>Tees / Hoodies / Crewnecks</span>
+</div>
+<div class="products">
+<article class="product" data-description="MENOCLONE Season Two Boxed Tee. Heavyweight boxed fit with a structured streetwear silhouette, cream MENOCLONE arched wordmark on black." data-name="MENOCLONE Season Two Boxed Tee" data-price="90.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE Season Two Boxed Tee front and back product presentation" class="real-product" loading="lazy" src="assets/mnc-boxed-tee-cream.png"/>
+<span class="product-index">01</span>
+<button class="quick-add" data-product="MENOCLONE Season Two Boxed Tee" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>MENOCLONE Season Two Boxed Tee</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="MENOCLONE Season Two Hoodie. Heavy GSM construction with a relaxed silhouette, cream arched MENOCLONE front wordmark." data-name="MENOCLONE Season Two Hoodie" data-price="90.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE Season 2 Hoodie front and back" class="real-product" loading="lazy" src="assets/mnc-hoodie-cream.png"/>
+<span class="product-index">02</span>
+<button class="quick-add" data-product="MENOCLONE Season Two Hoodie" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>MENOCLONE Season Two Hoodie</span><span class="price-hidden">Price in cart</span></div>
+</article><article class="product" data-description="Black pullover hoodie featuring the colorful MENOCLONE THC botanical artwork. Price follows the existing hoodie listing." data-name="MNC THC Graphic Hoodie" data-price="90.00" data-reveal=""><div class="product-media"><img alt="Black MNC THC graphic hoodie" class="real-product" loading="lazy" src="mnc-thc-hoodie.png"/><span class="product-index">NEW</span><button class="quick-add" data-product="MNC THC Graphic Hoodie" type="button">Quick Add</button></div><div class="product-info"><span>MNC THC Graphic Hoodie</span><span class="price-hidden">Price in cart</span></div></article>
+<article class="product" data-description="Heavyweight MENOCLONE crewneck with cream arched MENOCLONE front wordmark for a minimal Season 2 uniform." data-name="MENOCLONE Crewneck" data-price="90.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE Crewneck front and back" class="real-product" loading="lazy" src="assets/mnc-crewneck-cream.png"/>
+<span class="product-index">04</span>
+<button class="quick-add coming-soon" disabled="" type="button">Coming Soon</button>
+</div>
+<div class="product-info"><span>MENOCLONE Crewneck</span><span class="price-hidden">Price in cart</span></div>
+</article>
+</div>
+</div>
+<div class="product-category" data-reveal="">
+<div class="product-category-heading">
+<h3>Headwear</h3>
+<span>5 Panel / Trucker</span>
+</div>
+<div class="products">
+<article class="product" data-description="MENOCLONE Season Two 5 Panel Hat. An all-black five-panel silhouette with a clean woven MENOCLONE front label, black hardware and adjustable rear strap. Coming Soon." data-name="MENOCLONE Season Two 5 Panel Hat" data-price="TBA" data-reveal="">
+<div class="product-media">
+<img alt="New black MENOCLONE 5 Panel Hat shown from multiple angles with front label detail" class="real-product" loading="lazy" src="mnc-5panel-hat-new.png"/>
+<span class="product-index">05</span>
+<button class="quick-add coming-soon" disabled="" type="button">Coming Soon</button>
+</div>
+<div class="product-info"><span>MENOCLONE Season Two 5 Panel Hat</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="MENOCLONE Season Two Trucker Hats. Structured black front, white MENOCLONE wordmark and breathable mesh construction." data-name="MENOCLONE Season Two Trucker Hats" data-price="60.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE Season Two black trucker hats with white embroidered wordmark" loading="lazy" src="mnc-season-two-trucker-hats.png"/>
+<span class="product-index">06</span>
+<button class="quick-add" data-product="MENOCLONE Season Two Trucker Hats" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>MENOCLONE Season Two Trucker Hat</span><span class="price-hidden">Price in cart</span></div>
+</article>
+</div>
+</div>
+<div class="product-category" data-reveal="">
+<div class="mnc-campaign-panel" data-reveal=""><img alt="MENOCLONE x NEW ERA cosmic skyline campaign flyer" loading="lazy" src="mnc-new-era-campaign.png"/><div><strong>MENOCLONE × NEW ERA</strong><p>Cosmic Skyline / Collection Campaign</p></div></div><div class="product-category-heading"><h3>MNC x NEW ERA</h3><span>AR-Enhanced / Fan Experiences</span></div>
 <p class="collab-intro">MENOCLONE x New Era concept collection. Featuring Philadelphia Eagles, New York Mets, Buffalo Bills, Charlotte Hornets, South Carolina Gamecocks and Clemson Tigers designs with signature MNC UFO detailing. Each cap is designed around an exclusive augmented reality fan experience. AR activation details will be announced.</p>
-<div class="products"><article class="product" data-reveal data-name="MENOCLONE x New Era Philadelphia Eagles Hat" data-price="100.00" data-description="MENOCLONE x New Era Philadelphia Eagles fitted hat. Deep green cap with MNC UFO detail and an exclusive augmented reality fan experience. AR activation details forthcoming.">
- <div class="product-media"><img class="real-product" src="mnc-new-era-eagles.png" alt="MENOCLONE x New Era Philadelphia Eagles Hat" loading="lazy" /><span class="product-index">AR 01</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era Philadelphia Eagles Hat">Quick Add</button></div>
- <div class="product-info"><span>MENOCLONE x New Era Philadelphia Eagles Hat</span><span class="price-hidden">$100.00</span></div>
- </article><article class="product" data-reveal data-name="MENOCLONE x New Era New York Mets Hat" data-price="100.00" data-description="MENOCLONE x New Era New York Mets fitted hat. Blue cap with orange NY emblem and MNC UFO detail, designed for an exclusive augmented reality fan experience. AR activation details forthcoming.">
- <div class="product-media"><img class="real-product" src="mnc-new-era-mets.png" alt="MENOCLONE x New Era New York Mets Hat" loading="lazy" /><span class="product-index">AR 02</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era New York Mets Hat">Quick Add</button></div>
- <div class="product-info"><span>MENOCLONE x New Era New York Mets Hat</span><span class="price-hidden">$100.00</span></div>
- </article>
-<article class="product" data-reveal data-name="MENOCLONE x New Era Buffalo Bills Snapback" data-price="100.00" data-description="Exclusive MENOCLONE x New Era Buffalo Bills cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming.">
-<div class="product-media"><img class="real-product" src="assets/Buffalo Bills Blue 59FIFTY Cap.png" alt="MENOCLONE x New Era Buffalo Bills Snapback" loading="lazy" /><span class="product-index">AR 03</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era Buffalo Bills Snapback">Quick Add</button></div>
-<div class="product-info"><span>MENOCLONE x New Era Buffalo Bills Snapback</span><span class="price-hidden">$100.00</span></div></article>
-<article class="product" data-reveal data-name="MENOCLONE x New Era Charlotte Hornets Snapback" data-price="100.00" data-description="Exclusive MENOCLONE x New Era Charlotte Hornets cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming.">
-<div class="product-media"><img class="real-product" src="assets/Teal Hornets 59FIFTY Cap Close-Up.png" alt="MENOCLONE x New Era Charlotte Hornets Snapback" loading="lazy" /><span class="product-index">AR 04</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era Charlotte Hornets Snapback">Quick Add</button></div>
-<div class="product-info"><span>MENOCLONE x New Era Charlotte Hornets Snapback</span><span class="price-hidden">$100.00</span></div></article>
-<article class="product" data-reveal data-name="MENOCLONE x New Era South Carolina Gamecocks Snapback" data-price="100.00" data-description="Exclusive MENOCLONE x New Era South Carolina Gamecocks cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming.">
-<div class="product-media"><img class="real-product" src="assets/Garnet Gamecocks 59FIFTY Cap.png" alt="MENOCLONE x New Era South Carolina Gamecocks Snapback" loading="lazy" /><span class="product-index">AR 05</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era South Carolina Gamecocks Snapback">Quick Add</button></div>
-<div class="product-info"><span>MENOCLONE x New Era South Carolina Gamecocks Snapback</span><span class="price-hidden">$100.00</span></div></article>
-<article class="product" data-reveal data-name="MENOCLONE x New Era Clemson Tigers Snapback" data-price="100.00" data-description="Exclusive MENOCLONE x New Era Clemson Tigers cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming.">
-<div class="product-media"><img class="real-product" src="assets/Clemson Purple and Orange Paw Cap.png" alt="MENOCLONE x New Era Clemson Tigers Snapback" loading="lazy" /><span class="product-index">AR 06</span><button class="quick-add" type="button" data-product="MENOCLONE x New Era Clemson Tigers Snapback">Quick Add</button></div>
-<div class="product-info"><span>MENOCLONE x New Era Clemson Tigers Snapback</span><span class="price-hidden">$100.00</span></div></article></div></div>
-        <div class="product-category" data-reveal>
-          <div class="product-category-heading">
-            <h3>Bags</h3>
-            <span>Totes / Carry Objects</span>
-          </div>
-          <div class="products">
-            <article class="product" data-reveal data-name="MNC Tote Bag" data-price="50.00" data-description="MNC Tote Bag. A statement carryall featuring the MENOCLONE constellation mannequin artwork, built for daily essentials, creative gear and city movement.">
-              <div class="product-media">
-                <img class="real-product" src="mnc-tote-bag.png" alt="MENOCLONE constellation mannequin tote bags displayed in a boutique" loading="lazy" />
-                <span class="product-index">07</span>
-                <button class="quick-add" type="button" data-product="MNC Tote Bag">Quick Add</button>
-              </div>
-              <div class="product-info"><span>MNC Tote Bag</span><span class="price-hidden">Price in cart</span></div>
-            </article>
+<div class="products"><article class="product" data-description="MENOCLONE x New Era Philadelphia Eagles fitted hat. Deep green cap with MNC UFO detail and an exclusive augmented reality fan experience. AR activation details forthcoming." data-name="MENOCLONE x New Era Philadelphia Eagles Hat" data-price="100.00" data-reveal="">
+<div class="product-media"><img alt="MENOCLONE x New Era Philadelphia Eagles Hat" class="real-product" loading="lazy" src="mnc-new-era-eagles.png"/><span class="product-index">AR 01</span><button class="quick-add" data-product="MENOCLONE x New Era Philadelphia Eagles Hat" type="button">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era Philadelphia Eagles Hat</span><span class="price-hidden">Price in cart</span></div>
+</article><article class="product" data-description="MENOCLONE x New Era New York Mets fitted hat. Blue cap with orange NY emblem and MNC UFO detail, designed for an exclusive augmented reality fan experience. AR activation details forthcoming." data-name="MENOCLONE x New Era New York Mets Hat" data-price="100.00" data-reveal="">
+<div class="product-media"><img alt="MENOCLONE x New Era New York Mets Hat" class="real-product" loading="lazy" src="mnc-new-era-mets.png"/><span class="product-index">AR 02</span><button class="quick-add" data-product="MENOCLONE x New Era New York Mets Hat" type="button">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era New York Mets Hat</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="Exclusive MENOCLONE x New Era Buffalo Bills cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming." data-name="MENOCLONE x New Era Buffalo Bills Snapback" data-price="100.00" data-reveal="">
+<div class="product-media"><img alt="MENOCLONE x New Era Buffalo Bills Snapback" class="real-product" loading="lazy" src="assets/Buffalo Bills Blue 59FIFTY Cap.png"/><span class="product-index">AR 03</span><button class="quick-add" data-product="MENOCLONE x New Era Buffalo Bills Snapback" type="button">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era Buffalo Bills Snapback</span><span class="price-hidden">Price in cart</span></div></article>
+<article class="product" data-description="Exclusive MENOCLONE x New Era Charlotte Hornets cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming." data-name="MENOCLONE x New Era Charlotte Hornets Snapback" data-price="100.00" data-reveal="">
+<div class="product-media"><img alt="MENOCLONE x New Era Charlotte Hornets Snapback" class="real-product" loading="lazy" src="assets/Teal Hornets 59FIFTY Cap Close-Up.png"/><span class="product-index">AR 04</span><button class="quick-add" data-product="MENOCLONE x New Era Charlotte Hornets Snapback" type="button">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era Charlotte Hornets Snapback</span><span class="price-hidden">Price in cart</span></div></article>
+<article class="product" data-description="Exclusive MENOCLONE x New Era South Carolina Gamecocks cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming." data-name="MENOCLONE x New Era South Carolina Gamecocks Snapback" data-price="100.00" data-reveal="">
+<div class="product-media"><img alt="MENOCLONE x New Era South Carolina Gamecocks Snapback" class="real-product" loading="lazy" src="assets/Garnet Gamecocks 59FIFTY Cap.png"/><span class="product-index">AR 05</span><button class="quick-add" data-product="MENOCLONE x New Era South Carolina Gamecocks Snapback" type="button">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era South Carolina Gamecocks Snapback</span><span class="price-hidden">Price in cart</span></div></article>
+<article class="product" data-description="Exclusive MENOCLONE x New Era Clemson Tigers cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming." data-name="MENOCLONE x New Era Clemson Tigers Snapback" data-price="100.00" data-reveal="">
+<div class="product-media"><img alt="MENOCLONE x New Era Clemson Tigers Snapback" class="real-product" loading="lazy" src="assets/Clemson Purple and Orange Paw Cap.png"/><span class="product-index">AR 06</span><button class="quick-add" data-product="MENOCLONE x New Era Clemson Tigers Snapback" type="button">Quick Add</button></div>
+<div class="product-info"><span>MENOCLONE x New Era Clemson Tigers Snapback</span><span class="price-hidden">Price in cart</span></div></article></div></div>
+<div class="product-category" data-reveal="">
+<div class="product-category-heading">
+<h3>Bags</h3>
+<span>Totes / Carry Objects</span>
+</div>
+<div class="products"><article class="product" data-description="MENOCLONE THC graphic tote featuring the MNC cannabis artwork on a black everyday carry bag." data-name="MNC THC Tote Bag" data-price="50.00" data-reveal=""><div class="product-media"><img alt="MNC THC tote bag collection" class="real-product" loading="lazy" src="mnc-thc-tote-display.png"/><span class="product-index">NEW</span><button class="quick-add" data-product="MNC THC Tote Bag" type="button">Quick Add</button></div><div class="product-info"><span>MNC THC Tote Bag</span><span class="price-hidden">Price in cart</span></div></article>
+<article class="product" data-description="MNC Tote Bag. A statement carryall featuring the MENOCLONE constellation mannequin artwork, built for daily essentials, creative gear and city movement." data-name="MNC Tote Bag" data-price="50.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE constellation mannequin tote bags displayed in a boutique" class="real-product" loading="lazy" src="mnc-tote-bag.png"/>
+<span class="product-index">07</span>
+<button class="quick-add" data-product="MNC Tote Bag" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>MNC Tote Bag</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="Odds Has Origins Tote Bag. A MENOCLONE carryall built for daily essentials, creative gear and city movement, featuring the Odds Has Origins graphic concept." data-name="Odds Has Origins Tote Bag" data-price="50.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE Odds Has Origins Tote Bag product photo showing multiple tote bags on a table" class="real-product" loading="lazy" src="odds-has-origins-tote-bag.png"/>
+<span class="product-index">08</span>
+<button class="quick-add" data-product="Odds Has Origins Tote Bag" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>Odds Has Origins Tote Bag</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="Revolution Not Tele Tote Bags. A MENOCLONE statement tote featuring the alien-abduction television artwork, built for everyday carry, creative gear and city movement." data-name="Revolution Not Tele Tote Bags" data-price="50.00" data-reveal="">
+<div class="product-media">
+<img alt="Revolution Not Tele MENOCLONE tote bags displayed outdoors" class="real-product" loading="lazy" src="revolution-not-tele-tote-bags.png"/>
+<span class="product-index">09</span>
+<button class="quick-add" data-product="Revolution Not Tele Tote Bags" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>Revolution Not Tele Tote Bags</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="MNC MONO Tote (Green). Signature MENOCLONE monogram patterned tote in green, black and white with black carry handles." data-name="MNC MONO Tote (Green)" data-price="75.00" data-reveal="">
+<div class="product-media"><img alt="MNC MONO Tote (Green)" class="real-product" loading="lazy" src="mnc-mono-tote-green.png"/><span class="product-index">NEW</span><button class="quick-add" data-product="MNC MONO Tote (Green)" type="button">Quick Add</button></div>
+<div class="product-info"><span>MNC MONO Tote (Green)</span><span class="price-hidden">Price in cart</span></div>
+</article>
+</div>
+</div>
+<div class="product-category" data-reveal="">
+<div class="product-category-heading">
+<h3>Stickers &amp; Pins</h3>
+<span>Collectibles / Signal Objects</span>
+</div>
+<div class="products">
+<article class="product" data-description="MENOCLONE Sticker Pack (3 pack). Three collectible MNC and UFO stickers for laptops, cases, notebooks, boards and creative placement." data-name="MENOCLONE Sticker Pack (3 pack)" data-price="30.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE MNC UFO sticker pack" class="real-product" loading="lazy" src="mnc-ufo-stickerpack.png"/>
+<span class="product-index">10</span>
+<button class="quick-add" data-product="MENOCLONE Sticker Pack (3 pack)" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>MENOCLONE Sticker Pack (3 pack)</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="Hologram UFO Stickers (3 pack). Three reflective holographic MNC UFO stickers with a shifting rainbow finish for laptops, cases, notebooks, boards and creative placement." data-name="Hologram UFO Stickers (3 pack)" data-price="15.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE hologram UFO stickers held in hand with additional stickers on a table" class="real-product" loading="lazy" src="hologram-ufo-stickers.png"/>
+<span class="product-index">11</span>
+<button class="quick-add" data-product="Hologram UFO Stickers (3 pack)" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>Hologram UFO Stickers (3 pack)</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="MNC UFO Pins. 2.25in collectible black button pins featuring the signature white MNC UFO mark, made to add MENOCLONE identity to jackets, bags and everyday gear." data-name="MNC UFO Pins" data-price="10.00" data-reveal="">
+<div class="product-media">
+<img alt="Black MNC UFO pins with white UFO logo, including front and back views" class="real-product" loading="lazy" src="mnc-ufo-pin.png"/>
+<span class="product-index">12</span>
+<button class="quick-add" data-product="MNC UFO Pins" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>MNC UFO Pins</span><span class="price-hidden">Price in cart</span></div>
+</article>
+<article class="product" data-description="MNC SZN 2 Pins. 2.25in collectible black button pins featuring the MENOCLONE Season 2 badge artwork, built for jackets, bags and everyday gear." data-name="MNC SZN 2 Pins" data-price="10.00" data-reveal="">
+<div class="product-media">
+<img alt="MENOCLONE Season 2 button pins with front and back views arranged on a white table" class="real-product" loading="lazy" src="mnc-szn2-pins.png"/>
+<span class="product-index">13</span>
+<button class="quick-add" data-product="MNC SZN 2 Pins" type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>MNC SZN 2 Pins</span><span class="price-hidden">Price in cart</span></div>
+</article>
+</div>
+</div>
+<div class="product-category" data-reveal="">
+<div class="product-category-heading">
+<h3>Drinkware</h3>
+<span>Coffee / Daily Objects</span>
+</div>
+<div class="products">
+<article class="product" data-description='MNC "Odot" Travel Coffee Mug. Built for early starts, long build sessions and creative days. Founder OdotNYC is a father who enjoys great coffee while creating works of art. He is also a selft taught developer, designer, engineer and creative whose mornings begin with a cup made in the spirit of how his grandmother would have prepared it if she were still here.' data-name='MNC "Odot" Travel Coffee Mug' data-price="40.00" data-reveal="">
+<div class="product-media">
+<img alt="MNC Odot Travel Coffee Mug featuring the Odot character artwork" class="real-product" loading="lazy" src="mnc-odot-travel-coffee-mug.jpg"/>
+<span class="product-index">14</span>
+<button class="quick-add" data-product='MNC "Odot" Travel Coffee Mug' type="button">Quick Add</button>
+</div>
+<div class="product-info"><span>MNC "Odot" Travel Coffee Mug</span><span class="price-hidden">Price in cart</span></div>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="mnc-trucker-hat">
+<div class="section-heading" data-reveal="">
+<div>
+<p class="eyebrow" data-i18n="truckerSectionKicker">Season 2 Headwear</p>
+<h2 data-i18n="truckerSectionTitle">MNC Trucker Hat</h2>
+</div>
+<p data-i18n="truckerSectionMeta">MENOCLONE / Trucker Hat Study</p>
+</div>
+<div class="editorial-grid">
+<article class="editorial-card" data-reveal="">
+<img alt="Front portrait of the MENOCLONE Season Two Trucker Hat" loading="lazy" src="look-04-table.png"/>
+<div class="editorial-label">
+<strong data-i18n="lookOne">Look 01</strong>
+<span data-i18n="lookOneMeta">Trucker Hat / Front Portrait</span>
+</div>
+</article>
+<article class="editorial-card" data-reveal="">
+<img alt="Angled portrait of the MENOCLONE Season Two Trucker Hat" loading="lazy" src="look-03-fitting.png"/>
+<div class="editorial-label">
+<strong data-i18n="lookTwo">Look 02</strong>
+<span data-i18n="lookTwoMeta">Trucker Hat / Angle Study</span>
+</div>
+</article>
+<article class="editorial-card" data-reveal="">
+<img alt="Mannequin putting on the MENOCLONE Season Two Trucker Hat" loading="lazy" src="look-02-angle.png"/>
+<div class="editorial-label">
+<strong data-i18n="lookThree">Look 03</strong>
+<span data-i18n="lookThreeMeta">Trucker Hat / Fitting Study</span>
+</div>
+</article>
+<article class="editorial-card" data-reveal="">
+<img alt="Mannequin viewing the MENOCLONE Season Two Trucker Hat on a table" loading="lazy" src="look-01-front.png"/>
+<div class="editorial-label">
+<strong data-i18n="lookFour">Look 04</strong>
+<span data-i18n="lookFourMeta">Trucker Hat / Object Study</span>
+</div>
+</article>
+</div>
+</section>
+<section class="section" id="beaming-down-soon">
+<div class="section-heading" data-reveal="">
+<div>
+<p class="eyebrow" data-i18n="lookbookKicker">MENOCLONE Preview</p>
+<h2 data-i18n="lookbookTitle">Beaming Down Soon</h2>
+</div>
+<p data-i18n="lookbookMeta">Season 2 / Incoming Visuals</p>
+</div>
+<div class="editorial-grid lookbook-uniform-grid invading-soon-grid">
+<article class="editorial-card invading-soon-card" data-reveal="">
+<img alt="MENOCLONE black and white monogram tote bags laid out on carpet for Beaming Down Soon" loading="lazy" src="beaming-soon-monogram-totes.png"/>
+</article>
+<article class="editorial-card invading-soon-card" data-reveal="">
+<img alt="MENOCLONE MNC UFO preview for Beaming Down Soon" loading="lazy" src="signallost.png"/>
+</article>
+<article class="editorial-card invading-soon-card" data-reveal="">
+<img alt="MENOCLONE Can You Dig It hoodie mockup for Beaming Down Soon" loading="lazy" src="beaming-down-can-you-dig-it-hoodie.png"/>
+</article>
+<article class="editorial-card invading-soon-card" data-reveal="">
+<img alt="MENOCLONE Staten Island Ferry UFO artwork for Beaming Down Soon" loading="lazy" src="invading-soon-02.png"/>
+</article>
+<article class="editorial-card invading-soon-card" data-reveal="">
+<img alt="MENOCLONE Gloss Bot design for Beaming Down Soon" loading="lazy" src="MNC-hockey.png"/>
+</article>
+<article class="editorial-card invading-soon-card" data-reveal=""><img alt="MENOCLONE REALMS OF SE7EN video game cover" loading="lazy" src="realms-of-se7en-cover.png"/></article>
+<article class="editorial-card invading-soon-card" data-reveal="">
+<img alt="MENOCLONE polished gold four-finger statement ring — coming soon" class="ring-preview-transparent" loading="lazy" src="assets/menoclone-gold-knuckle-ring.png"/>
+</article>
+<article class="editorial-card invading-soon-card" data-reveal="">
+<img alt="MENOCLONE premium flower retro cartridge artwork — coming soon, adults only where legally available" loading="lazy" src="assets/menoclone-premium-flower-preview.png"/>
+</article>
+</div>
+<div class="odot-capsule-feature" data-reveal="" id="mnc-ufo">
+<div class="odot-capsule-copy">
+<div>
+<p class="eyebrow">MENOCLONE Collectible / Late 2026</p>
+<h3>MNC UFO</h3>
+<p>Meet the MNC UFO, a new MENOCLONE 3D collectible experience. Rotate it, zoom in and explore the full UFO directly in the browser, then place it in your real-world space with augmented reality on a compatible mobile device.</p>
+<div aria-label="MNC UFO features" class="odot-capsule-meta">
+<span>Interactive 3D</span>
+<span>AR Ready</span>
+<span>Late 2026</span>
+</div>
+</div>
+<div class="odot-capsule-hint">Drag to rotate · Pinch or scroll to zoom · Select “View in Your Space” for AR</div>
+</div>
+<div class="odot-capsule-viewer">
+<span class="odot-viewer-badge">3D / AR Preview</span>
+<span class="odot-viewer-status">Beaming Down Soon</span>
+<model-viewer alt="Interactive 3D preview of the MENOCLONE MNC UFO" ar="" ar-modes="webxr scene-viewer quick-look" ar-placement="floor" ar-scale="fixed" auto-rotate="" camera-controls="" data-ar-rotation-speed="4" environment-image="neutral" exposure="1" id="mncUfoViewer" interaction-prompt="auto" loading="eager" rotation-per-second="16deg" shadow-intensity="1" shadow-softness=".8" src="mnc-ufo.glb" touch-action="pan-y">
+<button class="odot-ar-button" slot="ar-button" type="button">View in Your Space ↗</button>
+</model-viewer>
+</div>
+</div>
+</section>
+<section aria-labelledby="porsche-project-title" class="section porsche-project" id="menoclone-meets-porsche">
+<div class="section-heading"><div><p class="eyebrow">MENOCLONE Motorsports / Founder’s Vision / 2027</p><h2 id="porsche-project-title">MENOCLONE MEETS PORSCHE</h2></div><p>Dream car. Real vision.</p></div>
+<div class="porsche-project-grid">
+<div class="porsche-project-photo"><img alt="Concept showcase of a black Porsche Panamera with gold MENOCLONE motorsports graphics, multiple angles and detail views" loading="lazy" src="menoclone-porsche-showcase.png"/></div>
+<div class="porsche-project-copy"><p class="eyebrow">A note from founder OdotNYC</p><h3>Built from a dream. Driven by purpose.</h3><p>The Porsche Panamera has long represented more than a dream car to Odot. It represents the distance between where you begin and where your vision can take you. From street-level creativity to engineering, design and motorsports, this project brings the MENOCLONE identity to a machine that has inspired the journey.</p><blockquote>“Keep Your Vision Further Than Your Eyesight!”</blockquote><p>Our manifesto: never wait for permission to imagine bigger. Learn the craft. Respect the heritage. Build with intention. Make originality visible. The 2027 goal is to bring this Panamera-inspired MENOCLONE Motorsports concept closer to reality.</p><a class="porsche-cta" href="https://odotofrva.github.io/porshemanifesto/">Explore the 2027 Project ↗</a><p class="porsche-project-note">Independent concept project. Not affiliated with or endorsed by Porsche AG.</p></div>
+</div>
+</section>
 
-            <article class="product" data-reveal data-name="Odds Has Origins Tote Bag" data-price="50.00" data-description="Odds Has Origins Tote Bag. A MENOCLONE carryall built for daily essentials, creative gear and city movement, featuring the Odds Has Origins graphic concept.">
-              <div class="product-media">
-                <img class="real-product" src="odds-has-origins-tote-bag.png" alt="MENOCLONE Odds Has Origins Tote Bag product photo showing multiple tote bags on a table" loading="lazy" />
-                <span class="product-index">08</span>
-                <button class="quick-add" type="button" data-product="Odds Has Origins Tote Bag">Quick Add</button>
-              </div>
-              <div class="product-info"><span>Odds Has Origins Tote Bag</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-
-            <article class="product" data-reveal data-name="Revolution Not Tele Tote Bags" data-price="50.00" data-description="Revolution Not Tele Tote Bags. A MENOCLONE statement tote featuring the alien-abduction television artwork, built for everyday carry, creative gear and city movement.">
-              <div class="product-media">
-                <img class="real-product" src="revolution-not-tele-tote-bags.png" alt="Revolution Not Tele MENOCLONE tote bags displayed outdoors" loading="lazy" />
-                <span class="product-index">09</span>
-                <button class="quick-add" type="button" data-product="Revolution Not Tele Tote Bags">Quick Add</button>
-              </div>
-              <div class="product-info"><span>Revolution Not Tele Tote Bags</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-            <article class="product" data-reveal data-name="MNC MONO Tote (Green)" data-price="75.00" data-description="MNC MONO Tote (Green). Signature MENOCLONE monogram patterned tote in green, black and white with black carry handles.">
- <div class="product-media"><img class="real-product" src="mnc-mono-tote-green.png" alt="MNC MONO Tote (Green)" loading="lazy" /><span class="product-index">NEW</span><button class="quick-add" type="button" data-product="MNC MONO Tote (Green)">Quick Add</button></div>
- <div class="product-info"><span>MNC MONO Tote (Green)</span><span class="price-hidden">Price in cart</span></div>
- </article>
-          </div>
-        </div>
-
-        <div class="product-category" data-reveal>
-          <div class="product-category-heading">
-            <h3>Stickers &amp; Pins</h3>
-            <span>Collectibles / Signal Objects</span>
-          </div>
-          <div class="products">
-            <article class="product" data-reveal data-name="MENOCLONE Sticker Pack (3 pack)" data-price="30.00" data-description="MENOCLONE Sticker Pack (3 pack). Three collectible MNC and UFO stickers for laptops, cases, notebooks, boards and creative placement.">
-              <div class="product-media">
-                <img class="real-product" src="mnc-ufo-stickerpack.png" alt="MENOCLONE MNC UFO sticker pack" loading="lazy" />
-                <span class="product-index">10</span>
-                <button class="quick-add" type="button" data-product="MENOCLONE Sticker Pack (3 pack)">Quick Add</button>
-              </div>
-              <div class="product-info"><span>MENOCLONE Sticker Pack (3 pack)</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-
-            <article class="product" data-reveal data-name="Hologram UFO Stickers (3 pack)" data-price="15.00" data-description="Hologram UFO Stickers (3 pack). Three reflective holographic MNC UFO stickers with a shifting rainbow finish for laptops, cases, notebooks, boards and creative placement.">
-              <div class="product-media">
-                <img class="real-product" src="hologram-ufo-stickers.png" alt="MENOCLONE hologram UFO stickers held in hand with additional stickers on a table" loading="lazy" />
-                <span class="product-index">11</span>
-                <button class="quick-add" type="button" data-product="Hologram UFO Stickers (3 pack)">Quick Add</button>
-              </div>
-              <div class="product-info"><span>Hologram UFO Stickers (3 pack)</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-
-            <article class="product" data-reveal data-name="MNC UFO Pins" data-price="10.00" data-description="MNC UFO Pins. 2.25in collectible black button pins featuring the signature white MNC UFO mark, made to add MENOCLONE identity to jackets, bags and everyday gear.">
-              <div class="product-media">
-                <img class="real-product" src="mnc-ufo-pin.png" alt="Black MNC UFO pins with white UFO logo, including front and back views" loading="lazy" />
-                <span class="product-index">12</span>
-                <button class="quick-add" type="button" data-product="MNC UFO Pins">Quick Add</button>
-              </div>
-              <div class="product-info"><span>MNC UFO Pins</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-
-            <article class="product" data-reveal data-name="MNC SZN 2 Pins" data-price="10.00" data-description="MNC SZN 2 Pins. 2.25in collectible black button pins featuring the MENOCLONE Season 2 badge artwork, built for jackets, bags and everyday gear.">
-              <div class="product-media">
-                <img class="real-product" src="mnc-szn2-pins.png" alt="MENOCLONE Season 2 button pins with front and back views arranged on a white table" loading="lazy" />
-                <span class="product-index">13</span>
-                <button class="quick-add" type="button" data-product="MNC SZN 2 Pins">Quick Add</button>
-              </div>
-              <div class="product-info"><span>MNC SZN 2 Pins</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-          </div>
-        </div>
-
-        <div class="product-category" data-reveal>
-          <div class="product-category-heading">
-            <h3>Drinkware</h3>
-            <span>Coffee / Daily Objects</span>
-          </div>
-          <div class="products">
-            <article class="product" data-reveal data-name='MNC "Odot" Travel Coffee Mug' data-price="40.00" data-description="MNC &quot;Odot&quot; Travel Coffee Mug. Built for early starts, long build sessions and creative days. Founder OdotNYC is a father who enjoys great coffee while creating works of art. He is also a selft taught developer, designer, engineer and creative whose mornings begin with a cup made in the spirit of how his grandmother would have prepared it if she were still here.">
-              <div class="product-media">
-                <img class="real-product" src="mnc-odot-travel-coffee-mug.jpg" alt="MNC Odot Travel Coffee Mug featuring the Odot character artwork" loading="lazy" />
-                <span class="product-index">14</span>
-                <button class="quick-add" type="button" data-product='MNC "Odot" Travel Coffee Mug'>Quick Add</button>
-              </div>
-              <div class="product-info"><span>MNC "Odot" Travel Coffee Mug</span><span class="price-hidden">Price in cart</span></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="mnc-trucker-hat">
-        <div class="section-heading" data-reveal>
-          <div>
-            <p class="eyebrow" data-i18n="truckerSectionKicker">Season 2 Headwear</p>
-            <h2 data-i18n="truckerSectionTitle">MNC Trucker Hat</h2>
-          </div>
-          <p data-i18n="truckerSectionMeta">MENOCLONE / Trucker Hat Study</p>
-        </div>
-
-
-   
-
-        <div class="editorial-grid">
-          <article class="editorial-card" data-reveal>
-            <img src="look-04-table.png" alt="Front portrait of the MENOCLONE Season Two Trucker Hat" loading="lazy" />
-            <div class="editorial-label">
-              <strong data-i18n="lookOne">Look 01</strong>
-              <span data-i18n="lookOneMeta">Trucker Hat / Front Portrait</span>
-            </div>
-          </article>
-
-          <article class="editorial-card" data-reveal>
-            <img src="look-03-fitting.png" alt="Angled portrait of the MENOCLONE Season Two Trucker Hat" loading="lazy" />
-            <div class="editorial-label">
-              <strong data-i18n="lookTwo">Look 02</strong>
-              <span data-i18n="lookTwoMeta">Trucker Hat / Angle Study</span>
-            </div>
-          </article>
-
-          <article class="editorial-card" data-reveal>
-            <img src="look-02-angle.png" alt="Mannequin putting on the MENOCLONE Season Two Trucker Hat" loading="lazy" />
-            <div class="editorial-label">
-              <strong data-i18n="lookThree">Look 03</strong>
-              <span data-i18n="lookThreeMeta">Trucker Hat / Fitting Study</span>
-            </div>
-          </article>
-
-          <article class="editorial-card" data-reveal>
-            <img src="look-01-front.png" alt="Mannequin viewing the MENOCLONE Season Two Trucker Hat on a table" loading="lazy" />
-            <div class="editorial-label">
-              <strong data-i18n="lookFour">Look 04</strong>
-              <span data-i18n="lookFourMeta">Trucker Hat / Object Study</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="beaming-down-soon">
-        <div class="section-heading" data-reveal>
-          <div>
-            <p class="eyebrow" data-i18n="lookbookKicker">MENOCLONE Preview</p>
-            <h2 data-i18n="lookbookTitle">Beaming Down Soon</h2>
-          </div>
-          <p data-i18n="lookbookMeta">Season 2 / Incoming Visuals</p>
-        </div>
-
-        <div class="editorial-grid lookbook-uniform-grid invading-soon-grid">
-          <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="beaming-soon-monogram-totes.png" alt="MENOCLONE black and white monogram tote bags laid out on carpet for Beaming Down Soon" loading="lazy" />
-          </article>
-
-          <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="signallost.png" alt="MENOCLONE MNC UFO preview for Beaming Down Soon" loading="lazy" />
-          </article>
-
-          <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="beaming-down-can-you-dig-it-hoodie.png" alt="MENOCLONE Can You Dig It hoodie mockup for Beaming Down Soon" loading="lazy" />
-          </article>
-
-          <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="invading-soon-02.png" alt="MENOCLONE Staten Island Ferry UFO artwork for Beaming Down Soon" loading="lazy" />
-          </article>
-
-          <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="MNC-hockey.png" alt="MENOCLONE Gloss Bot design for Beaming Down Soon" loading="lazy" />
-          </article>
-          <article class="editorial-card invading-soon-card" data-reveal><img src="realms-of-se7en-cover.png" alt="MENOCLONE REALMS OF SE7EN video game cover" loading="lazy" /></article>
-          <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="assets/menoclone-gold-knuckle-ring.png" alt="MENOCLONE polished gold four-finger statement ring — coming soon" loading="lazy" />
-          </article>
-          <article class="editorial-card invading-soon-card" data-reveal>
-            <img src="assets/menoclone-premium-flower-preview.png" alt="MENOCLONE premium flower retro cartridge artwork — coming soon, adults only where legally available" loading="lazy" />
-          </article>
-        </div>
-
-        <div class="odot-capsule-feature" id="mnc-ufo" data-reveal>
-          <div class="odot-capsule-copy">
-            <div>
-              <p class="eyebrow">MENOCLONE Collectible / Late 2026</p>
-              <h3>MNC UFO</h3>
-              <p>Meet the MNC UFO, a new MENOCLONE 3D collectible experience. Rotate it, zoom in and explore the full UFO directly in the browser, then place it in your real-world space with augmented reality on a compatible mobile device.</p>
-              <div class="odot-capsule-meta" aria-label="MNC UFO features">
-                <span>Interactive 3D</span>
-                <span>AR Ready</span>
-                <span>Late 2026</span>
-              </div>
-            </div>
-            <div class="odot-capsule-hint">Drag to rotate · Pinch or scroll to zoom · Select “View in Your Space” for AR</div>
-          </div>
-
-          <div class="odot-capsule-viewer">
-            <span class="odot-viewer-badge">3D / AR Preview</span>
-            <span class="odot-viewer-status">Beaming Down Soon</span>
-            <model-viewer
-              id="mncUfoViewer"
-              src="mnc-ufo.glb"
-              alt="Interactive 3D preview of the MENOCLONE MNC UFO"
-              camera-controls
-              touch-action="pan-y"
-              auto-rotate
-              rotation-per-second="16deg"
-              data-ar-rotation-speed="4"
-              shadow-intensity="1"
-              shadow-softness=".8"
-              environment-image="neutral"
-              exposure="1"
-              ar
-              ar-modes="webxr scene-viewer quick-look"
-              ar-placement="floor"
-              ar-scale="fixed"
-              interaction-prompt="auto"
-              loading="eager">
-              <button class="odot-ar-button" slot="ar-button" type="button">View in Your Space ↗</button>
-            </model-viewer>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="section porsche-project" id="menoclone-meets-porsche" aria-labelledby="porsche-project-title">
-        <div class="section-heading"><div><p class="eyebrow">MENOCLONE Motorsports / Founder’s Vision / 2027</p><h2 id="porsche-project-title">MENOCLONE MEETS PORSCHE</h2></div><p>Dream car. Real vision.</p></div>
-        <div class="porsche-project-grid">
-          <div class="porsche-project-photo"><img src="menoclone-porsche-showcase.png" alt="Concept showcase of a black Porsche Panamera with gold MENOCLONE motorsports graphics, multiple angles and detail views" loading="lazy"></div>
-          <div class="porsche-project-copy"><p class="eyebrow">A note from founder OdotNYC</p><h3>Built from a dream. Driven by purpose.</h3><p>The Porsche Panamera has long represented more than a dream car to Odot. It represents the distance between where you begin and where your vision can take you. From street-level creativity to engineering, design and motorsports, this project brings the MENOCLONE identity to a machine that has inspired the journey.</p><blockquote>“Keep Your Vision Further Than Your Eyesight!”</blockquote><p>Our manifesto: never wait for permission to imagine bigger. Learn the craft. Respect the heritage. Build with intention. Make originality visible. The 2027 goal is to bring this Panamera-inspired MENOCLONE Motorsports concept closer to reality.</p><a class="porsche-cta" href="https://odotofrva.github.io/porshemanifesto/">Explore the 2027 Project ↗</a><p class="porsche-project-note">Independent concept project. Not affiliated with or endorsed by Porsche AG.</p></div>
-        </div>
-      </section>
-
-      <section class="section" id="art-locator">
-        <div class="section-heading" data-reveal>
-          <div>
-            <p class="eyebrow" data-i18n="locatorKicker">MENOCLONE Field System</p>
-            <h2 data-i18n="locatorTitle">MNC Art Locator</h2>
-          </div>
-          <p data-i18n="locatorMeta">Find the signal</p>
-        </div>
-
-        <div class="locator-panel">
-          <div class="locator-copy" data-reveal>
-            <div>
-              <h3 data-i18n="locatorHeadline">Art exists outside the feed.</h3>
-              <p data-i18n="locatorDescription">MNC Art Locator is a future map for physical MENOCLONE drops, installations, stickers, objects and creative signals placed around the city.</p>
-            </div>
-            <div class="locator-tags">
-              <span>NYC</span>
-              <span data-i18n="locatorTagDrops">Drops</span>
-              <span data-i18n="locatorTagInstallations">Installations</span>
-              <span data-i18n="locatorTagObjects">Objects</span>
-            </div>
-          </div>
-
-          <div class="locator-visual" data-reveal aria-label="MENOCLONE Art Locator concept">
-            <span class="locator-pin one"></span>
-            <span class="locator-pin two"></span>
-            <span class="locator-pin three"></span>
-            <img class="nyc-map" src="nyc-art-locator-map.svg" alt="Stylized map of New York City showing the five boroughs and art locator signals" />
-          </div>
-        </div>
-      </section>
-
-      <section class="section ar-section" id="mnc-ar">
-        <div class="section-heading" data-reveal>
-          <div>
-            <p class="eyebrow">MENOCLONE Interactive</p>
-            <h2>MNC-AR</h2>
-          </div>
-          <p>Scan / Detect / Invade</p>
-        </div>
-
-        <div class="ar-panel">
-          <div class="ar-copy" data-reveal>
-            <p class="eyebrow">UFO Augmented Reality Experience</p>
-            <h3>Bring the UFO into your world.</h3>
-            <p>Launch MNC-AR on your mobile device, allow camera access and scan the MENOCLONE logo to unlock the UFO augmented reality experience.</p>
-            <a class="ar-launch" href="https://odotofrva.github.io/MNC-AR/" target="_blank" rel="noopener noreferrer" aria-label="Launch the MNC-AR experience in a new tab">Launch MNC-AR <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="ar-visual" data-reveal aria-label="MENOCLONE UFO augmented reality portal">
-            <img src="mncufo.png" alt="MENOCLONE UFO logo" loading="lazy" />
-            <span class="ar-status">AR Signal Ready</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section street-team-section" id="street-team">
-        <div class="section-heading" data-reveal>
-          <div>
-            <p class="eyebrow">MENOCLONE Street Team</p>
-            <h2>Join the Street Team</h2>
-          </div>
-          <p>NYC / Community / Signal</p>
-        </div>
-
-        <div class="street-team-panel">
-          <div class="street-team-media" data-reveal>
-            <img src="mnc-street-team-flyer.png" alt="MENOCLONE Join the Street Team recruitment flyer featuring the MENOCLONE mannequin crew" loading="lazy" />
-          </div>
-
-          <div class="street-team-copy" data-reveal>
-            <p class="eyebrow">Help Move the Signal</p>
-            <h3>Join the MENOCLONE street team.</h3>
-            <p>Be part of the people pushing MENOCLONE into the streets through flyer and sticker marketing, events, pop-ups and creative activations. Reach out to us on Instagram to get started.</p>
-            <div class="street-team-actions">
-              <a class="street-team-cta" href="https://www.instagram.com/menoclone/" target="_blank" rel="noopener noreferrer" aria-label="Message MENOCLONE on Instagram">Message Us on Instagram <span aria-hidden="true">↗</span></a>
-            </div>
-            <span class="street-team-handle">@menoclone</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section seoul-section" id="seoul">
-        <div class="section-heading" data-reveal>
-          <div>
-            <p class="eyebrow">MENOCLONE Global Signal</p>
-            <h2>New York → Seoul</h2>
-          </div>
-          <p>Koreatown, NYC / Seoul, Korea / Future Expansion</p>
-        </div>
-
-        <div class="seoul-grid">
-          <div class="seoul-visual" data-reveal>
-            <img src="mnc-korean-wordmark.png" alt="MENOCLONE Korean wordmark created in appreciation of Korean culture" loading="lazy" />
-          </div>
-
-          <div class="seoul-copy" data-reveal>
-            <p class="eyebrow">A Dream Beyond Borders</p>
-            <h3>Building the signal toward Seoul.</h3>
-            <p>MENOCLONE plans to expand its creative world into Seoul, Korea by building meaningful partnerships through the cultural bridge of Koreatown, New York City. The goal is not simply to enter another market, but to connect with designers, artists, makers and independent thinkers who move on the same creative frequency.</p>
-            <p>For founder OdotNYC, visiting Seoul has long been a personal dream. As MENOCLONE grows, that dream has become part of the brand's future: bringing its lifestyle of fashion, art, design and technology into a city known for its own powerful creative energy, while learning from the people and culture already shaping it.</p>
-            <p class="seoul-note">The Korean MENOCLONE logo was created as a gesture of respect and appreciation for Korean culture. It represents curiosity, humility and a commitment to keep learning daily—not an attempt to claim the culture, but to honor the inspiration and relationships MENOCLONE hopes to build.</p>
-            <div class="seoul-route" aria-label="MENOCLONE expansion path">
-              <span>New York City</span><b>→</b><span>Koreatown NYC</span><b>→</b><span>Seoul, Korea</span><b>→</b><span>Creative Partnerships</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="section" id="terms">
-        <div class="terms-wrap">
-          <div data-reveal>
-            <p class="eyebrow" data-i18n="termsKicker">MENOCLONE Policy</p>
-            <h3 data-i18n="termsTitle">Terms & Conditions</h3>
-          </div>
-
-          <div class="terms-copy" data-reveal>
-            <p><strong data-i18n="termsOrdersHead">Orders</strong><br /><span data-i18n="termsOrders">All product availability is subject to change. Limited releases may sell out without notice.</span></p>
-            <p><strong data-i18n="termsShippingHead">Shipping</strong><br /><span data-i18n="termsShipping">Shipping windows and delivery timing may vary by release and destination.</span></p>
-            <p><strong data-i18n="termsReturnsHead">Returns</strong><br /><span data-i18n="termsReturns">Final return, exchange and refund rules should be reviewed before checkout and may vary by item.</span></p>
-            <p><strong data-i18n="termsCreativeHead">Creative Rights</strong><br /><span data-i18n="termsCreative">MENOCLONE names, logos, artwork, product graphics and original site content remain protected creative property.</span></p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="newsletter" data-reveal>
-          <div>
-            <img class="newsletter-brand" src="mncfinal.png" alt="MENOCLONE wordmark" />
-            <h3 data-i18n="joinSignal">Join the signal.</h3>
-            <p data-i18n="newsletterDescription">Drop alerts, experiments, events and new objects from MENOCLONE.</p>
-          </div>
-
-          <form class="email-form" id="emailForm">
-            <input type="text" name="name" placeholder="NAME" aria-label="Name" required />
-            <input
-              type="email"
-              name="email"
-              placeholder="EMAIL ADDRESS" data-i18n-placeholder="emailPlaceholder"
-              aria-label="Email address"
-              required
-            />
-            <input type="text" name="subject" placeholder="SUBJECT" aria-label="Subject" required />
-            <textarea name="message" placeholder="MESSAGE" aria-label="Message" required></textarea>
-            <button type="submit"><span>Send Message</span> ↗</button>
-            <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-brand">
-        <img src="mncfinal.png" alt="MENOCLONE wordmark" />
-        <span>© 2026</span>
-      </div>
-      <div>
-        <img class="footer-ufo" src="mncufo.png" alt="MENOCLONE UFO logo" />
-        <div>Originality Has Origins</div>
-      </div>
-      <div>Instagram / Terms / Privacy</div>
-    </footer>
-  </div>
-
-
-
-
-
-  <div class="product-detail-overlay" id="productDetailOverlay" aria-hidden="true">
-    <section class="product-detail-shell" role="dialog" aria-modal="true" aria-labelledby="productDetailTitle">
-      <div class="product-detail-media" id="productDetailMedia">
-        <img id="productDetailImage" src="" alt="" />
-      </div>
-
-      <div class="product-detail-copy">
-        <div>
-          <div class="product-detail-top">
-            <div>
-              <p class="product-detail-kicker" data-i18n="productDetails">Product Details</p>
-              <h3 id="productDetailTitle">MENOCLONE Product</h3>
-            </div>
-            <button class="product-detail-close" id="productDetailClose" type="button" aria-label="Close product details">×</button>
-          </div>
-          <p id="productDetailDescription"></p>
-        </div>
-
-        <div class="product-detail-actions">
-          <div class="product-detail-price" id="productDetailPrice" data-i18n="priceRevealedCart">Price revealed after adding to cart</div>
-          <button class="product-detail-add" id="productDetailAdd" type="button" data-i18n="addToCart">Add to Cart</button>
-          <button class="product-detail-return" id="productDetailReturn" type="button" data-i18n="returnMain">Return to Main Screen</button>
-          <div class="product-detail-note" data-i18n="productZoomNote">Tap or click the image to open full zoom.</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-  <div class="bag-overlay" id="bagOverlay" aria-hidden="true">
-    <aside class="bag-drawer" id="bagDrawer" role="dialog" aria-modal="true" aria-labelledby="bagTitle">
-      <div class="bag-head">
-        <div class="bag-head-copy">
-          <img class="nyc-map" src="nyc-art-locator-map.svg" alt="Stylized map of New York City showing the five boroughs and art locator signals" />
-          <div>
-            <p class="bag-head-kicker" id="bagKicker">MENOCLONE Order</p>
-            <h2 id="bagTitle">Bag / Cart</h2>
-          </div>
-        </div>
-        <button class="bag-close" id="bagClose" type="button" aria-label="Close bag">×</button>
-      </div>
-
-      <div class="bag-body">
-        <div class="bag-empty" id="bagEmpty">Your bag is empty.</div>
-        <div class="bag-items" id="bagItems"></div>
-      </div>
-
-      <div class="bag-footer">
-        <div class="checkout-fields">
-          <input id="checkoutName" type="text" autocomplete="name" placeholder="Full name" aria-label="Full name" required />
-          <input id="checkoutEmail" type="email" autocomplete="email" placeholder="Email address" aria-label="Email address" required />
-          <textarea id="checkoutAddress" autocomplete="street-address" placeholder="Shipping address" aria-label="Shipping address" required></textarea>
-          <textarea id="checkoutNotes" placeholder="Order notes (optional)" aria-label="Order notes"></textarea>
-        </div>
-        <p class="checkout-assurance" id="checkoutAssurance"><strong>ORDER DELIVERY:</strong> Orders are securely submitted to MENOCLONE HQ. You will receive a unique order number for reference. No payment is collected on this form.</p>
-        <p class="checkout-status" id="checkoutStatus" role="status" aria-live="polite"></p>
-        <div class="bag-total-row">
-          <span id="bagSubtotalLabel">Subtotal</span>
-          <strong class="bag-total" id="bagSubtotal">$0.00</strong>
-        </div>
-        <p class="bag-total-note" id="bagTotalNote">Converted pricing follows the selected site currency. Shipping and taxes are not included.</p>
-        <div class="bag-actions">
-          <button class="bag-submit" id="bagSubmit" type="button" disabled>Submit Order</button>
-          <button class="bag-continue" id="bagContinue" type="button">Continue Shopping</button>
-        </div>
-      </div>
-    </aside>
-  </div>
-
-  <div class="cart-modal-overlay" id="cartModalOverlay" aria-hidden="true">
-    <section class="cart-modal" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle">
-      <div class="cart-modal-head"><img src="mncufo.png" alt="MENOCLONE UFO logo"><button class="cart-modal-close" id="cartModalClose" type="button" aria-label="Close">×</button></div>
-      <div class="cart-modal-body"><p class="cart-modal-kicker" data-i18n="cartUpdate">Cart Update</p><h3 id="cartModalTitle" data-i18n="addedToCart">Added to Cart</h3><p id="cartModalMessage">Product added to your bag.</p></div>
-      <div class="cart-modal-actions"><button class="cart-continue" id="cartContinue" type="button" data-i18n="continueShopping">Continue Shopping</button><button class="cart-view" id="cartView" type="button" data-i18n="viewBag">View Bag</button></div>
-    </section>
-  </div>
-
-  <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
-    <section class="zoom-shell" role="dialog" aria-modal="true" aria-labelledby="zoomTitle">
-      <div class="zoom-topbar">
-        <div class="zoom-title" id="zoomTitle">Product View</div>
-        <button class="zoom-close" id="zoomClose" type="button" aria-label="Close product zoom">×</button>
-      </div>
-
-      <div class="zoom-stage" id="zoomStage">
-        <img class="zoom-image" id="zoomImage" src="" alt="" draggable="false" />
-      </div>
-
-      <div class="zoom-controls" aria-label="Product zoom controls">
-        <button class="zoom-control" id="zoomOut" type="button" aria-label="Zoom out">−</button>
-        <button class="zoom-control" id="zoomReset" type="button">Reset</button>
-        <span class="zoom-level" id="zoomLevel">100%</span>
-        <button class="zoom-control" id="zoomIn" type="button" aria-label="Zoom in">+</button>
-      </div>
-    </section>
-  </div>
-
-  <div class="ig-overlay" id="igOverlay" aria-hidden="true">
-    <aside class="ig-modal" role="dialog" aria-modal="true" aria-labelledby="igTitle">
-      <div class="ig-modal-top">
-        <img class="ig-modal-logo" src="mncufo.png" alt="MENOCLONE UFO logo" />
-        <button class="ig-close" id="igClose" type="button" aria-label="Close Instagram prompt">×</button>
-      </div>
-
-      <div class="ig-modal-copy">
-        <p class="ig-kicker">Stay in the signal</p>
-        <h3 id="igTitle">Following us on Instagram?</h3>
-        <p>
+<section class="section ar-section" id="mnc-ar">
+<div class="section-heading" data-reveal="">
+<div>
+<p class="eyebrow">MENOCLONE Interactive</p>
+<h2>MNC-AR</h2>
+</div>
+<p>Scan / Detect / Invade</p>
+</div>
+<div class="ar-panel">
+<div class="ar-copy" data-reveal="">
+<p class="eyebrow">UFO Augmented Reality Experience</p>
+<h3>Bring the UFO into your world.</h3>
+<p>Launch MNC-AR on your mobile device, allow camera access and scan the MENOCLONE logo to unlock the UFO augmented reality experience.</p>
+<a aria-label="Launch the MNC-AR experience in a new tab" class="ar-launch" href="https://odotofrva.github.io/MNC-AR/" rel="noopener noreferrer" target="_blank">Launch MNC-AR <span aria-hidden="true">↗</span></a>
+</div>
+<div aria-label="MENOCLONE UFO augmented reality portal" class="ar-visual" data-reveal="">
+<img alt="MENOCLONE UFO logo" loading="lazy" src="mncufo.png"/>
+<span class="ar-status">AR Signal Ready</span>
+</div>
+</div>
+</section>
+<section class="section street-team-section" id="street-team">
+<div class="section-heading" data-reveal="">
+<div>
+<p class="eyebrow">MENOCLONE Street Team</p>
+<h2>Join the Street Team</h2>
+</div>
+<p>NYC / Community / Signal</p>
+</div>
+<div class="street-team-panel">
+<div class="street-team-media" data-reveal="">
+<img alt="MENOCLONE Join the Street Team recruitment flyer featuring the MENOCLONE mannequin crew" loading="lazy" src="mnc-street-team-flyer.png"/>
+</div>
+<div class="street-team-copy" data-reveal="">
+<p class="eyebrow">Help Move the Signal</p>
+<h3>Join the MENOCLONE street team.</h3>
+<p>Be part of the people pushing MENOCLONE into the streets through flyer and sticker marketing, events, pop-ups and creative activations. Reach out to us on Instagram to get started.</p>
+<div class="street-team-actions">
+<a aria-label="Message MENOCLONE on Instagram" class="street-team-cta" href="https://www.instagram.com/menoclone/" rel="noopener noreferrer" target="_blank">Message Us on Instagram <span aria-hidden="true">↗</span></a>
+</div>
+<span class="street-team-handle">@menoclone</span>
+</div>
+</div>
+</section>
+<section class="section seoul-section" id="seoul">
+<div class="section-heading" data-reveal="">
+<div>
+<p class="eyebrow">MENOCLONE Global Signal</p>
+<h2>New York → Seoul</h2>
+</div>
+<p>Koreatown, NYC / Seoul, Korea / Future Expansion</p>
+</div>
+<div class="seoul-grid">
+<div class="seoul-visual" data-reveal="">
+<img alt="Seoul Korea MENOCLONE collaboration banner" loading="lazy" src="mnc-seoul-banner.png"/>
+</div>
+<div class="seoul-copy" data-reveal="">
+<p class="eyebrow">A Dream Beyond Borders</p>
+<h3>Building the signal toward Seoul.</h3>
+<p>MENOCLONE plans to expand its creative world into Seoul, Korea by building meaningful partnerships through the cultural bridge of Koreatown, New York City. The goal is not simply to enter another market, but to connect with designers, artists, makers and independent thinkers who move on the same creative frequency.</p>
+<p>For founder OdotNYC, visiting Seoul has long been a personal dream. As MENOCLONE grows, that dream has become part of the brand's future: bringing its lifestyle of fashion, art, design and technology into a city known for its own powerful creative energy, while learning from the people and culture already shaping it.</p>
+<p class="seoul-note">The Korean MENOCLONE logo was created as a gesture of respect and appreciation for Korean culture. It represents curiosity, humility and a commitment to keep learning daily—not an attempt to claim the culture, but to honor the inspiration and relationships MENOCLONE hopes to build.</p>
+<div aria-label="MENOCLONE expansion path" class="seoul-route">
+<span>New York City</span><b>→</b><span>Koreatown NYC</span><b>→</b><span>Seoul, Korea</span><b>→</b><span>Creative Partnerships</span>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="terms">
+<div class="terms-wrap">
+<div data-reveal="">
+<p class="eyebrow" data-i18n="termsKicker">MENOCLONE Policy</p>
+<h3 data-i18n="termsTitle">Terms &amp; Conditions</h3>
+</div>
+<div class="terms-copy" data-reveal="">
+<p><strong data-i18n="termsOrdersHead">Orders</strong><br/><span data-i18n="termsOrders">All product availability is subject to change. Limited releases may sell out without notice.</span></p>
+<p><strong data-i18n="termsShippingHead">Shipping</strong><br/><span data-i18n="termsShipping">Shipping windows and delivery timing may vary by release and destination.</span></p>
+<p><strong data-i18n="termsReturnsHead">Returns</strong><br/><span data-i18n="termsReturns">Final return, exchange and refund rules should be reviewed before checkout and may vary by item.</span></p>
+<p><strong data-i18n="termsCreativeHead">Creative Rights</strong><br/><span data-i18n="termsCreative">MENOCLONE names, logos, artwork, product graphics and original site content remain protected creative property.</span></p>
+</div>
+</div>
+</section>
+<section class="section" id="contact">
+<div class="newsletter" data-reveal="">
+<div>
+<img alt="MENOCLONE wordmark" class="newsletter-brand" src="mncfinal.png"/>
+<h3 data-i18n="joinSignal">Join the signal.</h3>
+<p data-i18n="newsletterDescription">Drop alerts, experiments, events and new objects from MENOCLONE.</p>
+</div>
+<form class="email-form" id="emailForm">
+<input aria-label="Name" name="name" placeholder="NAME" required="" type="text">
+<input aria-label="Email address" data-i18n-placeholder="emailPlaceholder" name="email" placeholder="EMAIL ADDRESS" required="" type="email"/>
+<input aria-label="Subject" name="subject" placeholder="SUBJECT" required="" type="text"/>
+<textarea aria-label="Message" name="message" placeholder="MESSAGE" required=""></textarea>
+<button type="submit"><span>Send Message</span> ↗</button>
+<p aria-live="polite" class="form-status" id="contactStatus" role="status"></p>
+</input></form>
+</div>
+</section>
+</main>
+<footer>
+<div class="footer-brand">
+<img alt="MENOCLONE wordmark" src="mncfinal.png"/>
+<span>© 2026</span>
+</div>
+<div>
+<img alt="MENOCLONE UFO logo" class="footer-ufo" src="mncufo.png"/>
+<div>Originality Has Origins</div>
+</div>
+<div>Instagram / Terms / Privacy</div>
+</footer>
+</div>
+<div aria-hidden="true" class="product-detail-overlay" id="productDetailOverlay">
+<section aria-labelledby="productDetailTitle" aria-modal="true" class="product-detail-shell" role="dialog">
+<div class="product-detail-media" id="productDetailMedia">
+<img alt="" id="productDetailImage" src=""/>
+</div>
+<div class="product-detail-copy">
+<div>
+<div class="product-detail-top">
+<div>
+<p class="product-detail-kicker" data-i18n="productDetails">Product Details</p>
+<h3 id="productDetailTitle">MENOCLONE Product</h3>
+</div>
+<button aria-label="Close product details" class="product-detail-close" id="productDetailClose" type="button">×</button>
+</div>
+<p id="productDetailDescription"></p>
+</div>
+<div class="product-detail-actions">
+<div class="product-detail-price" data-i18n="priceRevealedCart" id="productDetailPrice">Price revealed after adding to cart</div>
+<button class="product-detail-add" data-i18n="addToCart" id="productDetailAdd" type="button">Add to Cart</button>
+<button class="product-detail-return" data-i18n="returnMain" id="productDetailReturn" type="button">Return to Main Screen</button>
+<div class="product-detail-note" data-i18n="productZoomNote">Tap or click the image to open full zoom.</div>
+</div>
+</div>
+</section>
+</div>
+<div aria-hidden="true" class="bag-overlay" id="bagOverlay">
+<aside aria-labelledby="bagTitle" aria-modal="true" class="bag-drawer" id="bagDrawer" role="dialog">
+<div class="bag-head">
+<div class="bag-head-copy">
+<img alt="MENOCLONE campaign artwork" class="brand-header-image" src="mnc-new-era-campaign.png"/>
+<div>
+<p class="bag-head-kicker" id="bagKicker">MENOCLONE Order</p>
+<h2 id="bagTitle">Bag / Cart</h2>
+</div>
+</div>
+<button aria-label="Close bag" class="bag-close" id="bagClose" type="button">×</button>
+</div>
+<div class="bag-body">
+<div class="bag-empty" id="bagEmpty">Your bag is empty.</div>
+<div class="bag-items" id="bagItems"></div>
+</div>
+<div class="bag-footer">
+<div class="checkout-fields">
+<input aria-label="Full name" autocomplete="name" id="checkoutName" placeholder="Full name" required="" type="text"/>
+<input aria-label="Email address" autocomplete="email" id="checkoutEmail" placeholder="Email address" required="" type="email"/>
+<textarea aria-label="Shipping address" autocomplete="street-address" id="checkoutAddress" placeholder="Shipping address" required=""></textarea>
+<textarea aria-label="Order notes" id="checkoutNotes" placeholder="Order notes (optional)"></textarea>
+</div>
+<p class="checkout-assurance" id="checkoutAssurance"><strong>ORDER DELIVERY:</strong> Orders are securely submitted to MENOCLONE HQ. You will receive a unique order number for reference. No payment is collected on this form.</p>
+<p aria-live="polite" class="checkout-status" id="checkoutStatus" role="status"></p>
+<div class="bag-total-row">
+<span id="bagSubtotalLabel">Subtotal</span>
+<strong class="bag-total" id="bagSubtotal">$0.00</strong>
+</div>
+<p class="bag-total-note" id="bagTotalNote">Converted pricing follows the selected site currency. Shipping and taxes are not included.</p>
+<div class="bag-actions">
+<button class="bag-submit" disabled="" id="bagSubmit" type="button">Submit Order</button>
+<button class="bag-continue" id="bagContinue" type="button">Continue Shopping</button>
+</div>
+</div>
+</aside>
+</div>
+<div aria-hidden="true" class="cart-modal-overlay" id="cartModalOverlay">
+<section aria-labelledby="cartModalTitle" aria-modal="true" class="cart-modal" role="dialog">
+<div class="cart-modal-head"><img alt="MENOCLONE UFO logo" src="mncufo.png"/><button aria-label="Close" class="cart-modal-close" id="cartModalClose" type="button">×</button></div>
+<div class="cart-modal-body"><p class="cart-modal-kicker" data-i18n="cartUpdate">Cart Update</p><h3 data-i18n="addedToCart" id="cartModalTitle">Added to Cart</h3><p id="cartModalMessage">Product added to your bag.</p></div>
+<div class="cart-modal-actions"><button class="cart-continue" data-i18n="continueShopping" id="cartContinue" type="button">Continue Shopping</button><button class="cart-view" data-i18n="viewBag" id="cartView" type="button">View Bag</button></div>
+</section>
+</div>
+<div aria-hidden="true" class="zoom-overlay" id="zoomOverlay">
+<section aria-labelledby="zoomTitle" aria-modal="true" class="zoom-shell" role="dialog">
+<div class="zoom-topbar">
+<div class="zoom-title" id="zoomTitle">Product View</div>
+<button aria-label="Close product zoom" class="zoom-close" id="zoomClose" type="button">×</button>
+</div>
+<div class="zoom-stage" id="zoomStage">
+<img alt="" class="zoom-image" draggable="false" id="zoomImage" src="">
+</img></div>
+<div aria-label="Product zoom controls" class="zoom-controls">
+<button aria-label="Zoom out" class="zoom-control" id="zoomOut" type="button">−</button>
+<button class="zoom-control" id="zoomReset" type="button">Reset</button>
+<span class="zoom-level" id="zoomLevel">100%</span>
+<button aria-label="Zoom in" class="zoom-control" id="zoomIn" type="button">+</button>
+</div>
+</section>
+</div>
+<div aria-hidden="true" class="ig-overlay" id="igOverlay">
+<aside aria-labelledby="igTitle" aria-modal="true" class="ig-modal" role="dialog">
+<div class="ig-modal-top">
+<img alt="MENOCLONE UFO logo" class="ig-modal-logo" src="mncufo.png"/>
+<button aria-label="Close Instagram prompt" class="ig-close" id="igClose" type="button">×</button>
+</div>
+<div class="ig-modal-copy">
+<p class="ig-kicker">Stay in the signal</p>
+<h3 id="igTitle">Following us on Instagram?</h3>
+<p>
           Follow MENOCLONE for product drops, Season 2 updates,
           visual experiments and new releases.
         </p>
-      </div>
-
-      <div class="ig-actions">
-        <a
-          class="ig-follow"
-          id="igFollow"
-          href="https://www.instagram.com/menoclone/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Follow @menoclone ↗</a>
-        <button class="ig-following" id="igFollowing" type="button">Already Following</button>
-      </div>
-
-      <div class="ig-handle">@menoclone / Instagram</div>
-    </aside>
-  </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
-
-  <script>
+</div>
+<div class="ig-actions">
+<a class="ig-follow" href="https://www.instagram.com/menoclone/" id="igFollow" rel="noopener noreferrer" target="_blank">Follow @menoclone ↗</a>
+<button class="ig-following" id="igFollowing" type="button">Already Following</button>
+</div>
+<div class="ig-handle">@menoclone / Instagram</div>
+</aside>
+</div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<div aria-hidden="true" class="cursor" id="cursor"></div>
+<script>
     const body = document.body;
     const splash = document.getElementById('splash');
     const enterSite = document.getElementById('enterSite');
@@ -5077,7 +4957,7 @@
     };
     function currentTranslation(){return translations[document.documentElement.lang] || translations.en}
     function localizedProductName(card){const base=card?.dataset?.name || 'MENOCLONE Product';return productTranslations[base]?.[document.documentElement.lang]?.name || base}
-    function applyProductTranslations(lang){document.querySelectorAll('.product').forEach(card=>{const base=card.dataset.name;if(!card.dataset.originalDescription)card.dataset.originalDescription=card.dataset.description;const localized=productTranslations[base]?.[lang];const title=card.querySelector('.product-info span:first-child');if(title)title.textContent=localized?.name||base;card.dataset.description=localized?.description||card.dataset.originalDescription;const button=card.querySelector('.quick-add');if(button)button.textContent=button.disabled?translations[lang].comingSoon:translations[lang].quickAdd;const price=card.querySelector('.price-hidden');if(price)price.textContent=card.closest('.product-category')?.querySelector('h3')?.textContent?.trim()==='MNC x NEW ERA'?'$100.00':translations[lang].priceInCart});}
+    function applyProductTranslations(lang){document.querySelectorAll('.product').forEach(card=>{const base=card.dataset.name;if(!card.dataset.originalDescription)card.dataset.originalDescription=card.dataset.description;const localized=productTranslations[base]?.[lang];const title=card.querySelector('.product-info span:first-child');if(title)title.textContent=localized?.name||base;card.dataset.description=localized?.description||card.dataset.originalDescription;const button=card.querySelector('.quick-add');if(button)button.textContent=button.disabled?translations[lang].comingSoon:translations[lang].quickAdd;const price=card.querySelector('.price-hidden');if(price)price.textContent=translations[lang].priceInCart});}
     function setLanguage(lang){lang=translations[lang]?lang:'en';document.documentElement.lang=lang;document.documentElement.dir='ltr';localStorage.setItem('menocloneLang',lang);document.querySelectorAll('[data-i18n]').forEach(el=>{const v=translations[lang][el.dataset.i18n];if(v)el.textContent=v});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const v=translations[lang][el.dataset.i18nPlaceholder];if(v)el.placeholder=v});applyProductTranslations(lang);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));updateWorldClock();updateCurrency()}
 
     function showToast(message){
