@@ -3544,6 +3544,20 @@
 .mnc-headwear-lineup{width:100%;margin:0 0 28px;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:#f3f0e8}
 .mnc-headwear-lineup img{display:block;width:100%;height:auto;object-fit:contain}
 @media(max-width:600px){.mnc-headwear-lineup{margin-bottom:20px;border-radius:12px}}
+
+/* MNC Gaming */
+.mnc-gaming-section{background:radial-gradient(circle at 85% 25%,rgba(232,255,71,.075),transparent 34%),#0b0b0b;scroll-margin-top:var(--header-h)}
+.mnc-gaming-panel{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#111}
+.mnc-gaming-copy{padding:clamp(32px,5vw,76px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:420px}
+.mnc-gaming-copy h3{font-size:clamp(38px,5vw,76px);line-height:.94;letter-spacing:-.055em;text-transform:uppercase;margin:0;max-width:11ch}
+.mnc-gaming-copy p:not(.eyebrow){color:#aaa9a3;line-height:1.75;font-size:14px;max-width:550px;margin:22px 0 0}
+.mnc-gaming-visual{position:relative;min-height:420px;display:grid;place-items:center;overflow:hidden;border-left:1px solid var(--line);background:radial-gradient(circle at center,rgba(232,255,71,.13),transparent 48%),repeating-linear-gradient(0deg,transparent 0 39px,rgba(255,255,255,.025) 40px),#090c0b}
+.mnc-gaming-orbit{position:absolute;width:min(65%,330px);aspect-ratio:1;border:1px solid rgba(232,255,71,.35);border-radius:50%;box-shadow:0 0 90px rgba(232,255,71,.08);animation:arOrbit 18s linear infinite}
+.mnc-gaming-orbit:after{content:"";position:absolute;inset:18%;border:1px dashed rgba(232,255,71,.25);border-radius:50%}
+.mnc-gaming-symbol{position:relative;z-index:1;font-weight:900;font-size:clamp(32px,4vw,66px);letter-spacing:-.065em;text-align:center;text-shadow:0 0 40px rgba(232,255,71,.16)}
+.mnc-gaming-symbol span{color:var(--accent)}
+.mnc-gaming-caption{position:absolute;bottom:25px;left:25px;color:var(--accent);font-size:10px;letter-spacing:.2em}
+@media(max-width:760px){.mnc-gaming-panel{grid-template-columns:1fr}.mnc-gaming-copy{min-height:auto;padding:36px 24px}.mnc-gaming-visual{min-height:300px;border-left:0;border-top:1px solid var(--line)}}
 </style>
 <style>
 /* MNC October collection update */
@@ -3593,6 +3607,7 @@
 <header>
 <nav aria-label="Primary" class="desktop-nav">
 <a data-i18n="shop" href="#shop">Shop</a>
+<a href="#mnc-gaming">MNC Gaming</a>
 
 
 
@@ -3621,6 +3636,7 @@
 <div aria-hidden="true" class="mobile-panel" id="mobilePanel">
 <nav aria-label="Mobile" class="mobile-nav">
 <a data-i18n="shop" href="#shop">Shop</a>
+<a href="#mnc-gaming">MNC Gaming</a>
 
 
 
@@ -3931,6 +3947,14 @@
 </div>
 </div>
 </div>
+</section>
+<!-- MNC GAMING -->
+<section class="section mnc-gaming-section" id="mnc-gaming" aria-labelledby="mnc-gaming-title">
+  <div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE / Interactive Worlds</p><h2 id="mnc-gaming-title">MNC Gaming</h2></div><p>Play / Explore / Discover</p></div>
+  <div class="mnc-gaming-panel" data-reveal="">
+    <div class="mnc-gaming-copy"><p class="eyebrow">Enter a New Dimension</p><h3>Beyond the ordinary.</h3><p>Explore the gaming division of MENOCLONE, where original worlds, immersive experiences, and creative technology collide. Step inside MNC Gaming and discover what's next.</p><a class="ar-launch" href="https://odotofrva.github.io/gaming-mnc/" target="_blank" rel="noopener noreferrer">Enter MNC Gaming <span aria-hidden="true">↗</span></a></div>
+    <a class="mnc-gaming-visual" href="https://odotofrva.github.io/gaming-mnc/" target="_blank" rel="noopener noreferrer" aria-label="Open MNC Gaming"><span class="mnc-gaming-orbit" aria-hidden="true"></span><span class="mnc-gaming-symbol" aria-hidden="true">MNC<span> / </span>GAMING</span><span class="mnc-gaming-caption">INITIALIZE EXPERIENCE ↗</span></a>
+  </div>
 </section>
 <section class="section" id="terms">
 <div class="terms-wrap">
