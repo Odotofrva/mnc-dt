@@ -3589,6 +3589,23 @@
 .porsche-project-photo{display:grid;place-items:center;background:radial-gradient(circle at center,#262015,#090909 72%);padding:clamp(20px,4vw,55px)}
 .porsche-project-photo img{width:100%;height:auto;max-height:520px;object-fit:contain}
 @media(max-width:760px){.nav-logo{width:150px;height:54px}.nav-logo img{max-height:52px}}
+
+/* MENOCLONE STUDIOS — neon editorial feature */
+.studios-section{background:radial-gradient(ellipse at 76% 42%,rgba(31,255,28,.09),transparent 44%),#080b08}
+.studios-panel{display:grid;grid-template-columns:1fr 1fr;min-height:520px;overflow:hidden;border:1px solid rgba(67,255,58,.22);border-radius:var(--radius);background:#0b0d0b}
+.studios-copy{padding:clamp(28px,5vw,72px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.studios-copy h3{font-size:clamp(42px,6vw,88px);line-height:.92;letter-spacing:-.06em;text-transform:uppercase;margin:0;max-width:11ch}
+.studios-copy p:not(.eyebrow){font-size:14px;line-height:1.75;color:#b5bdb4;max-width:570px;margin:22px 0 0}
+.studios-copy .studios-cta{display:inline-flex;align-items:center;gap:14px;margin-top:30px;padding:15px 22px;border-radius:999px;background:#48ff34;color:#061006;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;transition:transform .25s,box-shadow .25s}
+.studios-copy .studios-cta:hover{transform:translateY(-3px);box-shadow:0 0 28px rgba(49,255,31,.27)}
+.studios-visual{position:relative;display:grid;place-items:center;overflow:hidden;min-height:420px;border-left:1px solid rgba(67,255,58,.16);background:radial-gradient(circle,rgba(28,255,24,.15),transparent 55%),#030503}
+.studios-visual::before{content:'';position:absolute;width:66%;aspect-ratio:1;border:1px solid rgba(59,255,41,.25);border-radius:50%;animation:studiosHalo 3.6s ease-in-out infinite}
+.studios-logo{position:relative;z-index:1;width:min(90%,580px);max-height:450px;object-fit:contain;animation:studiosPulse 3.1s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(42,255,31,.4))}
+.studios-caption{position:absolute;bottom:22px;left:24px;font-size:10px;letter-spacing:.2em;color:#8eea86;text-transform:uppercase}
+@keyframes studiosPulse{0%,100%{transform:scale(.97);filter:drop-shadow(0 0 9px rgba(42,255,31,.32))}50%{transform:scale(1.035);filter:drop-shadow(0 0 32px rgba(42,255,31,.75))}}
+@keyframes studiosHalo{0%,100%{transform:scale(.9);opacity:.2}50%{transform:scale(1.12);opacity:.85}}
+@media(max-width:800px){.studios-panel{grid-template-columns:1fr}.studios-copy{padding:36px 24px}.studios-visual{border-left:0;border-top:1px solid rgba(67,255,58,.16);min-height:340px}.studios-logo{max-height:330px}}
+@media(prefers-reduced-motion:reduce){.studios-logo,.studios-visual::before{animation:none}}
 </style></head>
 <body>
 <!-- Replace this source with your real splash video: assets/menoclone-splash.mp4 -->
@@ -3613,6 +3630,7 @@
 <nav aria-label="Primary" class="desktop-nav">
 <a data-i18n="shop" href="#shop">Shop</a>
 <a href="#menoclone-motorsports">MNC Motorsports</a>
+<a href="#mnc-studios">MNC Studios</a>
 <a href="#mnc-gaming">MNC Gaming</a>
 
 
@@ -3643,6 +3661,7 @@
 <nav aria-label="Mobile" class="mobile-nav">
 <a data-i18n="shop" href="#shop">Shop</a>
 <a href="#menoclone-motorsports">MNC Motorsports</a>
+<a href="#mnc-studios">MNC Studios</a>
 <a href="#mnc-gaming">MNC Gaming</a>
 
 
@@ -3955,6 +3974,14 @@
 </div>
 </div>
 </div>
+</section>
+<!-- MENOCLONE STUDIOS -->
+<section class="section studios-section" id="mnc-studios" aria-labelledby="mnc-studios-title">
+  <div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE / Film &amp; Photography</p><h2 id="mnc-studios-title">MENOCLONE STUDIOS</h2></div><p>Film / Photography / Stories / Culture</p></div>
+  <div class="studios-panel" data-reveal="">
+    <div class="studios-copy"><p class="eyebrow">Originality Has Origins.</p><h3>Stories from the culture. Made for the culture.</h3><p>MENOCLONE STUDIOS is the film, photography and visual storytelling division of MENOCLONE. We capture the people, places, ideas and moments that shape culture—through an independent creative lens.</p><p>From cinematic short films and documentary storytelling to photography, campaigns and original visual projects, our studio exists to give authentic stories a distinct point of view.</p><a class="studios-cta" href="https://odotofrva.github.io/mncstudios/" target="_blank" rel="noopener noreferrer">Explore MENOCLONE STUDIOS <span aria-hidden="true">↗</span></a></div>
+    <a class="studios-visual" href="https://odotofrva.github.io/mncstudios/" target="_blank" rel="noopener noreferrer" aria-label="Visit MENOCLONE STUDIOS website"><img class="studios-logo" src="assets/menoclone-studios-neon-green.png" alt="MENOCLONE STUDIOS neon green UFO and vintage camera logo" loading="lazy"/><span class="studios-caption">Visual culture / New perspectives ↗</span></a>
+  </div>
 </section>
 <!-- MNC GAMING -->
 <section class="section mnc-gaming-section" id="mnc-gaming" aria-labelledby="mnc-gaming-title">
