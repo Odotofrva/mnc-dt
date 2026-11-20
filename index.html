@@ -3606,6 +3606,23 @@
 @keyframes studiosHalo{0%,100%{transform:scale(.9);opacity:.2}50%{transform:scale(1.12);opacity:.85}}
 @media(max-width:800px){.studios-panel{grid-template-columns:1fr}.studios-copy{padding:36px 24px}.studios-visual{border-left:0;border-top:1px solid rgba(67,255,58,.16);min-height:340px}.studios-logo{max-height:330px}}
 @media(prefers-reduced-motion:reduce){.studios-logo,.studios-visual::before{animation:none}}
+</style><style>
+/* MENOCLONE division refresh */
+.division-logo.gaming-logo{position:relative;z-index:2;display:block;width:min(85%,580px);height:auto;max-height:340px;object-fit:contain;filter:drop-shadow(0 14px 35px rgba(0,0,0,.5));transition:transform .5s ease}
+.mnc-gaming-visual:hover .gaming-logo{transform:scale(1.035)}
+.porsche-project-photo img{object-fit:contain!important;max-width:90%;max-height:85%;margin:auto}
+.mnc-labs-section{background:radial-gradient(circle at 78% 28%,rgba(0,229,231,.10),transparent 34%),#090d0e;scroll-margin-top:var(--header-h)}
+.mnc-labs-panel{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#101314}
+.mnc-labs-copy{padding:clamp(32px,5vw,76px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:430px}
+.mnc-labs-copy h3{font-size:clamp(38px,5vw,74px);line-height:.94;letter-spacing:-.055em;text-transform:uppercase;margin:0;max-width:11ch}
+.mnc-labs-copy p:not(.eyebrow){color:#aaa9a3;line-height:1.75;font-size:14px;max-width:570px;margin:22px 0 0}
+.labs-visit{display:inline-flex;align-items:center;gap:12px;margin-top:28px;padding:15px 22px;border:1px solid #00e4e8;border-radius:999px;background:rgba(0,228,232,.09);color:#62faff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:transform .25s,background .25s}
+.labs-visit:hover{transform:translateY(-3px);background:rgba(0,228,232,.2)}
+.mnc-labs-visual{display:grid;place-items:center;min-height:430px;padding:clamp(22px,4vw,54px);border-left:1px solid var(--line);background:radial-gradient(circle,rgba(0,228,232,.14),transparent 55%),repeating-linear-gradient(90deg,transparent 0 39px,rgba(0,228,232,.025) 40px),#080d0e}
+.mnc-labs-visual img{width:100%;max-width:680px;object-fit:contain;transition:transform .5s}
+.mnc-labs-visual:hover img{transform:scale(1.035)}
+@media(max-width:760px){.mnc-labs-panel{grid-template-columns:1fr}.mnc-labs-copy{min-height:auto;padding:36px 24px}.mnc-labs-visual{min-height:300px;border-left:0;border-top:1px solid var(--line)}}
+@media(min-width:761px) and (max-width:1180px){.desktop-nav{gap:11px;font-size:9px;letter-spacing:.08em}}
 </style></head>
 <body>
 <!-- Replace this source with your real splash video: assets/menoclone-splash.mp4 -->
@@ -3631,15 +3648,8 @@
 <a data-i18n="shop" href="#shop">Shop</a>
 <a href="#menoclone-motorsports">MNC Motorsports</a>
 <a href="#mnc-studios">MNC Studios</a>
-<a href="#mnc-gaming">MNC Gaming</a>
-
-
-
-
-
-
+<a href="#mnc-gaming">MNC Gaming</a><a href="#mnc-labs">MNC Labs</a>
 <a data-i18n="termsNav" href="#terms">Terms</a>
-
 <a data-i18n="contact" href="#contact">Contact</a>
 </nav>
 <a aria-label="MENOCLONE home" class="nav-logo" href="#home">
@@ -3662,15 +3672,8 @@
 <a data-i18n="shop" href="#shop">Shop</a>
 <a href="#menoclone-motorsports">MNC Motorsports</a>
 <a href="#mnc-studios">MNC Studios</a>
-<a href="#mnc-gaming">MNC Gaming</a>
-
-
-
-
-
-
+<a href="#mnc-gaming">MNC Gaming</a><a href="#mnc-labs">MNC Labs</a>
 <a data-i18n="termsNav" href="#terms">Terms</a>
-
 <a data-i18n="contact" href="#contact">Contact</a>
 </nav>
 <div class="mobile-meta">
@@ -3760,7 +3763,6 @@
 <span>5 Panel / Trucker</span>
 </div>
 <div class="products">
-
 <article class="product" data-description="MENOCLONE Season Two Trucker Hats. Structured black front, white MENOCLONE wordmark and breathable mesh construction." data-name="MENOCLONE Season Two Trucker Hats" data-price="60.00" data-reveal="">
 <div class="product-media">
 <img alt="MENOCLONE Season Two black trucker hats with white embroidered wordmark" loading="lazy" src="mnc-season-two-trucker-hats.png"/>
@@ -3781,8 +3783,6 @@
 <div class="product-media"><img alt="MENOCLONE x New Era New York Mets Hat" class="real-product" loading="lazy" src="mnc-new-era-mets.png"/><span class="product-index">AR 02</span><button class="quick-add" data-product="MENOCLONE x New Era New York Mets Hat" type="button">Shop on Big Cartel</button></div>
 <div class="product-info"><span>MENOCLONE x New Era New York Mets Hat</span><span class="price-hidden">Price in cart</span></div>
 </article>
-
-
 <article class="product" data-description="Exclusive MENOCLONE x New Era South Carolina Gamecocks cap featuring team-inspired embroidery and signature MNC UFO side detailing. AR experience details forthcoming." data-name="MENOCLONE x New Era South Carolina Gamecocks Snapback" data-price="100.00" data-reveal="">
 <div class="product-media"><img alt="MENOCLONE x New Era South Carolina Gamecocks Snapback" class="real-product" loading="lazy" src="assets/Garnet Gamecocks 59FIFTY Cap.png"/><span class="product-index">AR 05</span><button class="quick-add" data-product="MENOCLONE x New Era South Carolina Gamecocks Snapback" type="button">Shop on Big Cartel</button></div>
 <div class="product-info"><span>MENOCLONE x New Era South Carolina Gamecocks Snapback</span><span class="price-hidden">Price in cart</span></div></article>
@@ -3883,114 +3883,29 @@
 <section aria-labelledby="porsche-project-title" class="section porsche-project" id="menoclone-motorsports">
 <div class="section-heading"><div><p class="eyebrow">MENOCLONE / MOTORSPORTS DIVISION</p><h2 id="porsche-project-title">MENOCLONE MOTORSPORTS</h2></div><p>Engineering / Automotive Technology / Innovation</p></div>
 <div class="porsche-project-grid">
-<div class="porsche-project-photo"><img alt="MENOCLONE Motorsports gold circuit tire emblem" loading="lazy" src="assets/menoclone-motorsports-gold.png"/></div>
-<div class="porsche-project-copy"><p class="eyebrow">Engineering meets originality</p><h3>Driven by innovation. Built to explore.</h3><p>MENOCLONE Motorsports is the automotive engineering and technology division of MENOCLONE, exploring vehicle diagnostics, embedded electronics, intelligent systems, performance-inspired design and hands-on engineering.</p><p>Our projects connect automotive craftsmanship with modern hardware and software: OBD-II diagnostic tools, Raspberry Pi and ESP32 prototypes, vehicle data research and future-forward mobility concepts. We learn by building, testing and refining real systems.</p><blockquote>“Keep Your Vision Further Than Your Eyesight!”</blockquote><p>From import-car engineering studies to connected automotive technology, MENOCLONE Motorsports is an independent creative R&amp;D initiative focused on turning curiosity into practical technical skill and original prototypes.</p><a class="motorsports-visit" href="https://odotofrva.github.io/mncmotors/" target="_blank" rel="noopener noreferrer">Explore MNC Motorsports ↗</a></div>
-</div>
-</section>
-<section class="section" id="mnc-trucker-hat">
-<div class="section-heading" data-reveal="">
-<div>
-<p class="eyebrow" data-i18n="truckerSectionKicker">Season 2 Headwear</p>
-<h2 data-i18n="truckerSectionTitle">MNC Trucker Hat</h2>
-</div>
-<p data-i18n="truckerSectionMeta">MENOCLONE / Trucker Hat Study</p>
-</div>
-<div class="editorial-grid">
-<article class="editorial-card" data-reveal="">
-<img alt="Front portrait of the MENOCLONE Season Two Trucker Hat" loading="lazy" src="look-04-table.png"/>
-<div class="editorial-label">
-<strong data-i18n="lookOne">Look 01</strong>
-<span data-i18n="lookOneMeta">Trucker Hat / Front Portrait</span>
-</div>
-</article>
-<article class="editorial-card" data-reveal="">
-<img alt="Angled portrait of the MENOCLONE Season Two Trucker Hat" loading="lazy" src="look-03-fitting.png"/>
-<div class="editorial-label">
-<strong data-i18n="lookTwo">Look 02</strong>
-<span data-i18n="lookTwoMeta">Trucker Hat / Angle Study</span>
-</div>
-</article>
-<article class="editorial-card" data-reveal="">
-<img alt="Mannequin putting on the MENOCLONE Season Two Trucker Hat" loading="lazy" src="look-02-angle.png"/>
-<div class="editorial-label">
-<strong data-i18n="lookThree">Look 03</strong>
-<span data-i18n="lookThreeMeta">Trucker Hat / Fitting Study</span>
-</div>
-</article>
-<article class="editorial-card" data-reveal="">
-<img alt="Mannequin viewing the MENOCLONE Season Two Trucker Hat on a table" loading="lazy" src="look-01-front.png"/>
-<div class="editorial-label">
-<strong data-i18n="lookFour">Look 04</strong>
-<span data-i18n="lookFourMeta">Trucker Hat / Object Study</span>
-</div>
-</article>
+<div class="porsche-project-photo"><img alt="Official MENOCLONE MOTORSPORTS UFO emblem" loading="lazy" src="assets/menoclone-motorsports-logo.png"/></div>
+<div class="porsche-project-copy"><p class="eyebrow">Engineering meets originality</p><h3>Driven by innovation. Built to explore.</h3><p>MENOCLONE Motorsports is the automotive engineering and technology division of MENOCLONE, exploring vehicle diagnostics, embedded electronics, intelligent systems, performance-inspired design and hands-on engineering.</p><p>Our projects connect automotive craftsmanship with modern hardware and software: OBD-II diagnostic tools, Raspberry Pi and ESP32 prototypes, vehicle data research and future-forward mobility concepts. We learn by building, testing and refining real systems.</p><blockquote>“Keep Your Vision Further Than Your Eyesight!”</blockquote><p>From import-car engineering studies to connected automotive technology, MENOCLONE Motorsports is an independent creative R&amp;D initiative focused on turning curiosity into practical technical skill and original prototypes.</p><a class="motorsports-visit" href="https://odotofrva.github.io/mncmotors/" rel="noopener noreferrer" target="_blank">Explore MNC Motorsports ↗</a></div>
 </div>
 </section>
 
 
-<section class="section street-team-section" id="street-team">
-<div class="section-heading" data-reveal="">
-<div>
-<p class="eyebrow">MENOCLONE Street Team</p>
-<h2>Join the Street Team</h2>
-</div>
-<p>NYC / Community / Signal</p>
-</div>
-<div class="street-team-panel">
-<div class="street-team-media" data-reveal="">
-<img alt="MENOCLONE Join the Street Team recruitment flyer featuring the MENOCLONE mannequin crew" loading="lazy" src="mnc-street-team-flyer.png"/>
-</div>
-<div class="street-team-copy" data-reveal="">
-<p class="eyebrow">Help Move the Signal</p>
-<h3>Join the MENOCLONE street team.</h3>
-<p>Be part of the people pushing MENOCLONE into the streets through flyer and sticker marketing, events, pop-ups and creative activations. Reach out to us on Instagram to get started.</p>
-<div class="street-team-actions">
-<a aria-label="Message MENOCLONE on Instagram" class="street-team-cta" href="https://www.instagram.com/menoclone/" rel="noopener noreferrer" target="_blank">Message Us on Instagram <span aria-hidden="true">↗</span></a>
-</div>
-<span class="street-team-handle">@menoclone</span>
-</div>
-</div>
-</section>
-<section class="section seoul-section" id="seoul">
-<div class="section-heading" data-reveal="">
-<div>
-<p class="eyebrow">MENOCLONE Global Signal</p>
-<h2>New York → Seoul</h2>
-</div>
-<p>Koreatown, NYC / Seoul, Korea / Future Expansion</p>
-</div>
-<div class="seoul-grid">
-<div class="seoul-visual" data-reveal="">
-<img alt="Seoul Korea MENOCLONE collaboration banner" loading="lazy" src="mnc-seoul-banner.png"/>
-</div>
-<div class="seoul-copy" data-reveal="">
-<p class="eyebrow">A Dream Beyond Borders</p>
-<h3>Building the signal toward Seoul.</h3>
-<p>MENOCLONE plans to expand its creative world into Seoul, Korea by building meaningful partnerships through the cultural bridge of Koreatown, New York City. The goal is not simply to enter another market, but to connect with designers, artists, makers and independent thinkers who move on the same creative frequency.</p>
-<p>For founder OdotNYC, visiting Seoul has long been a personal dream. As MENOCLONE grows, that dream has become part of the brand's future: bringing its lifestyle of fashion, art, design and technology into a city known for its own powerful creative energy, while learning from the people and culture already shaping it.</p>
-<p class="seoul-note">The Korean MENOCLONE logo was created as a gesture of respect and appreciation for Korean culture. It represents curiosity, humility and a commitment to keep learning daily—not an attempt to claim the culture, but to honor the inspiration and relationships MENOCLONE hopes to build.</p>
-<div aria-label="MENOCLONE expansion path" class="seoul-route">
-<span>New York City</span><b>→</b><span>Koreatown NYC</span><b>→</b><span>Seoul, Korea</span><b>→</b><span>Creative Partnerships</span>
-</div>
-</div>
-</div>
-</section>
+
 <!-- MENOCLONE STUDIOS -->
-<section class="section studios-section" id="mnc-studios" aria-labelledby="mnc-studios-title">
-  <div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE / Film &amp; Photography</p><h2 id="mnc-studios-title">MENOCLONE STUDIOS</h2></div><p>Film / Photography / Stories / Culture</p></div>
-  <div class="studios-panel" data-reveal="">
-    <div class="studios-copy"><p class="eyebrow">Originality Has Origins.</p><h3>Stories from the culture. Made for the culture.</h3><p>MENOCLONE STUDIOS is the film, photography and visual storytelling division of MENOCLONE. We capture the people, places, ideas and moments that shape culture—through an independent creative lens.</p><p>From cinematic short films and documentary storytelling to photography, campaigns and original visual projects, our studio exists to give authentic stories a distinct point of view.</p><a class="studios-cta" href="https://odotofrva.github.io/mncstudios/" target="_blank" rel="noopener noreferrer">Explore MENOCLONE STUDIOS <span aria-hidden="true">↗</span></a></div>
-    <a class="studios-visual" href="https://odotofrva.github.io/mncstudios/" target="_blank" rel="noopener noreferrer" aria-label="Visit MENOCLONE STUDIOS website"><img class="studios-logo" src="assets/menoclone-studios-neon-green.png" alt="MENOCLONE STUDIOS neon green UFO and vintage camera logo" loading="lazy"/><span class="studios-caption">Visual culture / New perspectives ↗</span></a>
-  </div>
+<section aria-labelledby="mnc-studios-title" class="section studios-section" id="mnc-studios">
+<div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE / Film &amp; Photography</p><h2 id="mnc-studios-title">MENOCLONE STUDIOS</h2></div><p>Film / Photography / Stories / Culture</p></div>
+<div class="studios-panel" data-reveal="">
+<div class="studios-copy"><p class="eyebrow">Originality Has Origins.</p><h3>Stories from the culture. Made for the culture.</h3><p>MENOCLONE STUDIOS is the film, photography and visual storytelling division of MENOCLONE. We capture the people, places, ideas and moments that shape culture—through an independent creative lens.</p><p>From cinematic short films and documentary storytelling to photography, campaigns and original visual projects, our studio exists to give authentic stories a distinct point of view.</p><a class="studios-cta" href="https://odotofrva.github.io/mncstudios/" rel="noopener noreferrer" target="_blank">Explore MENOCLONE STUDIOS <span aria-hidden="true">↗</span></a></div>
+<a aria-label="Visit MENOCLONE STUDIOS website" class="studios-visual" href="https://odotofrva.github.io/mncstudios/" rel="noopener noreferrer" target="_blank"><img alt="MENOCLONE STUDIOS neon green UFO and vintage camera logo" class="studios-logo" loading="lazy" src="assets/menoclone-studios-neon-green.png"/><span class="studios-caption">Visual culture / New perspectives ↗</span></a>
+</div>
 </section>
 <!-- MNC GAMING -->
-<section class="section mnc-gaming-section" id="mnc-gaming" aria-labelledby="mnc-gaming-title">
-  <div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE / Interactive Worlds</p><h2 id="mnc-gaming-title">MNC Gaming</h2></div><p>Play / Explore / Discover</p></div>
-  <div class="mnc-gaming-panel" data-reveal="">
-    <div class="mnc-gaming-copy"><p class="eyebrow">Enter a New Dimension</p><h3>Beyond the ordinary.</h3><p>Explore the gaming division of MENOCLONE, where original worlds, immersive experiences, and creative technology collide. Step inside MNC Gaming and discover what's next.</p><a class="ar-launch" href="https://odotofrva.github.io/gaming-mnc/" target="_blank" rel="noopener noreferrer">Enter MNC Gaming <span aria-hidden="true">↗</span></a></div>
-    <a class="mnc-gaming-visual" href="https://odotofrva.github.io/gaming-mnc/" target="_blank" rel="noopener noreferrer" aria-label="Open MNC Gaming"><span class="mnc-gaming-orbit" aria-hidden="true"></span><span class="mnc-gaming-symbol" aria-hidden="true">MNC<span> / </span>GAMING</span><span class="mnc-gaming-caption">INITIALIZE EXPERIENCE ↗</span></a>
-  </div>
-</section>
+<section aria-labelledby="mnc-gaming-title" class="section mnc-gaming-section" id="mnc-gaming">
+<div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE / Interactive Worlds</p><h2 id="mnc-gaming-title">MNC Gaming</h2></div><p>Play / Explore / Discover</p></div>
+<div class="mnc-gaming-panel" data-reveal="">
+<div class="mnc-gaming-copy"><p class="eyebrow">Enter a New Dimension</p><h3>Beyond the ordinary.</h3><p>Explore the gaming division of MENOCLONE, where original worlds, immersive experiences, and creative technology collide. Step inside MNC Gaming and discover what's next.</p><a class="ar-launch" href="https://odotofrva.github.io/gaming-mnc/" rel="noopener noreferrer" target="_blank">Enter MNC Gaming <span aria-hidden="true">↗</span></a></div>
+<a aria-label="Open MNC Gaming" class="mnc-gaming-visual" href="https://odotofrva.github.io/gaming-mnc/" rel="noopener noreferrer" target="_blank"><span aria-hidden="true" class="mnc-gaming-orbit"></span><img alt="Official MENOCLONE GAMING logo" class="division-logo gaming-logo" src="assets/menoclone-gaming-logo.png"/><span class="mnc-gaming-caption">INITIALIZE EXPERIENCE ↗</span></a>
+</div>
+</section><section aria-labelledby="mnc-labs-title" class="section mnc-labs-section" id="mnc-labs"><div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE / Research &amp; Development</p><h2 id="mnc-labs-title">MENOCLONE LABS</h2></div><p>Hardware / Software / Research / Development</p></div><div class="mnc-labs-panel" data-reveal=""><div class="mnc-labs-copy"><p class="eyebrow">Independent Innovation / SoHo, New York</p><h3>Ideas made tangible.</h3><p>MENOCLONE LABS is the hardware, software, research and development division powering innovation across the MENOCLONE ecosystem. We explore embedded technology, connected products, experimental interfaces and original tools through hands-on prototyping.</p><p>From early concepts to working systems, we build, test and refine technology that connects our creative worlds.</p><a class="labs-visit" href="https://odotofrva.github.io/mnclabs/" rel="noopener noreferrer" target="_blank">Explore MENOCLONE LABS <span aria-hidden="true">↗</span></a></div><a aria-label="Visit MENOCLONE LABS" class="mnc-labs-visual" href="https://odotofrva.github.io/mnclabs/" rel="noopener noreferrer" target="_blank"><img alt="Official MENOCLONE LABS logo" loading="lazy" src="assets/menoclone-labs-logo.png"/></a></div></section>
 <section class="section" id="terms">
 <div class="terms-wrap">
 <div data-reveal="">
@@ -4014,8 +3929,8 @@
 </div>
 <form class="email-form" id="emailForm">
 <input aria-label="Name" name="name" placeholder="NAME" required="" type="text"/>
-<input aria-label="Email address" data-i18n-placeholder="emailPlaceholder" name="email" placeholder="EMAIL ADDRESS" required="" type="email">
-<input aria-label="Subject" name="subject" placeholder="SUBJECT" required="" type="text"/>
+<input aria-label="Email address" data-i18n-placeholder="emailPlaceholder" name="email" placeholder="EMAIL ADDRESS" required="" type="email"/>
+<input aria-label="Subject" name="subject" placeholder="SUBJECT" required="" type="text">
 <textarea aria-label="Message" name="message" placeholder="MESSAGE" required=""></textarea>
 <button type="submit"><span>Send Message</span> ↗</button>
 <p aria-live="polite" class="form-status" id="contactStatus" role="status"></p>
