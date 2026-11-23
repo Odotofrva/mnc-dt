@@ -3563,6 +3563,27 @@
 .motorsports-visit{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;margin-top:24px;padding:15px 24px;border:1px solid #d6a73e;border-radius:999px;color:#f3d17b;background:rgba(214,167,62,.08);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;transition:background .25s,transform .25s}
 .motorsports-visit:hover{background:rgba(214,167,62,.22);transform:translateY(-2px)}
 .porsche-project-photo img{object-fit:contain!important;padding:clamp(16px,3vw,40px)}
+
+/* MENOCLONE COMICS + CHEERS CLUB / editorial additions */
+.mnc-comics{background:linear-gradient(135deg,#101810,#080a09 68%);}
+.mnc-comics-grid{display:grid;grid-template-columns:minmax(230px,.75fr) 1.25fr;gap:clamp(22px,5vw,80px);align-items:center;max-width:1280px;margin:auto}
+.mnc-comics-cover{display:block;max-width:440px;margin:auto;border:1px solid rgba(232,255,71,.25);box-shadow:20px 24px 70px rgba(0,0,0,.55);transform:rotate(-1deg);transition:transform .35s}
+.mnc-comics-cover:hover{transform:rotate(0deg) translateY(-5px)}
+.mnc-comics-cover img{width:100%;height:auto;display:block}
+.mnc-feature-copy h3{font-size:clamp(34px,5vw,78px);line-height:.95;letter-spacing:-.055em;text-transform:uppercase;margin:0 0 20px}
+.mnc-feature-copy p:not(.eyebrow){font-size:clamp(14px,1.3vw,17px);line-height:1.8;color:#bcbdb5;max-width:660px}
+.mnc-feature-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.mnc-feature-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 22px;border:1px solid var(--accent);border-radius:999px;background:var(--accent);color:#10110b;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transition:transform .25s,background .25s}
+.mnc-feature-btn:hover{transform:translateY(-3px)}
+.mnc-feature-btn.secondary{background:transparent;color:var(--accent)}
+.mnc-comics-meta{margin-top:20px!important;color:#8f9d83!important;font-size:11px!important;letter-spacing:.1em;text-transform:uppercase}
+.mnc-cheers{background:#101013}
+.mnc-cheers-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(22px,5vw,70px);align-items:center}
+.mnc-apple-player{border:1px solid rgba(255,255,255,.17);border-radius:20px;padding:16px;background:#17171a;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+.mnc-apple-player iframe{display:block;width:100%;height:450px;border:0;border-radius:12px;background:#222}
+.mnc-player-note{color:#96969c;font-size:11px;line-height:1.6;margin:12px 3px 0}
+@media(max-width:800px){.mnc-comics-grid,.mnc-cheers-grid{grid-template-columns:1fr}.mnc-comics-cover{max-width:320px}.mnc-apple-player iframe{height:450px}}
+
 </style>
 <style>
 /* MNC October collection update */
@@ -3755,9 +3776,6 @@
 </div>
 </div>
 <div class="product-category" data-reveal="">
-<div class="mnc-headwear-lineup" data-reveal="">
-<img alt="MENOCLONE five-cap collection: red, black, blue, green, and camouflage snapbacks" decoding="async" loading="lazy" src="assets/menoclone-five-cap-collection.png"/>
-</div>
 <div class="product-category-heading">
 <h3>Headwear</h3>
 <span>5 Panel / Trucker</span>
@@ -3880,6 +3898,14 @@
 </div>
 </div>
 </section>
+<section aria-labelledby="mnc-comics-title" class="section mnc-comics" id="menoclone-comics">
+<div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE STUDIOS / ORIGINAL STORIES</p><h2 id="mnc-comics-title">MENOCLONE COMICS</h2></div><p>Collection / Issue 001 / Free Digital Edition</p></div>
+<div class="mnc-comics-grid"><a class="mnc-comics-cover" href="MENOCLONE_The_Invitation_Issue_001.pdf" target="_blank" rel="noopener" aria-label="Open MENOCLONE Comics Issue 001 The Invitation"><img src="menoclone-comics-issue-001-cover.jpg" loading="lazy" alt="Cover of MENOCLONE Comics Issue 001 The Invitation, featuring the young protagonist and the Clone Destroyer in a futuristic New York City"/></a>
+<div class="mnc-feature-copy" data-reveal=""><p class="eyebrow">The Invitation / Issue One</p><h3>Every world has an origin.</h3><p>Welcome to the MENOCLONE Comics Collection, a growing library of original stories exploring the people, imagination, and connected worlds behind the MENOCLONE ecosystem.</p><p>Our first release, <strong>The Invitation</strong>, follows a young creative in New York City who begins to discover a world beyond the ordinary. Meet the Clone Destroyer and take the first step into a universe where originality has no limits.</p><p>Issue 001 is our gift to the community. Read the full comic and discover where the story begins.</p><div class="mnc-feature-actions"><a class="mnc-feature-btn" href="MENOCLONE_The_Invitation_Issue_001.pdf" download="MENOCLONE_The_Invitation_Issue_001.pdf">Download Issue 001 — Free ↓</a><a class="mnc-feature-btn secondary" href="MENOCLONE_The_Invitation_Issue_001.pdf" target="_blank" rel="noopener">Read the Comic ↗</a></div><p class="mnc-comics-meta">20 pages / Digital PDF / MENOCLONE STUDIOS</p></div></div></section>
+<section aria-labelledby="mnc-cheers-title" class="section mnc-cheers" id="cheers-club">
+<div class="section-heading" data-reveal=""><div><p class="eyebrow">MENOCLONE / CURRENT ROTATION</p><h2 id="mnc-cheers-title">THE SOUND OF NEW YORK</h2></div><p>Listening Room / CHEERS CLUB</p></div>
+<div class="mnc-cheers-grid"><div class="mnc-feature-copy" data-reveal=""><p class="eyebrow">Now playing / CHEERS CLUB</p><h3>Soundtracks for the city.</h3><p>We are true fans of CHEERS CLUB. Their music and visuals bring a distinctive energy to New York City, shaping the soundtrack of the city for years past and years to come.</p><p>Take a moment inside the MENOCLONE listening room with <strong>CHEERS CLUB Listening Session Vol. 1: Live from The Mercer</strong>. Press play and enjoy the session while you explore our world.</p><div class="mnc-feature-actions"><a class="mnc-feature-btn secondary" href="https://music.apple.com/us/album/cheers-club-listening-session-vol-1-live-from-the-mercer/6830374105" target="_blank" rel="noopener noreferrer">Open in Apple Music ↗</a></div></div>
+<div class="mnc-apple-player" data-reveal=""><iframe title="Listen to CHEERS CLUB Listening Session Vol. 1 Live from The Mercer on Apple Music" src="https://embed.music.apple.com/us/album/cheers-club-listening-session-vol-1-live-from-the-mercer/6830374105" loading="lazy" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe><p class="mnc-player-note">Play the album here using Apple Music. Full-track playback may require an Apple Music subscription or sign-in; previews and availability depend on Apple Music.</p></div></div></section>
 <section aria-labelledby="porsche-project-title" class="section porsche-project" id="menoclone-motorsports">
 <div class="section-heading"><div><p class="eyebrow">MENOCLONE / MOTORSPORTS DIVISION</p><h2 id="porsche-project-title">MENOCLONE MOTORSPORTS</h2></div><p>Engineering / Automotive Technology / Innovation</p></div>
 <div class="porsche-project-grid">
